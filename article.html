@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Century of Craft — Stories To Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dim: #8B6914;
+    --black: #050505;
+    --deep: #0A0A08;
+    --surface: #111110;
+    --surface2: #1A1A18;
+    --text: #E8E4D9;
+    --text-dim: #8A8578;
+    --text-body: #C8C4B8;
+    --white: #F5F1E8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* NOISE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9990;
+    opacity: 0.35;
+  }
+
+  /* CURSOR */
+  .cursor { width:8px; height:8px; background:var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; }
+  .cursor-ring { width:36px; height:36px; border:1px solid var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; opacity:0.6; transition:all 0.15s ease; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 24px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(5,5,5,0.98), transparent);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-back {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    cursor: none;
+  }
+
+  .nav-back:hover { color: var(--gold); }
+  .nav-back::before { content: '←'; font-size: 14px; }
+
+  /* HERO — FULL BLEED */
+  .article-hero {
+    height: 90vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero-bg-art {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      linear-gradient(to bottom, #0A0A08 0%, #050505 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Large decorative watch in hero background */
+  .hero-watch-bg {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    height: 420px;
+    opacity: 0.12;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.4) 50%, rgba(5,5,5,0.1) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 120px 80px;
+    max-width: 1000px;
+  }
+
+  .article-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .article-category::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .article-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 24px;
+    max-width: 800px;
+  }
+
+  .article-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .article-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .article-meta-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--gold-dim);
+  }
+
+  .article-meta-highlight { color: var(--gold); }
+
+  /* READING PROGRESS BAR */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--gold);
+    z-index: 9999;
+    transition: width 0.1s linear;
+    width: 0%;
+  }
+
+  /* ARTICLE BODY */
+  .article-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 120px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* MAIN CONTENT */
+  .article-main {}
+
+  /* DROP CAP */
+  .article-main p:first-of-type::first-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 88px;
+    font-weight: 900;
+    color: var(--gold);
+    float: left;
+    line-height: 0.75;
+    margin-right: 12px;
+    margin-top: 8px;
+  }
+
+  .article-main p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.85;
+    color: var(--text-body);
+    margin-bottom: 32px;
+  }
+
+  .article-main h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    margin: 64px 0 24px;
+    padding-top: 64px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .article-main h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold-light);
+    margin: 40px 0 20px;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 2px solid var(--gold);
+    padding: 32px 40px;
+    margin: 60px 0;
+    background: var(--surface);
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    line-height: 1;
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 28px !important;
+    font-style: italic;
+    line-height: 1.4 !important;
+    color: var(--white) !important;
+    margin: 0 !important;
+  }
+
+  .pull-quote p::first-letter { all: unset; }
+
+  .pull-quote-attr {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 16px;
+    display: block;
+  }
+
+  /* FACT BOX */
+  .fact-box {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 40px;
+    margin: 48px 0;
+  }
+
+  .fact-box-title {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .fact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .fact-item:last-child { border-bottom: none; }
+
+  .fact-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .fact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  /* SOURCE CITATION */
+  .source-cite {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold-dim);
+    padding-bottom: 2px;
+    text-decoration: none;
+    cursor: none;
+    transition: color 0.3s;
+  }
+
+  .source-cite:hover { color: var(--gold); border-color: var(--gold); }
+  .source-cite::before { content: '↗'; }
+
+  /* SIDEBAR */
+  .article-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .sidebar-section {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .sidebar-section:last-child {
+    border-bottom: none;
+  }
+
+  .sidebar-label {
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sidebar-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gold-dim);
+    opacity: 0.4;
+  }
+
+  /* KEY FACTS sidebar */
+  .key-fact {
+    margin-bottom: 20px;
+  }
+
+  .key-fact-num {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .key-fact-desc {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* RELATED ARTICLES sidebar */
+  .related-card {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: none;
+  }
+
+  .related-card:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .related-tag {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .related-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.3;
+    color: var(--text);
+    transition: color 0.3s;
+  }
+
+  .related-card:hover .related-title { color: var(--gold-light); }
+
+  /* AD PLACEMENT sidebar */
+  .sidebar-ad {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+  }
+
+  .sidebar-ad-label {
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface);
+    padding: 0 12px;
+    font-size: 7px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+
+  .sidebar-ad p {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .sidebar-ad span {
+    font-size: 8px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+  }
+
+  /* ARTICLE FOOTER */
+  .article-footer-section {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 80px 120px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .article-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+
+  .tag {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 8px 16px;
+    transition: all 0.3s;
+    cursor: none;
+  }
+
+  .tag:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* MORE STORIES */
+  .more-stories {
+    background: var(--deep);
+    padding: 100px 120px;
+  }
+
+  .more-stories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+    background: var(--surface2);
+  }
+
+  .story-card {
+    background: var(--deep);
+    padding: 40px;
+    cursor: none;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .story-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 1px;
+    width: 0;
+    background: var(--gold);
+    transition: width 0.5s ease;
+  }
+
+  .story-card:hover::after { width: 100%; }
+  .story-card:hover { background: var(--surface); }
+
+  .story-card-tag {
+    font-size: 8px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .story-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+
+  .story-card p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+
+  .story-source {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .story-source::before { content: ''; width: 20px; height: 1px; background: var(--gold-dim); }
+
+  /* SITE FOOTER */
+  footer {
+    background: var(--surface);
+    padding: 60px 120px 40px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .footer-bottom p {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .fade-up-1 { animation-delay: 0.2s; }
+  .fade-up-2 { animation-delay: 0.4s; }
+  .fade-up-3 { animation-delay: 0.6s; }
+  .fade-up-4 { animation-delay: 0.8s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .article-body { grid-template-columns: 1fr; padding: 60px 40px; }
+    .article-sidebar { position: static; }
+    .hero-content { padding: 0 40px 60px; }
+    .article-footer-section { padding: 60px 40px; }
+    .more-stories { padding: 60px 40px; }
+    .more-stories-grid { grid-template-columns: 1fr; }
+    footer { padding: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .article-title { font-size: 32px; }
+    .hero-content { padding: 0 24px 40px; }
+    .article-body { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
+  <a href="index.html#latest" class="nav-back">All Stories</a>
+</nav>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="hero-bg-art">
+    <!-- Decorative background watch -->
+    <svg class="hero-watch-bg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="210" cy="210" r="200" fill="none" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="210" cy="210" r="180" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+      <circle cx="210" cy="210" r="160" fill="none" stroke="#C9A84C" stroke-width="0.3"/>
+      <line x1="210" y1="55" x2="210" y2="80" stroke="#C9A84C" stroke-width="3"/>
+      <line x1="365" y1="210" x2="340" y2="210" stroke="#C9A84C" stroke-width="3"/>
+      <line x1="210" y1="365" x2="210" y2="340" stroke="#C9A84C" stroke-width="3"/>
+      <line x1="55" y1="210" x2="80" y2="210" stroke="#C9A84C" stroke-width="3"/>
+      <line x1="210" y1="210" x2="210" y2="100" stroke="#C9A84C" stroke-width="3"/>
+      <line x1="210" y1="210" x2="280" y2="180" stroke="#C9A84C" stroke-width="2"/>
+      <circle cx="210" cy="210" r="8" fill="#C9A84C"/>
+    </svg>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="article-category fade-up fade-up-1">Cover Story</p>
+    <h1 class="article-title fade-up fade-up-2">
+      The <em>Century of Craft:</em> How Rolex Quietly Redefined What a Watch Could Be
+    </h1>
+    <p class="article-subtitle fade-up fade-up-3">
+      A single engineering decision — sealing a watch against the elements — became the foundation of the world's most recognised luxury object.
+    </p>
+    <div class="article-meta fade-up fade-up-4">
+      <span class="article-meta-highlight">Stories To Watch</span>
+      <div class="article-meta-divider"></div>
+      <span>May 18, 2026</span>
+      <div class="article-meta-divider"></div>
+      <span>8 min read</span>
+      <div class="article-meta-divider"></div>
+      <span>Source: <span class="article-meta-highlight">Hodinkee · WatchPro · Revolution Magazine</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <!-- MAIN CONTENT -->
+  <main class="article-main">
+
+    <p>In the spring of 1926, a Geneva watchmaker named Hans Wilsdorf did something that would change the course of horological history — not with a tourbillon, not with a perpetual calendar, but with a gasket. The Rolex Oyster, unveiled that year as the world's first waterproof wristwatch, was built around one deceptively simple insight: that a watch sealed against water, dust, and moisture would be a watch that could be worn everywhere, by anyone, in any condition.</p>
+
+    <p>One hundred years later, that decision reverberates through every aspect of modern watchmaking. The Oyster case remains the foundation upon which the world's most valuable watch brand is built — and as Rolex marks the centenary of its defining invention in 2026, the industry finds itself reflecting on what, exactly, it means to make something that truly lasts.</p>
+
+    <div class="pull-quote">
+      <p>"The Oyster was not designed to be beautiful. It was designed to be unbreakable. The beauty came later — and that, perhaps, is the deepest lesson Rolex ever taught us."</p>
+      <span class="pull-quote-attr">Revolution Magazine, April 2026</span>
+    </div>
+
+    <h2>The Engineering Decision That Became an Icon</h2>
+
+    <p>Wilsdorf's original Oyster was demonstrated with characteristic flair. Mercedes Gleitze, a British swimmer, wore the watch during her attempt to cross the English Channel in October 1927. When she emerged after more than ten hours in the water, the watch was working perfectly. Rolex took out a full-page advertisement in the Daily Mail the following day — one of the first examples of what we would now call influencer marketing — and a legend was born.</p>
+
+    <p>What is remarkable, in retrospect, is how little the fundamental architecture has changed. The screw-down crown, the hermetically sealed case back, the reinforced crystal — these elements, refined and perfected over a century, remain the bones of every Oyster produced today. <a href="#" class="source-cite">Hodinkee</a></p>
+
+    <div class="fact-box">
+      <div class="fact-box-title">Rolex Oyster — Century in Numbers</div>
+      <div class="fact-item">
+        <span class="fact-label">Year Introduced</span>
+        <span class="fact-value">1926</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Water Resistance (Original)</span>
+        <span class="fact-value">100 metres</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Water Resistance (2026)</span>
+        <span class="fact-value">300 metres</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Current Waitlist (Daytona)</span>
+        <span class="fact-value">8–12 years</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Secondary Market Premium</span>
+        <span class="fact-value">Up to 400%</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Annual Production (est.)</span>
+        <span class="fact-value">~1 million pieces</span>
+      </div>
+    </div>
+
+    <h2>The 2026 Centenary Release</h2>
+
+    <p>To mark the occasion, Rolex unveiled the Oyster Perpetual 41 in a two-tone configuration that nods directly to the archive without retreating into nostalgia. The Jubilee bracelet — another Rolex invention, introduced in 1945 — returns in an oystersteel and yellow gold combination that the brand has not produced at this price point since the early 2000s. <a href="#" class="source-cite">WatchPro</a></p>
+
+    <h3>Restraint as a Statement</h3>
+
+    <p>What is most striking about the centenary release is what Rolex chose not to do. There is no limited edition number engraved on the case back. There is no commemorative text on the dial. The watch does not announce its significance — it simply embodies it. In an era of hyperbolic watch marketing, where brands compete to outdo one another with superlatives and artificial scarcity, Rolex's restraint reads as the most powerful statement of all.</p>
+
+    <p>This is, of course, entirely deliberate. Rolex has long understood that its greatest asset is not any individual model but the cumulative weight of a century of consistency. Every Oyster ever made has benefited from and contributed to the same brand equity — a compound interest of trust that no amount of marketing expenditure could replicate. <a href="#" class="source-cite">Revolution Magazine</a></p>
+
+    <div class="pull-quote">
+      <p>"Buying a Rolex is not a purchase. It is an inheritance decision made in advance — for children not yet born, who will one day receive something still ticking."</p>
+      <span class="pull-quote-attr">Phillips Auction House, Geneva 2026</span>
+    </div>
+
+    <h2>What the Market Says</h2>
+
+    <p>The secondary market tells its own story. According to data compiled by WatchCharts and corroborated by auction results at Phillips and Christie's, the Rolex Oyster Perpetual 41 in green — the so-called "Hulk" colourway released in 2020 — continues to trade at approximately two to three times its retail price. The Daytona in stainless steel has not been available at retail for nearly a decade in any meaningful volume. And the Submariner, the canonical diver's watch, commands a waitlist measured in years at any authorised dealer globally. <a href="#" class="source-cite">WatchCharts via Phillips</a></p>
+
+    <p>These are not the metrics of a brand in decline. They are the metrics of a brand that has, over a century, made itself genuinely irreplaceable. And as the luxury watch market navigates a period of broader softness — with Morgan Stanley forecasting sector growth of just 2.5% for 2026 — Rolex's position at the apex of the pyramid appears, if anything, more secure than ever.</p>
+
+    <h2>The Next Hundred Years</h2>
+
+    <p>The question that hangs over the centenary celebrations is one that Rolex itself has been careful not to answer too directly: what does the next hundred years look like? The brand has been characteristically opaque on the subject of smartwatch integration, on sustainability initiatives, on the future of mechanical horology in a world of perfect digital timekeeping. What it has communicated, through the centenary release itself, is a belief that the answer lies not in reinvention but in refinement.</p>
+
+    <p>The Oyster case of 2026 is, molecularly, a different object from the Oyster case of 1926. The steel is harder. The tolerances are tighter. The certification standards — Rolex's proprietary Superlative Chronometer standard demands accuracy of -2/+2 seconds per day, exceeding COSC requirements — are more demanding than anything Wilsdorf could have imagined. And yet the object is, in every essential way, the same thing.</p>
+
+    <p>That continuity — the ability to change everything while appearing to change nothing — may be the most extraordinary achievement in the history of luxury goods. One hundred years on, the Oyster remains exactly what it was always meant to be: not a fashion statement, not a status symbol, not an investment vehicle. A watch. The best possible watch. The one you wear into the water and it still works when you come out.</p>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="article-sidebar">
+
+    <!-- Key Facts -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">Key Figures</p>
+      <div class="key-fact">
+        <span class="key-fact-num">100</span>
+        <span class="key-fact-desc">Years of the Oyster Case</span>
+      </div>
+      <div class="key-fact">
+        <span class="key-fact-num">$15M</span>
+        <span class="key-fact-desc">Sotheby's Vintage Cartier Sale</span>
+      </div>
+      <div class="key-fact">
+        <span class="key-fact-num">400%</span>
+        <span class="key-fact-desc">Secondary Market Premium (Daytona)</span>
+      </div>
+      <div class="key-fact">
+        <span class="key-fact-num">$62B</span>
+        <span class="key-fact-desc">Global Luxury Watch Market 2026</span>
+      </div>
+    </div>
+
+    <!-- Ad Placement -->
+    <div class="sidebar-section">
+      <div class="sidebar-ad">
+        <span class="sidebar-ad-label">Advertisement</span>
+        <p>Premium Brand Placement</p>
+        <span>contact@storiestowatch.com</span>
+      </div>
+    </div>
+
+    <!-- Related -->
+    <div class="sidebar-section">
+      <p class="sidebar-label">Related</p>
+      <div class="related-card">
+        <p class="related-tag">Auction</p>
+        <p class="related-title">Sotheby's $15M Cartier Collection Breaks Records</p>
+      </div>
+      <div class="related-card">
+        <p class="related-tag">Anniversary</p>
+        <p class="related-title">Patek Philippe Nautilus at Fifty: An Enduring Icon</p>
+      </div>
+      <div class="related-card">
+        <p class="related-tag">Market</p>
+        <p class="related-title">Watches & Wonders 2026: Craft Over Spectacle</p>
+      </div>
+      <div class="related-card">
+        <p class="related-tag">Brand Story</p>
+        <p class="related-title">F.P. Journe: Independent Watchmaking's Quiet Revolution</p>
+      </div>
+    </div>
+
+    <!-- Second Ad -->
+    <div class="sidebar-section">
+      <div class="sidebar-ad">
+        <span class="sidebar-ad-label">Advertisement</span>
+        <p>Luxury Real Estate · Automobiles · Fine Jewellery</p>
+        <span>Premium placements available</span>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- TAGS -->
+<div class="article-footer-section">
+  <div class="article-tags">
+    <span class="tag">Rolex</span>
+    <span class="tag">Oyster</span>
+    <span class="tag">Cover Story</span>
+    <span class="tag">Heritage</span>
+    <span class="tag">Swiss Watchmaking</span>
+    <span class="tag">Market Analysis</span>
+    <span class="tag">2026</span>
+    <span class="tag">Investment</span>
+  </div>
+</div>
+
+<!-- MORE STORIES -->
+<div class="more-stories">
+  <div style="max-width:1400px; margin:0 auto;">
+    <p class="sidebar-label" style="font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:8px;">Continue Reading</p>
+    <h2 style="font-family:'Cinzel',serif; font-size:32px; font-weight:400; color:var(--white); margin-bottom:0;">More From the Maisons</h2>
+    <div class="more-stories-grid" id="moreStories">
+      <div class="story-card">
+        <p class="story-card-tag">Auction</p>
+        <h3>Sotheby's $15M Cartier Collection Shatters Every Estimate</h3>
+        <p>A curated archive of vintage Cartier timepieces achieved hammer prices far beyond expectation at Sotheby's April sale in Geneva.</p>
+        <p class="story-source">Phillips Auction House</p>
+      </div>
+      <div class="story-card">
+        <p class="story-card-tag">Anniversary</p>
+        <h3>Patek Philippe Nautilus at Fifty: The Icon That Refused to Age</h3>
+        <p>Half a century after Gérald Genta's legendary sketch, the Nautilus remains the most coveted steel sports watch on the secondary market.</p>
+        <p class="story-source">Europa Star</p>
+      </div>
+      <div class="story-card">
+        <p class="story-card-tag">Brand Story</p>
+        <h3>F.P. Journe: The Watchmaker Who Refused to Compromise</h3>
+        <p>As independent maisons continue their meteoric rise, François-Paul Journe's atelier stands as the benchmark for true horological independence.</p>
+        <p class="story-source">Revolution Magazine</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Stories To Watch. All rights reserved.</p>
+    <p style="color:var(--gold-dim); letter-spacing:0.15em; font-size:10px;">Every Story. Every Second.</p>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mouseX=0, mouseY=0, ringX=0, ringY=0;
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX-4+'px';
+  cursor.style.top = mouseY-4+'px';
+});
+function animateRing() {
+  ringX += (mouseX-ringX-18)*0.15;
+  ringY += (mouseY-ringY-18)*0.15;
+  cursorRing.style.left = ringX+'px';
+  cursorRing.style.top = ringY+'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+// READING PROGRESS
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop;
+  const total = doc.scrollHeight - doc.clientHeight;
+  const progress = (scrolled / total) * 100;
+  document.getElementById('progressBar').style.width = progress + '%';
+});
+
+// SCROLL ANIMATIONS
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.story-card, .fact-box, .pull-quote').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
