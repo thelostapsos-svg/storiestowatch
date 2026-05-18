@@ -117,30 +117,49 @@
   /* HERO */
   .hero {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    min-height: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
+    padding: 0 80px;
   }
 
   .hero-bg {
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 80% at 30% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
       radial-gradient(ellipse 100% 100% at 50% 50%, #0A0A08 0%, #050505 100%);
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 40px;
+  }
+
+  .hero-right {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
 
   /* WATCH FACE */
   .watch-container {
     position: relative;
-    width: 280px;
-    height: 620px;
-    margin-bottom: 60px;
+    width: 220px;
+    height: 540px;
     animation: watchReveal 2s ease forwards;
     opacity: 0;
+    flex-shrink: 0;
   }
 
   @keyframes watchReveal {
@@ -174,7 +193,7 @@
 
   /* HERO TEXT */
   .hero-content {
-    text-align: center;
+    text-align: left;
     position: relative;
     z-index: 2;
     animation: textReveal 2.5s ease forwards;
@@ -224,7 +243,7 @@
     width: 1px;
     height: 60px;
     background: linear-gradient(to bottom, var(--gold), transparent);
-    margin: 0 auto;
+    margin: 0;
     animation: dividerGrow 2s ease forwards;
     animation-delay: 1.5s;
     transform: scaleY(0);
@@ -698,19 +717,50 @@
     letter-spacing: 0.15em;
   }
 
-  /* SCROLL INDICATOR */
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .hero-stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .hero-stat-label {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .hero-vertical-line {
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.2), transparent);
+  }
+
   .scroll-indicator {
     position: absolute;
     bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 80px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
     animation: fadeInUp 3s ease forwards;
     animation-delay: 2s;
     opacity: 0;
+    z-index: 3;
   }
 
   @keyframes fadeInUp {
@@ -718,15 +768,9 @@
   }
 
   .scroll-line {
-    width: 1px;
-    height: 50px;
-    background: linear-gradient(to bottom, transparent, var(--gold));
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
   }
 
   .scroll-text {
@@ -734,8 +778,6 @@
     letter-spacing: 0.4em;
     color: var(--gold-dim);
     text-transform: uppercase;
-    transform: rotate(90deg);
-    margin-top: 10px;
   }
 
   /* GOLD LINE SEPARATOR */
@@ -752,11 +794,20 @@
     nav { padding: 20px 24px; }
     .nav-links { display: none; }
     section { padding: 80px 24px; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 24px 40px;
+      text-align: center;
+      height: auto;
+    }
+    .hero-left { padding-right: 0; align-items: center; }
+    .hero-content { text-align: center; }
+    .hero-right { height: auto; padding: 40px 0; }
     .featured-grid { grid-template-columns: 1fr; }
     .news-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .hero-title { font-size: 42px; }
-    .watch-container { width: 260px; height: 260px; }
+    .watch-container { width: 180px; height: 440px; }
   }
 </style>
 </head>
@@ -780,9 +831,37 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero" style="padding:0; max-width:100%;">
+<section class="hero" style="max-width:100%;">
   <div class="hero-bg"></div>
 
+  <!-- LEFT: Text -->
+  <div class="hero-left">
+    <div class="hero-content">
+      <p class="hero-eyebrow">The World's Finest Luxury Editorial</p>
+      <h1 class="hero-title">STORIES TO<span>WATCH</span></h1>
+      <p class="hero-tagline">Every Story. Every Second.</p>
+      <div class="hero-divider"></div>
+      <div class="hero-stats">
+        <div>
+          <span class="hero-stat-num">$62B</span>
+          <span class="hero-stat-label">Market Value</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">147</span>
+          <span class="hero-stat-label">Maisons Covered</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">24/7</span>
+          <span class="hero-stat-label">Live Editorial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-vertical-line"></div>
+
+  <!-- RIGHT: Watch -->
+  <div class="hero-right">
   <div class="watch-container">
     <div class="watch-glow"></div>
     <div class="watch-face">
@@ -935,12 +1014,6 @@
       </svg>
     </div>
   </div>
-
-  <div class="hero-content">
-    <p class="hero-eyebrow">The World's Finest Luxury Editorial</p>
-    <h1 class="hero-title">STORIES TO<span>WATCH</span></h1>
-    <p class="hero-tagline">Every Story. Every Second.</p>
-    <div class="hero-divider"></div>
   </div>
 
   <div class="scroll-indicator">
