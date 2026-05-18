@@ -1327,7 +1327,7 @@ async function fetchWatchNews() {
     }
 
     grid.innerHTML = articles.map((a, i) => `
-      <a class="news-card" href="article.html" style="text-decoration:none; display:block;">
+      <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}" style="text-decoration:none; display:block;">
         <p class="news-card-tag">${escHtml(a.category)}</p>
         <h3>${escHtml(a.title)}</h3>
         <p>${escHtml(a.excerpt)}</p>
@@ -1392,7 +1392,7 @@ function fallbackArticles() {
   ];
 
   return articles.map((a, i) => `
-    <a class="news-card" href="article.html" style="text-decoration:none; display:block;">
+    <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}" style="text-decoration:none; display:block;">
       <p class="news-card-tag">${escHtml(a.category)}</p>
       <h3>${escHtml(a.title)}</h3>
       <p>${escHtml(a.excerpt)}</p>
