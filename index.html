@@ -478,6 +478,26 @@
   .news-card:hover::before { width: 100%; }
   .news-card:hover { background: var(--surface); }
 
+  .news-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-top: 20px;
+    transition: color 0.3s, gap 0.3s;
+    text-decoration: none;
+  }
+
+  .news-card:hover .news-card-link {
+    color: var(--gold);
+    gap: 16px;
+  }
+
+  .news-card-link::after { content: '→'; font-size: 12px; }
+
   .news-card-tag {
     font-size: 8px;
     letter-spacing: 0.3em;
@@ -1048,7 +1068,7 @@
   <div class="featured-inner">
     <p class="section-label">Cover Story</p>
     <div class="featured-grid">
-      <div class="featured-image">
+      <a href="article.html" class="featured-image" style="text-decoration:none; cursor:none;">
         <div class="featured-tag">Feature</div>
         <div class="featured-image-inner">
           <svg viewBox="0 0 300 380" class="watch-illustration" xmlns="http://www.w3.org/2000/svg">
@@ -1085,7 +1105,7 @@
             </defs>
           </svg>
         </div>
-      </div>
+      </a>
       <div class="featured-text">
         <div class="featured-meta">
           <span>Cover Story</span>
@@ -1093,7 +1113,7 @@
         </div>
         <h2>The <em>Century of Craft</em>: How Rolex Quietly Redefined What a Watch Could Be</h2>
         <p>As the Oyster case marks its centenary, we examine how a single engineering decision — sealing a watch against the elements — became the foundation of the world's most recognised luxury object. A story of precision, obsession, and the quiet triumph of restraint over spectacle.</p>
-        <a href="#" class="btn-read">Read Full Story</a>
+        <a href="article.html" class="btn-read">Read Full Story</a>
       </div>
     </div>
   </div>
@@ -1306,13 +1326,14 @@ async function fetchWatchNews() {
       throw new Error('Parse failed');
     }
 
-    grid.innerHTML = articles.map(a => `
-      <div class="news-card">
+    grid.innerHTML = articles.map((a, i) => `
+      <a class="news-card" href="article.html" style="text-decoration:none; display:block;">
         <p class="news-card-tag">${escHtml(a.category)}</p>
         <h3>${escHtml(a.title)}</h3>
         <p>${escHtml(a.excerpt)}</p>
         <p class="news-source">${escHtml(a.source)}</p>
-      </div>
+        <span class="news-card-link">Read Story</span>
+      </a>
     `).join('');
 
   } catch(err) {
@@ -1370,13 +1391,14 @@ function fallbackArticles() {
     }
   ];
 
-  return articles.map(a => `
-    <div class="news-card">
+  return articles.map((a, i) => `
+    <a class="news-card" href="article.html" style="text-decoration:none; display:block;">
       <p class="news-card-tag">${escHtml(a.category)}</p>
       <h3>${escHtml(a.title)}</h3>
       <p>${escHtml(a.excerpt)}</p>
       <p class="news-source">${escHtml(a.source)}</p>
-    </div>
+      <span class="news-card-link">Read Story</span>
+    </a>
   `).join('');
 }
 
