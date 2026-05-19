@@ -117,6 +117,58 @@
     color: var(--gold-dim);
   }
 
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1002;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    width: 22px; height: 1.5px;
+    background: var(--gold);
+    display: block;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+  /* MOBILE FULL SCREEN MENU */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,5,5,0.98);
+    z-index: 1001;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 18px 40px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .mobile-menu a:first-child { border-top: 1px solid rgba(201,168,76,0.08); }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu a.gold { color: var(--gold); }
+  .mobile-menu a.gold-light { color: var(--gold-light); }
+
   /* HERO */
   .hero {
     height: 100vh;
@@ -904,6 +956,8 @@
 
     nav { padding: 16px 20px; }
     .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-time { display: none; }
     .nav-logo { font-size: 11px; letter-spacing: 0.25em; }
     .nav-time { font-size: 9px; }
     .side-dial { display: none; }
@@ -1070,7 +1124,21 @@
     <li><a href="mediakit.html" style="color:var(--gold);">Advertise</a></li>
   </ul>
   <div class="nav-time" id="navTime">Loading...</div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#latest" onclick="closeMenu()">Latest</a>
+  <a href="#auctions" onclick="closeMenu()">Auctions</a>
+  <a href="#maisons" onclick="closeMenu()">Maisons</a>
+  <a href="#investing" onclick="closeMenu()">Investing</a>
+  <a href="watchfinder.html" class="gold-light" onclick="closeMenu()">⌕ Watch Finder</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="mediakit.html" class="gold" onclick="closeMenu()">Advertise</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" style="max-width:100%;">
@@ -1356,6 +1424,8 @@
 <div class="gold-line"></div>
 
 <!-- BRANDS MARQUEE -->
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
 <div class="brands-section" id="maisons">
   <div class="brands-track" id="brandsTrack">
     <span class="brand-name">Rolex</span>
@@ -1388,6 +1458,8 @@
 
 <div class="gold-line"></div>
 
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
 <!-- LATEST NEWS -->
 <section id="latest" style="padding: 120px 60px; max-width: 100%;">
   <div style="max-width: 1400px; margin: 0 auto;">
@@ -1411,11 +1483,15 @@
 </section>
 
 <!-- QUOTE -->
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
 <div class="quote-section">
   <p class="quote-text">"A man who has to ask about the price of a yacht cannot afford one. A watch, however, tells the world what he has already decided."</p>
   <p class="quote-attr">— The Stories To Watch Editorial Philosophy</p>
 </div>
 
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
 <!-- AUCTIONS SECTION -->
 <section id="auctions" style="padding:100px 60px; max-width:100%; background:var(--surface);">
   <div style="max-width:1400px; margin:0 auto;">
@@ -1447,6 +1523,8 @@
   </div>
 </section>
 
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
 <!-- INVESTING SECTION -->
 <section id="investing" style="padding:100px 60px; max-width:100%; background:var(--deep);">
   <div style="max-width:1400px; margin:0 auto;">
@@ -1478,6 +1556,8 @@
   </div>
 </section>
 
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
 <!-- ABOUT SECTION -->
 <section id="about" style="padding:120px 60px; max-width:100%; background:var(--surface);">
   <div style="max-width:900px; margin:0 auto; text-align:center;">
@@ -1559,8 +1639,28 @@
 
 <script>
 // ============================================
-// COMPASS DIALS — rotate with scroll
+// HAMBURGER MENU
 // ============================================
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+
+function closeMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('hamburger');
+  menu.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close menu on escape key
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+
 let lastScrollY = 0;
 let compassAngleLeft = 0;
 let compassAngleRight = 0;
