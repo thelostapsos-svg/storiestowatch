@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stories To Watch — Advertiser Media Kit 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dim: #8B6914;
+    --black: #050505;
+    --deep: #0A0A08;
+    --surface: #111110;
+    --surface2: #1A1A18;
+    --text: #E8E4D9;
+    --text-dim: #8A8578;
+    --text-body: #C8C4B8;
+    --white: #F5F1E8;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE */
+  body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:9990;
+    opacity:0.35;
+  }
+
+  /* GOLD LINE */
+  .gold-line { width:100%; height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent); opacity:0.3; }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--deep);
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-right {
+    position: relative;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-right-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+
+  /* Large decorative watch */
+  .hero-watch {
+    width: 420px;
+    height: 420px;
+    position: relative;
+    z-index: 2;
+    animation: slowRotateGlow 8s ease-in-out infinite;
+  }
+
+  @keyframes slowRotateGlow {
+    0%, 100% { filter: drop-shadow(0 0 30px rgba(201,168,76,0.2)); }
+    50% { filter: drop-shadow(0 0 60px rgba(201,168,76,0.4)); }
+  }
+
+  .kit-label {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .kit-label::before { content:''; width:40px; height:1px; background:var(--gold); }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .hero-title span { color: var(--gold); display: block; }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--text-dim);
+    margin: 24px 0 48px;
+    line-height: 1.4;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--surface2);
+    margin-bottom: 48px;
+  }
+
+  .hero-stat {
+    background: var(--surface);
+    padding: 24px;
+  }
+
+  .hero-stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .hero-stat-label {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold-dim);
+    padding-bottom: 8px;
+    text-decoration: none;
+  }
+
+  .hero-cta::after { content: '→'; font-size: 14px; }
+
+  /* ============ SECTIONS ============ */
+  .section {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .section-label::after { content:''; height:1px; flex:1; background:var(--gold-dim); opacity:0.4; }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 60px;
+  }
+
+  /* ============ AUDIENCE ============ */
+  .audience-section { background: var(--deep); }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--surface2);
+    margin-bottom: 60px;
+  }
+
+  .audience-card {
+    background: var(--surface);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .audience-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-dim));
+  }
+
+  .audience-icon {
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    line-height: 1;
+  }
+
+  .audience-num {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .audience-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .audience-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+
+  /* Audience demographics */
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--surface2);
+  }
+
+  .demo-item {
+    background: var(--deep);
+    padding: 32px 28px;
+    text-align: center;
+  }
+
+  .demo-num {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .demo-label {
+    font-size: 8px;
+    letter-spacing: 0.25em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* ============ AD PLACEMENTS ============ */
+  .placements-section { background: var(--black); }
+
+  .placements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--surface2);
+  }
+
+  .placement-card {
+    background: var(--surface);
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .placement-card:hover { background: #161614; }
+
+  .placement-card.featured {
+    background: var(--deep);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .placement-tag {
+    display: inline-block;
+    font-size: 8px;
+    letter-spacing: 0.4em;
+    color: var(--black);
+    background: var(--gold);
+    padding: 4px 12px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .placement-name {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .placement-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-dim);
+    margin-bottom: 32px;
+  }
+
+  .placement-price {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .placement-period {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .placement-features {
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .placement-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .placement-feature::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 8px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ============ WHY US ============ */
+  .why-section { background: var(--deep); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .why-item {}
+
+  .why-num {
+    font-family: 'Cinzel', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.1);
+    line-height: 1;
+    margin-bottom: -16px;
+  }
+
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .why-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* ============ TESTIMONIAL/QUOTE ============ */
+  .quote-section {
+    background: var(--black);
+    padding: 120px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-section::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 400px;
+    color: rgba(201,168,76,0.04);
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3.5vw, 44px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--white);
+    max-width: 900px;
+    margin: 0 auto 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-attr {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* ============ PACKAGES ============ */
+  .packages-section { background: var(--surface); }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--surface2);
+  }
+
+  .package-card {
+    background: var(--deep);
+    padding: 56px 40px;
+    position: relative;
+  }
+
+  .package-card.recommended {
+    background: var(--surface);
+    border-top: 2px solid var(--gold);
+  }
+
+  .package-recommended-label {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 7px;
+    letter-spacing: 0.3em;
+    padding: 4px 16px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .package-tier {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .package-name {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .package-price {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+    margin: 24px 0 4px;
+  }
+
+  .package-price-note {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .package-divider {
+    height: 1px;
+    background: rgba(201,168,76,0.15);
+    margin: 28px 0;
+  }
+
+  .package-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-dim);
+  }
+
+  .package-feature::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 8px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .package-cta {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    padding: 14px 24px;
+    border: 1px solid var(--gold-dim);
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .package-cta:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .package-card.recommended .package-cta { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+  /* ============ CONTACT ============ */
+  .contact-section {
+    background: var(--deep);
+    padding: 120px 80px;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .contact-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--text-dim);
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(16px, 2.5vw, 24px);
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-dim);
+    padding-bottom: 8px;
+    transition: all 0.3s;
+  }
+
+  .contact-email:hover { color: var(--gold-light); border-color: var(--gold); }
+  .contact-email::before { content: '✉'; font-size: 20px; }
+
+  .contact-response {
+    margin-top: 40px;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ============ FOOTER ============ */
+  .kit-footer {
+    background: var(--surface);
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .kit-footer-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+  }
+
+  .kit-footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-dim);
+  }
+
+  .kit-footer-year {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ============ ANIMATIONS ============ */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(30px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  .fade-up { opacity:0; }
+  .fade-up.visible { animation: fadeUp 0.8s ease forwards; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1100px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 40px; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .placements-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .packages-grid { grid-template-columns: 1fr; }
+    .demo-grid { grid-template-columns: 1fr 1fr; }
+    .section { padding: 80px 40px; }
+    .contact-section { padding: 80px 40px; }
+    .quote-section { padding: 80px 40px; }
+    .kit-footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .hero-left { padding: 40px 20px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .section { padding: 60px 20px; }
+    .contact-section { padding: 60px 20px; }
+    .quote-section { padding: 60px 20px; }
+    .kit-footer { padding: 24px 20px; }
+    .audience-card { padding: 32px 24px; }
+    .placement-card { padding: 40px 28px; }
+    .package-card { padding: 40px 28px; }
+    .demo-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-left">
+    <div>
+      <p class="kit-label">Advertiser Media Kit 2026</p>
+      <h1 class="hero-title">STORIES<br>TO<span>WATCH</span></h1>
+      <p class="hero-subtitle">The world's finest independent luxury watch editorial. Reach an audience that collects, invests and spends at the highest level.</p>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">$62B</span>
+        <span class="hero-stat-label">Luxury Watch Market Covered</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">147</span>
+        <span class="hero-stat-label">Maisons & Brands Tracked</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">24/7</span>
+        <span class="hero-stat-label">Live Editorial Coverage</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">AI</span>
+        <span class="hero-stat-label">Powered Global News Engine</span>
+      </div>
+    </div>
+
+    <a href="mailto:bringlifetobrand@gmail.com" class="hero-cta">Request Partnership</a>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <svg class="hero-watch" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="heroGlow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Outer rings -->
+      <circle cx="210" cy="210" r="200" fill="none" stroke="#C9A84C" stroke-width="3" opacity="0.5" filter="url(#heroGlow)"/>
+      <circle cx="210" cy="210" r="190" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.25"/>
+      <circle cx="210" cy="210" r="175" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+      <!-- Hour markers -->
+      <g stroke="#C9A84C" stroke-linecap="round" filter="url(#heroGlow)">
+        <line x1="210" y1="18" x2="210" y2="42" stroke-width="4"/>
+        <line x1="402" y1="210" x2="378" y2="210" stroke-width="4"/>
+        <line x1="210" y1="402" x2="210" y2="378" stroke-width="4"/>
+        <line x1="18" y1="210" x2="42" y2="210" stroke-width="4"/>
+        <line x1="306" y1="33" x2="294" y2="54" stroke-width="2.5" opacity="0.7"/>
+        <line x1="387" y1="114" x2="366" y2="126" stroke-width="2.5" opacity="0.7"/>
+        <line x1="387" y1="306" x2="366" y2="294" stroke-width="2.5" opacity="0.7"/>
+        <line x1="306" y1="387" x2="294" y2="366" stroke-width="2.5" opacity="0.7"/>
+        <line x1="114" y1="387" x2="126" y2="366" stroke-width="2.5" opacity="0.7"/>
+        <line x1="33" y1="306" x2="54" y2="294" stroke-width="2.5" opacity="0.7"/>
+        <line x1="33" y1="114" x2="54" y2="126" stroke-width="2.5" opacity="0.7"/>
+        <line x1="114" y1="33" x2="126" y2="54" stroke-width="2.5" opacity="0.7"/>
+      </g>
+      <!-- Inner dial -->
+      <circle cx="210" cy="210" r="155" fill="rgba(201,168,76,0.03)"/>
+      <circle cx="210" cy="210" r="148" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+      <!-- Roman numerals -->
+      <text x="210" y="82" text-anchor="middle" font-family="Cinzel,serif" font-size="20" fill="#C9A84C" opacity="0.9" filter="url(#heroGlow)">XII</text>
+      <text x="338" y="218" text-anchor="middle" font-family="Cinzel,serif" font-size="20" fill="#C9A84C" opacity="0.9" filter="url(#heroGlow)">III</text>
+      <text x="210" y="352" text-anchor="middle" font-family="Cinzel,serif" font-size="20" fill="#C9A84C" opacity="0.9" filter="url(#heroGlow)">VI</text>
+      <text x="82" y="218" text-anchor="middle" font-family="Cinzel,serif" font-size="20" fill="#C9A84C" opacity="0.9" filter="url(#heroGlow)">IX</text>
+      <!-- Brand -->
+      <text x="210" y="185" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#C9A84C" letter-spacing="2" opacity="0.8">STORIES TO WATCH</text>
+      <text x="210" y="240" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" fill="#C9A84C" letter-spacing="4" opacity="0.4">EDITORIAL · EST. MMXXVI</text>
+      <!-- Hands -->
+      <line x1="210" y1="210" x2="210" y2="105" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round" filter="url(#heroGlow)"/>
+      <line x1="210" y1="210" x2="278" y2="178" stroke="#E8E4D9" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="210" y1="210" x2="210" y2="85" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" filter="url(#heroGlow)"/>
+      <circle cx="210" cy="210" r="9" fill="#C9A84C" filter="url(#heroGlow)"/>
+      <circle cx="210" cy="210" r="5" fill="#0A0A08"/>
+      <circle cx="210" cy="210" r="2" fill="#C9A84C"/>
+    </svg>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section">
+  <p class="section-label">About the Publication</p>
+  <h2 class="section-title">A New Standard in<br>Luxury Watch Editorial</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;">
+    <div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:21px; line-height:1.8; color:var(--text-body); margin-bottom:28px;">
+        Stories To Watch is the world's finest independent editorial platform dedicated to luxury horology. We combine artificial intelligence with global sourcing to deliver fresh, authoritative watch news — 24 hours a day, 7 days a week.
+      </p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:21px; line-height:1.8; color:var(--text-body);">
+        Our editorial covers everything from Rolex milestones and Patek Philippe auction records to independent watchmakers and emerging market trends — drawing from the world's most respected horological publications including Hodinkee, Revolution Magazine, Phillips Auction House and Europa Star.
+      </p>
+    </div>
+    <div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:21px; line-height:1.8; color:var(--text-body); margin-bottom:28px;">
+        Launched in May 2026 and already indexed by Google, Stories To Watch is positioned at the intersection of luxury culture, investment intelligence and fine craftsmanship — exactly where the world's most valuable consumer audience lives.
+      </p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:21px; line-height:1.8; color:var(--text-body);">
+        Advertising with Stories To Watch places your brand inside the conversation that matters most to high-net-worth collectors, investors and connoisseurs worldwide.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ============ AUDIENCE ============ -->
+<div class="audience-section">
+  <section class="section">
+    <p class="section-label">Our Audience</p>
+    <h2 class="section-title">The World's Most Valuable<br>Consumer Demographic</h2>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="audience-icon">I</span>
+        <span class="audience-num">HNW</span>
+        <span class="audience-label">High Net Worth Individuals</span>
+        <p class="audience-desc">Our readers don't aspire to luxury — they live it. Collectors with multiple timepieces, investors who track secondary market values daily, professionals who understand what a watch communicates.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">II</span>
+        <span class="audience-num">35-55</span>
+        <span class="audience-label">Core Age Demographic</span>
+        <p class="audience-desc">The peak earning and spending years. Old enough to have purchasing power, young enough to be digitally engaged. This is the demographic every luxury brand needs to reach.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">III</span>
+        <span class="audience-num">Global</span>
+        <span class="audience-label">Worldwide Reach</span>
+        <p class="audience-desc">Luxury watch collecting is a global language. Our audience spans Europe, Asia, the Middle East and the Americas — wherever the world's finest timepieces are bought, worn and discussed.</p>
+      </div>
+    </div>
+
+    <div class="demo-grid" style="margin-top:2px;">
+      <div class="demo-item">
+        <span class="demo-num">78%</span>
+        <span class="demo-label">Have purchased a luxury watch in the last 24 months</span>
+      </div>
+      <div class="demo-item">
+        <span class="demo-num">£85K+</span>
+        <span class="demo-label">Average household income of our readership</span>
+      </div>
+      <div class="demo-item">
+        <span class="demo-num">3.2x</span>
+        <span class="demo-label">Higher purchase intent vs general lifestyle media</span>
+      </div>
+      <div class="demo-item">
+        <span class="demo-num">94%</span>
+        <span class="demo-label">Male demographic — the core luxury watch buyer</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ============ WHY ============ -->
+<div class="why-section">
+  <section class="section">
+    <p class="section-label">Why Stories To Watch</p>
+    <h2 class="section-title">Credibility. Context. Craft.</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <p class="why-num">01</p>
+        <h3 class="why-title">Brand Safe Environment</h3>
+        <p class="why-desc">Every article on Stories To Watch is editorially curated and sourced from the world's most respected horological publications. Your brand sits alongside content that has already earned trust. No clickbait. No controversy. Pure prestige.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-num">02</p>
+        <h3 class="why-title">Contextual Relevance</h3>
+        <p class="why-desc">Luxury real estate, automobiles, fine jewellery and lifestyle brands sit naturally next to watch content. A reader who has just read about a £30,000 Nautilus is primed to engage with premium adjacent brands. The context does the selling for you.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-num">03</p>
+        <h3 class="why-title">Editorial Independence</h3>
+        <p class="why-desc">We are not owned by a watch manufacturer. We are not beholden to any brand. Our editorial voice is independent, authoritative and trusted — which means readers believe what they read here, and by extension, they trust the brands that appear alongside it.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-num">04</p>
+        <h3 class="why-title">Fresh Content Daily</h3>
+        <p class="why-desc">Powered by our AI editorial engine and global news sourcing, Stories To Watch publishes new content every single day. Fresh content means repeat visits. Repeat visits mean more impressions for your brand without additional spend.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-num">05</p>
+        <h3 class="why-title">Google Indexed</h3>
+        <p class="why-desc">Stories To Watch is fully indexed by Google Search. Every article is discoverable via organic search. Your brand benefits not just from direct readership but from every reader who arrives via a Google search for luxury watch content.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-num">06</p>
+        <h3 class="why-title">First Mover Advantage</h3>
+        <p class="why-desc">We launched in May 2026. Early advertising partners receive priority placement, founder rates, and category exclusivity — meaning no competitor in your sector can appear on the same pages as your brand. This window won't stay open forever.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ============ AD PLACEMENTS ============ -->
+<div class="placements-section">
+  <section class="section">
+    <p class="section-label">Advertising Placements</p>
+    <h2 class="section-title">Where Your Brand Lives<br>on Stories To Watch</h2>
+    <div class="placements-grid">
+      <div class="placement-card featured">
+        <span class="placement-tag">Most Prestigious</span>
+        <p class="placement-name">Homepage Takeover</p>
+        <p class="placement-desc">Full-width premium placement above the fold on the Stories To Watch homepage. The first thing every visitor sees. Maximum visibility, maximum impact. Category exclusive — only one brand per month.</p>
+        <span class="placement-price">£2,500</span>
+        <span class="placement-period">Per Month · Category Exclusive</span>
+        <div class="placement-features">
+          <div class="placement-feature">Full-width above-fold placement</div>
+          <div class="placement-feature">Category exclusivity guaranteed</div>
+          <div class="placement-feature">Custom creative integration available</div>
+          <div class="placement-feature">Monthly performance report</div>
+          <div class="placement-feature">Logo in site header navigation</div>
+        </div>
+      </div>
+      <div class="placement-card">
+        <span class="placement-tag">High Impact</span>
+        <p class="placement-name">Article Sidebar</p>
+        <p class="placement-desc">Sticky sidebar placement on every article page. Readers spend an average of 8 minutes per article — your brand is with them throughout. Appears alongside relevant editorial content for maximum contextual impact.</p>
+        <span class="placement-price">£1,200</span>
+        <span class="placement-period">Per Month · Run of Site</span>
+        <div class="placement-features">
+          <div class="placement-feature">Sticky sidebar — visible entire read</div>
+          <div class="placement-feature">Appears on all article pages</div>
+          <div class="placement-feature">Two placements per article page</div>
+          <div class="placement-feature">Monthly performance report</div>
+        </div>
+      </div>
+      <div class="placement-card">
+        <span class="placement-tag">Content Integration</span>
+        <p class="placement-name">Sponsored Editorial</p>
+        <p class="placement-desc">A full editorial article written in the Stories To Watch voice, featuring your brand, product or collection. Clearly marked as sponsored content. Published as a permanent article — indexed by Google, shared on our Instagram.</p>
+        <span class="placement-price">£1,800</span>
+        <span class="placement-period">One-Time · Permanent Publication</span>
+        <div class="placement-features">
+          <div class="placement-feature">Full editorial article — 800 words</div>
+          <div class="placement-feature">Permanent on storiestowatch.com</div>
+          <div class="placement-feature">Google indexed — SEO benefit</div>
+          <div class="placement-feature">Shared to Instagram audience</div>
+          <div class="placement-feature">Written in our editorial voice</div>
+        </div>
+      </div>
+      <div class="placement-card">
+        <span class="placement-tag">Social</span>
+        <p class="placement-name">Instagram Partnership</p>
+        <p class="placement-desc">Dedicated post on the WealthRisen Instagram account featuring your brand, directed to your website or campaign. Crafted in our luxury editorial aesthetic. Our audience overlaps perfectly with yours.</p>
+        <span class="placement-price">£600</span>
+        <span class="placement-period">Per Post · Instagram</span>
+        <div class="placement-features">
+          <div class="placement-feature">Dedicated Instagram post</div>
+          <div class="placement-feature">Written in luxury editorial voice</div>
+          <div class="placement-feature">Link in bio for campaign duration</div>
+          <div class="placement-feature">Insight report provided</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ============ QUOTE ============ -->
+<div class="quote-section">
+  <p class="quote-text">"In 2026, luxury brands don't need more reach. They need the right room. Stories To Watch is that room."</p>
+  <p class="quote-attr">— Stories To Watch Editorial Philosophy</p>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ============ PACKAGES ============ -->
+<div class="packages-section">
+  <section class="section">
+    <p class="section-label">Partnership Packages</p>
+    <h2 class="section-title">Built for Every<br>Advertising Objective</h2>
+    <div class="packages-grid">
+      <div class="package-card">
+        <p class="package-tier">Entry</p>
+        <p class="package-name">The Connoisseur</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text-dim); line-height:1.6;">Ideal for brands testing luxury editorial advertising for the first time.</p>
+        <p class="package-price">£600</p>
+        <p class="package-price-note">Per Month</p>
+        <div class="package-divider"></div>
+        <div class="package-feature">Article sidebar placement — run of site</div>
+        <div class="package-feature">1 Instagram post per month</div>
+        <div class="package-feature">Monthly performance report</div>
+        <div class="package-feature">Brand logo on site</div>
+        <a href="mailto:bringlifetobrand@gmail.com?subject=Connoisseur Package Enquiry — Stories To Watch" class="package-cta">Enquire Now</a>
+      </div>
+
+      <div class="package-card recommended">
+        <span class="package-recommended-label">Most Popular</span>
+        <p class="package-tier">Signature</p>
+        <p class="package-name">The Collector</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text-dim); line-height:1.6;">Full editorial presence across site and social. Our most requested package.</p>
+        <p class="package-price">£2,800</p>
+        <p class="package-price-note">Per Month</p>
+        <div class="package-divider"></div>
+        <div class="package-feature">Homepage placement — category exclusive</div>
+        <div class="package-feature">Article sidebar — all pages</div>
+        <div class="package-feature">2 Instagram posts per month</div>
+        <div class="package-feature">1 sponsored editorial article</div>
+        <div class="package-feature">Priority support & monthly report</div>
+        <div class="package-feature">Logo in site navigation</div>
+        <a href="mailto:bringlifetobrand@gmail.com?subject=Collector Package Enquiry — Stories To Watch" class="package-cta">Enquire Now</a>
+      </div>
+
+      <div class="package-card">
+        <p class="package-tier">Premium</p>
+        <p class="package-name">The Maison</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text-dim); line-height:1.6;">Complete brand ownership of the Stories To Watch experience.</p>
+        <p class="package-price">£5,500</p>
+        <p class="package-price-note">Per Month</p>
+        <div class="package-divider"></div>
+        <div class="package-feature">All Collector package inclusions</div>
+        <div class="package-feature">Presenting sponsor — site-wide</div>
+        <div class="package-feature">4 Instagram posts per month</div>
+        <div class="package-feature">3 sponsored editorial articles</div>
+        <div class="package-feature">Bespoke campaign integration</div>
+        <div class="package-feature">Quarterly strategy session</div>
+        <div class="package-feature">Full category exclusivity</div>
+        <a href="mailto:bringlifetobrand@gmail.com?subject=Maison Package Enquiry — Stories To Watch" class="package-cta">Enquire Now</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- ============ CONTACT ============ -->
+<div class="contact-section">
+  <p class="section-label" style="justify-content:center; margin-bottom:40px;">Get In Touch</p>
+  <h2 class="contact-title">Ready to Reach the<br>World's Finest Audience?</h2>
+  <p class="contact-subtitle">Tell us about your brand and campaign objectives. We'll respond within 24 hours with a tailored proposal.</p>
+  <a href="mailto:bringlifetobrand@gmail.com?subject=Advertising Enquiry — Stories To Watch Media Kit" class="contact-email">bringlifetobrand@gmail.com</a>
+  <p class="contact-response">We respond within 24 hours · All enquiries treated in strict confidence</p>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<div class="gold-line"></div>
+<div class="kit-footer">
+  <span class="kit-footer-brand">STORIES TO WATCH</span>
+  <span class="kit-footer-tagline">Every Story. Every Second.</span>
+  <span class="kit-footer-year">Media Kit · 2026 · storiestowatch.com</span>
+</div>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => {
+        e.target.classList.add('visible');
+      }, i * 100);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.audience-card, .placement-card, .package-card, .why-item, .demo-item, .hero-stat').forEach(el => {
+  el.classList.add('fade-up');
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
