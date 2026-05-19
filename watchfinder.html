@@ -608,23 +608,70 @@
   .footer-brand { font-family:'Cinzel',serif; font-size:12px; color:var(--gold); letter-spacing:0.2em; }
   footer p { font-size:10px; color:var(--text-dim); letter-spacing:0.12em; }
 
-  /* RESPONSIVE */
+  /* ============ MOBILE RESPONSIVE ============ */
   @media (max-width: 1100px) {
     .main-layout { grid-template-columns: 1fr; }
-    .sidebar { position: static; height: auto; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
     .results-area { padding: 24px; }
+    .dealers-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 768px) {
     body { cursor: auto; }
     .cursor, .cursor-ring { display: none; }
-    nav { padding: 16px 20px; }
-    .hero { padding: 100px 20px 40px; }
-    .stats-bar { padding: 16px 20px; flex-wrap: wrap; gap: 16px; }
-    .dealers-grid { grid-template-columns: 1fr; }
-    .map-section { padding: 60px 20px; }
-    footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    a, button, select { cursor: pointer; }
+
+    nav { padding: 14px 20px; }
+    .nav-logo { font-size: 10px; letter-spacing: 0.2em; }
+    .nav-back { font-size: 8px; }
+
+    /* Hero */
+    .hero { padding: 90px 20px 40px; }
+    .hero-title { font-size: 36px; }
+    .hero-subtitle { font-size: 16px; }
+
+    /* Search */
+    .search-wrap { max-width: 100%; }
+    .search-input { font-size: 13px; padding: 16px 48px 16px 20px; }
     .filters { gap: 8px; }
+    .filter-btn { font-size: 7px; padding: 8px 14px; letter-spacing: 0.2em; }
+
+    /* Stats bar */
+    .stats-bar { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
+    .stats-bar-divider { display: none; }
+    .stats-bar-item { font-size: 8px; }
+    .stats-bar-num { font-size: 16px; }
+    .stats-bar-item:last-child { display: none; }
+
+    /* Sidebar */
+    .sidebar { padding: 24px 20px; }
+    .sidebar-title { font-size: 7px; }
+
+    /* Results */
+    .results-area { padding: 20px; }
+    .results-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+    .dealers-grid { grid-template-columns: 1fr; }
+    .dealer-card { padding: 24px 20px; }
+    .dealer-name { font-size: 16px; }
+    .dealer-desc { font-size: 14px; }
+
+    /* Map */
+    .map-section { padding: 48px 20px; }
+    .world-map-container { padding: 20px; }
+    .map-dot-label { display: none; }
+
+    /* Submit CTA */
+    .submit-cta { padding: 32px 20px; }
+
+    /* Footer */
+    footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 28px; }
+    .search-input { font-size: 12px; }
+    .dealer-card { padding: 20px 16px; }
+    .stats-bar { padding: 12px 16px; }
   }
 </style>
 </head>
@@ -929,26 +976,26 @@ document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;curs
 // DEALER DATA — 50 real global sources
 const dealers = [
   // ONLINE PLATFORMS
-  { name:"Chrono24", type:"online", region:"global", city:"Global Platform", brands:["Rolex","Patek Philippe","AP","All Brands"], desc:"The world's largest luxury watch marketplace. Over 500,000 watches from verified dealers worldwide.", rating:4.9, url:"https://www.chrono24.com", affiliate:true },
-  { name:"Watchfinder & Co.", type:"online", region:"uk", city:"London, UK", brands:["Rolex","Patek Philippe","IWC","Omega"], desc:"The UK's premier pre-owned luxury watch specialist. Fully authenticated, certified and warrantied.", rating:4.8, url:"https://www.watchfinder.co.uk", affiliate:true },
-  { name:"WatchBox", type:"online", region:"usa", city:"Philadelphia, USA", brands:["Rolex","AP","Patek Philippe","RM"], desc:"America's leading pre-owned luxury watch platform. White glove service and authentication.", rating:4.8, url:"https://www.thewatchbox.com", affiliate:true },
-  { name:"Bob's Watches", type:"online", region:"usa", city:"Huntington Beach, USA", brands:["Rolex"], desc:"The world's largest Rolex-only exchange. Transparent pricing and verified authentication.", rating:4.7, url:"https://www.bobswatches.com", affiliate:true },
-  { name:"Crown & Caliber", type:"online", region:"usa", city:"Atlanta, USA", brands:["Rolex","AP","Patek Philippe","Omega"], desc:"Certified pre-owned luxury watches with a 24-month warranty. Buy and sell with confidence.", rating:4.7, url:"https://www.crownandcaliber.com", affiliate:true },
+  { name:"Chrono24", type:"online", region:"global", city:"Global Platform", brands:["Rolex","Patek Philippe","AP","All Brands"], desc:"The world's largest luxury watch marketplace. Over 500,000 watches from verified dealers worldwide.", rating:4.9, url:"https://www.chrono24.com/search/index.htm?dosearch=true&query=luxury+watch", affiliate:true },
+  { name:"Watchfinder & Co.", type:"online", region:"uk", city:"London, UK", brands:["Rolex","Patek Philippe","IWC","Omega"], desc:"The UK's premier pre-owned luxury watch specialist. Fully authenticated, certified and warrantied.", rating:4.8, url:"https://www.watchfinder.co.uk/all-watches", affiliate:true },
+  { name:"WatchBox", type:"online", region:"usa", city:"Philadelphia, USA", brands:["Rolex","AP","Patek Philippe","RM"], desc:"America's leading pre-owned luxury watch platform. White glove service and authentication.", rating:4.8, url:"https://www.thewatchbox.com/watches", affiliate:true },
+  { name:"Bob's Watches", type:"online", region:"usa", city:"Huntington Beach, USA", brands:["Rolex"], desc:"The world's largest Rolex-only exchange. Transparent pricing and verified authentication.", rating:4.7, url:"https://www.bobswatches.com/rolex-watches", affiliate:true },
+  { name:"Crown & Caliber", type:"online", region:"usa", city:"Atlanta, USA", brands:["Rolex","AP","Patek Philippe","Omega"], desc:"Certified pre-owned luxury watches with a 24-month warranty. Buy and sell with confidence.", rating:4.7, url:"https://www.crownandcaliber.com/collections/all", affiliate:true },
   { name:"Beyer Chronometrie", type:"online", region:"europe", city:"Zurich, Switzerland", brands:["Rolex","Patek Philippe","AP","Cartier"], desc:"Zurich's most prestigious watch dealer since 1760. Authorised retailer for all major maisons.", rating:4.9, url:"https://www.beyer-chronometrie.ch", affiliate:false },
   { name:"Govberg Jewelers", type:"authorised", region:"usa", city:"Philadelphia, USA", brands:["Rolex","Patek Philippe","AP","VC"], desc:"Philadelphia's premier authorised dealer for the world's finest timepieces.", rating:4.8, url:"https://www.govberg.com", affiliate:false },
-  { name:"Watches of Switzerland", type:"authorised", region:"uk", city:"London, UK", brands:["Rolex","Patek Philippe","AP","Cartier","Omega"], desc:"The UK's leading luxury watch retailer with boutiques across Britain and the USA.", rating:4.8, url:"https://www.watchesofswitzerland.com", affiliate:true },
+  { name:"Watches of Switzerland", type:"authorised", region:"uk", city:"London, UK", brands:["Rolex","Patek Philippe","AP","Cartier","Omega"], desc:"The UK's leading luxury watch retailer with boutiques across Britain and the USA.", rating:4.8, url:"https://www.watchesofswitzerland.com/watches", affiliate:true },
 
   // AUCTION HOUSES
-  { name:"Phillips Auction House", type:"auction", region:"europe", city:"Geneva, Switzerland", brands:["Patek Philippe","Rolex","AP","Vintage"], desc:"The world's leading watch auction house. Quarterly sales of the finest timepieces with global collector reach.", rating:5.0, url:"https://www.phillips.com/watches", affiliate:false },
-  { name:"Sotheby's Watches", type:"auction", region:"europe", city:"Geneva / London / NYC", brands:["Patek Philippe","Rolex","Cartier","Vintage"], desc:"Sotheby's world-class watch auctions spanning Geneva, London and New York. Records broken every sale.", rating:5.0, url:"https://www.sothebys.com/en/departments/watches", affiliate:false },
-  { name:"Christie's Watches", type:"auction", region:"europe", city:"Geneva / London / NYC", brands:["Rolex","Patek Philippe","AP","Historical"], desc:"Christie's prestigious watch department offering the finest timepieces from private collections worldwide.", rating:5.0, url:"https://www.christies.com/departments/watches", affiliate:false },
+  { name:"Phillips Auction House", type:"auction", region:"europe", city:"Geneva, Switzerland", brands:["Patek Philippe","Rolex","AP","Vintage"], desc:"The world's leading watch auction house. Quarterly sales of the finest timepieces with global collector reach.", rating:5.0, url:"https://www.phillips.com/watches/upcoming-auctions", affiliate:false },
+  { name:"Sotheby's Watches", type:"auction", region:"europe", city:"Geneva / London / NYC", brands:["Patek Philippe","Rolex","Cartier","Vintage"], desc:"Sotheby's world-class watch auctions spanning Geneva, London and New York. Records broken every sale.", rating:5.0, url:"https://www.sothebys.com/en/departments/watches/upcoming-auctions", affiliate:false },
+  { name:"Christie's Watches", type:"auction", region:"europe", city:"Geneva / London / NYC", brands:["Rolex","Patek Philippe","AP","Historical"], desc:"Christie's prestigious watch department offering the finest timepieces from private collections worldwide.", rating:5.0, url:"https://www.christies.com/en/departments/watches", affiliate:false },
   { name:"Antiquorum", type:"auction", region:"europe", city:"Geneva, Switzerland", brands:["Vintage","Patek Philippe","Rolex","Independent"], desc:"The world's first specialist watch auctioneer. Unrivalled expertise in vintage and complicated timepieces.", rating:4.8, url:"https://www.antiquorum.swiss", affiliate:false },
 
   // GREY MARKET
   { name:"Grey Market Watch Co.", type:"grey", region:"usa", city:"New York, USA", brands:["Rolex","Patek Philippe","AP","RM"], desc:"Trusted grey market specialist offering hard-to-find references at competitive prices. Full authentication.", rating:4.6, url:"https://www.chrono24.com", affiliate:true },
   { name:"WatchCraze", type:"grey", region:"asia", city:"Sydney, Australia", brands:["Rolex","AP","Omega","Cartier"], desc:"Australia's leading grey market dealer. Competitive pricing on the most sought-after references.", rating:4.5, url:"https://watchcraze.com.au", affiliate:true },
   { name:"Luxe Horology", type:"grey", region:"uk", city:"London, UK", brands:["Rolex","Patek Philippe","AP"], desc:"London-based specialist in hard-to-source luxury references. Expert authentication and competitive pricing.", rating:4.6, url:"https://www.chrono24.com", affiliate:true },
-  { name:"Swiss Watch Expo", type:"grey", region:"usa", city:"Atlanta, USA", brands:["Rolex","Cartier","Omega","IWC"], desc:"Pre-owned luxury specialist with over 25 years experience. Every watch authenticated and serviced.", rating:4.7, url:"https://www.swisswatchexpo.com", affiliate:true },
+  { name:"Swiss Watch Expo", type:"grey", region:"usa", city:"Atlanta, USA", brands:["Rolex","Cartier","Omega","IWC"], desc:"Pre-owned luxury specialist with over 25 years experience. Every watch authenticated and serviced.", rating:4.7, url:"https://www.swisswatchexpo.com/Pre-Owned-Watches.aspx", affiliate:true },
 
   // AUTHORISED DEALERS
   { name:"Bucherer", type:"authorised", region:"europe", city:"Lucerne, Switzerland", brands:["Rolex","Patek Philippe","AP","IWC","Omega"], desc:"Europe's largest watch retailer with flagship boutiques across Switzerland, Germany and beyond.", rating:4.8, url:"https://www.bucherer.com", affiliate:true },
@@ -959,7 +1006,7 @@ const dealers = [
   { name:"Cortina Watch", type:"authorised", region:"asia", city:"Singapore / Asia", brands:["Patek Philippe","Rolex","Cartier","IWC"], desc:"Southeast Asia's leading watch retailer. Authorised partner for the most coveted Swiss maisons.", rating:4.8, url:"https://www.cortinawatch.com", affiliate:false },
   { name:"Ahmed Seddiqi & Sons", type:"authorised", region:"me", city:"Dubai, UAE", brands:["Rolex","Patek Philippe","AP","Cartier"], desc:"The Middle East's most prestigious watch retailer. Official partner for luxury Swiss timepieces.", rating:4.9, url:"https://www.seddiqi.com", affiliate:false },
   { name:"Rivoli Group", type:"authorised", region:"me", city:"Dubai / Abu Dhabi", brands:["Omega","IWC","TAG Heuer","Breitling"], desc:"The UAE's leading luxury goods and watch retailer. Multiple authorised boutiques across the Emirates.", rating:4.7, url:"https://www.rivoli.net", affiliate:false },
-  { name:"Harrods Watches", type:"authorised", region:"uk", city:"London, UK", brands:["Rolex","Patek Philippe","AP","Cartier","RM"], desc:"Harrods' iconic watch floor — one of the world's finest authorised watch destinations.", rating:4.8, url:"https://www.harrods.com/en-gb/watches", affiliate:true },
+  { name:"Harrods Watches", type:"authorised", region:"uk", city:"London, UK", brands:["Rolex","Patek Philippe","AP","Cartier","RM"], desc:"Harrods' iconic watch floor — one of the world's finest authorised watch destinations.", rating:4.8, url:"https://www.harrods.com/en-gb/fashion/watches", affiliate:true },
   { name:"Selfridges Watches", type:"authorised", region:"uk", city:"London, UK", brands:["Rolex","IWC","Omega","TAG Heuer"], desc:"Selfridges' prestigious watch department. A curated selection of the finest timepieces.", rating:4.6, url:"https://www.selfridges.com/watches", affiliate:true },
   { name:"Manfredi Jewels", type:"authorised", region:"usa", city:"Greenwich, USA", brands:["Patek Philippe","AP","VC","FP Journe"], desc:"America's most prestigious independent watch dealer. Home to the rarest references in the country.", rating:4.9, url:"https://www.manfredijewels.com", affiliate:false },
   { name:"Cellini Jewelers", type:"authorised", region:"usa", city:"New York, USA", brands:["Rolex","Patek Philippe","Cartier","VC"], desc:"New York's legendary Rolex retailer. One of America's most respected watch destinations.", rating:4.8, url:"https://www.cellinijewelers.com", affiliate:false },
@@ -975,17 +1022,17 @@ const dealers = [
   { name:"Bonhams Watches", type:"auction", region:"uk", city:"London / Hong Kong", brands:["Vintage","Patek Philippe","Rolex","AP"], desc:"Bonhams' prestigious watch department offering curated sales in London and Hong Kong.", rating:4.7, url:"https://www.bonhams.com/departments/WAT", affiliate:false },
   { name:"Heritage Auctions", type:"auction", region:"usa", city:"Dallas / New York", brands:["Vintage","Rolex","Patek Philippe"], desc:"America's largest collectibles auction house with a strong watch department.", rating:4.6, url:"https://www.ha.com/watches", affiliate:false },
   { name:"Doyle New York", type:"auction", region:"usa", city:"New York, USA", brands:["Vintage","Estate","Cartier","Independent"], desc:"New York's prestigious auction house with regular specialist watch sales.", rating:4.6, url:"https://www.doyle.com", affiliate:false },
-  { name:"Wrist Aficionado", type:"grey", region:"usa", city:"New York, USA", brands:["AP","Patek Philippe","RM","F.P. Journe"], desc:"New York's most exclusive grey market specialist. Ultra-high-end references for serious collectors.", rating:4.8, url:"https://www.wristaficionado.com", affiliate:true },
+  { name:"Wrist Aficionado", type:"grey", region:"usa", city:"New York, USA", brands:["AP","Patek Philippe","RM","F.P. Journe"], desc:"New York's most exclusive grey market specialist. Ultra-high-end references for serious collectors.", rating:4.8, url:"https://www.wristaficionado.com/collections/all", affiliate:true },
   { name:"Luxury Of Watches", type:"grey", region:"usa", city:"Los Angeles, USA", brands:["Rolex","AP","Patek Philippe","Hublot"], desc:"California's trusted grey market source. Competitive pricing with full authentication documentation.", rating:4.6, url:"https://www.luxuryofwatches.com", affiliate:true },
   { name:"President Watch", type:"authorised", region:"asia", city:"Hong Kong", brands:["Rolex","AP","Patek Philippe","Cartier"], desc:"Hong Kong's premier authorised watch retailer. Gateway to the finest Swiss timepieces in Asia.", rating:4.8, url:"https://www.chrono24.com", affiliate:true },
   { name:"DFS Watches", type:"authorised", region:"asia", city:"Singapore / HK / Tokyo", brands:["Rolex","Omega","TAG Heuer","IWC"], desc:"Asia Pacific's leading duty-free watch retailer across major gateway airports.", rating:4.5, url:"https://www.dfs.com/en/watches", affiliate:false },
   { name:"Just In Time", type:"grey", region:"asia", city:"Tokyo, Japan", brands:["Grand Seiko","Rolex","AP","Independent"], desc:"Tokyo's specialist in both Japanese and Swiss luxury timepieces. Rare Grand Seiko references available.", rating:4.7, url:"https://www.chrono24.com", affiliate:true },
   { name:"Timepieces International", type:"grey", region:"me", city:"Dubai, UAE", brands:["Rolex","AP","Patek Philippe","RM"], desc:"Dubai's most trusted grey market specialist. Hard-to-find references at the intersection of East and West.", rating:4.7, url:"https://www.chrono24.com", affiliate:true },
-  { name:"Watchmaster", type:"online", region:"europe", city:"Berlin, Germany", brands:["Rolex","IWC","Omega","Breitling"], desc:"Europe's premium online pre-owned watch platform. Certified quality, transparent pricing.", rating:4.6, url:"https://www.watchmaster.com", affiliate:true },
-  { name:"Xupes", type:"online", region:"uk", city:"Hertfordshire, UK", brands:["Rolex","Patek Philippe","AP","Cartier"], desc:"UK-based luxury goods specialist with a strong watch offering. Authenticated and insured delivery.", rating:4.7, url:"https://www.xupes.com", affiliate:true },
-  { name:"Farfetch Watches", type:"online", region:"global", city:"Global Platform", brands:["AP","RM","Hublot","Cartier"], desc:"Global luxury fashion platform with a curated watch offering from the world's finest boutiques.", rating:4.5, url:"https://www.farfetch.com/shopping/men/watches", affiliate:true },
+  { name:"Watchmaster", type:"online", region:"europe", city:"Berlin, Germany", brands:["Rolex","IWC","Omega","Breitling"], desc:"Europe's premium online pre-owned watch platform. Certified quality, transparent pricing.", rating:4.6, url:"https://www.watchmaster.com/en/watches", affiliate:true },
+  { name:"Xupes", type:"online", region:"uk", city:"Hertfordshire, UK", brands:["Rolex","Patek Philippe","AP","Cartier"], desc:"UK-based luxury goods specialist with a strong watch offering. Authenticated and insured delivery.", rating:4.7, url:"https://www.xupes.com/watches", affiliate:true },
+  { name:"Farfetch Watches", type:"online", region:"global", city:"Global Platform", brands:["AP","RM","Hublot","Cartier"], desc:"Global luxury fashion platform with a curated watch offering from the world's finest boutiques.", rating:4.5, url:"https://www.farfetch.com/shopping/men/watches/items.aspx", affiliate:true },
   { name:"Mr Porter Watches", type:"online", region:"global", city:"Global Platform", brands:["IWC","Omega","TAG Heuer","Longines"], desc:"The world's premier men's luxury platform. A curated edit of the finest watch references.", rating:4.7, url:"https://www.mrporter.com/en-gb/mens/watches", affiliate:true },
-  { name:"Goldsmiths", type:"authorised", region:"uk", city:"UK Nationwide", brands:["Rolex","TAG Heuer","Omega","Breitling"], desc:"The UK's leading jewellers with authorised watch boutiques nationwide. Trusted for over a century.", rating:4.5, url:"https://www.goldsmiths.co.uk/watches", affiliate:true },
+  { name:"Goldsmiths", type:"authorised", region:"uk", city:"UK Nationwide", brands:["Rolex","TAG Heuer","Omega","Breitling"], desc:"The UK's leading jewellers with authorised watch boutiques nationwide. Trusted for over a century.", rating:4.5, url:"https://www.goldsmiths.co.uk/c/watches", affiliate:true },
   { name:"Mappin & Webb", type:"authorised", region:"uk", city:"London / UK", brands:["Rolex","IWC","Omega","Cartier"], desc:"Britain's royal jewellers since 1775. Authorised dealer for the finest Swiss timepieces.", rating:4.7, url:"https://www.mappinandwebb.com/watches", affiliate:true },
   { name:"WatchU Seek Market", type:"online", region:"global", city:"Global Platform", brands:["Vintage","All Brands","Collector"], desc:"The collector's marketplace. Peer-to-peer trading platform for serious watch enthusiasts worldwide.", rating:4.4, url:"https://www.watchuseek.com/classifieds", affiliate:false },
 ];
