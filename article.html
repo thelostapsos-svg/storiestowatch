@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stories To Watch — Loading...</title>
+<title>Stories To Watch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -16,47 +16,53 @@
   html { scroll-behavior:smooth; }
   body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; cursor:none; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
+
+  /* CURSOR — hide on mobile */
   .cursor { width:8px; height:8px; background:var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; }
   .cursor-ring { width:36px; height:36px; border:1px solid var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; opacity:0.6; }
   .progress-bar { position:fixed; top:0; left:0; height:2px; background:var(--gold); z-index:9999; width:0%; transition:width 0.1s linear; }
 
-  nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:24px 60px; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,rgba(5,5,5,0.98),transparent); backdrop-filter:blur(10px); }
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,rgba(5,5,5,0.98),transparent); backdrop-filter:blur(10px); }
   .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; }
-  .nav-back { display:flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; cursor:none; }
+  .nav-back { display:flex; align-items:center; gap:10px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; cursor:none; }
   .nav-back:hover { color:var(--gold); }
   .nav-back::before { content:'←'; font-size:14px; }
 
   /* LOADING */
-  .article-loading { height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px; }
+  .article-loading { height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px; padding:24px; text-align:center; }
   .loading-watch { width:60px; height:60px; border:1px solid var(--gold-dim); border-top-color:var(--gold); border-radius:50%; animation:spin 1.2s linear infinite; }
   @keyframes spin { to { transform:rotate(360deg); } }
-  .loading-text { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.5em; color:var(--gold-dim); text-transform:uppercase; }
+  .loading-text { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.4em; color:var(--gold-dim); text-transform:uppercase; }
   .loading-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--text-dim); }
 
   /* HERO */
-  .article-hero { min-height:75vh; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
-  .hero-bg-art { position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 70% 40%,rgba(201,168,76,0.06) 0%,transparent 60%),linear-gradient(to bottom,#0A0A08 0%,#050505 100%); }
-  .hero-watch-bg { position:absolute; right:5%; top:50%; transform:translateY(-50%); width:360px; height:360px; opacity:0.08; }
-  .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(5,5,5,1) 0%,rgba(5,5,5,0.3) 60%,rgba(5,5,5,0.1) 100%); }
-  .hero-content { position:relative; z-index:2; padding:0 120px 80px; max-width:1000px; }
-  .article-category { display:inline-flex; align-items:center; gap:16px; font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; }
+  .article-hero { min-height:80vh; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
+  .hero-bg-art { position:absolute; inset:0; }
+  .hero-illustration { position:absolute; right:3%; top:50%; transform:translateY(-50%); width:min(420px, 45vw); height:min(420px, 45vw); filter:drop-shadow(0 0 40px rgba(201,168,76,0.25)); }
+  .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(5,5,5,1) 0%,rgba(5,5,5,0.6) 40%,rgba(5,5,5,0.15) 100%); }
+  .hero-overlay-left { position:absolute; inset:0; background:linear-gradient(to right,rgba(5,5,5,0.9) 0%,rgba(5,5,5,0.4) 50%,transparent 100%); }
+  .hero-content { position:relative; z-index:2; padding:0 60px 80px; max-width:min(900px, 60vw); }
+  .article-category { display:inline-flex; align-items:center; gap:16px; font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; }
   .article-category::before { content:''; width:40px; height:1px; background:var(--gold); }
-  .article-title { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4.5vw,64px); font-weight:300; line-height:1.05; color:var(--white); margin-bottom:24px; max-width:800px; }
-  .article-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:var(--text-dim); line-height:1.5; max-width:600px; margin-bottom:36px; }
-  .article-meta { display:flex; align-items:center; gap:24px; font-size:9px; letter-spacing:0.25em; color:var(--text-dim); text-transform:uppercase; flex-wrap:wrap; }
-  .article-meta-divider { width:1px; height:16px; background:var(--gold-dim); }
+  .article-title { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,64px); font-weight:300; line-height:1.05; color:var(--white); margin-bottom:20px; }
+  .article-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(16px,2vw,20px); color:var(--text-dim); line-height:1.5; margin-bottom:28px; }
+  .article-meta { display:flex; align-items:center; gap:16px; font-size:9px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; flex-wrap:wrap; row-gap:8px; }
+  .article-meta-divider { width:1px; height:14px; background:var(--gold-dim); flex-shrink:0; }
   .article-meta-highlight { color:var(--gold); }
 
-  /* BODY */
-  .article-body { max-width:1400px; margin:0 auto; padding:100px 120px; display:grid; grid-template-columns:1fr 300px; gap:80px; align-items:start; }
-  .article-main p { font-family:'Cormorant Garamond',serif; font-size:21px; line-height:1.85; color:var(--text-body); margin-bottom:32px; }
-  .article-main p:first-of-type::first-letter { font-family:'Cinzel',serif; font-size:88px; font-weight:900; color:var(--gold); float:left; line-height:0.75; margin-right:12px; margin-top:8px; }
-  .article-main h2 { font-family:'Cinzel',serif; font-size:16px; font-weight:600; letter-spacing:0.1em; color:var(--white); margin:60px 0 20px; padding-top:60px; border-top:1px solid rgba(201,168,76,0.15); }
-  .article-main h3 { font-family:'Cormorant Garamond',serif; font-size:26px; font-style:italic; color:var(--gold-light); margin:36px 0 16px; }
+  /* BODY LAYOUT */
+  .article-body { max-width:1400px; margin:0 auto; padding:80px 60px; display:grid; grid-template-columns:1fr 280px; gap:60px; align-items:start; }
 
-  .pull-quote { border-left:2px solid var(--gold); padding:28px 36px; margin:56px 0; background:var(--surface); position:relative; }
-  .pull-quote::before { content:'"'; font-family:'Cormorant Garamond',serif; font-size:100px; color:var(--gold); opacity:0.12; position:absolute; top:-15px; left:16px; line-height:1; }
-  .pull-quote p { font-family:'Cormorant Garamond',serif !important; font-size:26px !important; font-style:italic; line-height:1.4 !important; color:var(--white) !important; margin:0 !important; }
+  /* MAIN CONTENT */
+  .article-main p { font-family:'Cormorant Garamond',serif; font-size:clamp(18px,2vw,21px); line-height:1.85; color:var(--text-body); margin-bottom:28px; }
+  .article-main p:first-of-type::first-letter { font-family:'Cinzel',serif; font-size:clamp(60px,8vw,88px); font-weight:900; color:var(--gold); float:left; line-height:0.75; margin-right:12px; margin-top:8px; }
+  .article-main h2 { font-family:'Cinzel',serif; font-size:clamp(13px,1.5vw,16px); font-weight:600; letter-spacing:0.1em; color:var(--white); margin:50px 0 16px; padding-top:50px; border-top:1px solid rgba(201,168,76,0.15); }
+  .article-main h3 { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.5vw,26px); font-style:italic; color:var(--gold-light); margin:28px 0 12px; }
+
+  .pull-quote { border-left:2px solid var(--gold); padding:24px 32px; margin:48px 0; background:var(--surface); position:relative; }
+  .pull-quote::before { content:'"'; font-family:'Cormorant Garamond',serif; font-size:80px; color:var(--gold); opacity:0.15; position:absolute; top:-12px; left:12px; line-height:1; }
+  .pull-quote p { font-family:'Cormorant Garamond',serif !important; font-size:clamp(20px,2.5vw,26px) !important; font-style:italic; line-height:1.4 !important; color:var(--white) !important; margin:0 !important; }
   .pull-quote p::first-letter { all:unset !important; float:none !important; }
 
   .source-cite { display:inline-flex; align-items:center; gap:6px; font-size:9px; letter-spacing:0.2em; color:var(--gold-dim); text-transform:uppercase; border-bottom:1px solid var(--gold-dim); padding-bottom:2px; text-decoration:none; cursor:none; transition:color 0.3s; }
@@ -64,58 +70,114 @@
   .source-cite::before { content:'↗'; }
 
   /* SIDEBAR */
-  .article-sidebar { position:sticky; top:100px; }
-  .sidebar-section { margin-bottom:40px; padding-bottom:40px; border-bottom:1px solid rgba(201,168,76,0.1); }
+  .article-sidebar { position:sticky; top:90px; }
+  .sidebar-section { margin-bottom:36px; padding-bottom:36px; border-bottom:1px solid rgba(201,168,76,0.1); }
   .sidebar-section:last-child { border-bottom:none; }
-  .sidebar-label { font-size:8px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; gap:12px; }
+  .sidebar-label { font-size:8px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
   .sidebar-label::after { content:''; flex:1; height:1px; background:var(--gold-dim); opacity:0.4; }
-  .key-fact { margin-bottom:20px; }
-  .key-fact-num { font-family:'Cinzel',serif; font-size:26px; color:var(--gold); display:block; line-height:1; margin-bottom:4px; }
-  .key-fact-desc { font-size:10px; letter-spacing:0.1em; color:var(--text-dim); text-transform:uppercase; line-height:1.4; }
-  .sidebar-ad { background:var(--surface); border:1px solid rgba(201,168,76,0.15); padding:28px 20px; text-align:center; position:relative; }
-  .sidebar-ad-label { position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--surface); padding:0 10px; font-size:7px; letter-spacing:0.3em; color:var(--gold-dim); text-transform:uppercase; }
-  .sidebar-ad-title { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.3em; color:var(--text-dim); margin-bottom:8px; line-height:1.5; }
-  .sidebar-ad span { font-size:8px; color:var(--gold-dim); letter-spacing:0.2em; }
+  .key-fact { margin-bottom:16px; }
+  .key-fact-num { font-family:'Cinzel',serif; font-size:24px; color:var(--gold); display:block; line-height:1; margin-bottom:4px; }
+  .key-fact-desc { font-size:9px; letter-spacing:0.1em; color:var(--text-dim); text-transform:uppercase; line-height:1.4; }
+  .sidebar-ad { background:var(--surface); border:1px solid rgba(201,168,76,0.15); padding:24px 16px; text-align:center; position:relative; }
+  .sidebar-ad-label { position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--surface); padding:0 10px; font-size:7px; letter-spacing:0.3em; color:var(--gold-dim); text-transform:uppercase; white-space:nowrap; }
+  .sidebar-ad-title { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.2em; color:var(--text-dim); margin-bottom:8px; line-height:1.5; }
+  .sidebar-ad span { font-size:8px; color:var(--gold-dim); letter-spacing:0.15em; word-break:break-all; }
 
   /* MORE */
-  .more-stories { background:var(--deep); padding:80px 120px; }
-  .more-label { font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; display:flex; align-items:center; gap:16px; }
+  .more-stories { background:var(--deep); padding:60px; }
+  .more-label { font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; display:flex; align-items:center; gap:16px; }
   .more-label::after { content:''; flex:1; height:1px; background:var(--gold-dim); opacity:0.3; }
-  .more-title { font-family:'Cinzel',serif; font-size:28px; font-weight:400; color:var(--white); margin-bottom:48px; }
+  .more-title { font-family:'Cinzel',serif; font-size:clamp(20px,3vw,28px); font-weight:400; color:var(--white); margin-bottom:40px; }
   .more-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--surface2); }
-  .more-card { background:var(--deep); padding:36px; text-decoration:none; display:block; position:relative; overflow:hidden; transition:background 0.3s; cursor:none; }
+  .more-card { background:var(--deep); padding:32px; text-decoration:none; display:block; position:relative; overflow:hidden; transition:background 0.3s; cursor:none; }
   .more-card::after { content:''; position:absolute; bottom:0; left:0; height:1px; width:0; background:var(--gold); transition:width 0.5s ease; }
   .more-card:hover::after { width:100%; }
   .more-card:hover { background:var(--surface); }
-  .more-card-tag { font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
-  .more-card h3 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; line-height:1.3; color:var(--white); margin-bottom:16px; }
-  .more-card-source { font-size:8px; letter-spacing:0.2em; color:var(--gold-dim); text-transform:uppercase; display:flex; align-items:center; gap:10px; }
-  .more-card-source::before { content:''; width:20px; height:1px; background:var(--gold-dim); }
+  .more-card-tag { font-size:8px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+  .more-card h3 { font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2vw,20px); font-weight:400; line-height:1.3; color:var(--white); margin-bottom:12px; }
+  .more-card-source { font-size:8px; letter-spacing:0.2em; color:var(--gold-dim); text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+  .more-card-source::before { content:''; width:16px; height:1px; background:var(--gold-dim); }
 
   /* TAGS */
-  .article-tags-section { padding:0 120px 60px; max-width:1400px; margin:0 auto; }
-  .article-tags { display:flex; gap:10px; flex-wrap:wrap; }
-  .tag { font-size:8px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase; border:1px solid rgba(201,168,76,0.2); padding:7px 14px; transition:all 0.3s; cursor:none; }
+  .article-tags-section { padding:0 60px 48px; max-width:1400px; margin:0 auto; }
+  .article-tags { display:flex; gap:8px; flex-wrap:wrap; }
+  .tag { font-size:8px; letter-spacing:0.25em; color:var(--text-dim); text-transform:uppercase; border:1px solid rgba(201,168,76,0.2); padding:6px 12px; transition:all 0.3s; cursor:none; }
   .tag:hover { color:var(--gold); border-color:var(--gold); }
 
-  footer { background:var(--surface); padding:40px 120px; border-top:1px solid rgba(201,168,76,0.1); }
-  .footer-bottom { display:flex; justify-content:space-between; align-items:center; }
-  .footer-bottom p { font-size:10px; color:var(--text-dim); letter-spacing:0.15em; }
+  footer { background:var(--surface); padding:32px 60px; border-top:1px solid rgba(201,168,76,0.1); }
+  .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .footer-bottom p { font-size:10px; color:var(--text-dim); letter-spacing:0.12em; }
 
+  /* ============================================
+     MOBILE FIRST — FULL RESPONSIVE
+     ============================================ */
   @media (max-width:1100px) {
-    .article-body { grid-template-columns:1fr; padding:60px 40px; }
-    .article-sidebar { position:static; }
-    .hero-content { padding:0 40px 60px; }
+    .article-body { grid-template-columns:1fr; padding:60px 40px; gap:40px; }
+    .article-sidebar { position:static; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .sidebar-section { margin-bottom:0; padding-bottom:0; border-bottom:none; border:1px solid rgba(201,168,76,0.1); padding:24px; }
+    .hero-content { padding:0 40px 60px; max-width:100%; }
+    .hero-illustration { width:min(300px,40vw); height:min(300px,40vw); }
     .more-stories { padding:60px 40px; }
-    .more-grid { grid-template-columns:1fr; }
-    footer { padding:40px; }
     .article-tags-section { padding:0 40px 40px; }
+    footer { padding:32px 40px; }
   }
+
   @media (max-width:768px) {
-    nav { padding:20px 24px; }
-    .article-title { font-size:28px; }
-    .hero-content { padding:0 24px 40px; }
-    .article-body { padding:40px 24px; }
+    /* Hide custom cursor on touch devices */
+    .cursor, .cursor-ring { display:none; }
+    body { cursor:auto; }
+    a, button { cursor:pointer; }
+
+    nav { padding:16px 20px; }
+    .nav-logo { font-size:10px; letter-spacing:0.25em; }
+    .nav-back { font-size:8px; }
+
+    /* Hero — stack vertically on mobile */
+    .article-hero { min-height:100vh; align-items:flex-end; }
+    .hero-illustration {
+      width:80vw; height:80vw;
+      right:50%; top:20%;
+      transform:translateX(50%) translateY(0);
+      opacity:0.25;
+    }
+    .hero-overlay { background:linear-gradient(to top,rgba(5,5,5,1) 0%,rgba(5,5,5,0.75) 50%,rgba(5,5,5,0.3) 100%); }
+    .hero-overlay-left { display:none; }
+    .hero-content { padding:0 20px 48px; max-width:100%; }
+    .article-category { font-size:8px; letter-spacing:0.3em; }
+    .article-meta { gap:10px; }
+    .article-meta-divider { display:none; }
+
+    /* Body */
+    .article-body { padding:40px 20px; grid-template-columns:1fr; }
+    .article-sidebar { grid-template-columns:1fr; }
+    .sidebar-section { padding:20px; }
+
+    /* Typography */
+    .article-main p { font-size:18px; line-height:1.75; margin-bottom:24px; }
+    .article-main p:first-of-type::first-letter { font-size:60px; margin-right:8px; }
+    .article-main h2 { font-size:12px; margin:40px 0 14px; padding-top:40px; }
+    .pull-quote { padding:20px 24px; margin:36px 0; }
+    .pull-quote p { font-size:20px !important; }
+
+    /* More grid */
+    .more-grid { grid-template-columns:1fr; }
+    .more-stories { padding:40px 20px; }
+    .more-card { padding:24px 20px; }
+
+    /* Tags */
+    .article-tags-section { padding:0 20px 32px; }
+
+    /* Footer */
+    footer { padding:24px 20px; }
+    .footer-bottom { flex-direction:column; align-items:flex-start; gap:8px; }
+  }
+
+  @media (max-width:400px) {
+    .article-title { font-size:26px; }
+    .article-subtitle { font-size:15px; }
+    nav { padding:14px 16px; }
+    .hero-content { padding:0 16px 40px; }
+    .article-body { padding:32px 16px; }
   }
 </style>
 </head>
@@ -138,20 +200,10 @@
 
 <div id="articleContent" style="display:none;">
   <div class="article-hero">
-    <div class="hero-bg-art">
-      <svg class="hero-watch-bg" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="180" cy="180" r="170" fill="none" stroke="#C9A84C" stroke-width="1"/>
-        <circle cx="180" cy="180" r="150" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
-        <line x1="180" y1="30" x2="180" y2="55" stroke="#C9A84C" stroke-width="3"/>
-        <line x1="330" y1="180" x2="305" y2="180" stroke="#C9A84C" stroke-width="3"/>
-        <line x1="180" y1="330" x2="180" y2="305" stroke="#C9A84C" stroke-width="3"/>
-        <line x1="30" y1="180" x2="55" y2="180" stroke="#C9A84C" stroke-width="3"/>
-        <line x1="180" y1="180" x2="180" y2="90" stroke="#C9A84C" stroke-width="3"/>
-        <line x1="180" y1="180" x2="240" y2="155" stroke="#C9A84C" stroke-width="2"/>
-        <circle cx="180" cy="180" r="7" fill="#C9A84C"/>
-      </svg>
-    </div>
+    <div class="hero-bg-art" id="heroBgArt"></div>
+    <div id="heroIllustration"></div>
     <div class="hero-overlay"></div>
+    <div class="hero-overlay-left"></div>
     <div class="hero-content">
       <p class="article-category" id="heroCategory"></p>
       <h1 class="article-title" id="heroTitle"></h1>
@@ -192,7 +244,7 @@
         <div class="sidebar-ad">
           <span class="sidebar-ad-label">Advertisement</span>
           <p class="sidebar-ad-title">Luxury Real Estate · Cars · Jewellery</p>
-          <span>Premium placements available</span>
+          <span>bringlifetobrand@gmail.com</span>
         </div>
       </div>
     </aside>
@@ -220,15 +272,11 @@
 
 <script>
 // CURSOR
-const cursor=document.getElementById('cursor'), cursorRing=document.getElementById('cursorRing');
+const cursor=document.getElementById('cursor'),cursorRing=document.getElementById('cursorRing');
 let mouseX=0,mouseY=0,ringX=0,ringY=0;
 document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX-4+'px';cursor.style.top=mouseY-4+'px';});
 (function loop(){ringX+=(mouseX-ringX-18)*.15;ringY+=(mouseY-ringY-18)*.15;cursorRing.style.left=ringX+'px';cursorRing.style.top=ringY+'px';requestAnimationFrame(loop);})();
-
-window.addEventListener('scroll',()=>{
-  const d=document.documentElement;
-  document.getElementById('progressBar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
-});
+window.addEventListener('scroll',()=>{const d=document.documentElement;document.getElementById('progressBar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';});
 
 // PARAMS
 const params=new URLSearchParams(window.location.search);
@@ -244,6 +292,475 @@ document.getElementById('heroSubtitle').textContent = storyExcerpt;
 document.getElementById('heroSource').textContent = storySource;
 document.getElementById('heroDate').textContent = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
 
+// ============================================
+// UNIQUE CATEGORY ILLUSTRATIONS — thick gold lines + glow
+// ============================================
+const illustrations = {
+
+  'Milestone': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow1"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Outer case -->
+      <circle cx="200" cy="200" r="185" fill="none" stroke="#C9A84C" stroke-width="4" opacity="0.6"/>
+      <circle cx="200" cy="200" r="178" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+      <!-- Bezel ticks -->
+      <g stroke="#C9A84C" stroke-linecap="round" filter="url(#glow1)">
+        <line x1="200" y1="18" x2="200" y2="38" stroke-width="4"/>
+        <line x1="382" y1="200" x2="362" y2="200" stroke-width="4"/>
+        <line x1="200" y1="382" x2="200" y2="362" stroke-width="4"/>
+        <line x1="18" y1="200" x2="38" y2="200" stroke-width="4"/>
+        <line x1="291" y1="30" x2="282" y2="46" stroke-width="2.5" opacity="0.7"/>
+        <line x1="370" y1="109" x2="354" y2="118" stroke-width="2.5" opacity="0.7"/>
+        <line x1="370" y1="291" x2="354" y2="282" stroke-width="2.5" opacity="0.7"/>
+        <line x1="291" y1="370" x2="282" y2="354" stroke-width="2.5" opacity="0.7"/>
+        <line x1="109" y1="370" x2="118" y2="354" stroke-width="2.5" opacity="0.7"/>
+        <line x1="30" y1="291" x2="46" y2="282" stroke-width="2.5" opacity="0.7"/>
+        <line x1="30" y1="109" x2="46" y2="118" stroke-width="2.5" opacity="0.7"/>
+        <line x1="109" y1="30" x2="118" y2="46" stroke-width="2.5" opacity="0.7"/>
+      </g>
+      <!-- Dial -->
+      <circle cx="200" cy="200" r="155" fill="none" stroke="#C9A84C" stroke-width="2.5" opacity="0.5"/>
+      <circle cx="200" cy="200" r="140" fill="rgba(201,168,76,0.03)"/>
+      <!-- Roman numerals positions -->
+      <text x="200" y="75" text-anchor="middle" font-family="Cinzel,serif" font-size="22" fill="#C9A84C" opacity="0.9" filter="url(#glow1)">XII</text>
+      <text x="325" y="210" text-anchor="middle" font-family="Cinzel,serif" font-size="22" fill="#C9A84C" opacity="0.9" filter="url(#glow1)">III</text>
+      <text x="200" y="345" text-anchor="middle" font-family="Cinzel,serif" font-size="22" fill="#C9A84C" opacity="0.9" filter="url(#glow1)">VI</text>
+      <text x="75" y="210" text-anchor="middle" font-family="Cinzel,serif" font-size="22" fill="#C9A84C" opacity="0.9" filter="url(#glow1)">IX</text>
+      <!-- Brand text -->
+      <text x="200" y="170" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#C9A84C" letter-spacing="3" opacity="0.8">STORIES TO WATCH</text>
+      <text x="200" y="230" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" fill="#C9A84C" letter-spacing="4" opacity="0.5">EST. MMXXVI</text>
+      <!-- Hands -->
+      <line x1="200" y1="200" x2="200" y2="100" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round" filter="url(#glow1)"/>
+      <line x1="200" y1="200" x2="260" y2="175" stroke="#E8E4D9" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="200" y1="200" x2="200" y2="82" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" filter="url(#glow1)"/>
+      <circle cx="200" cy="200" r="8" fill="#C9A84C" filter="url(#glow1)"/>
+      <circle cx="200" cy="200" r="4" fill="#0A0A08"/>
+      <!-- Lugs -->
+      <rect x="182" y="14" width="36" height="20" rx="5" fill="#1A1A16" stroke="#C9A84C" stroke-width="2"/>
+      <rect x="182" y="366" width="36" height="20" rx="5" fill="#1A1A16" stroke="#C9A84C" stroke-width="2"/>
+    </svg>`,
+
+  'Auction': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow2"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Pocket watch outer case -->
+      <circle cx="200" cy="220" r="165" fill="none" stroke="#C9A84C" stroke-width="4" opacity="0.7" filter="url(#glow2)"/>
+      <circle cx="200" cy="220" r="155" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.4"/>
+      <!-- Chain links at top -->
+      <ellipse cx="200" cy="52" rx="12" ry="8" fill="none" stroke="#C9A84C" stroke-width="3" opacity="0.8"/>
+      <ellipse cx="200" cy="36" rx="8" ry="12" fill="none" stroke="#C9A84C" stroke-width="3" opacity="0.7"/>
+      <ellipse cx="200" cy="20" rx="12" ry="8" fill="none" stroke="#C9A84C" stroke-width="3" opacity="0.6"/>
+      <!-- Crown/bow -->
+      <path d="M188 62 Q200 45 212 62" fill="none" stroke="#C9A84C" stroke-width="3.5" filter="url(#glow2)"/>
+      <!-- Ornate bezel decoration -->
+      <circle cx="200" cy="220" r="148" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="8,4" opacity="0.3"/>
+      <!-- Hour markers - ornate -->
+      <g stroke="#C9A84C" stroke-linecap="round" filter="url(#glow2)">
+        <line x1="200" y1="62" x2="200" y2="82" stroke-width="4"/>
+        <line x1="365" y1="220" x2="345" y2="220" stroke-width="4"/>
+        <line x1="200" y1="378" x2="200" y2="358" stroke-width="4"/>
+        <line x1="35" y1="220" x2="55" y2="220" stroke-width="4"/>
+        <line x1="283" y1="80" x2="273" y2="98" stroke-width="2.5" opacity="0.8"/>
+        <line x1="347" y1="143" x2="329" y2="153" stroke-width="2.5" opacity="0.8"/>
+        <line x1="347" y1="297" x2="329" y2="287" stroke-width="2.5" opacity="0.8"/>
+        <line x1="283" y1="360" x2="273" y2="342" stroke-width="2.5" opacity="0.8"/>
+        <line x1="117" y1="360" x2="127" y2="342" stroke-width="2.5" opacity="0.8"/>
+        <line x1="53" y1="297" x2="71" y2="287" stroke-width="2.5" opacity="0.8"/>
+        <line x1="53" y1="143" x2="71" y2="153" stroke-width="2.5" opacity="0.8"/>
+        <line x1="117" y1="80" x2="127" y2="98" stroke-width="2.5" opacity="0.8"/>
+      </g>
+      <!-- Inner dial -->
+      <circle cx="200" cy="220" r="120" fill="rgba(201,168,76,0.04)"/>
+      <text x="200" y="185" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#C9A84C" letter-spacing="2" opacity="0.9">STORIES TO WATCH</text>
+      <text x="200" y="258" text-anchor="middle" font-family="Cinzel,serif" font-size="10" fill="#C9A84C" opacity="0.6">AUCTION WATCH</text>
+      <!-- Ornate hands -->
+      <line x1="200" y1="220" x2="200" y2="130" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round" filter="url(#glow2)"/>
+      <line x1="200" y1="220" x2="265" y2="185" stroke="#E8E4D9" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="200" y1="220" x2="200" y2="110" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" filter="url(#glow2)"/>
+      <circle cx="200" cy="220" r="8" fill="#C9A84C" filter="url(#glow2)"/>
+      <circle cx="200" cy="220" r="4" fill="#0A0A08"/>
+    </svg>`,
+
+  'Anniversary': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow3"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Two overlapping watch faces -->
+      <!-- Watch 1 -->
+      <circle cx="155" cy="195" r="130" fill="none" stroke="#C9A84C" stroke-width="3.5" opacity="0.6" filter="url(#glow3)"/>
+      <circle cx="155" cy="195" r="118" fill="rgba(5,5,5,0.8)"/>
+      <circle cx="155" cy="195" r="110" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.35"/>
+      <!-- Watch 1 markers -->
+      <g stroke="#C9A84C" stroke-linecap="round">
+        <line x1="155" y1="68" x2="155" y2="84" stroke-width="3.5" filter="url(#glow3)"/>
+        <line x1="282" y1="195" x2="266" y2="195" stroke-width="3.5" filter="url(#glow3)"/>
+        <line x1="155" y1="322" x2="155" y2="306" stroke-width="3.5" filter="url(#glow3)"/>
+        <line x1="28" y1="195" x2="44" y2="195" stroke-width="3.5" filter="url(#glow3)"/>
+        <line x1="155" y1="68" x2="155" y2="84" stroke-width="2" opacity="0.5"/>
+      </g>
+      <text x="155" y="175" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" letter-spacing="1.5" opacity="0.7">STORIES TO</text>
+      <text x="155" y="190" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" letter-spacing="1.5" opacity="0.7">WATCH</text>
+      <line x1="155" y1="195" x2="155" y2="115" stroke="#E8E4D9" stroke-width="4" stroke-linecap="round"/>
+      <line x1="155" y1="195" x2="210" y2="170" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/>
+      <line x1="155" y1="195" x2="155" y2="98" stroke="#C9A84C" stroke-width="1.5" filter="url(#glow3)"/>
+      <circle cx="155" cy="195" r="7" fill="#C9A84C" filter="url(#glow3)"/>
+      <!-- Watch 2 — offset -->
+      <circle cx="255" cy="215" r="130" fill="none" stroke="#C9A84C" stroke-width="3.5" opacity="0.5" filter="url(#glow3)"/>
+      <circle cx="255" cy="215" r="118" fill="rgba(5,5,5,0.85)"/>
+      <circle cx="255" cy="215" r="110" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.3"/>
+      <g stroke="#C9A84C" stroke-linecap="round" opacity="0.8">
+        <line x1="255" y1="88" x2="255" y2="104" stroke-width="3.5" filter="url(#glow3)"/>
+        <line x1="382" y1="215" x2="366" y2="215" stroke-width="3.5" filter="url(#glow3)"/>
+        <line x1="255" y1="342" x2="255" y2="326" stroke-width="3.5" filter="url(#glow3)"/>
+        <line x1="128" y1="215" x2="144" y2="215" stroke-width="3.5" filter="url(#glow3)"/>
+      </g>
+      <text x="255" y="195" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" letter-spacing="1.5" opacity="0.6">50TH</text>
+      <text x="255" y="210" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" letter-spacing="1.5" opacity="0.6">ANNIVERSARY</text>
+      <line x1="255" y1="215" x2="255" y2="135" stroke="#E8E4D9" stroke-width="4" stroke-linecap="round"/>
+      <line x1="255" y1="215" x2="310" y2="188" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/>
+      <line x1="255" y1="215" x2="255" y2="118" stroke="#C9A84C" stroke-width="1.5" filter="url(#glow3)"/>
+      <circle cx="255" cy="215" r="7" fill="#C9A84C" filter="url(#glow3)"/>
+    </svg>`,
+
+  'Market': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow4"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Watch dial as base -->
+      <circle cx="200" cy="200" r="175" fill="none" stroke="#C9A84C" stroke-width="3" opacity="0.5"/>
+      <circle cx="200" cy="200" r="160" fill="rgba(201,168,76,0.02)"/>
+      <!-- Market graph lines forming inside dial -->
+      <polyline points="50,280 90,240 130,260 170,200 210,220 250,160 290,140 340,110" fill="none" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow4)"/>
+      <!-- Graph area fill -->
+      <polygon points="50,280 90,240 130,260 170,200 210,220 250,160 290,140 340,110 340,320 50,320" fill="rgba(201,168,76,0.06)"/>
+      <!-- Data points -->
+      <circle cx="90" cy="240" r="5" fill="#C9A84C" filter="url(#glow4)"/>
+      <circle cx="170" cy="200" r="5" fill="#C9A84C" filter="url(#glow4)"/>
+      <circle cx="250" cy="160" r="5" fill="#C9A84C" filter="url(#glow4)"/>
+      <circle cx="340" cy="110" r="7" fill="#C9A84C" filter="url(#glow4)"/>
+      <!-- Axis lines -->
+      <line x1="50" y1="320" x2="360" y2="320" stroke="#C9A84C" stroke-width="2" opacity="0.5"/>
+      <line x1="50" y1="100" x2="50" y2="320" stroke="#C9A84C" stroke-width="2" opacity="0.5"/>
+      <!-- Labels -->
+      <text x="200" y="368" text-anchor="middle" font-family="Cinzel,serif" font-size="10" fill="#C9A84C" letter-spacing="3" opacity="0.7">MARKET REPORT 2026</text>
+      <text x="200" y="60" text-anchor="middle" font-family="Cinzel,serif" font-size="12" fill="#C9A84C" opacity="0.8" filter="url(#glow4)">$62B</text>
+      <!-- Outer tick marks -->
+      <g stroke="#C9A84C" stroke-linecap="round" opacity="0.5">
+        <line x1="200" y1="25" x2="200" y2="42" stroke-width="3"/>
+        <line x1="375" y1="200" x2="358" y2="200" stroke-width="3"/>
+        <line x1="200" y1="375" x2="200" y2="358" stroke-width="3"/>
+        <line x1="25" y1="200" x2="42" y2="200" stroke-width="3"/>
+      </g>
+    </svg>`,
+
+  'Brand Story': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow5"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Watch case side profile -->
+      <!-- Strap top -->
+      <rect x="155" y="10" width="90" height="100" rx="10" fill="#1A1A16" stroke="#C9A84C" stroke-width="2.5" opacity="0.8"/>
+      <line x1="175" y1="25" x2="235" y2="25" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+      <line x1="175" y1="45" x2="235" y2="45" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+      <line x1="175" y1="65" x2="235" y2="65" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+      <line x1="175" y1="85" x2="235" y2="85" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+      <!-- Case -->
+      <rect x="105" y="108" width="190" height="184" rx="40" fill="#111110" stroke="#C9A84C" stroke-width="3.5" filter="url(#glow5)"/>
+      <!-- Bezel ring -->
+      <rect x="118" y="121" width="164" height="158" rx="32" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.5"/>
+      <!-- Dial -->
+      <rect x="130" y="133" width="140" height="134" rx="26" fill="#0A0A08"/>
+      <!-- Dial details -->
+      <line x1="200" y1="148" x2="200" y2="158" stroke="#C9A84C" stroke-width="3" filter="url(#glow5)"/>
+      <line x1="260" y1="200" x2="250" y2="200" stroke="#C9A84C" stroke-width="3" filter="url(#glow5)"/>
+      <line x1="200" y1="252" x2="200" y2="242" stroke="#C9A84C" stroke-width="3" filter="url(#glow5)"/>
+      <line x1="140" y1="200" x2="150" y2="200" stroke="#C9A84C" stroke-width="3" filter="url(#glow5)"/>
+      <text x="200" y="190" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" letter-spacing="2" opacity="0.9">STORIES TO</text>
+      <text x="200" y="204" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" letter-spacing="2" opacity="0.9">WATCH</text>
+      <!-- Hands -->
+      <line x1="200" y1="200" x2="200" y2="158" stroke="#E8E4D9" stroke-width="4" stroke-linecap="round" filter="url(#glow5)"/>
+      <line x1="200" y1="200" x2="232" y2="185" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/>
+      <line x1="200" y1="200" x2="200" y2="148" stroke="#C9A84C" stroke-width="1.5" filter="url(#glow5)"/>
+      <circle cx="200" cy="200" r="6" fill="#C9A84C" filter="url(#glow5)"/>
+      <circle cx="200" cy="200" r="3" fill="#0A0A08"/>
+      <!-- Crown -->
+      <rect x="294" y="188" width="20" height="24" rx="5" fill="#1A1A16" stroke="#C9A84C" stroke-width="2.5"/>
+      <!-- Strap bottom -->
+      <rect x="155" y="290" width="90" height="100" rx="10" fill="#1A1A16" stroke="#C9A84C" stroke-width="2.5" opacity="0.8"/>
+      <!-- Buckle -->
+      <rect x="168" y="355" width="64" height="22" rx="5" fill="#111110" stroke="#C9A84C" stroke-width="2"/>
+      <line x1="200" y1="355" x2="200" y2="377" stroke="#C9A84C" stroke-width="2"/>
+    </svg>`,
+
+  'Innovation': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow6"><feGaussianBlur stdDeviation="3.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Exploded movement diagram -->
+      <!-- Main plate -->
+      <circle cx="200" cy="200" r="140" fill="none" stroke="#C9A84C" stroke-width="3" opacity="0.6" filter="url(#glow6)"/>
+      <!-- Gear 1 - barrel -->
+      <circle cx="200" cy="200" r="50" fill="none" stroke="#C9A84C" stroke-width="3" filter="url(#glow6)"/>
+      <circle cx="200" cy="200" r="40" fill="rgba(201,168,76,0.05)"/>
+      <circle cx="200" cy="200" r="8" fill="#C9A84C" filter="url(#glow6)"/>
+      <!-- Gear teeth barrel -->
+      <g stroke="#C9A84C" stroke-width="3" filter="url(#glow6)">
+        <line x1="200" y1="148" x2="200" y2="140" stroke-linecap="round"/>
+        <line x1="237" y1="163" x2="242" y2="156" stroke-linecap="round"/>
+        <line x1="252" y1="200" x2="260" y2="200" stroke-linecap="round"/>
+        <line x1="237" y1="237" x2="242" y2="244" stroke-linecap="round"/>
+        <line x1="200" y1="252" x2="200" y2="260" stroke-linecap="round"/>
+        <line x1="163" y1="237" x2="158" y2="244" stroke-linecap="round"/>
+        <line x1="148" y1="200" x2="140" y2="200" stroke-linecap="round"/>
+        <line x1="163" y1="163" x2="158" y2="156" stroke-linecap="round"/>
+      </g>
+      <!-- Gear 2 - escape wheel -->
+      <circle cx="310" cy="130" r="35" fill="none" stroke="#C9A84C" stroke-width="2.5" opacity="0.8" filter="url(#glow6)"/>
+      <circle cx="310" cy="130" r="6" fill="#C9A84C" opacity="0.8"/>
+      <g stroke="#C9A84C" stroke-width="2" opacity="0.8">
+        <line x1="310" y1="95" x2="310" y2="88" stroke-linecap="round"/>
+        <line x1="335" y1="113" x2="341" y2="107" stroke-linecap="round"/>
+        <line x1="345" y1="130" x2="352" y2="130" stroke-linecap="round"/>
+        <line x1="335" y1="147" x2="341" y2="153" stroke-linecap="round"/>
+        <line x1="310" y1="165" x2="310" y2="172" stroke-linecap="round"/>
+        <line x1="285" y1="147" x2="279" y2="153" stroke-linecap="round"/>
+        <line x1="275" y1="130" x2="268" y2="130" stroke-linecap="round"/>
+        <line x1="285" y1="113" x2="279" y2="107" stroke-linecap="round"/>
+      </g>
+      <!-- Gear 3 - small -->
+      <circle cx="100" cy="290" r="28" fill="none" stroke="#C9A84C" stroke-width="2.5" opacity="0.7"/>
+      <circle cx="100" cy="290" r="5" fill="#C9A84C" opacity="0.7"/>
+      <g stroke="#C9A84C" stroke-width="2" opacity="0.7">
+        <line x1="100" y1="262" x2="100" y2="255" stroke-linecap="round"/>
+        <line x1="121" y1="276" x2="126" y2="270" stroke-linecap="round"/>
+        <line x1="128" y1="290" x2="135" y2="290" stroke-linecap="round"/>
+        <line x1="121" y1="304" x2="126" y2="310" stroke-linecap="round"/>
+        <line x1="100" y1="318" x2="100" y2="325" stroke-linecap="round"/>
+        <line x1="79" y1="304" x2="74" y2="310" stroke-linecap="round"/>
+        <line x1="72" y1="290" x2="65" y2="290" stroke-linecap="round"/>
+        <line x1="79" y1="276" x2="74" y2="270" stroke-linecap="round"/>
+      </g>
+      <!-- Connecting arbors -->
+      <line x1="248" y1="168" x2="282" y2="148" stroke="#C9A84C" stroke-width="2" opacity="0.6" stroke-dasharray="4,3"/>
+      <line x1="155" y1="240" x2="120" y2="268" stroke="#C9A84C" stroke-width="2" opacity="0.6" stroke-dasharray="4,3"/>
+      <!-- Balance wheel -->
+      <circle cx="320" cy="290" r="45" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.6"/>
+      <circle cx="320" cy="290" r="30" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+      <line x1="320" y1="245" x2="320" y2="335" stroke="#C9A84C" stroke-width="2" opacity="0.6"/>
+      <line x1="275" y1="290" x2="365" y2="290" stroke="#C9A84C" stroke-width="2" opacity="0.6"/>
+      <circle cx="320" cy="290" r="5" fill="#C9A84C" opacity="0.7"/>
+      <!-- Label -->
+      <text x="200" y="390" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" letter-spacing="3" opacity="0.6">MOVEMENT · INNOVATION</text>
+    </svg>`,
+
+  'Investing': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow7"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Watch face with currency markers -->
+      <circle cx="200" cy="200" r="175" fill="none" stroke="#C9A84C" stroke-width="4" opacity="0.6" filter="url(#glow7)"/>
+      <circle cx="200" cy="200" r="162" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.3"/>
+      <circle cx="200" cy="200" r="148" fill="rgba(201,168,76,0.03)"/>
+      <!-- Currency symbols at hour positions -->
+      <text x="200" y="55" text-anchor="middle" font-family="Cinzel,serif" font-size="20" fill="#C9A84C" opacity="0.9" filter="url(#glow7)">£</text>
+      <text x="345" y="210" text-anchor="middle" font-family="Cinzel,serif" font-size="20" fill="#C9A84C" opacity="0.9" filter="url(#glow7)">$</text>
+      <text x="200" y="365" text-anchor="middle" font-family="Cinzel,serif" font-size="20" fill="#C9A84C" opacity="0.9" filter="url(#glow7)">€</text>
+      <text x="55" y="210" text-anchor="middle" font-family="Cinzel,serif" font-size="20" fill="#C9A84C" opacity="0.9" filter="url(#glow7)">¥</text>
+      <!-- Minor markers -->
+      <g stroke="#C9A84C" stroke-linecap="round" opacity="0.6">
+        <line x1="283" y1="37" x2="274" y2="53" stroke-width="2.5"/>
+        <line x1="363" y1="117" x2="347" y2="126" stroke-width="2.5"/>
+        <line x1="363" y1="283" x2="347" y2="274" stroke-width="2.5"/>
+        <line x1="283" y1="363" x2="274" y2="347" stroke-width="2.5"/>
+        <line x1="117" y1="363" x2="126" y2="347" stroke-width="2.5"/>
+        <line x1="37" y1="283" x2="53" y2="274" stroke-width="2.5"/>
+        <line x1="37" y1="117" x2="53" y2="126" stroke-width="2.5"/>
+        <line x1="117" y1="37" x2="126" y2="53" stroke-width="2.5"/>
+      </g>
+      <!-- ROI arc -->
+      <path d="M 200 200 m -100 0 a 100 100 0 0 1 141 -71" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" opacity="0.7" filter="url(#glow7)"/>
+      <!-- Center text -->
+      <text x="200" y="185" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#C9A84C" letter-spacing="2" opacity="0.8">STORIES TO WATCH</text>
+      <text x="200" y="210" text-anchor="middle" font-family="Cinzel,serif" font-size="28" fill="#C9A84C" opacity="0.9" filter="url(#glow7)">+300%</text>
+      <text x="200" y="228" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" fill="#C9A84C" letter-spacing="3" opacity="0.5">10 YEAR RETURN</text>
+      <!-- Hands -->
+      <line x1="200" y1="200" x2="200" y2="95" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round" filter="url(#glow7)"/>
+      <line x1="200" y1="200" x2="280" y2="165" stroke="#E8E4D9" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="200" y1="200" x2="200" y2="78" stroke="#C9A84C" stroke-width="1.5" filter="url(#glow7)"/>
+      <circle cx="200" cy="200" r="8" fill="#C9A84C" filter="url(#glow7)"/>
+      <circle cx="200" cy="200" r="4" fill="#0A0A08"/>
+    </svg>`,
+
+  'New Release': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow8"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Ultra-modern minimalist dial -->
+      <circle cx="200" cy="200" r="180" fill="none" stroke="#C9A84C" stroke-width="5" opacity="0.7" filter="url(#glow8)"/>
+      <circle cx="200" cy="200" r="165" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.3"/>
+      <circle cx="200" cy="200" r="150" fill="rgba(201,168,76,0.02)"/>
+      <!-- Minimalist hour markers — just 4 long lines -->
+      <line x1="200" y1="30" x2="200" y2="65" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" filter="url(#glow8)"/>
+      <line x1="370" y1="200" x2="335" y2="200" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" filter="url(#glow8)"/>
+      <line x1="200" y1="370" x2="200" y2="335" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" filter="url(#glow8)"/>
+      <line x1="30" y1="200" x2="65" y2="200" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" filter="url(#glow8)"/>
+      <!-- Dot markers for remaining hours -->
+      <g fill="#C9A84C" opacity="0.6">
+        <circle cx="290" cy="47" r="4"/>
+        <circle cx="353" cy="110" r="4"/>
+        <circle cx="353" cy="290" r="4"/>
+        <circle cx="290" cy="353" r="4"/>
+        <circle cx="110" cy="353" r="4"/>
+        <circle cx="47" cy="290" r="4"/>
+        <circle cx="47" cy="110" r="4"/>
+        <circle cx="110" cy="47" r="4"/>
+      </g>
+      <!-- Slim modern hands -->
+      <line x1="200" y1="200" x2="200" y2="85" stroke="#E8E4D9" stroke-width="4" stroke-linecap="round" filter="url(#glow8)"/>
+      <line x1="200" y1="200" x2="295" y2="155" stroke="#E8E4D9" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="200" y1="200" x2="200" y2="70" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" filter="url(#glow8)"/>
+      <!-- NEW badge -->
+      <rect x="155" y="225" width="90" height="22" rx="3" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1.5"/>
+      <text x="200" y="240" text-anchor="middle" font-family="Cinzel,serif" font-size="10" fill="#C9A84C" letter-spacing="4" filter="url(#glow8)">NEW 2026</text>
+      <circle cx="200" cy="200" r="7" fill="#C9A84C" filter="url(#glow8)"/>
+      <circle cx="200" cy="200" r="3.5" fill="#0A0A08"/>
+    </svg>`,
+
+  'Limited Edition': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow9"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Diamond bezel watch -->
+      <!-- Diamond bezel dots -->
+      <g fill="#C9A84C" filter="url(#glow9)">
+        <circle cx="200" cy="22" r="5"/>
+        <circle cx="247" cy="33" r="4"/>
+        <circle cx="287" cy="62" r="4"/>
+        <circle cx="315" cy="103" r="4"/>
+        <circle cx="330" cy="150" r="4"/>
+        <circle cx="330" cy="200" r="5"/>
+        <circle cx="330" cy="250" r="4"/>
+        <circle cx="315" cy="297" r="4"/>
+        <circle cx="287" cy="338" r="4"/>
+        <circle cx="247" cy="367" r="4"/>
+        <circle cx="200" cy="378" r="5"/>
+        <circle cx="153" cy="367" r="4"/>
+        <circle cx="113" cy="338" r="4"/>
+        <circle cx="85" cy="297" r="4"/>
+        <circle cx="70" cy="250" r="4"/>
+        <circle cx="70" cy="200" r="5"/>
+        <circle cx="70" cy="150" r="4"/>
+        <circle cx="85" cy="103" r="4"/>
+        <circle cx="113" cy="62" r="4"/>
+        <circle cx="153" cy="33" r="4"/>
+      </g>
+      <!-- Case -->
+      <circle cx="200" cy="200" r="155" fill="none" stroke="#C9A84C" stroke-width="3.5" opacity="0.7" filter="url(#glow9)"/>
+      <circle cx="200" cy="200" r="142" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+      <circle cx="200" cy="200" r="128" fill="rgba(201,168,76,0.03)"/>
+      <!-- Hour markers -->
+      <g stroke="#C9A84C" stroke-linecap="round" filter="url(#glow9)">
+        <line x1="200" y1="75" x2="200" y2="90" stroke-width="4"/>
+        <line x1="325" y1="200" x2="310" y2="200" stroke-width="4"/>
+        <line x1="200" y1="325" x2="200" y2="310" stroke-width="4"/>
+        <line x1="75" y1="200" x2="90" y2="200" stroke-width="4"/>
+      </g>
+      <text x="200" y="175" text-anchor="middle" font-family="Cinzel,serif" font-size="10" fill="#C9A84C" letter-spacing="2" opacity="0.9">STORIES TO WATCH</text>
+      <text x="200" y="215" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" letter-spacing="3" opacity="0.7">LIMITED EDITION</text>
+      <text x="200" y="235" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" fill="#C9A84C" opacity="0.5">No. 001 / 030</text>
+      <!-- Hands -->
+      <line x1="200" y1="200" x2="200" y2="105" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round" filter="url(#glow9)"/>
+      <line x1="200" y1="200" x2="268" y2="168" stroke="#E8E4D9" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="200" y1="200" x2="200" y2="90" stroke="#C9A84C" stroke-width="1.5" filter="url(#glow9)"/>
+      <circle cx="200" cy="200" r="8" fill="#C9A84C" filter="url(#glow9)"/>
+      <circle cx="200" cy="200" r="4" fill="#0A0A08"/>
+    </svg>`,
+
+  'Cover Story': `
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration">
+      <defs>
+        <filter id="glow10"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Grand full watch with strap -->
+      <!-- Top strap -->
+      <rect x="160" y="5" width="80" height="110" rx="8" fill="#141412" stroke="#C9A84C" stroke-width="2.5" opacity="0.8"/>
+      <line x1="175" y1="22" x2="225" y2="22" stroke="#C9A84C" stroke-width="1" opacity="0.25"/>
+      <line x1="175" y1="40" x2="225" y2="40" stroke="#C9A84C" stroke-width="1" opacity="0.25"/>
+      <line x1="175" y1="58" x2="225" y2="58" stroke="#C9A84C" stroke-width="1" opacity="0.25"/>
+      <line x1="175" y1="76" x2="225" y2="76" stroke="#C9A84C" stroke-width="1" opacity="0.25"/>
+      <line x1="175" y1="94" x2="225" y2="94" stroke="#C9A84C" stroke-width="1" opacity="0.25"/>
+      <!-- Top lugs -->
+      <path d="M142 112 Q136 120 136 132 L160 132 L160 112 Z" fill="#1E1C18" stroke="#C9A84C" stroke-width="2" opacity="0.9"/>
+      <path d="M258 112 Q264 120 264 132 L240 132 L240 112 Z" fill="#1E1C18" stroke="#C9A84C" stroke-width="2" opacity="0.9"/>
+      <!-- Case -->
+      <rect x="126" y="128" width="148" height="144" rx="36" fill="#111110" stroke="#C9A84C" stroke-width="4" filter="url(#glow10)"/>
+      <rect x="138" y="140" width="124" height="120" rx="28" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+      <!-- Dial -->
+      <circle cx="200" cy="200" r="54" fill="#0A0A08"/>
+      <circle cx="200" cy="200" r="50" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+      <!-- Markers -->
+      <g stroke="#C9A84C" stroke-linecap="round" filter="url(#glow10)">
+        <line x1="200" y1="150" x2="200" y2="158" stroke-width="3"/>
+        <line x1="250" y1="200" x2="242" y2="200" stroke-width="3"/>
+        <line x1="200" y1="250" x2="200" y2="242" stroke-width="3"/>
+        <line x1="150" y1="200" x2="158" y2="200" stroke-width="3"/>
+      </g>
+      <text x="200" y="193" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="#C9A84C" letter-spacing="1.5" opacity="0.9">STORIES TO</text>
+      <text x="200" y="204" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="#C9A84C" letter-spacing="1.5" opacity="0.9">WATCH</text>
+      <!-- Hands -->
+      <line x1="200" y1="200" x2="200" y2="158" stroke="#E8E4D9" stroke-width="4" stroke-linecap="round" filter="url(#glow10)"/>
+      <line x1="200" y1="200" x2="228" y2="186" stroke="#E8E4D9" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="200" y1="200" x2="200" y2="150" stroke="#C9A84C" stroke-width="1.2" filter="url(#glow10)"/>
+      <circle cx="200" cy="200" r="5" fill="#C9A84C" filter="url(#glow10)"/>
+      <!-- Crown -->
+      <rect x="272" y="192" width="16" height="16" rx="4" fill="#1E1C18" stroke="#C9A84C" stroke-width="2.5"/>
+      <!-- Bottom lugs -->
+      <path d="M142 272 Q136 280 136 268 L160 268 L160 272 Z" fill="#1E1C18" stroke="#C9A84C" stroke-width="2" opacity="0.9"/>
+      <path d="M258 272 Q264 280 264 268 L240 268 L240 272 Z" fill="#1E1C18" stroke="#C9A84C" stroke-width="2" opacity="0.9"/>
+      <!-- Bottom strap -->
+      <rect x="160" y="270" width="80" height="110" rx="8" fill="#141412" stroke="#C9A84C" stroke-width="2.5" opacity="0.8"/>
+      <!-- Buckle -->
+      <rect x="172" y="342" width="56" height="20" rx="4" fill="#0A0A08" stroke="#C9A84C" stroke-width="2" filter="url(#glow10)"/>
+      <line x1="200" y1="342" x2="200" y2="362" stroke="#C9A84C" stroke-width="2"/>
+      <rect x="183" y="349" width="34" height="6" rx="2" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+      <!-- Strap holes -->
+      <circle cx="200" cy="312" r="2.5" fill="#0A0A08" stroke="#3A3828" stroke-width="1"/>
+      <circle cx="200" cy="325" r="2.5" fill="#0A0A08" stroke="#3A3828" stroke-width="1"/>
+    </svg>`
+};
+
+// Set illustration based on category
+function setHeroIllustration(category) {
+  const bgColors = {
+    'Milestone':      'radial-gradient(ellipse 70% 70% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 60%), linear-gradient(135deg, #0A0A08 0%, #050505 100%)',
+    'Auction':        'radial-gradient(ellipse 70% 70% at 70% 40%, rgba(201,168,76,0.07) 0%, transparent 60%), linear-gradient(135deg, #080808 0%, #050505 100%)',
+    'Anniversary':    'radial-gradient(ellipse 80% 80% at 60% 40%, rgba(201,168,76,0.09) 0%, transparent 60%), linear-gradient(135deg, #0A0A08 0%, #050505 100%)',
+    'Market':         'radial-gradient(ellipse 70% 70% at 70% 40%, rgba(201,168,76,0.06) 0%, transparent 60%), linear-gradient(135deg, #070808 0%, #050505 100%)',
+    'Brand Story':    'radial-gradient(ellipse 70% 70% at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%), linear-gradient(135deg, #0A0A08 0%, #050505 100%)',
+    'Innovation':     'radial-gradient(ellipse 80% 80% at 65% 45%, rgba(201,168,76,0.07) 0%, transparent 60%), linear-gradient(135deg, #080A08 0%, #050505 100%)',
+    'Investing':      'radial-gradient(ellipse 70% 70% at 70% 40%, rgba(201,168,76,0.09) 0%, transparent 60%), linear-gradient(135deg, #0A0908 0%, #050505 100%)',
+    'New Release':    'radial-gradient(ellipse 70% 70% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 60%), linear-gradient(135deg, #080808 0%, #050505 100%)',
+    'Limited Edition':'radial-gradient(ellipse 70% 70% at 70% 40%, rgba(201,168,76,0.10) 0%, transparent 55%), linear-gradient(135deg, #0A0A08 0%, #050505 100%)',
+    'Cover Story':    'radial-gradient(ellipse 80% 80% at 65% 40%, rgba(201,168,76,0.10) 0%, transparent 55%), linear-gradient(135deg, #0A0A08 0%, #050505 100%)',
+  };
+  document.getElementById('heroBgArt').style.background = bgColors[category] || bgColors['Cover Story'];
+  const svgKey = Object.keys(illustrations).find(k => category.includes(k)) || 'Cover Story';
+  document.getElementById('heroIllustration').innerHTML = illustrations[svgKey] || illustrations['Cover Story'];
+}
+
+setHeroIllustration(storyCategory);
+
 // ALL STORIES
 const allStories=[
   {title:"Rolex Marks a Century of the Oyster Case",category:"Milestone",excerpt:"April 2026 saw Rolex unveil a commemorative Oyster Perpetual 41.",source:"Hodinkee"},
@@ -254,15 +771,16 @@ const allStories=[
   {title:"Grand Seiko Introduces New Micro-Artist Studio Dial",category:"Innovation",excerpt:"A breathtaking dial blurring watchmaking and visual art.",source:"WatchTime"}
 ];
 
-const related=allStories.filter(s=>s.title!==storyTitle).slice(0,3);
-document.getElementById('sidebarRelated').innerHTML=related.map(s=>`
-  <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.05);">
+// Related sidebar
+document.getElementById('sidebarRelated').innerHTML=allStories.filter(s=>s.title!==storyTitle).slice(0,3).map(s=>`
+  <div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.05);">
     <p style="font-size:8px;letter-spacing:0.3em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:6px;">${s.category}</p>
     <a href="article.html?title=${encodeURIComponent(s.title)}&category=${encodeURIComponent(s.category)}&excerpt=${encodeURIComponent(s.excerpt)}&source=${encodeURIComponent(s.source)}"
-       style="font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.3;color:var(--text);text-decoration:none;cursor:none;"
+       style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.3;color:var(--text);text-decoration:none;"
        onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--text)'">${s.title}</a>
   </div>`).join('');
 
+// More grid
 document.getElementById('moreGrid').innerHTML=allStories.filter(s=>s.title!==storyTitle).slice(0,3).map(s=>`
   <a class="more-card" href="article.html?title=${encodeURIComponent(s.title)}&category=${encodeURIComponent(s.category)}&excerpt=${encodeURIComponent(s.excerpt)}&source=${encodeURIComponent(s.source)}">
     <p class="more-card-tag">${s.category}</p>
@@ -270,7 +788,8 @@ document.getElementById('moreGrid').innerHTML=allStories.filter(s=>s.title!==sto
     <p class="more-card-source">${s.source}</p>
   </a>`).join('');
 
-const tagMap={'Milestone':['Rolex','Heritage','Swiss Watchmaking','Centenary','2026'],'Auction':["Auction","Sotheby's","Phillips","Vintage","Investment"],'Anniversary':['Patek Philippe','Nautilus','Anniversary','Collectors','Steel Sports'],'Market':['Market Analysis','Watches & Wonders','2026','Trends','Geneva'],'Brand Story':['Independent','Horology','Craft','Collecting','Artisans'],'Innovation':['Grand Seiko','Innovation','Dial Art','Limited Edition','Japan']};
+// Tags
+const tagMap={'Milestone':['Rolex','Heritage','Swiss Watchmaking','Centenary','2026'],'Auction':["Auction","Sotheby's","Phillips","Vintage","Investment"],'Anniversary':['Patek Philippe','Nautilus','Anniversary','Collectors','Steel Sports'],'Market':['Market Analysis','Watches & Wonders','2026','Trends','Geneva'],'Brand Story':['Independent','Horology','Craft','Collecting','Artisans'],'Innovation':['Grand Seiko','Innovation','Dial Art','Limited Edition','Japan'],'Investing':['Investment','Returns','Secondary Market','Collectors','Wealth'],'New Release':['New Release','2026','Limited Edition','Brand','Drops'],'Limited Edition':['Limited Edition','Rare','Investment','Collectors','Exclusive'],'Cover Story':['Cover Story','Feature','Rolex','Heritage','Swiss Watchmaking']};
 const tags=tagMap[storyCategory]||['Luxury Watches','Stories To Watch','2026','Horology','Editorial'];
 document.getElementById('articleTags').innerHTML=tags.map(t=>`<span class="tag">${t}</span>`).join('');
 
@@ -287,17 +806,13 @@ async function generateArticle() {
         messages:[{
           role:"user",
           content:`Search for current information about: "${storyTitle}" in luxury watches.
-
 Write a premium editorial article for Stories To Watch magazine about: "${storyTitle}" (${storyCategory}). Context: ${storyExcerpt}. Source: ${storySource}.
-
 Return ONLY valid JSON (no markdown, no backticks):
 {"paragraphs":["p1","p2","p3","p4","p5"],"pullQuote":"compelling 20-30 word quote","section2Title":"SECOND HEADING","paragraphs2":["p1","p2"],"section3Title":"THIRD HEADING","paragraphs3":["p1","p2"]}
-
 Write in luxury editorial tone like Revolution Magazine. 60-100 words per paragraph. Cite ${storySource} naturally.`
         }]
       })
     });
-
     const data=await res.json();
     const text=data.content.filter(b=>b.type==='text').map(b=>b.text).join('');
     let art;
@@ -305,8 +820,7 @@ Write in luxury editorial tone like Revolution Magazine. 60-100 words per paragr
       const clean=text.replace(/```json|```/g,'').trim();
       const m=clean.match(/\{[\s\S]*\}/);
       art=JSON.parse(m?m[0]:clean);
-    } catch(e) { throw new Error('parse'); }
-
+    } catch(e){throw new Error('parse');}
     document.getElementById('articleMain').innerHTML=`
       ${art.paragraphs.map(p=>`<p>${p}</p>`).join('')}
       <div class="pull-quote"><p>${art.pullQuote}</p></div>
@@ -316,14 +830,13 @@ Write in luxury editorial tone like Revolution Magazine. 60-100 words per paragr
       ${art.paragraphs3.map(p=>`<p>${p} <a href="#" class="source-cite">${storySource}</a></p>`).join('')}
     `;
     showArticle();
-
   } catch(e) {
     document.getElementById('articleMain').innerHTML=`
-      <p>${storyExcerpt} This story represents one of the most compelling developments in luxury horology this season, drawing attention from collectors and enthusiasts worldwide.</p>
-      <p>The luxury watch market, valued at $62 billion in 2026 and projected to reach $119 billion by 2034, continues to reward stories built on genuine craft and emotional resonance.</p>
+      <p>${storyExcerpt} This represents one of the most compelling developments in luxury horology this season, drawing attention from collectors and enthusiasts worldwide.</p>
+      <p>The luxury watch market, valued at $62 billion in 2026 and projected to reach $119 billion by 2034, continues to reward stories built on genuine craft and emotional resonance. In this context, the significance of this development cannot be overstated.</p>
       <div class="pull-quote"><p>"In 2026, luxury is less about visibility — and more about credibility. The pieces that endure are those built on substance."</p></div>
       <h2>THE COLLECTOR'S PERSPECTIVE</h2>
-      <p>For seasoned collectors, developments like this reinforce the enduring appeal of mechanical watchmaking as both an art form and a store of value.</p>
+      <p>For seasoned collectors, developments like this reinforce the enduring appeal of mechanical watchmaking as both an art form and a store of value. The secondary market continues to reward patience and knowledge.</p>
       <h2>WHAT THIS MEANS FOR THE MARKET</h2>
       <p>As the industry navigates economic uncertainty, stories like this remind us why the finest watches transcend market cycles. <a href="#" class="source-cite">${storySource}</a></p>
     `;
