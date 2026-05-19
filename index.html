@@ -983,6 +983,13 @@
     .quote-section { padding: 60px 16px; }
     footer { padding: 48px 16px 32px; }
   }
+
+  /* Fix inline-styled sections on mobile */
+  @media (max-width: 900px) {
+    #auctions, #investing { padding: 60px 20px !important; }
+    #about { padding: 60px 20px !important; }
+    #auctions .news-grid, #investing .news-grid { grid-template-columns: 1fr !important; }
+  }
 </style>
 </head>
 <body>
@@ -1414,7 +1421,7 @@
   <div style="max-width:1400px; margin:0 auto;">
     <p class="section-label">Auction Watch</p>
     <h2 class="section-title">Under the Hammer</h2>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--surface2);">
+    <div class="news-grid">
       <a href="article.html?title=Sotheby%27s%20Geneva%3A%20Record%20Season%20for%20Vintage%20Patek&category=Auction&excerpt=Geneva%27s%20spring%20sale%20delivered%20record%20prices%20for%20vintage%20Patek%20Philippe%2C%20with%20a%201518%20in%20steel%20achieving%20CHF%2011.1%20million.&source=Phillips%20Auction%20House" class="news-card" style="text-decoration:none;display:block;">
         <p class="news-card-tag">Auction</p>
         <h3>Sotheby's Geneva: Record Season for Vintage Patek</h3>
@@ -1445,7 +1452,7 @@
   <div style="max-width:1400px; margin:0 auto;">
     <p class="section-label">Investment Guide</p>
     <h2 class="section-title">Watches as Wealth</h2>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--surface2);">
+    <div class="news-grid">
       <a href="article.html?title=The%20Five%20Watches%20That%20Always%20Appreciate&category=Investing&excerpt=From%20the%20Rolex%20Daytona%20to%20the%20Patek%20Philippe%205711%2C%20these%20are%20the%20references%20that%20have%20consistently%20outperformed%20the%20market.&source=WatchCharts" class="news-card" style="text-decoration:none;display:block;">
         <p class="news-card-tag">Investing</p>
         <h3>The Five Watches That Always Appreciate</h3>
@@ -1475,31 +1482,31 @@
 <section id="about" style="padding:120px 60px; max-width:100%; background:var(--surface);">
   <div style="max-width:900px; margin:0 auto; text-align:center;">
     <p class="section-label" style="justify-content:center;">About Stories To Watch</p>
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,56px); font-weight:300; color:var(--white); line-height:1.2; margin-bottom:32px;">
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,56px); font-weight:300; color:var(--white); line-height:1.2; margin-bottom:32px;">
       The world's finest independent voice in <em style="font-style:italic; color:var(--gold-light);">luxury horology</em>
     </h2>
-    <p style="font-family:'Cormorant Garamond',serif; font-size:20px; line-height:1.8; color:var(--text-dim); margin-bottom:40px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2vw,20px); line-height:1.8; color:var(--text-dim); margin-bottom:40px;">
       Stories To Watch was built on a single belief — that the finest watches deserve the finest editorial. We source stories from the world's most respected horological publications, auction houses and maisons, and deliver them with the depth, context and craft that collectors and enthusiasts demand.
     </p>
-    <p style="font-family:'Cormorant Garamond',serif; font-size:20px; line-height:1.8; color:var(--text-dim); margin-bottom:60px;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2vw,20px); line-height:1.8; color:var(--text-dim); margin-bottom:60px;">
       For advertising, partnerships and press enquiries, contact us at <a href="mailto:bringlifetobrand@gmail.com" style="color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-dim);">bringlifetobrand@gmail.com</a> or download our <a href="mediakit.html" style="color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-dim);">Advertiser Media Kit →</a>
     </p>
-    <div style="display:flex; justify-content:center; gap:60px; padding-top:40px; border-top:1px solid rgba(201,168,76,0.15);">
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; padding-top:40px; border-top:1px solid rgba(201,168,76,0.15);">
       <div>
-        <p style="font-family:'Cinzel',serif; font-size:32px; color:var(--gold);">$62B</p>
-        <p style="font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase;">Market Covered</p>
+        <p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">$62B</p>
+        <p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; line-height:1.4;">Market Covered</p>
       </div>
       <div>
-        <p style="font-family:'Cinzel',serif; font-size:32px; color:var(--gold);">147</p>
-        <p style="font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase;">Maisons Tracked</p>
+        <p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">147</p>
+        <p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; line-height:1.4;">Maisons Tracked</p>
       </div>
       <div>
-        <p style="font-family:'Cinzel',serif; font-size:32px; color:var(--gold);">24/7</p>
-        <p style="font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase;">Live Editorial</p>
+        <p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">24/7</p>
+        <p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; line-height:1.4;">Live Editorial</p>
       </div>
       <div>
-        <p style="font-family:'Cinzel',serif; font-size:32px; color:var(--gold);">EST.</p>
-        <p style="font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase;">2026 · Hyderabad</p>
+        <p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">EST.</p>
+        <p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; line-height:1.4;">2026 · India</p>
       </div>
     </div>
   </div>
