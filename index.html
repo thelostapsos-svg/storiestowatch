@@ -878,25 +878,107 @@
     margin: 0;
   }
 
-  /* RESPONSIVE */
+  /* ============================================
+     COMPREHENSIVE MOBILE RESPONSIVE
+     ============================================ */
+
+  /* Tablet */
+  @media (max-width: 1100px) {
+    .featured-grid { grid-template-columns: 1fr; gap: 40px; }
+    .news-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    section { padding: 80px 40px; }
+    .featured-inner { padding: 80px 40px; }
+    .hero { padding: 0 40px; }
+    .side-dial { display: none; }
+  }
+
+  /* Mobile landscape / large phone */
   @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
+    .cursor, .cursor-ring { display: none; }
+    body { cursor: auto; }
+    a { cursor: pointer; }
+
+    nav { padding: 16px 20px; }
     .nav-links { display: none; }
-    section { padding: 80px 24px; }
+    .nav-logo { font-size: 11px; letter-spacing: 0.25em; }
+    .nav-time { font-size: 9px; }
+    .side-dial { display: none; }
+
+    /* Hero — stack watch below text on mobile */
     .hero {
       grid-template-columns: 1fr;
-      padding: 100px 24px 40px;
-      text-align: center;
+      padding: 90px 20px 40px;
       height: auto;
+      min-height: 100vh;
+      text-align: center;
+      row-gap: 0;
     }
-    .hero-left { padding-right: 0; align-items: center; }
+    .hero-left { padding-right: 0; align-items: center; order: 1; }
+    .hero-right { height: auto; padding: 20px 0 40px; order: 2; justify-content: center; }
     .hero-content { text-align: center; }
-    .hero-right { height: auto; padding: 40px 0; }
-    .featured-grid { grid-template-columns: 1fr; }
-    .news-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .hero-title { font-size: 42px; }
-    .watch-container { width: 180px; height: 440px; }
+    .hero-vertical-line { display: none; }
+    .hero-divider { margin: 20px auto; }
+    .hero-stats { justify-content: center; flex-wrap: wrap; gap: 24px; }
+    .hero-title { font-size: clamp(36px, 10vw, 60px); }
+    .hero-tagline { font-size: 18px; }
+    .hero-eyebrow { font-size: 8px; }
+    .watch-container { width: 200px; height: 480px; }
+    .scroll-indicator { left: 50%; transform: translateX(-50%); bottom: 20px; }
+
+    /* Ticker */
+    .ticker-item { font-size: 8px; padding: 0 24px; }
+
+    /* Featured */
+    .featured-inner { padding: 60px 20px; }
+    .featured-grid { grid-template-columns: 1fr; gap: 32px; }
+    .featured-image { aspect-ratio: 16/9; }
+    .featured-text h2 { font-size: 28px; }
+    .featured-text p { font-size: 16px; }
+
+    /* Sections */
+    section { padding: 60px 20px; }
+
+    /* News grid — single column on mobile */
+    .news-grid { grid-template-columns: 1fr; gap: 2px; }
+    .news-card { padding: 28px 20px; }
+    .news-card h3 { font-size: 20px; }
+    .news-card p { font-size: 13px; }
+    .news-card-number { font-size: 28px; top: 14px; right: 16px; }
+
+    /* Section titles */
+    .section-title { font-size: clamp(24px, 7vw, 40px); margin-bottom: 40px; }
+
+    /* Ad placement */
+    .ad-placement { padding: 40px 20px; margin: 40px 0; }
+
+    /* Quote section */
+    .quote-section { padding: 80px 20px; }
+    .quote-text { font-size: clamp(22px, 5vw, 36px); }
+
+    /* Brands marquee */
+    .brand-name { font-size: 10px; padding: 0 32px; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    footer { padding: 60px 20px 40px; }
+    .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .footer-brand { font-size: 16px; }
+  }
+
+  /* Small mobile */
+  @media (max-width: 480px) {
+    .hero-title { font-size: 36px; }
+    .hero-stats { gap: 20px; }
+    .hero-stat-num { font-size: 18px; }
+    .watch-container { width: 170px; height: 410px; }
+    .nav-logo { font-size: 10px; letter-spacing: 0.2em; }
+    .featured-text h2 { font-size: 24px; }
+    .news-card { padding: 24px 16px; }
+    section { padding: 48px 16px; }
+    .featured-inner { padding: 48px 16px; }
+    .quote-section { padding: 60px 16px; }
+    footer { padding: 48px 16px 32px; }
   }
 </style>
 </head>
