@@ -510,6 +510,7 @@
     gap: 2px;
     background: var(--surface2);
     margin-top: 0;
+    align-items: stretch;
   }
 
   .news-card {
@@ -522,6 +523,13 @@
     display: block;
     color: var(--text);
     text-decoration: none;
+    min-height: 200px;
+  }
+
+  /* Ensure anchor cards behave as grid items */
+  .news-grid > a.news-card {
+    display: block;
+    width: 100%;
   }
 
   .news-card::before {
@@ -1795,7 +1803,7 @@ async function fetchWatchNews() {
     }
 
     grid.innerHTML = articles.map((a, i) => `
-      <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}" style="text-decoration:none; display:block;">
+      <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}">
         <div class="gold-accent-left"></div>
         <span class="news-card-number">0${i+1}</span>
         <div class="news-card-visual"></div>
@@ -1810,8 +1818,33 @@ async function fetchWatchNews() {
       </a>
     `).join('');
 
+    // Animate cards in after render
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.news-card').forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.6s ease ${i * 0.08}s, transform 0.6s ease ${i * 0.08}s, background 0.4s`;
+        requestAnimationFrame(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        });
+      });
+    });
+
   } catch(err) {
     grid.innerHTML = fallbackArticles();
+    // Animate fallback cards
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.news-card').forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.6s ease ${i * 0.08}s, transform 0.6s ease ${i * 0.08}s, background 0.4s`;
+        requestAnimationFrame(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        });
+      });
+    });
   }
 }
 
@@ -1837,8 +1870,8 @@ function fallbackArticles() {
     { category:"Innovation", title:"Grand Seiko Introduces New Micro-Artist Studio Dial", excerpt:"The Japanese manufacturer unveiled a breathtaking new dial crafted by its Micro Artist Studio, blurring the line between watchmaking and visual art. Only 30 pieces will reach collectors worldwide.", source:"WatchTime", brand:"Grand Seiko" }
   ];
 
-  return articles.map((a, i) => `
-    <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}" style="text-decoration:none; display:block;">
+  const html = articles.map((a, i) => `
+    <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}">
       <div class="gold-accent-left"></div>
       <span class="news-card-number">0${i+1}</span>
       <div class="news-card-visual"></div>
@@ -1848,10 +1881,12 @@ function fallbackArticles() {
       <p class="news-source">${escHtml(a.source)}</p>
       <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08); overflow:hidden;">
         <span class="news-card-link">Read Story</span>
-        ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:5px;flex-shrink:0;white-space:nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ ${escHtml(a.brand)}</a>` : ''}
+        ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:5px;flex-shrink:0;white-space:nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ ${escHtml(a.brand)}</a>` : ''}
       </div>
     </a>
   `).join('');
+
+  return html;
 }
 
 // Init on load
@@ -1871,7 +1906,8 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.news-card, .featured-text, .featured-image').forEach(el => {
+// Only observe static elements — NOT news-card (those are JS-generated)
+document.querySelectorAll('.featured-text, .featured-image').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
   el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
