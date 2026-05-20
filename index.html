@@ -564,6 +564,77 @@
 
   .news-card-link::after { content: '→'; font-size: 12px; }
 
+  /* SKELETON LOADING */
+  .news-skeleton {
+    background: var(--deep);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .news-skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.06) 50%, transparent 100%);
+    animation: skeletonShimmer 1.8s ease-in-out infinite;
+  }
+
+  @keyframes skeletonShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .skeleton-tag {
+    height: 10px;
+    width: 80px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  .skeleton-title {
+    height: 20px;
+    width: 90%;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+
+  .skeleton-title-2 {
+    height: 20px;
+    width: 70%;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .skeleton-line {
+    height: 12px;
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+
+  .skeleton-line-short {
+    height: 12px;
+    width: 60%;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  .skeleton-footer {
+    height: 10px;
+    width: 80px;
+    background: rgba(201,168,76,0.08);
+    border-radius: 2px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+
   .news-card-footer {
     display: flex;
     align-items: center;
@@ -583,6 +654,77 @@
   }
 
   .news-find-link a:hover { color: var(--gold); }
+
+  /* SKELETON LOADING */
+  .news-skeleton {
+    background: var(--deep);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .news-skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.06) 50%, transparent 100%);
+    animation: skeletonShimmer 1.8s ease-in-out infinite;
+  }
+
+  @keyframes skeletonShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .skeleton-tag {
+    height: 10px;
+    width: 80px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  .skeleton-title {
+    height: 20px;
+    width: 90%;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+
+  .skeleton-title-2 {
+    height: 20px;
+    width: 70%;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .skeleton-line {
+    height: 12px;
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+
+  .skeleton-line-short {
+    height: 12px;
+    width: 60%;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  .skeleton-footer {
+    height: 10px;
+    width: 80px;
+    background: rgba(201,168,76,0.08);
+    border-radius: 2px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
 
   .news-card-footer {
     display: flex;
@@ -1079,6 +1221,13 @@
     footer { padding: 48px 16px 32px; }
   }
 
+  /* Mobile skeleton sizing */
+  @media (max-width: 900px) {
+    .news-skeleton { padding: 28px 20px; }
+    .skeleton-title { width: 95%; }
+    .skeleton-title-2 { width: 80%; }
+  }
+
   /* Fix inline-styled sections on mobile */
   @media (max-width: 900px) {
     #auctions, #investing { padding: 60px 20px !important; }
@@ -1524,12 +1673,66 @@
     </div>
 
     <div class="news-grid" id="newsGrid">
-      <a class="news-card" id="card0" href="article.html"><div class="gold-accent-left"></div><span class="news-card-number">01</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat0">Loading</p><h3 id="title0">Sourcing latest stories...</h3><p id="excerpt0">Connecting to global correspondents.</p><p class="news-source" id="source0"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find0"></span></div></a>
-      <a class="news-card" id="card1" href="article.html"><div class="gold-accent-left"></div><span class="news-card-number">02</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat1">Loading</p><h3 id="title1">Sourcing latest stories...</h3><p id="excerpt1">Connecting to global correspondents.</p><p class="news-source" id="source1"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find1"></span></div></a>
-      <a class="news-card" id="card2" href="article.html"><div class="gold-accent-left"></div><span class="news-card-number">03</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat2">Loading</p><h3 id="title2">Sourcing latest stories...</h3><p id="excerpt2">Connecting to global correspondents.</p><p class="news-source" id="source2"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find2"></span></div></a>
-      <a class="news-card" id="card3" href="article.html"><div class="gold-accent-left"></div><span class="news-card-number">04</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat3">Loading</p><h3 id="title3">Sourcing latest stories...</h3><p id="excerpt3">Connecting to global correspondents.</p><p class="news-source" id="source3"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find3"></span></div></a>
-      <a class="news-card" id="card4" href="article.html"><div class="gold-accent-left"></div><span class="news-card-number">05</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat4">Loading</p><h3 id="title4">Sourcing latest stories...</h3><p id="excerpt4">Connecting to global correspondents.</p><p class="news-source" id="source4"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find4"></span></div></a>
-      <a class="news-card" id="card5" href="article.html"><div class="gold-accent-left"></div><span class="news-card-number">06</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat5">Loading</p><h3 id="title5">Sourcing latest stories...</h3><p id="excerpt5">Connecting to global correspondents.</p><p class="news-source" id="source5"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find5"></span></div></a>
+      <div class="news-skeleton" id="skeleton0">
+        <div class="skeleton-tag"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-title-2"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line-short"></div>
+        <div class="skeleton-footer"></div>
+      </div>
+      <a class="news-card" id="card0" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">01</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat0"></p><h3 id="title0"></h3><p id="excerpt0"></p><p class="news-source" id="source0"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find0"></span></div></a>
+      <div class="news-skeleton" id="skeleton1">
+        <div class="skeleton-tag"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-title-2"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line-short"></div>
+        <div class="skeleton-footer"></div>
+      </div>
+      <a class="news-card" id="card1" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">02</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat1"></p><h3 id="title1"></h3><p id="excerpt1"></p><p class="news-source" id="source1"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find1"></span></div></a>
+      <div class="news-skeleton" id="skeleton2">
+        <div class="skeleton-tag"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-title-2"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line-short"></div>
+        <div class="skeleton-footer"></div>
+      </div>
+      <a class="news-card" id="card2" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">03</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat2"></p><h3 id="title2"></h3><p id="excerpt2"></p><p class="news-source" id="source2"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find2"></span></div></a>
+      <div class="news-skeleton" id="skeleton3">
+        <div class="skeleton-tag"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-title-2"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line-short"></div>
+        <div class="skeleton-footer"></div>
+      </div>
+      <a class="news-card" id="card3" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">04</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat3"></p><h3 id="title3"></h3><p id="excerpt3"></p><p class="news-source" id="source3"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find3"></span></div></a>
+      <div class="news-skeleton" id="skeleton4">
+        <div class="skeleton-tag"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-title-2"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line-short"></div>
+        <div class="skeleton-footer"></div>
+      </div>
+      <a class="news-card" id="card4" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">05</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat4"></p><h3 id="title4"></h3><p id="excerpt4"></p><p class="news-source" id="source4"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find4"></span></div></a>
+      <div class="news-skeleton" id="skeleton5">
+        <div class="skeleton-tag"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-title-2"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line-short"></div>
+        <div class="skeleton-footer"></div>
+      </div>
+      <a class="news-card" id="card5" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">06</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat5"></p><h3 id="title5"></h3><p id="excerpt5"></p><p class="news-source" id="source5"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find5"></span></div></a>
     </div></section>
 
 <!-- QUOTE -->
@@ -1817,6 +2020,7 @@ function updateCards(articles) {
 
   data.forEach((a, i) => {
     const card = document.getElementById('card' + i);
+    const skeleton = document.getElementById('skeleton' + i);
     if (!card) return;
 
     // Update href
@@ -1837,6 +2041,22 @@ function updateCards(articles) {
       findEl.innerHTML = '<a href="watchfinder.html?search=' + encodeURIComponent(a.brand) +
         '" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;">⌕ ' +
         a.brand + '</a>';
+    }
+
+    // Hide skeleton, reveal card with smooth fade
+    if (skeleton) {
+      skeleton.style.transition = 'opacity 0.4s ease';
+      skeleton.style.opacity = '0';
+      setTimeout(() => {
+        skeleton.style.display = 'none';
+        card.style.display = 'block';
+        card.style.opacity = '0';
+        card.style.transition = 'opacity 0.5s ease ' + (i * 0.08) + 's';
+        requestAnimationFrame(() => { card.style.opacity = '1'; });
+      }, 400);
+    } else {
+      card.style.display = 'block';
+      card.style.opacity = '1';
     }
   });
 }
