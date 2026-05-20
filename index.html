@@ -564,6 +564,16 @@
 
   .news-card-link::after { content: '→'; font-size: 12px; }
 
+  .news-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+    overflow: hidden;
+  }
+
   .news-card-tag {
     font-size: 8px;
     letter-spacing: 0.3em;
@@ -1802,21 +1812,22 @@ async function fetchWatchNews() {
       throw new Error('Parse failed');
     }
 
-    grid.innerHTML = articles.map((a, i) => `
-      <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}">
-        <div class="gold-accent-left"></div>
-        <span class="news-card-number">0${i+1}</span>
-        <div class="news-card-visual"></div>
-        <p class="news-card-tag">${escHtml(a.category)}</p>
-        <h3>${escHtml(a.title)}</h3>
-        <p>${escHtml(a.excerpt)}</p>
-        <p class="news-source">${escHtml(a.source)}</p>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08); overflow:hidden;">
-          <span class="news-card-link">Read Story</span>
-          ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:5px;flex-shrink:0;white-space:nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ ${escHtml(a.brand)}</a>` : ''}
-        </div>
-      </a>
-    `).join('');
+    grid.innerHTML = articles.map((a, i) => {
+      const findLink = a.brand ? '<a href="watchfinder.html?search=' + encodeURIComponent(a.brand) + '" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;flex-shrink:0;white-space:nowrap;">⌕ ' + escHtml(a.brand) + '</a>' : '';
+      return '<a class="news-card" href="article.html?title=' + encodeURIComponent(a.title) + '&category=' + encodeURIComponent(a.category) + '&excerpt=' + encodeURIComponent(a.excerpt) + '&source=' + encodeURIComponent(a.source) + '">' +
+        '<div class="gold-accent-left"></div>' +
+        '<span class="news-card-number">0' + (i+1) + '</span>' +
+        '<div class="news-card-visual"></div>' +
+        '<p class="news-card-tag">' + escHtml(a.category) + '</p>' +
+        '<h3>' + escHtml(a.title) + '</h3>' +
+        '<p>' + escHtml(a.excerpt) + '</p>' +
+        '<p class="news-source">' + escHtml(a.source) + '</p>' +
+        '<div class="news-card-footer">' +
+          '<span class="news-card-link">Read Story</span>' +
+          findLink +
+        '</div>' +
+      '</a>';
+    }).join('');
 
     // Simple fade in for all cards
     setTimeout(() => {
@@ -1862,21 +1873,22 @@ function fallbackArticles() {
     { category:"Innovation", title:"Grand Seiko Introduces New Micro-Artist Studio Dial", excerpt:"The Japanese manufacturer unveiled a breathtaking new dial crafted by its Micro Artist Studio, blurring the line between watchmaking and visual art. Only 30 pieces will reach collectors worldwide.", source:"WatchTime", brand:"Grand Seiko" }
   ];
 
-  const html = articles.map((a, i) => `
-    <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}">
-      <div class="gold-accent-left"></div>
-      <span class="news-card-number">0${i+1}</span>
-      <div class="news-card-visual"></div>
-      <p class="news-card-tag">${escHtml(a.category)}</p>
-      <h3>${escHtml(a.title)}</h3>
-      <p>${escHtml(a.excerpt)}</p>
-      <p class="news-source">${escHtml(a.source)}</p>
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08); overflow:hidden;">
-        <span class="news-card-link">Read Story</span>
-        ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:5px;flex-shrink:0;white-space:nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ ${escHtml(a.brand)}</a>` : ''}
-      </div>
-    </a>
-  `).join('');
+  const html = articles.map((a, i) => {
+    const findLink = a.brand ? '<a href="watchfinder.html?search=' + encodeURIComponent(a.brand) + '" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;flex-shrink:0;white-space:nowrap;">⌕ ' + escHtml(a.brand) + '</a>' : '';
+    return '<a class="news-card" href="article.html?title=' + encodeURIComponent(a.title) + '&category=' + encodeURIComponent(a.category) + '&excerpt=' + encodeURIComponent(a.excerpt) + '&source=' + encodeURIComponent(a.source) + '">' +
+      '<div class="gold-accent-left"></div>' +
+      '<span class="news-card-number">0' + (i+1) + '</span>' +
+      '<div class="news-card-visual"></div>' +
+      '<p class="news-card-tag">' + escHtml(a.category) + '</p>' +
+      '<h3>' + escHtml(a.title) + '</h3>' +
+      '<p>' + escHtml(a.excerpt) + '</p>' +
+      '<p class="news-source">' + escHtml(a.source) + '</p>' +
+      '<div class="news-card-footer">' +
+        '<span class="news-card-link">Read Story</span>' +
+        findLink +
+      '</div>' +
+    '</a>';
+  }).join('');
 
   return html;
 }
