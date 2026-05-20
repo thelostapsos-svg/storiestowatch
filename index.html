@@ -519,6 +519,9 @@
     overflow: hidden;
     transition: background 0.4s;
     cursor: none;
+    display: block;
+    color: var(--text);
+    text-decoration: none;
   }
 
   .news-card::before {
@@ -1800,9 +1803,9 @@ async function fetchWatchNews() {
         <h3>${escHtml(a.title)}</h3>
         <p>${escHtml(a.excerpt)}</p>
         <p class="news-source">${escHtml(a.source)}</p>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08); overflow:hidden;">
           <span class="news-card-link">Read Story</span>
-          ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.25em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:6px;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ Find ${escHtml(a.brand)}</a>` : ''}
+          ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:5px;flex-shrink:0;white-space:nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ ${escHtml(a.brand)}</a>` : ''}
         </div>
       </a>
     `).join('');
@@ -1843,9 +1846,9 @@ function fallbackArticles() {
       <h3>${escHtml(a.title)}</h3>
       <p>${escHtml(a.excerpt)}</p>
       <p class="news-source">${escHtml(a.source)}</p>
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08);">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08); overflow:hidden;">
         <span class="news-card-link">Read Story</span>
-        ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.25em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:6px;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ Find ${escHtml(a.brand)}</a>` : ''}
+        ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:5px;flex-shrink:0;white-space:nowrap;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ ${escHtml(a.brand)}</a>` : ''}
       </div>
     </a>
   `).join('');
