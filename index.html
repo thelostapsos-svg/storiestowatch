@@ -1597,7 +1597,7 @@
       </div>
       <div>
         <p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">EST.</p>
-        <p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; line-height:1.4;">2026 · India</p>
+        <p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; line-height:1.4;">2026</p>
       </div>
     </div>
   </div>
@@ -1818,33 +1818,25 @@ async function fetchWatchNews() {
       </a>
     `).join('');
 
-    // Animate cards in after render
-    requestAnimationFrame(() => {
+    // Simple fade in for all cards
+    setTimeout(() => {
       document.querySelectorAll('.news-card').forEach((card, i) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = `opacity 0.6s ease ${i * 0.08}s, transform 0.6s ease ${i * 0.08}s, background 0.4s`;
-        requestAnimationFrame(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        });
+        card.style.opacity = '1';
+        card.style.transform = 'none';
+        card.style.transition = 'background 0.4s';
       });
-    });
+    }, 100);
 
   } catch(err) {
     grid.innerHTML = fallbackArticles();
-    // Animate fallback cards
-    requestAnimationFrame(() => {
-      document.querySelectorAll('.news-card').forEach((card, i) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = `opacity 0.6s ease ${i * 0.08}s, transform 0.6s ease ${i * 0.08}s, background 0.4s`;
-        requestAnimationFrame(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        });
+    // Simple show for fallback cards
+    setTimeout(() => {
+      document.querySelectorAll('.news-card').forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'none';
+        card.style.transition = 'background 0.4s';
       });
-    });
+    }, 100);
   }
 }
 
