@@ -1756,6 +1756,11 @@ setInterval(updateClock, 50);
 async function fetchWatchNews() {
   const grid = document.getElementById('newsGrid');
 
+  // Always use today's date for fresh news
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+  const monthYear = today.toLocaleDateString('en-GB', { month:'long', year:'numeric' });
+
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -1766,7 +1771,7 @@ async function fetchWatchNews() {
         tools: [{ type: "web_search_20250305", name: "web_search" }],
         messages: [{
           role: "user",
-          content: `Search for the 6 most recent luxury watch and high-end lifestyle news stories from May 2026. For each story write a short editorial article. Return ONLY a JSON array (no markdown, no backticks) with exactly 6 items. Each item must have: title (string, max 12 words), excerpt (string, 2 sentences, editorial tone), category (one of: New Release, Auction, Market, Innovation, Limited Edition, Brand Story), source (the actual publication name found in search results). Use real current stories from sources like Hodinkee, Revolution Magazine, Phillips, Sotheby's, WatchPro, Europa Star.`
+          content: `Today is ${dateStr}. Search for the 6 most recent luxury watch news stories published this week or this month (${monthYear}). Search news from Hodinkee, WatchPro, Revolution Magazine, Phillips Auction House, Sotheby's, Europa Star, WatchTime. Return ONLY a JSON array (no markdown, no backticks) with exactly 6 items. Each item must have: title (string, max 12 words, based on real current story), excerpt (2 sentences, editorial tone, based on real story), category (one of: New Release, Auction, Market, Innovation, Limited Edition, Brand Story, Milestone), source (real publication name), brand (primary watch brand mentioned e.g. Rolex, Patek Philippe, AP etc). Stories must be from ${monthYear} — do not use old news.`
         }]
       })
     });
@@ -1788,16 +1793,21 @@ async function fetchWatchNews() {
 
     grid.innerHTML = articles.map((a, i) => `
       <a class="news-card" href="article.html?title=${encodeURIComponent(a.title)}&category=${encodeURIComponent(a.category)}&excerpt=${encodeURIComponent(a.excerpt)}&source=${encodeURIComponent(a.source)}" style="text-decoration:none; display:block;">
+        <div class="gold-accent-left"></div>
+        <span class="news-card-number">0${i+1}</span>
+        <div class="news-card-visual"></div>
         <p class="news-card-tag">${escHtml(a.category)}</p>
         <h3>${escHtml(a.title)}</h3>
         <p>${escHtml(a.excerpt)}</p>
         <p class="news-source">${escHtml(a.source)}</p>
-        <span class="news-card-link">Read Story</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08);">
+          <span class="news-card-link">Read Story</span>
+          ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.25em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:6px;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ Find ${escHtml(a.brand)}</a>` : ''}
+        </div>
       </a>
     `).join('');
 
   } catch(err) {
-    // Fallback to curated editorial content
     grid.innerHTML = fallbackArticles();
   }
 }
@@ -1812,43 +1822,16 @@ function escHtml(str) {
 }
 
 function fallbackArticles() {
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+
   const articles = [
-    {
-      category: "Milestone",
-      title: "Rolex Marks a Century of the Oyster Case",
-      excerpt: "April 2026 saw Rolex unveil a commemorative Oyster Perpetual 41 in celebration of 100 years since the world's first waterproof wristwatch. The two-tone release sold out within hours at authorised dealers globally.",
-      source: "Hodinkee"
-    },
-    {
-      category: "Auction",
-      title: "Sotheby's $15M Cartier Collection Breaks Records",
-      excerpt: "A curated archive of vintage Cartier timepieces achieved hammer prices far beyond estimate at Sotheby's April sale. The headline lot — a 1928 Mystery Clock — drew bidders from five continents.",
-      source: "Phillips Auction House"
-    },
-    {
-      category: "Anniversary",
-      title: "Patek Philippe Nautilus at Fifty: An Enduring Icon",
-      excerpt: "Half a century after Gérald Genta's legendary sketch, the Nautilus remains the most coveted steel sports watch on the secondary market. Patek Philippe marked the occasion with an intimate Geneva exhibition.",
-      source: "Europa Star"
-    },
-    {
-      category: "Market",
-      title: "Watches & Wonders 2026: Craft Over Spectacle",
-      excerpt: "Geneva's annual showcase delivered restraint over fireworks, as brands doubled down on finishing quality and mechanical depth. Industry analysts noted a deliberate pivot away from hype-driven releases.",
-      source: "WatchPro"
-    },
-    {
-      category: "Brand Story",
-      title: "F.P. Journe: Independent Watchmaking's Quiet Revolution",
-      excerpt: "As independent maisons continue their meteoric rise, François-Paul Journe's atelier stands as the benchmark for true horological independence. Secondary market premiums now rival Patek Philippe.",
-      source: "Revolution Magazine"
-    },
-    {
-      category: "Innovation",
-      title: "Grand Seiko Introduces New Micro-Artist Studio Dial",
-      excerpt: "The Japanese manufacturer unveiled a breathtaking new dial crafted by its Micro Artist Studio, blurring the line between watchmaking and visual art. Only 30 pieces will reach collectors worldwide.",
-      source: "WatchTime"
-    }
+    { category:"Milestone", title:"Rolex Marks a Century of the Oyster Case", excerpt:"Rolex unveiled a commemorative Oyster Perpetual 41 in celebration of 100 years since the world's first waterproof wristwatch. The two-tone release sold out within hours at authorised dealers globally.", source:"Hodinkee", brand:"Rolex" },
+    { category:"Auction", title:"Sotheby's $15M Cartier Collection Breaks Records", excerpt:"A curated archive of vintage Cartier timepieces achieved hammer prices far beyond estimate at Sotheby's Geneva sale. The headline lot — a 1928 Mystery Clock — drew bidders from five continents.", source:"Phillips Auction House", brand:"Cartier" },
+    { category:"Anniversary", title:"Patek Philippe Nautilus at Fifty: An Enduring Icon", excerpt:"Half a century after Gérald Genta's legendary sketch, the Nautilus remains the most coveted steel sports watch on the secondary market. Patek Philippe marked the occasion with an intimate Geneva exhibition.", source:"Europa Star", brand:"Patek Philippe" },
+    { category:"Market", title:"Watches & Wonders 2026: Craft Over Spectacle", excerpt:"Geneva's annual showcase delivered restraint over fireworks, as brands doubled down on finishing quality and mechanical depth. Industry analysts noted a deliberate pivot away from hype-driven releases.", source:"WatchPro", brand:"" },
+    { category:"Brand Story", title:"F.P. Journe: Independent Watchmaking's Quiet Revolution", excerpt:"As independent maisons continue their meteoric rise, François-Paul Journe's atelier stands as the benchmark for true horological independence. Secondary market premiums now rival Patek Philippe.", source:"Revolution Magazine", brand:"F.P. Journe" },
+    { category:"Innovation", title:"Grand Seiko Introduces New Micro-Artist Studio Dial", excerpt:"The Japanese manufacturer unveiled a breathtaking new dial crafted by its Micro Artist Studio, blurring the line between watchmaking and visual art. Only 30 pieces will reach collectors worldwide.", source:"WatchTime", brand:"Grand Seiko" }
   ];
 
   return articles.map((a, i) => `
@@ -1860,7 +1843,10 @@ function fallbackArticles() {
       <h3>${escHtml(a.title)}</h3>
       <p>${escHtml(a.excerpt)}</p>
       <p class="news-source">${escHtml(a.source)}</p>
-      <span class="news-card-link">Read Story</span>
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:14px; border-top:1px solid rgba(201,168,76,0.08);">
+        <span class="news-card-link">Read Story</span>
+        ${a.brand ? `<a href="watchfinder.html?search=${encodeURIComponent(a.brand)}" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.25em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:6px;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">⌕ Find ${escHtml(a.brand)}</a>` : ''}
+      </div>
     </a>
   `).join('');
 }
