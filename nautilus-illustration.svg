@@ -1,0 +1,134 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" width="800" height="500">
+  <defs>
+    <radialGradient id="dialGrad" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#1A2A3A"/>
+      <stop offset="100%" stop-color="#0A1520"/>
+    </radialGradient>
+    <linearGradient id="caseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A4A48"/>
+      <stop offset="40%" stop-color="#8A8A88"/>
+      <stop offset="60%" stop-color="#6A6A68"/>
+      <stop offset="100%" stop-color="#3A3A38"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B6914"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#050505"/>
+  
+  <!-- Noise texture overlay -->
+  <rect width="800" height="500" fill="url(#dialGrad)" opacity="0.3"/>
+  
+  <!-- Bracelet links - left -->
+  <g fill="url(#caseGrad)" stroke="#2A2A28" stroke-width="0.5">
+    <rect x="60" y="195" width="120" height="28" rx="4"/>
+    <rect x="65" y="200" width="110" height="18" rx="3" fill="#6A6A68"/>
+    <rect x="60" y="227" width="120" height="22" rx="4"/>
+    <rect x="65" y="232" width="110" height="12" rx="3" fill="#6A6A68"/>
+    <rect x="60" y="253" width="120" height="28" rx="4"/>
+    <rect x="65" y="258" width="110" height="18" rx="3" fill="#6A6A68"/>
+    <rect x="60" y="165" width="120" height="28" rx="4"/>
+    <rect x="65" y="170" width="110" height="18" rx="3" fill="#6A6A68"/>
+  </g>
+  
+  <!-- Bracelet links - right -->
+  <g fill="url(#caseGrad)" stroke="#2A2A28" stroke-width="0.5">
+    <rect x="620" y="195" width="120" height="28" rx="4"/>
+    <rect x="625" y="200" width="110" height="18" rx="3" fill="#6A6A68"/>
+    <rect x="620" y="227" width="120" height="22" rx="4"/>
+    <rect x="625" y="232" width="110" height="12" rx="3" fill="#6A6A68"/>
+    <rect x="620" y="253" width="120" height="28" rx="4"/>
+    <rect x="625" y="258" width="110" height="18" rx="3" fill="#6A6A68"/>
+    <rect x="620" y="165" width="120" height="28" rx="4"/>
+    <rect x="625" y="170" width="110" height="18" rx="3" fill="#6A6A68"/>
+  </g>
+  
+  <!-- Case - octagonal Nautilus shape -->
+  <polygon points="195,150 605,150 670,215 670,285 605,350 195,350 130,285 130,215" fill="url(#caseGrad)" stroke="#8A8A88" stroke-width="1.5"/>
+  
+  <!-- Bezel screws - Nautilus signature -->
+  <g fill="#5A5A58">
+    <circle cx="195" cy="155" r="7"/>
+    <circle cx="605" cy="155" r="7"/>
+    <circle cx="195" cy="345" r="7"/>
+    <circle cx="605" cy="345" r="7"/>
+    <circle cx="138" cy="220" r="6"/>
+    <circle cx="662" cy="220" r="6"/>
+    <circle cx="138" cy="280" r="6"/>
+    <circle cx="662" cy="280" r="6"/>
+  </g>
+  <g fill="#3A3A38">
+    <circle cx="195" cy="155" r="3"/>
+    <circle cx="605" cy="155" r="3"/>
+    <circle cx="195" cy="345" r="3"/>
+    <circle cx="605" cy="345" r="3"/>
+  </g>
+  
+  <!-- Inner bezel -->
+  <polygon points="210,165 590,165 648,218 648,282 590,335 210,335 152,282 152,218" fill="#151515" stroke="#C9A84C" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Dial -->
+  <polygon points="225,178 575,178 628,225 628,275 575,322 225,322 172,275 172,225" fill="url(#dialGrad)"/>
+  
+  <!-- Horizontal grooves - Nautilus signature dial -->
+  <g stroke="#1E3050" stroke-width="1.5" opacity="0.8">
+    <line x1="178" y1="200" x2="622" y2="200"/>
+    <line x1="172" y1="210" x2="628" y2="210"/>
+    <line x1="172" y1="220" x2="628" y2="220"/>
+    <line x1="172" y1="230" x2="628" y2="230"/>
+    <line x1="172" y1="240" x2="628" y2="240"/>
+    <line x1="172" y1="250" x2="628" y2="250"/>
+    <line x1="172" y1="260" x2="628" y2="260"/>
+    <line x1="172" y1="270" x2="628" y2="270"/>
+    <line x1="172" y1="280" x2="628" y2="280"/>
+    <line x1="172" y1="290" x2="628" y2="290"/>
+    <line x1="178" y1="300" x2="622" y2="300"/>
+  </g>
+  
+  <!-- Hour markers -->
+  <g fill="#C9A84C" filter="url(#glow)">
+    <!-- 12 -->
+    <rect x="393" y="188" width="14" height="22" rx="2"/>
+    <!-- 3 -->
+    <rect x="598" y="243" width="22" height="14" rx="2"/>
+    <!-- 6 -->
+    <rect x="393" y="290" width="14" height="22" rx="2"/>
+    <!-- 9 -->
+    <rect x="180" y="243" width="22" height="14" rx="2"/>
+  </g>
+  
+  <!-- Minute markers -->
+  <g fill="#8A8A88">
+    <rect x="335" y="190" width="8" height="14" rx="1"/>
+    <rect x="451" y="190" width="8" height="14" rx="1"/>
+    <rect x="280" y="205" width="8" height="14" rx="1" transform="rotate(-30 284 212)"/>
+  </g>
+  
+  <!-- Hands -->
+  <g filter="url(#glow)">
+    <!-- Hour hand -->
+    <rect x="396" y="210" width="8" height="55" rx="4" fill="#E8E4D9"/>
+    <!-- Minute hand -->
+    <rect x="398" y="195" width="4" height="75" rx="2" fill="#E8E4D9"/>
+    <!-- Seconds -->
+    <line x1="400" y1="175" x2="400" y2="260" stroke="#C9A84C" stroke-width="1.5"/>
+  </g>
+  <!-- Centre dot -->
+  <circle cx="400" cy="250" r="6" fill="#C9A84C" filter="url(#glow)"/>
+  <circle cx="400" cy="250" r="3" fill="#050505"/>
+  
+  <!-- Brand text -->
+  <text x="400" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#C9A84C" letter-spacing="3" opacity="0.8">PATEK PHILIPPE</text>
+  <text x="400" y="296" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8A8578" letter-spacing="2">GENEVE</text>
+  
+  <!-- Gold line decoration -->
+  <line x1="100" y1="470" x2="700" y2="470" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.4"/>
+  
+  <!-- Caption -->
+  <text x="400" y="490" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#8A8578" letter-spacing="4">NAUTILUS · REF. 5711</text>
+</svg>

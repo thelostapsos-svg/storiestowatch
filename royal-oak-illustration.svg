@@ -1,0 +1,117 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" width="800" height="500">
+  <defs>
+    <radialGradient id="roDialGrad" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#1A2030"/>
+      <stop offset="100%" stop-color="#0A1020"/>
+    </radialGradient>
+    <linearGradient id="roCaseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5A5A58"/>
+      <stop offset="40%" stop-color="#9A9A98"/>
+      <stop offset="60%" stop-color="#7A7A78"/>
+      <stop offset="100%" stop-color="#3A3A38"/>
+    </linearGradient>
+    <linearGradient id="roGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B6914"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <filter id="roGlow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  
+  <rect width="800" height="500" fill="#050505"/>
+  
+  <!-- Bracelet - left integrated -->
+  <g fill="url(#roCaseGrad)" stroke="#2A2A28" stroke-width="0.5">
+    <rect x="55" y="190" width="130" height="32" rx="0"/>
+    <rect x="60" y="193" width="120" height="26" rx="0" fill="#7A7A78"/>
+    <rect x="55" y="226" width="130" height="24" rx="0"/>
+    <rect x="60" y="229" width="120" height="18" rx="0" fill="#7A7A78"/>
+    <rect x="55" y="254" width="130" height="32" rx="0"/>
+    <rect x="60" y="257" width="120" height="26" rx="0" fill="#7A7A78"/>
+    <rect x="55" y="158" width="130" height="30" rx="0"/>
+    <rect x="60" y="161" width="120" height="24" rx="0" fill="#7A7A78"/>
+  </g>
+  
+  <!-- Bracelet - right integrated -->
+  <g fill="url(#roCaseGrad)" stroke="#2A2A28" stroke-width="0.5">
+    <rect x="615" y="190" width="130" height="32" rx="0"/>
+    <rect x="620" y="193" width="120" height="26" rx="0" fill="#7A7A78"/>
+    <rect x="615" y="226" width="130" height="24" rx="0"/>
+    <rect x="620" y="229" width="120" height="18" rx="0" fill="#7A7A78"/>
+    <rect x="615" y="254" width="130" height="32" rx="0"/>
+    <rect x="620" y="257" width="120" height="26" rx="0" fill="#7A7A78"/>
+    <rect x="615" y="158" width="130" height="30" rx="0"/>
+    <rect x="620" y="161" width="120" height="24" rx="0" fill="#7A7A78"/>
+  </g>
+  
+  <!-- Royal Oak octagonal case - sharp angles signature -->
+  <polygon points="205,145 595,145 660,210 660,290 595,355 205,355 140,290 140,210" fill="url(#roCaseGrad)" stroke="#9A9A98" stroke-width="2"/>
+  
+  <!-- 8 hexagonal screws - Royal Oak signature -->
+  <g>
+    <polygon points="205,150 220,143 235,150 235,165 220,172 205,165" fill="#6A6A68" stroke="#4A4A48" stroke-width="1"/>
+    <circle cx="220" cy="157" r="4" fill="#3A3A38"/>
+    <polygon points="565,143 580,150 580,165 565,172 550,165 550,150" fill="#6A6A68" stroke="#4A4A48" stroke-width="1"/>
+    <circle cx="565" cy="157" r="4" fill="#3A3A38"/>
+    <polygon points="205,335 220,328 235,335 235,350 220,357 205,350" fill="#6A6A68" stroke="#4A4A48" stroke-width="1"/>
+    <circle cx="220" cy="342" r="4" fill="#3A3A38"/>
+    <polygon points="565,328 580,335 580,350 565,357 550,350 550,335" fill="#6A6A68" stroke="#4A4A48" stroke-width="1"/>
+    <circle cx="565" cy="342" r="4" fill="#3A3A38"/>
+    <polygon points="140,213 152,207 164,213 164,227 152,233 140,227" fill="#6A6A68" stroke="#4A4A48" stroke-width="1"/>
+    <circle cx="152" cy="220" r="4" fill="#3A3A38"/>
+    <polygon points="636,207 648,213 648,227 636,233 624,227 624,213" fill="#6A6A68" stroke="#4A4A48" stroke-width="1"/>
+    <circle cx="636" cy="220" r="4" fill="#3A3A38"/>
+    <polygon points="140,273 152,267 164,273 164,287 152,293 140,287" fill="#6A6A68" stroke="#4A4A48" stroke-width="1"/>
+    <circle cx="152" cy="280" r="4" fill="#3A3A38"/>
+    <polygon points="636,267 648,273 648,287 636,293 624,287 624,273" fill="#6A6A68" stroke="#4A4A48" stroke-width="1"/>
+    <circle cx="636" cy="280" r="4" fill="#3A3A38"/>
+  </g>
+  
+  <!-- Inner bezel -->
+  <polygon points="220,162 580,162 638,218 638,282 580,338 220,338 162,282 162,218" fill="#0D1525" stroke="#C9A84C" stroke-width="0.5" opacity="0.7"/>
+  
+  <!-- Grande Tapisserie dial pattern -->
+  <polygon points="228,170 572,170 628,224 628,276 572,330 228,330 172,276 172,224" fill="#0A1020"/>
+  <g stroke="#1A2535" stroke-width="1" opacity="0.9">
+    <line x1="175" y1="215" x2="625" y2="215"/>
+    <line x1="173" y1="225" x2="627" y2="225"/>
+    <line x1="172" y1="235" x2="628" y2="235"/>
+    <line x1="172" y1="245" x2="628" y2="245"/>
+    <line x1="172" y1="255" x2="628" y2="255"/>
+    <line x1="172" y1="265" x2="628" y2="265"/>
+    <line x1="173" y1="275" x2="627" y2="275"/>
+    <line x1="175" y1="285" x2="625" y2="285"/>
+    <line x1="300" y1="172" x2="300" y2="328"/>
+    <line x1="340" y1="172" x2="340" y2="328"/>
+    <line x1="380" y1="172" x2="380" y2="328"/>
+    <line x1="420" y1="172" x2="420" y2="328"/>
+    <line x1="460" y1="172" x2="460" y2="328"/>
+    <line x1="500" y1="172" x2="500" y2="328"/>
+  </g>
+  
+  <!-- Hour markers - baton style -->
+  <g fill="#C9A84C" filter="url(#roGlow)">
+    <rect x="393" y="182" width="14" height="20" rx="2"/>
+    <rect x="604" y="242" width="20" height="14" rx="2"/>
+    <rect x="393" y="296" width="14" height="20" rx="2"/>
+    <rect x="176" y="242" width="20" height="14" rx="2"/>
+    <rect x="335" y="184" width="8" height="14" rx="1"/>
+    <rect x="449" y="184" width="8" height="14" rx="1"/>
+  </g>
+  
+  <!-- AP Royal Oak hands - dauphine style -->
+  <g filter="url(#roGlow)">
+    <polygon points="400,200 406,250 400,256 394,250" fill="#E8E4D9"/>
+    <polygon points="400,185 403,250 400,258 397,250" fill="#E8E4D9" opacity="0.7"/>
+    <line x1="400" y1="172" x2="400" y2="258" stroke="#C9A84C" stroke-width="1.5"/>
+  </g>
+  <circle cx="400" cy="250" r="6" fill="#C9A84C"/>
+  <circle cx="400" cy="250" r="3" fill="#0A1020"/>
+  
+  <!-- AP text -->
+  <text x="400" y="278" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#C9A84C" letter-spacing="2">AUDEMARS PIGUET</text>
+  <text x="400" y="293" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#8A8578" letter-spacing="3">LE BRASSUS</text>
+  
+  <line x1="100" y1="470" x2="700" y2="470" stroke="url(#roGold)" stroke-width="0.5" opacity="0.4"/>
+  <text x="400" y="490" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#8A8578" letter-spacing="4">ROYAL OAK · REF. 15202</text>
+</svg>
