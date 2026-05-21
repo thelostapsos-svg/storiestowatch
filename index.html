@@ -1236,6 +1236,97 @@
     #about { padding: 60px 20px !important; }
     #auctions .news-grid, #investing .news-grid { grid-template-columns: 1fr !important; }
   }
+
+  /* ============ MOBILE FIXES — GUIDES SECTION ============ */
+  @media (max-width: 768px) {
+    /* Guides section */
+    #guides > div { padding: 0 20px !important; }
+    #guides section > div { padding: 0 20px !important; }
+
+    /* All inline grids collapse to single column on mobile */
+    [style*="grid-template-columns:repeat(3"] { 
+      grid-template-columns: 1fr !important; 
+    }
+    [style*="grid-template-columns: repeat(3"] { 
+      grid-template-columns: 1fr !important; 
+    }
+
+    /* Article cards full width */
+    [style*="padding:36px 32px"] {
+      padding: 28px 20px !important;
+    }
+
+    /* Stat grids - 1 col on mobile */
+    [style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Watch card flex → column */
+    .watch-card {
+      flex-direction: column !important;
+    }
+
+    /* Total bar flex → column */
+    [style*="display:flex; align-items:center; justify-content:space-between"] {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    /* RS Chrono and WF CTA blocks */
+    .rs-block, .wf-cta {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    /* Illustration padding */
+    [style*="padding:0 80px"] {
+      padding: 0 20px !important;
+    }
+    [style*="padding:0 40px"] {
+      padding: 0 16px !important;
+    }
+
+    /* Demo grid in audience section */
+    .demo-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+
+    /* Milestone grid */
+    .milestone-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Revenue grid */
+    .revenue-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Demo grid single col on small phones */
+    .demo-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Revenue grid single col */
+    .revenue-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* All grids single col */
+    [style*="grid-template-columns:repeat(3"] { 
+      grid-template-columns: 1fr !important; 
+    }
+    [style*="grid-template-columns: repeat(3"] { 
+      grid-template-columns: 1fr !important; 
+    }
+    [style*="grid-template-columns:repeat(4"] { 
+      grid-template-columns: 1fr !important; 
+    }
+    [style*="grid-template-columns: repeat(4"] { 
+      grid-template-columns: 1fr !important; 
+    }
+  }
 </style>
 <!-- Vercel Speed Insights -->
 <script>
