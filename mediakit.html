@@ -194,6 +194,58 @@
     .funnel-step:nth-child(3) { margin:0 20px; }
     .funnel-step:nth-child(4) { margin:0 30px; }
   }
+
+  /* ===== MEDIA KIT MOBILE FIXES ===== */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr !important; }
+    .hero-right { display: none !important; }
+    .hero-left { padding: 48px 24px !important; }
+    .hero-stats { grid-template-columns: repeat(3,1fr) !important; }
+    .pillars-grid { grid-template-columns: 1fr !important; }
+    .audience-grid { grid-template-columns: 1fr !important; }
+    .demo-grid { grid-template-columns: 1fr 1fr !important; }
+    .placements-grid { grid-template-columns: 1fr !important; }
+    .placements-grid-2 { grid-template-columns: 1fr !important; }
+    .packages-grid { grid-template-columns: 1fr !important; }
+    .why-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .intent-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .section { padding: 60px 20px !important; }
+    .full-section .section-inner { padding: 0 20px !important; }
+    .contact-wrap { padding: 60px 20px !important; }
+    .quote-wrap { padding: 60px 20px !important; }
+    .kit-footer { padding: 24px 20px !important; flex-direction: column !important; align-items: flex-start !important; }
+    .pillar-card { padding: 32px 20px !important; }
+    .placement-card { padding: 32px 20px !important; }
+    .package-card { padding: 32px 20px !important; }
+    .audience-card { padding: 32px 20px !important; }
+
+    /* Adjacent luxury 4-col grid */
+    [style*="grid-template-columns:repeat(4,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+    [style*="grid-template-columns: repeat(4,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Adjacent luxury CTA */
+    [style*="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap"] {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    .funnel-step:nth-child(2) { margin: 0 10px !important; }
+    .funnel-step:nth-child(3) { margin: 0 20px !important; }
+    .funnel-step:nth-child(4) { margin: 0 30px !important; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-stats { grid-template-columns: 1fr 1fr !important; }
+    .demo-grid { grid-template-columns: 1fr !important; }
+    .funnel-step:nth-child(2),
+    .funnel-step:nth-child(3),
+    .funnel-step:nth-child(4) { margin: 0 !important; }
+  }
+
 </style>
 <!-- Vercel Analytics -->
 <script>
