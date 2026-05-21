@@ -76,6 +76,104 @@
   footer p { font-size:10px; color:var(--text-dim); letter-spacing:0.12em; }
   @media (max-width:1000px) { .article-container { grid-template-columns:1fr; padding:60px 40px; gap:40px; } .article-sidebar { position:static; } .related-grid { grid-template-columns:1fr; } .related-section { padding:60px 40px; } }
   @media (max-width:768px) { nav { padding:16px 20px; } .article-hero { padding:100px 20px 60px; } .article-container { padding:40px 20px; } .watch-card { flex-direction:column; } .related-section { padding:48px 20px; } footer { padding:24px 20px; flex-direction:column; gap:8px; } }
+
+  /* ===== MOBILE RESPONSIVE FIXES ===== */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+
+    .article-hero { padding: 100px 20px 60px; }
+
+    .article-container {
+      grid-template-columns: 1fr !important;
+      padding: 40px 20px !important;
+      gap: 40px !important;
+    }
+
+    .article-sidebar { position: static !important; }
+
+    /* Price tables scroll horizontally */
+    .price-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* Watch cards stack vertically */
+    .watch-card { flex-direction: column !important; }
+    .watch-card-price { text-align: left !important; }
+
+    /* Watch card info grid in Ronaldo */
+    [style*="display:flex; justify-content:space-between; align-items:flex-start"] {
+      flex-direction: column !important;
+    }
+
+    /* WF CTA and RS blocks */
+    .wf-cta, .rs-block, .rs-chrono {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    .wf-btn, .rs-block a, .rs-chrono a {
+      width: 100% !important;
+      text-align: center !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Stat grids */
+    .stat-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Verdict box items */
+    .verdict-item { flex-direction: column !important; gap: 8px !important; }
+
+    /* Inline grids collapse */
+    [style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+    [style*="grid-template-columns: repeat(3, 1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+    [style*="grid-template-columns:repeat(5,1fr)"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+
+    /* Total bar */
+    [style*="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap"] {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    /* Related grid */
+    .related-grid { grid-template-columns: 1fr !important; }
+    .related-section { padding: 48px 20px !important; }
+
+    /* Footer */
+    footer { padding: 24px 20px !important; flex-direction: column !important; gap: 8px !important; }
+
+    /* Illustration padding */
+    [style*="padding:0 80px"] { padding: 0 20px !important; }
+    [style*="padding:0 40px"] { padding: 0 16px !important; }
+    [style*="padding: 0 80px"] { padding: 0 20px !important; }
+
+    /* Hero label */
+    .hero-label { flex-wrap: wrap; justify-content: center; }
+    .hero-label::before, .hero-label::after { display: none; }
+
+    /* Dealer cards */
+    .dealer-card { padding: 24px 20px !important; }
+
+    /* Sidebar ad */
+    .sidebar-ad { text-align: left !important; }
+  }
+
+  @media (max-width: 480px) {
+    .article-hero h1 { font-size: 28px !important; }
+    .hero-subtitle { font-size: 18px !important; }
+    [style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+    [style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    .stat-grid { grid-template-columns: 1fr !important; }
+  }
+
 </style>
 </head>
 <body>
