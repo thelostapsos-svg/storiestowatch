@@ -588,6 +588,7 @@
     padding: 40px;
     position: relative;
     overflow: hidden;
+    display: none;
   }
 
   .news-skeleton::after {
@@ -679,6 +680,7 @@
     padding: 40px;
     position: relative;
     overflow: hidden;
+    display: none;
   }
 
   .news-skeleton::after {
@@ -1360,6 +1362,21 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+<script>
+// Pre-populate cards with fallback BEFORE browser renders anything
+// Eliminates blank card flash completely
+(function(){
+  var fallback = [
+    {category:"Milestone",title:"Rolex Marks a Century of the Oyster Case",excerpt:"Rolex unveiled a commemorative Oyster Perpetual 41 marking 100 years since the world's first waterproof wristwatch. The release sold out within hours at authorised dealers globally.",source:"Hodinkee",brand:"Rolex"},
+    {category:"Auction",title:"Sotheby's $15M Cartier Collection Breaks Records",excerpt:"A curated archive of vintage Cartier timepieces achieved hammer prices far beyond estimate at Sotheby's Geneva sale. The headline lot drew bidders from five continents.",source:"Phillips",brand:"Cartier"},
+    {category:"Anniversary",title:"Patek Philippe Nautilus at Fifty: An Enduring Icon",excerpt:"Half a century after Gérald Genta's sketch, the Nautilus remains the most coveted steel sports watch on the secondary market. Patek marked the occasion with an intimate Geneva exhibition.",source:"Europa Star",brand:"Patek Philippe"},
+    {category:"Market",title:"Watches & Wonders 2026: Craft Over Spectacle",excerpt:"Geneva's annual showcase delivered restraint over fireworks as brands doubled down on finishing quality and mechanical depth. Industry analysts noted a pivot away from hype-driven releases.",source:"WatchPro",brand:""},
+    {category:"Brand Story",title:"F.P. Journe: Independent Watchmaking's Quiet Revolution",excerpt:"As independent maisons continue their meteoric rise, François-Paul Journe's atelier stands as the benchmark for true horological independence. Secondary market premiums now rival Patek Philippe.",source:"Revolution",brand:"F.P. Journe"},
+    {category:"Innovation",title:"Grand Seiko Introduces New Micro-Artist Studio Dial",excerpt:"The Japanese manufacturer unveiled a breathtaking new dial crafted by its Micro Artist Studio. Only 30 pieces will reach collectors worldwide.",source:"WatchTime",brand:"Grand Seiko"}
+  ];
+  window._fallbackNews = fallback;
+})();
+</script>
 
 <!-- Custom Cursor -->
 <div class="cursor" id="cursor"></div>
@@ -1798,7 +1815,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <div class="skeleton-line-short"></div>
         <div class="skeleton-footer"></div>
       </div>
-      <a class="news-card" id="card0" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">01</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat0"></p><h3 id="title0"></h3><p id="excerpt0"></p><p class="news-source" id="source0"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find0"></span></div></a>
+      <a class="news-card" id="card0" href="article.html" style="display:block;"><div class="gold-accent-left"></div><span class="news-card-number">01</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat0"></p><h3 id="title0"></h3><p id="excerpt0"></p><p class="news-source" id="source0"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find0"></span></div></a>
       <div class="news-skeleton" id="skeleton1">
         <div class="skeleton-tag"></div>
         <div class="skeleton-title"></div>
@@ -1808,7 +1825,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <div class="skeleton-line-short"></div>
         <div class="skeleton-footer"></div>
       </div>
-      <a class="news-card" id="card1" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">02</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat1"></p><h3 id="title1"></h3><p id="excerpt1"></p><p class="news-source" id="source1"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find1"></span></div></a>
+      <a class="news-card" id="card1" href="article.html" style="display:block;"><div class="gold-accent-left"></div><span class="news-card-number">02</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat1"></p><h3 id="title1"></h3><p id="excerpt1"></p><p class="news-source" id="source1"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find1"></span></div></a>
       <div class="news-skeleton" id="skeleton2">
         <div class="skeleton-tag"></div>
         <div class="skeleton-title"></div>
@@ -1818,7 +1835,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <div class="skeleton-line-short"></div>
         <div class="skeleton-footer"></div>
       </div>
-      <a class="news-card" id="card2" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">03</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat2"></p><h3 id="title2"></h3><p id="excerpt2"></p><p class="news-source" id="source2"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find2"></span></div></a>
+      <a class="news-card" id="card2" href="article.html" style="display:block;"><div class="gold-accent-left"></div><span class="news-card-number">03</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat2"></p><h3 id="title2"></h3><p id="excerpt2"></p><p class="news-source" id="source2"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find2"></span></div></a>
       <div class="news-skeleton" id="skeleton3">
         <div class="skeleton-tag"></div>
         <div class="skeleton-title"></div>
@@ -1828,7 +1845,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <div class="skeleton-line-short"></div>
         <div class="skeleton-footer"></div>
       </div>
-      <a class="news-card" id="card3" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">04</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat3"></p><h3 id="title3"></h3><p id="excerpt3"></p><p class="news-source" id="source3"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find3"></span></div></a>
+      <a class="news-card" id="card3" href="article.html" style="display:block;"><div class="gold-accent-left"></div><span class="news-card-number">04</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat3"></p><h3 id="title3"></h3><p id="excerpt3"></p><p class="news-source" id="source3"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find3"></span></div></a>
       <div class="news-skeleton" id="skeleton4">
         <div class="skeleton-tag"></div>
         <div class="skeleton-title"></div>
@@ -1838,7 +1855,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <div class="skeleton-line-short"></div>
         <div class="skeleton-footer"></div>
       </div>
-      <a class="news-card" id="card4" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">05</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat4"></p><h3 id="title4"></h3><p id="excerpt4"></p><p class="news-source" id="source4"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find4"></span></div></a>
+      <a class="news-card" id="card4" href="article.html" style="display:block;"><div class="gold-accent-left"></div><span class="news-card-number">05</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat4"></p><h3 id="title4"></h3><p id="excerpt4"></p><p class="news-source" id="source4"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find4"></span></div></a>
       <div class="news-skeleton" id="skeleton5">
         <div class="skeleton-tag"></div>
         <div class="skeleton-title"></div>
@@ -1848,7 +1865,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <div class="skeleton-line-short"></div>
         <div class="skeleton-footer"></div>
       </div>
-      <a class="news-card" id="card5" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">06</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat5"></p><h3 id="title5"></h3><p id="excerpt5"></p><p class="news-source" id="source5"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find5"></span></div></a>
+      <a class="news-card" id="card5" href="article.html" style="display:block;"><div class="gold-accent-left"></div><span class="news-card-number">06</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat5"></p><h3 id="title5"></h3><p id="excerpt5"></p><p class="news-source" id="source5"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find5"></span></div></a>
     </div></section>
 
 <!-- QUOTE -->
@@ -2296,7 +2313,7 @@ async function fetchWatchNews() {
 // IMMEDIATE: show fallback cards instantly on DOMContentLoaded — no waiting
 // This means FCP/LCP are never blocked by the API call
 document.addEventListener('DOMContentLoaded', () => {
-  updateCards(null); // renders fallback articles instantly
+  updateCards(window._fallbackNews); // populate with real content instantly
 });
 
 // BACKGROUND: silently fetch live news after page is fully interactive
