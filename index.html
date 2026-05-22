@@ -55,26 +55,17 @@
   }
 
   /* CUSTOM CURSOR */
+  /* Watch hand cursor */
   .cursor {
-    width: 8px; height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
+    width: 40px; height: 40px;
     position: fixed;
     top: 0; left: 0;
     pointer-events: none;
     z-index: 9999;
-    transition: transform 0.1s ease;
+    transform: translate(-50%, -50%);
   }
   .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.15s ease;
-    opacity: 0.6;
+    display: none; /* replaced by SVG cursor */
   }
 
   /* NOISE OVERLAY */
@@ -1378,9 +1369,21 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 })();
 </script>
 
-<!-- Custom Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<!-- Watch Hand Cursor -->
+<svg class="cursor" id="cursor" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+  <!-- Watch face -->
+  <circle cx="20" cy="20" r="14" fill="rgba(5,5,5,0.85)" stroke="#C9A84C" stroke-width="0.8" opacity="0.9"/>
+  <!-- Hour hand -->
+  <line id="cursorHour" x1="20" y1="20" x2="20" y2="10" stroke="#E8E4D9" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Minute hand -->
+  <line id="cursorMinute" x1="20" y1="20" x2="20" y2="7" stroke="#E8E4D9" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Gold seconds hand -->
+  <line id="cursorSecond" x1="20" y1="23" x2="20" y2="6" stroke="#C9A84C" stroke-width="1" stroke-linecap="round"/>
+  <!-- Centre jewel -->
+  <circle cx="20" cy="20" r="2" fill="#C9A84C"/>
+  <circle cx="20" cy="20" r="1" fill="#050505"/>
+</svg>
+<div id="cursorRing" style="display:none;"></div>
 
 <!-- SIDE DIALS — animate as compass as user scrolls -->
 <div class="side-dial side-dial-left" id="dialLeft">
@@ -2170,25 +2173,40 @@ window.addEventListener('scroll', () => {
 
 
 const cursor = document.getElementById('cursor');
-const cursorRing = document.getElementById('cursorRing');
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
+const hourHand = document.getElementById('cursorHour');
+const minuteHand = document.getElementById('cursorMinute');
+const secondHand = document.getElementById('cursorSecond');
+let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
 
+// Move cursor to mouse position
 document.addEventListener('mousemove', e => {
   mouseX = e.clientX;
   mouseY = e.clientY;
-  cursor.style.left = mouseX - 4 + 'px';
-  cursor.style.top = mouseY - 4 + 'px';
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
 });
 
-function animateRing() {
-  ringX += (mouseX - ringX - 18) * 0.15;
-  ringY += (mouseY - ringY - 18) * 0.15;
-  cursorRing.style.left = ringX + 'px';
-  cursorRing.style.top = ringY + 'px';
-  requestAnimationFrame(animateRing);
+// Rotate watch hands in real time — matches actual clock
+function animateCursorClock() {
+  const now = new Date();
+  const s = now.getSeconds() + now.getMilliseconds() / 1000;
+  const m = now.getMinutes() + s / 60;
+  const h = (now.getHours() % 12) + m / 60;
+  const sDeg = s * 6;        // 360/60
+  const mDeg = m * 6;        // 360/60
+  const hDeg = h * 30;       // 360/12
+
+  // Rotate hands around centre point (20,20)
+  hourHand.setAttribute('transform', \`rotate(\${hDeg}, 20, 20)\`);
+  minuteHand.setAttribute('transform', \`rotate(\${mDeg}, 20, 20)\`);
+  secondHand.setAttribute('transform', \`rotate(\${sDeg}, 20, 20)\`);
+
+  requestAnimationFrame(animateCursorClock);
 }
-animateRing();
+animateCursorClock();
+
+// Hide on mobile — no mouse
+if ('ontouchstart' in window) cursor.style.display = 'none';
 
 // ============================================
 // LIVE WATCH CLOCK — Local timezone, precise rotation
