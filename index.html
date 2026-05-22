@@ -2224,6 +2224,8 @@ function updateCards(articles) {
     const card = document.getElementById('card' + i);
     const skeleton = document.getElementById('skeleton' + i);
     if (!card) return;
+    // Always hide skeleton — card is already visible
+    if (skeleton) skeleton.style.display = 'none';
 
     // Update href
     card.href = 'article.html?title=' + encodeURIComponent(a.title) +
@@ -2245,21 +2247,10 @@ function updateCards(articles) {
         a.brand + '</a>';
     }
 
-    // Hide skeleton, reveal card with smooth fade
-    if (skeleton) {
-      skeleton.style.transition = 'opacity 0.4s ease';
-      skeleton.style.opacity = '0';
-      setTimeout(() => {
-        skeleton.style.display = 'none';
-        card.style.display = 'block';
-        card.style.opacity = '0';
-        card.style.transition = 'opacity 0.5s ease ' + (i * 0.08) + 's';
-        requestAnimationFrame(() => { card.style.opacity = '1'; });
-      }, 400);
-    } else {
-      card.style.display = 'block';
-      card.style.opacity = '1';
-    }
+    // Card already visible — just update content silently
+    card.style.display = 'block';
+    card.style.opacity = '1';
+    if (skeleton) skeleton.style.display = 'none';
   });
 }
 
@@ -2295,12 +2286,18 @@ async function fetchWatchNews() {
 
 // Init — defer news fetch until AFTER page has painted
 // This ensures FCP/LCP scores aren't penalised by the API call
+// IMMEDIATE: show fallback cards instantly on DOMContentLoaded — no waiting
+// This means FCP/LCP are never blocked by the API call
+document.addEventListener('DOMContentLoaded', () => {
+  updateCards(null); // renders fallback articles instantly
+});
+
+// BACKGROUND: silently fetch live news after page is fully interactive
+// Swaps in live content without any visible loading state
 window.addEventListener('load', () => {
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => fetchWatchNews(), { timeout: 2000 });
-  } else {
-    setTimeout(fetchWatchNews, 500);
-  }
+  setTimeout(() => {
+    fetchWatchNews();
+  }, 3000); // 3s delay — page is fully painted and interactive by then
 });
 
 // ============================================
