@@ -17,11 +17,11 @@
 
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; cursor:none; }
+  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
 
-  .cursor { width:44px; height:44px; position:fixed; top:-22px; left:-22px; pointer-events:none; z-index:9999; overflow:visible; }
-  .cursor-ring { display:none; }
+  
+  
 
   /* NAV */
   nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,rgba(5,5,5,0.98),transparent); backdrop-filter:blur(10px); }
@@ -619,7 +619,7 @@
 
   @media (max-width: 768px) {
     body { cursor: auto; }
-    #watchCursor, .cursor, .cursor-ring { display: none !important; }
+    
     a, button, select { cursor: pointer; }
 
     nav { padding: 14px 20px; }
@@ -721,15 +721,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </head>
 <body>
 
-<svg id="watchCursor" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" style="position:fixed;width:44px;height:44px;pointer-events:none;z-index:9999;display:none;top:0;left:0;">
-  <circle cx="22" cy="22" r="16" fill="rgba(5,5,5,0.9)" stroke="#C9A84C" stroke-width="1"/>
-  <line id="wHour" x1="22" y1="22" x2="22" y2="11" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/>
-  <line id="wMin" x1="22" y1="22" x2="22" y2="8" stroke="#E8E4D9" stroke-width="2" stroke-linecap="round"/>
-  <line id="wSec" x1="22" y1="26" x2="22" y2="7" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
-  <circle cx="22" cy="22" r="2.5" fill="#C9A84C"/>
-  <circle cx="22" cy="22" r="1.2" fill="#050505"/>
-</svg>
-<div id="cursorRing" style="display:none;"></div>
+
+
 
 <nav>
   <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
@@ -1046,28 +1039,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
 <script>
 // Watch cursor
-(function initWatchCursor(){
-  if('ontouchstart' in window) return;
-  var wc=document.getElementById('watchCursor');
-  var wH=document.getElementById('wHour');
-  var wM=document.getElementById('wMin');
-  var wS=document.getElementById('wSec');
-  if(!wc||!wH) return;
-  wc.style.display='block';
-  document.addEventListener('mousemove',function(e){
-    wc.style.left=(e.clientX-22)+'px';
-    wc.style.top=(e.clientY-22)+'px';
-  });
-  (function tick(){
-    var now=new Date();
-    var s=now.getSeconds()+now.getMilliseconds()/1000;
-    var m=now.getMinutes()+s/60;
-    var h=(now.getHours()%12)+m/60;
-    wH.setAttribute('transform','rotate('+(h*30)+',22,22)');
-    wM.setAttribute('transform','rotate('+(m*6)+',22,22)');
-    wS.setAttribute('transform','rotate('+(s*6)+',22,22)');
-    requestAnimationFrame(tick);
-  })();
+
 })();
 
 // DEALER DATA — 50 real global sources
@@ -1219,6 +1191,54 @@ if (incomingSearch) {
 // Initial render
 applyFilters();
 </script>
+
+<!-- Watch cursor — dead simple version -->
+<svg id="stw-cursor" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"
+  style="position:fixed;width:44px;height:44px;top:-100px;left:-100px;pointer-events:none;z-index:9999;overflow:visible;display:block;">
+  <circle cx="22" cy="22" r="16" fill="rgba(5,5,5,0.92)" stroke="#C9A84C" stroke-width="1.2"/>
+  <line id="s-hr" x1="22" y1="22" x2="22" y2="11" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/>
+  <line id="s-mn" x1="22" y1="22" x2="22" y2="8" stroke="#E8E4D9" stroke-width="2" stroke-linecap="round"/>
+  <line id="s-sc" x1="22" y1="26" x2="22" y2="7" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+  <circle cx="22" cy="22" r="2.5" fill="#C9A84C"/>
+  <circle cx="22" cy="22" r="1" fill="#050505"/>
+</svg>
+<style>
+  body { cursor: none !important; }
+  a, button, select, input { cursor: none !important; }
+  @media (hover: none) {
+    body, a, button, select, input { cursor: auto !important; }
+    #stw-cursor { display: none !important; }
+  }
+</style>
+<script>
+(function() {
+  var el = document.getElementById('stw-cursor');
+  if (!el) return;
+  // Hide on touch devices
+  if (window.matchMedia('(hover: none)').matches) { el.style.display='none'; return; }
+  var hr = document.getElementById('s-hr');
+  var mn = document.getElementById('s-mn');
+  var sc = document.getElementById('s-sc');
+  // Track mouse
+  document.addEventListener('mousemove', function(e) {
+    el.style.left = (e.clientX - 22) + 'px';
+    el.style.top  = (e.clientY - 22) + 'px';
+  });
+  // Tick clock
+  function tick() {
+    var d = new Date();
+    var s = d.getSeconds() + d.getMilliseconds()/1000;
+    var m = d.getMinutes() + s/60;
+    var h = (d.getHours() % 12) + m/60;
+    hr.setAttribute('transform', 'rotate(' + (h*30)  + ',22,22)');
+    mn.setAttribute('transform', 'rotate(' + (m*6)   + ',22,22)');
+    sc.setAttribute('transform', 'rotate(' + (s*6)   + ',22,22)');
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+
 </body>
 </html>
 })();
@@ -1402,5 +1422,53 @@ if (incomingSearch) {
 // Initial render
 applyFilters();
 </script>
+
+<!-- Watch cursor — dead simple version -->
+<svg id="stw-cursor" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"
+  style="position:fixed;width:44px;height:44px;top:-100px;left:-100px;pointer-events:none;z-index:9999;overflow:visible;display:block;">
+  <circle cx="22" cy="22" r="16" fill="rgba(5,5,5,0.92)" stroke="#C9A84C" stroke-width="1.2"/>
+  <line id="s-hr" x1="22" y1="22" x2="22" y2="11" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/>
+  <line id="s-mn" x1="22" y1="22" x2="22" y2="8" stroke="#E8E4D9" stroke-width="2" stroke-linecap="round"/>
+  <line id="s-sc" x1="22" y1="26" x2="22" y2="7" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+  <circle cx="22" cy="22" r="2.5" fill="#C9A84C"/>
+  <circle cx="22" cy="22" r="1" fill="#050505"/>
+</svg>
+<style>
+  body { cursor: none !important; }
+  a, button, select, input { cursor: none !important; }
+  @media (hover: none) {
+    body, a, button, select, input { cursor: auto !important; }
+    #stw-cursor { display: none !important; }
+  }
+</style>
+<script>
+(function() {
+  var el = document.getElementById('stw-cursor');
+  if (!el) return;
+  // Hide on touch devices
+  if (window.matchMedia('(hover: none)').matches) { el.style.display='none'; return; }
+  var hr = document.getElementById('s-hr');
+  var mn = document.getElementById('s-mn');
+  var sc = document.getElementById('s-sc');
+  // Track mouse
+  document.addEventListener('mousemove', function(e) {
+    el.style.left = (e.clientX - 22) + 'px';
+    el.style.top  = (e.clientY - 22) + 'px';
+  });
+  // Tick clock
+  function tick() {
+    var d = new Date();
+    var s = d.getSeconds() + d.getMilliseconds()/1000;
+    var m = d.getMinutes() + s/60;
+    var h = (d.getHours() % 12) + m/60;
+    hr.setAttribute('transform', 'rotate(' + (h*30)  + ',22,22)');
+    mn.setAttribute('transform', 'rotate(' + (m*6)   + ',22,22)');
+    sc.setAttribute('transform', 'rotate(' + (s*6)   + ',22,22)');
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+
 </body>
 </html>
