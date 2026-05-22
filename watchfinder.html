@@ -20,7 +20,7 @@
   body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; cursor:none; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
 
-  .cursor { width:40px; height:40px; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); }
+  .cursor { width:44px; height:44px; position:fixed; top:-22px; left:-22px; pointer-events:none; z-index:9999; overflow:visible; }
   .cursor-ring { display:none; }
 
   /* NAV */
@@ -1013,8 +1013,8 @@ const cursor=document.getElementById('cursor');
 const hourHand=document.getElementById('cursorHour');
 const minuteHand=document.getElementById('cursorMinute');
 const secondHand=document.getElementById('cursorSecond');
-let mouseX=window.innerWidth/2,mouseY=window.innerHeight/2;
-document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';});
+let mouseX=window.innerWidth/2,mouseY=window.innerHeight/2;cursor.style.transform='translate('+(mouseX-22)+'px,'+(mouseY-22)+'px)';
+document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.transform='translate('+(mouseX-22)+'px,'+(mouseY-22)+'px)';});
 (function loop(){const now=new Date();const s=now.getSeconds()+now.getMilliseconds()/1000;const m=now.getMinutes()+s/60;const h=(now.getHours()%12)+m/60;hourHand.setAttribute('transform','rotate('+(h*30)+',20,20)');minuteHand.setAttribute('transform','rotate('+(m*6)+',20,20)');secondHand.setAttribute('transform','rotate('+(s*6)+',20,20)');requestAnimationFrame(loop);})();
 if('ontouchstart' in window)cursor.style.display='none';
 

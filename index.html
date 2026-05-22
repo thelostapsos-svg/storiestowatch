@@ -57,16 +57,14 @@
   /* CUSTOM CURSOR */
   /* Watch hand cursor */
   .cursor {
-    width: 40px; height: 40px;
+    width: 44px; height: 44px;
     position: fixed;
-    top: 0; left: 0;
+    top: -22px; left: -22px;
     pointer-events: none;
     z-index: 9999;
-    transform: translate(-50%, -50%);
+    overflow: visible;
   }
-  .cursor-ring {
-    display: none; /* replaced by SVG cursor */
-  }
+  .cursor-ring { display: none; }
 
   /* NOISE OVERLAY */
   body::before {
@@ -2177,13 +2175,13 @@ const hourHand = document.getElementById('cursorHour');
 const minuteHand = document.getElementById('cursorMinute');
 const secondHand = document.getElementById('cursorSecond');
 let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+cursor.style.transform = 'translate(' + (mouseX - 22) + 'px, ' + (mouseY - 22) + 'px)';
 
 // Move cursor to mouse position
 document.addEventListener('mousemove', e => {
   mouseX = e.clientX;
   mouseY = e.clientY;
-  cursor.style.left = mouseX + 'px';
-  cursor.style.top = mouseY + 'px';
+  cursor.style.transform = 'translate(' + (mouseX - 22) + 'px, ' + (mouseY - 22) + 'px)';
 });
 
 // Rotate watch hands in real time — matches actual clock
