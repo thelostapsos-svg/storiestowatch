@@ -1045,7 +1045,30 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </footer>
 
 <script>
-// CURSOR handled by initWatchCursor()
+// Watch cursor
+(function initWatchCursor(){
+  if('ontouchstart' in window) return;
+  var wc=document.getElementById('watchCursor');
+  var wH=document.getElementById('wHour');
+  var wM=document.getElementById('wMin');
+  var wS=document.getElementById('wSec');
+  if(!wc||!wH) return;
+  wc.style.display='block';
+  document.addEventListener('mousemove',function(e){
+    wc.style.left=(e.clientX-22)+'px';
+    wc.style.top=(e.clientY-22)+'px';
+  });
+  (function tick(){
+    var now=new Date();
+    var s=now.getSeconds()+now.getMilliseconds()/1000;
+    var m=now.getMinutes()+s/60;
+    var h=(now.getHours()%12)+m/60;
+    wH.setAttribute('transform','rotate('+(h*30)+',22,22)');
+    wM.setAttribute('transform','rotate('+(m*6)+',22,22)');
+    wS.setAttribute('transform','rotate('+(s*6)+',22,22)');
+    requestAnimationFrame(tick);
+  })();
+})();
 
 // DEALER DATA — 50 real global sources
 const dealers = [
@@ -1197,28 +1220,7 @@ if (incomingSearch) {
 applyFilters();
 </script>
 </body>
-</html>(function initWatchCursor(){
-  if('ontouchstart' in window) return;
-  var wc=document.getElementById('watchCursor');
-  var wH=document.getElementById('wHour');
-  var wM=document.getElementById('wMin');
-  var wS=document.getElementById('wSec');
-  if(!wc||!wH) return;
-  wc.style.display='block';
-  document.addEventListener('mousemove',function(e){
-    wc.style.left=(e.clientX-22)+'px';
-    wc.style.top=(e.clientY-22)+'px';
-  });
-  (function tick(){
-    var now=new Date();
-    var s=now.getSeconds()+now.getMilliseconds()/1000;
-    var m=now.getMinutes()+s/60;
-    var h=(now.getHours()%12)+m/60;
-    wH.setAttribute('transform','rotate('+(h*30)+',22,22)');
-    wM.setAttribute('transform','rotate('+(m*6)+',22,22)');
-    wS.setAttribute('transform','rotate('+(s*6)+',22,22)');
-    requestAnimationFrame(tick);
-  })();
+</html>
 })();
 
 // DEALER DATA — 50 real global sources
