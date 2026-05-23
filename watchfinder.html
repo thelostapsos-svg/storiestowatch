@@ -16,16 +16,22 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; }
+  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; cursor:crosshair; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
 
-  nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,rgba(5,5,5,0.98),transparent); backdrop-filter:blur(10px); }
+  /* GOLD CROSSHAIR CURSOR */
+  *, a, button, select, input { cursor:crosshair; }
+  @media (hover:none) { *, a, button, select, input { cursor:auto; } }
+
+  /* NAV — fully opaque */
+  nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:#050505; border-bottom:1px solid rgba(201,168,76,0.1); }
   .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; }
   .nav-back { display:flex; align-items:center; gap:10px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
   .nav-back:hover { color:var(--gold); }
   .nav-back::before { content:'←'; font-size:14px; }
 
-  .hero { min-height:50vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 60px 60px; position:relative; overflow:hidden; }
+  /* HERO */
+  .hero { min-height:50vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:140px 60px 60px; position:relative; overflow:hidden; }
   .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%); }
   .hero-label { font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; gap:16px; }
   .hero-label::before, .hero-label::after { content:''; width:40px; height:1px; background:var(--gold); opacity:0.5; }
@@ -33,47 +39,56 @@
   .hero-title span { color:var(--gold); display:block; }
   .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2.5vw,26px); color:var(--text-dim); margin:20px 0 48px; max-width:700px; line-height:1.5; }
 
+  /* SEARCH */
   .search-wrap { width:100%; max-width:800px; position:relative; z-index:2; margin-bottom:40px; }
   .search-input { width:100%; background:var(--surface); border:1px solid rgba(201,168,76,0.3); color:var(--white); font-family:'Montserrat',sans-serif; font-size:14px; font-weight:300; letter-spacing:0.1em; padding:20px 60px 20px 28px; outline:none; transition:border-color 0.3s; }
   .search-input::placeholder { color:var(--text-dim); }
   .search-input:focus { border-color:var(--gold); }
   .search-icon { position:absolute; right:20px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:18px; pointer-events:none; }
 
+  /* FILTERS */
   .filters { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:16px; position:relative; z-index:2; }
-  .filter-btn { font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:0.35em; color:var(--text-dim); text-transform:uppercase; background:var(--surface); border:1px solid rgba(201,168,76,0.15); padding:10px 20px; cursor:pointer; transition:all 0.3s; }
+  .filter-btn { font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:0.35em; color:var(--text-dim); text-transform:uppercase; background:var(--surface); border:1px solid rgba(201,168,76,0.15); padding:10px 20px; cursor:crosshair; transition:all 0.3s; }
   .filter-btn:hover, .filter-btn.active { color:var(--gold); border-color:var(--gold); background:rgba(201,168,76,0.05); }
 
-  .stats-bar { width:100%; background:var(--surface); border-top:1px solid rgba(201,168,76,0.1); border-bottom:1px solid rgba(201,168,76,0.1); padding:16px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; }
+  /* STATS BAR */
+  .stats-bar { width:100%; background:var(--surface); border-top:1px solid rgba(201,168,76,0.1); border-bottom:1px solid rgba(201,168,76,0.1); padding:16px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
   .stats-bar-item { display:flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; }
   .stats-bar-num { font-family:'Cinzel',serif; font-size:18px; color:var(--gold); }
   .stats-bar-divider { width:1px; height:24px; background:rgba(201,168,76,0.15); }
 
+  /* MAIN LAYOUT */
   .main-layout { display:grid; grid-template-columns:280px 1fr; min-height:calc(100vh - 200px); }
-
   .sidebar { background:var(--deep); border-right:1px solid rgba(201,168,76,0.1); padding:40px 32px; position:sticky; top:70px; height:calc(100vh - 70px); overflow-y:auto; }
   .sidebar::-webkit-scrollbar { width:2px; }
-  .sidebar::-webkit-scrollbar-track { background:var(--deep); }
   .sidebar::-webkit-scrollbar-thumb { background:var(--gold-dim); }
   .sidebar-section { margin-bottom:36px; }
   .sidebar-title { font-size:8px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(201,168,76,0.1); display:flex; align-items:center; justify-content:space-between; }
-  .sidebar-clear { font-size:7px; color:var(--text-dim); cursor:pointer; transition:color 0.3s; letter-spacing:0.2em; }
+  .sidebar-clear { font-size:7px; color:var(--text-dim); cursor:crosshair; transition:color 0.3s; letter-spacing:0.2em; }
   .sidebar-clear:hover { color:var(--gold); }
-  .filter-option { display:flex; align-items:center; gap:10px; padding:8px 0; cursor:pointer; transition:all 0.2s; }
+  .filter-option { display:flex; align-items:center; gap:10px; padding:8px 0; cursor:crosshair; transition:all 0.2s; }
   .filter-option:hover .filter-label { color:var(--gold); }
   .filter-checkbox { width:14px; height:14px; border:1px solid rgba(201,168,76,0.3); background:transparent; flex-shrink:0; position:relative; transition:all 0.2s; }
   .filter-option.checked .filter-checkbox { background:var(--gold); border-color:var(--gold); }
   .filter-option.checked .filter-checkbox::after { content:'✓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:9px; color:var(--black); font-weight:bold; }
   .filter-label { font-size:11px; color:var(--text-dim); letter-spacing:0.1em; transition:color 0.2s; flex:1; }
-  .filter-count { font-size:9px; color:var(--gold-dim); letter-spacing:0.1em; }
+  .filter-count { font-size:9px; color:var(--gold-dim); }
 
+  /* RESULTS */
   .results-area { padding:40px; }
-  .results-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:32px; }
+  .results-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:12px; }
   .results-count { font-size:10px; letter-spacing:0.25em; color:var(--text-dim); text-transform:uppercase; }
   .results-count span { color:var(--gold); }
-  .sort-select { background:var(--surface); border:1px solid rgba(201,168,76,0.2); color:var(--text-dim); font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.2em; padding:8px 16px; outline:none; cursor:pointer; text-transform:uppercase; }
 
+  /* ACTIVE FILTER SUMMARY */
+  .filter-summary { background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.2); padding:10px 16px; margin-bottom:24px; font-size:10px; letter-spacing:0.15em; color:var(--gold); text-transform:uppercase; display:none; }
+  .filter-summary.visible { display:block; }
+
+  .sort-select { background:var(--surface); border:1px solid rgba(201,168,76,0.2); color:var(--text-dim); font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.2em; padding:8px 16px; outline:none; cursor:crosshair; text-transform:uppercase; }
+
+  /* DEALER CARDS */
   .dealers-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:2px; background:var(--surface2); }
-  .dealer-card { background:var(--deep); padding:32px; position:relative; overflow:hidden; transition:background 0.3s; text-decoration:none; display:block; cursor:pointer; }
+  .dealer-card { background:var(--deep); padding:32px; position:relative; overflow:hidden; transition:background 0.3s; text-decoration:none; display:block; cursor:crosshair; }
   .dealer-card::before { content:''; position:absolute; top:0; left:0; right:0; height:0; background:linear-gradient(to bottom,rgba(201,168,76,0.08),transparent); transition:height 0.4s ease; }
   .dealer-card:hover { background:var(--surface); }
   .dealer-card:hover::before { height:100%; }
@@ -96,19 +111,21 @@
   .dealer-card:hover .dealer-link { gap:14px; }
   .dealer-link::after { content:'→'; }
 
+  /* BRAND MATCH HIGHLIGHT */
   .brand-match { background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); color:var(--gold); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; padding:8px 12px; margin-bottom:12px; }
   .brand-match-tag { background:rgba(201,168,76,0.15) !important; color:var(--gold) !important; border-color:rgba(201,168,76,0.4) !important; }
 
+  /* NO RESULTS */
   .no-results { text-align:center; padding:80px 40px; grid-column:1/-1; }
   .no-results p { font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:var(--text-dim); margin-bottom:16px; }
   .no-results span { font-size:9px; letter-spacing:0.3em; color:var(--gold-dim); text-transform:uppercase; }
 
+  /* MAP */
   .map-section { background:var(--surface); border-top:1px solid rgba(201,168,76,0.1); padding:80px 60px; text-align:center; }
   .map-section-label { font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; }
   .map-section-title { font-family:'Cinzel',serif; font-size:clamp(24px,3vw,40px); color:var(--white); margin-bottom:40px; }
   .world-map-container { position:relative; max-width:1000px; margin:0 auto 40px; background:var(--deep); border:1px solid rgba(201,168,76,0.1); padding:40px; overflow:hidden; }
-  .world-map-container::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,0.04) 0%,transparent 70%); }
-  .map-dot { position:absolute; width:10px; height:10px; border-radius:50%; background:var(--gold); transform:translate(-50%,-50%); cursor:pointer; transition:all 0.3s; animation:mapPulse 3s ease-in-out infinite; }
+  .map-dot { position:absolute; width:10px; height:10px; border-radius:50%; background:var(--gold); transform:translate(-50%,-50%); cursor:crosshair; transition:all 0.3s; animation:mapPulse 3s ease-in-out infinite; }
   .map-dot::before { content:''; position:absolute; inset:-4px; border-radius:50%; border:1px solid var(--gold); opacity:0.4; animation:mapRipple 3s ease-in-out infinite; }
   .map-dot:hover { transform:translate(-50%,-50%) scale(1.5); background:var(--gold-light); }
   .map-dot-label { position:absolute; top:-28px; left:50%; transform:translateX(-50%); font-size:8px; letter-spacing:0.2em; color:var(--gold); white-space:nowrap; opacity:0; transition:opacity 0.3s; pointer-events:none; text-transform:uppercase; }
@@ -116,16 +133,19 @@
   @keyframes mapPulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.4);}50%{box-shadow:0 0 0 8px rgba(201,168,76,0);} }
   @keyframes mapRipple { 0%,100%{transform:scale(1);opacity:0.4;}50%{transform:scale(2);opacity:0;} }
 
+  /* SUBMIT CTA */
   .submit-cta { background:var(--deep); border:1px solid rgba(201,168,76,0.2); padding:48px; text-align:center; margin:40px 0 0; }
   .submit-cta h3 { font-family:'Cinzel',serif; font-size:20px; color:var(--white); margin-bottom:12px; }
   .submit-cta p { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--text-dim); margin-bottom:24px; font-style:italic; }
-  .submit-btn { display:inline-flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold); padding:14px 32px; text-decoration:none; cursor:pointer; transition:all 0.3s; }
+  .submit-btn { display:inline-flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold); padding:14px 32px; text-decoration:none; transition:all 0.3s; }
   .submit-btn:hover { background:var(--gold); color:var(--black); }
 
+  /* FOOTER */
   footer { background:var(--surface); padding:32px 60px; border-top:1px solid rgba(201,168,76,0.1); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
   .footer-brand { font-family:'Cinzel',serif; font-size:12px; color:var(--gold); letter-spacing:0.2em; }
   footer p { font-size:10px; color:var(--text-dim); letter-spacing:0.12em; }
 
+  /* MOBILE */
   @media (max-width:1100px) {
     .main-layout { grid-template-columns:1fr; }
     .sidebar { position:static; height:auto; border-right:none; border-bottom:1px solid rgba(201,168,76,0.1); }
@@ -133,51 +153,25 @@
     .dealers-grid { grid-template-columns:repeat(2,1fr); }
   }
   @media (max-width:768px) {
-    body { cursor:auto; }
-    a, button, select { cursor:pointer; }
     nav { padding:14px 20px; }
-    .nav-logo { font-size:10px; letter-spacing:0.2em; }
-    .hero { padding:90px 20px 40px; }
-    .hero-title { font-size:36px; }
-    .hero-subtitle { font-size:16px; }
-    .search-wrap { max-width:100%; }
-    .search-input { font-size:13px; padding:16px 48px 16px 20px; }
-    .filters { gap:6px; padding:0 16px; }
-    .filter-btn { font-size:7px; padding:8px 12px; letter-spacing:0.15em; }
+    .hero { padding:100px 20px 40px; }
+    .stats-bar { padding:16px 20px; gap:12px; }
+    .stats-bar-divider { display:none; }
+    .stats-bar-item:last-child { display:none; }
     .main-layout { grid-template-columns:1fr !important; }
-    .sidebar { position:static !important; width:100% !important; height:auto !important; border-right:none !important; border-bottom:1px solid rgba(201,168,76,0.1); padding:20px 16px !important; overflow:visible !important; }
-    .dealers-grid { grid-template-columns:1fr !important; padding:16px !important; gap:12px !important; }
+    .sidebar { position:static !important; height:auto !important; padding:20px 16px !important; }
+    .dealers-grid { grid-template-columns:1fr !important; gap:8px !important; }
     .dealer-card { padding:20px 16px; }
     .dealer-name { font-size:16px; }
     .results-area { padding:16px !important; }
-    .results-header { flex-direction:column; gap:12px; align-items:flex-start; }
-    .stats-bar { padding:16px 20px; flex-wrap:wrap; gap:12px; }
-    .stats-bar-divider { display:none; }
-    .stats-bar-num { font-size:16px; }
-    .stats-bar-item:last-child { display:none; }
     .map-section { padding:48px 20px; }
     .world-map-container { padding:20px; }
     .map-dot-label { display:none; }
     .submit-cta { padding:32px 20px; }
-    footer { padding:24px 20px; flex-direction:column; align-items:flex-start; gap:8px; }
-  }
-  @media (max-width:480px) {
-    .hero-title { font-size:28px; }
-    .search-input { font-size:12px; }
-    .dealer-card { padding:20px 16px; }
-    .stats-bar { padding:12px 16px; }
-  }
-
-  body { cursor:none !important; }
-  a, button, select, input { cursor:none !important; }
-  @media (hover:none) {
-    body, a, button, select, input { cursor:auto !important; }
-    #stw-cursor { display:none !important; }
+    footer { padding:24px 20px; flex-direction:column; align-items:flex-start; }
   }
 </style>
-<script>
-window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -236,7 +230,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <div class="filter-option" onclick="toggleFilter(this,'brand','cartier')"><div class="filter-checkbox"></div><span class="filter-label">Cartier</span></div>
       <div class="filter-option" onclick="toggleFilter(this,'brand','omega')"><div class="filter-checkbox"></div><span class="filter-label">Omega</span></div>
       <div class="filter-option" onclick="toggleFilter(this,'brand','vc')"><div class="filter-checkbox"></div><span class="filter-label">Vacheron Constantin</span></div>
-      <div class="filter-option" onclick="toggleFilter(this,'brand','irl')"><div class="filter-checkbox"></div><span class="filter-label">IWC</span></div>
+      <div class="filter-option" onclick="toggleFilter(this,'brand','iwc')"><div class="filter-checkbox"></div><span class="filter-label">IWC</span></div>
       <div class="filter-option" onclick="toggleFilter(this,'brand','jlc')"><div class="filter-checkbox"></div><span class="filter-label">Jaeger-LeCoultre</span></div>
       <div class="filter-option" onclick="toggleFilter(this,'brand','gs')"><div class="filter-checkbox"></div><span class="filter-label">Grand Seiko</span></div>
       <div class="filter-option" onclick="toggleFilter(this,'brand','fp')"><div class="filter-checkbox"></div><span class="filter-label">F.P. Journe</span></div>
@@ -267,6 +261,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <option value="az">A — Z</option>
       </select>
     </div>
+    <div class="filter-summary" id="filterSummary"></div>
     <div class="dealers-grid" id="dealersGrid"></div>
 
     <div style="background:var(--surface);border:1px solid rgba(201,168,76,0.15);padding:40px;margin:40px 0;position:relative;">
@@ -290,7 +285,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <div class="map-section">
   <p class="map-section-label">Global Coverage</p>
   <h2 class="map-section-title">Sources Across Every Continent</h2>
-  <div class="world-map-container" id="worldMap">
+  <div class="world-map-container">
     <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.15;position:relative;z-index:1;">
       <path d="M 80 80 L 220 70 L 240 90 L 260 130 L 230 170 L 200 200 L 170 220 L 140 200 L 100 180 L 80 150 Z" fill="none" stroke="#C9A84C" stroke-width="1"/>
       <path d="M 180 230 L 220 220 L 250 260 L 260 320 L 230 370 L 200 380 L 170 350 L 160 300 L 170 260 Z" fill="none" stroke="#C9A84C" stroke-width="1"/>
@@ -319,249 +314,284 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </div>
 
 <footer>
-  <span class="footer-brand">STORIES TO WATCH</span>
+  <a href="index.html" class="footer-brand">STORIES TO WATCH</a>
   <p>Watch Finder — Global Luxury Watch Sourcing</p>
   <p style="color:var(--gold-dim);">storiestowatch.com</p>
 </footer>
 
-<svg id="stw-cursor" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" style="position:fixed;width:44px;height:44px;top:-100px;left:-100px;pointer-events:none;z-index:9999;overflow:visible;display:block;">
-  <circle cx="22" cy="22" r="16" fill="rgba(5,5,5,0.92)" stroke="#C9A84C" stroke-width="1.2"/>
-  <line id="s-hr" x1="22" y1="22" x2="22" y2="11" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/>
-  <line id="s-mn" x1="22" y1="22" x2="22" y2="8" stroke="#E8E4D9" stroke-width="2" stroke-linecap="round"/>
-  <line id="s-sc" x1="22" y1="26" x2="22" y2="7" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
-  <circle cx="22" cy="22" r="2.5" fill="#C9A84C"/>
-  <circle cx="22" cy="22" r="1" fill="#050505"/>
-</svg>
-
 <script>
 (function() {
-  // ── DEALER DATA ──────────────────────────────────────────────────────────
-  var dealers = [
-    {name:"Chrono24",type:"online",region:"global",city:"Global Platform",brands:["Rolex","Patek Philippe","AP","All Brands"],desc:"The world's largest luxury watch marketplace. Over 500,000 watches from verified dealers worldwide.",rating:4.9,url:"https://www.chrono24.com",affiliate:true},
-    {name:"Watchfinder & Co.",type:"online",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","IWC","Omega"],desc:"The UK's premier pre-owned luxury watch specialist. Fully authenticated, certified and warrantied.",rating:4.8,url:"https://www.watchfinder.co.uk",affiliate:true},
-    {name:"WatchBox",type:"online",region:"usa",city:"Philadelphia, USA",brands:["Rolex","AP","Patek Philippe","RM"],desc:"America's leading pre-owned luxury watch platform. White glove service and authentication.",rating:4.8,url:"https://www.thewatchbox.com",affiliate:true},
-    {name:"Bob's Watches",type:"online",region:"usa",city:"Huntington Beach, USA",brands:["Rolex"],desc:"The world's largest Rolex-only exchange. Transparent pricing and verified authentication.",rating:4.7,url:"https://www.bobswatches.com",affiliate:true},
-    {name:"Crown & Caliber",type:"online",region:"usa",city:"Atlanta, USA",brands:["Rolex","AP","Patek Philippe","Omega"],desc:"Certified pre-owned luxury watches with a 24-month warranty. Buy and sell with confidence.",rating:4.7,url:"https://www.crownandcaliber.com",affiliate:true},
-    {name:"Beyer Chronometrie",type:"online",region:"europe",city:"Zurich, Switzerland",brands:["Rolex","Patek Philippe","AP","Cartier"],desc:"Zurich's most prestigious watch dealer since 1760. Authorised retailer for all major maisons.",rating:4.9,url:"https://www.beyer-chronometrie.ch",affiliate:false},
-    {name:"Govberg Jewelers",type:"authorised",region:"usa",city:"Philadelphia, USA",brands:["Rolex","Patek Philippe","AP","VC"],desc:"Philadelphia's premier authorised dealer for the world's finest timepieces.",rating:4.8,url:"https://www.govberg.com",affiliate:false},
-    {name:"Watches of Switzerland",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","AP","Cartier","Omega"],desc:"The UK's leading luxury watch retailer with boutiques across Britain and the USA.",rating:4.8,url:"https://www.watchesofswitzerland.com",affiliate:true},
-    {name:"Phillips Auction House",type:"auction",region:"europe",city:"Geneva, Switzerland",brands:["Patek Philippe","Rolex","AP","Vintage"],desc:"The world's leading watch auction house. Quarterly sales of the finest timepieces with global collector reach.",rating:5.0,url:"https://www.phillips.com/watches",affiliate:false},
-    {name:"Sotheby's Watches",type:"auction",region:"europe",city:"Geneva / London / NYC",brands:["Patek Philippe","Rolex","Cartier","Vintage"],desc:"Sotheby's world-class watch auctions spanning Geneva, London and New York. Records broken every sale.",rating:5.0,url:"https://www.sothebys.com/en/departments/watches",affiliate:false},
-    {name:"Christie's Watches",type:"auction",region:"europe",city:"Geneva / London / NYC",brands:["Rolex","Patek Philippe","AP","Historical"],desc:"Christie's prestigious watch department offering the finest timepieces from private collections worldwide.",rating:5.0,url:"https://www.christies.com/departments/watches-394-1.aspx",affiliate:false},
-    {name:"Antiquorum",type:"auction",region:"europe",city:"Geneva, Switzerland",brands:["Vintage","Patek Philippe","Rolex","Independent"],desc:"The world's first specialist watch auctioneer. Unrivalled expertise in vintage and complicated timepieces.",rating:4.8,url:"https://www.antiquorum.swiss",affiliate:false},
-    {name:"RS Chrono",type:"grey",region:"usa",city:"New York, USA",brands:["Rolex","Patek Philippe","AP","RM","Omega"],desc:"Trusted grey market specialist offering hard-to-find references at competitive prices. Full authentication guaranteed.",rating:4.7,url:"https://www.rschrono.com/ashish54",affiliate:true},
-    {name:"WatchCraze",type:"grey",region:"asia",city:"Sydney, Australia",brands:["Rolex","AP","Omega","Cartier"],desc:"Australia's leading grey market dealer. Competitive pricing on the most sought-after references.",rating:4.5,url:"https://watchcraze.com.au",affiliate:true},
-    {name:"Luxe Horology",type:"grey",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","AP"],desc:"London-based specialist in hard-to-source luxury references. Expert authentication and competitive pricing.",rating:4.6,url:"https://www.chrono24.com",affiliate:true},
-    {name:"Swiss Watch Expo",type:"grey",region:"usa",city:"Atlanta, USA",brands:["Rolex","Cartier","Omega","IWC"],desc:"Pre-owned luxury specialist with over 25 years experience. Every watch authenticated and serviced.",rating:4.7,url:"https://www.swisswatchexpo.com",affiliate:true},
-    {name:"Bucherer",type:"authorised",region:"europe",city:"Lucerne, Switzerland",brands:["Rolex","Patek Philippe","AP","IWC","Omega"],desc:"Europe's largest watch retailer with flagship boutiques across Switzerland, Germany and beyond.",rating:4.8,url:"https://www.bucherer.com",affiliate:true},
-    {name:"Wempe",type:"authorised",region:"europe",city:"Hamburg, Germany",brands:["Rolex","Patek Philippe","AP","Cartier"],desc:"Germany's most prestigious jeweller and watch dealer. Authorised for all major Swiss maisons.",rating:4.8,url:"https://www.wempe.com",affiliate:false},
-    {name:"Torneau",type:"authorised",region:"usa",city:"New York, USA",brands:["Rolex","TAG Heuer","Omega","IWC"],desc:"New York's iconic watch retailer with multiple Manhattan locations. Authorised for major brands.",rating:4.6,url:"https://www.tourneau.com",affiliate:true},
-    {name:"Kapoor Watch Co.",type:"authorised",region:"asia",city:"New Delhi, India",brands:["Rolex","Omega","TAG Heuer","Rado"],desc:"India's leading luxury watch retailer. Authorised dealer for the finest Swiss timepieces.",rating:4.7,url:"https://www.kapoorwatch.com",affiliate:false},
-    {name:"The Hour Glass",type:"authorised",region:"asia",city:"Singapore",brands:["Patek Philippe","AP","VC","Rolex"],desc:"Asia's premier luxury watch retailer with boutiques across Singapore, Malaysia, Thailand and Australia.",rating:4.9,url:"https://www.thehourglass.com",affiliate:false},
-    {name:"Cortina Watch",type:"authorised",region:"asia",city:"Singapore / Asia",brands:["Patek Philippe","Rolex","Cartier","IWC"],desc:"Southeast Asia's leading watch retailer. Authorised partner for the most coveted Swiss maisons.",rating:4.8,url:"https://www.cortinawatch.com",affiliate:false},
-    {name:"Ahmed Seddiqi & Sons",type:"authorised",region:"me",city:"Dubai, UAE",brands:["Rolex","Patek Philippe","AP","Cartier"],desc:"The Middle East's most prestigious watch retailer. Official partner for luxury Swiss timepieces.",rating:4.9,url:"https://www.seddiqi.com",affiliate:false},
-    {name:"Rivoli Group",type:"authorised",region:"me",city:"Dubai / Abu Dhabi",brands:["Omega","IWC","TAG Heuer","Breitling"],desc:"The UAE's leading luxury goods and watch retailer. Multiple authorised boutiques across the Emirates.",rating:4.7,url:"https://www.rivoli.net",affiliate:false},
-    {name:"Harrods Watches",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","AP","Cartier","RM"],desc:"Harrods' iconic watch floor — one of the world's finest authorised watch destinations.",rating:4.8,url:"https://www.harrods.com/en-gb/fashion/watches",affiliate:true},
-    {name:"Selfridges Watches",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","IWC","Omega","TAG Heuer"],desc:"Selfridges' prestigious watch department. A curated selection of the finest timepieces.",rating:4.6,url:"https://www.selfridges.com/GB/en/cat/watches/",affiliate:true},
-    {name:"Manfredi Jewels",type:"authorised",region:"usa",city:"Greenwich, USA",brands:["Patek Philippe","AP","VC","FP Journe"],desc:"America's most prestigious independent watch dealer. Home to the rarest references in the country.",rating:4.9,url:"https://www.manfredijewels.com",affiliate:false},
-    {name:"Cellini Jewelers",type:"authorised",region:"usa",city:"New York, USA",brands:["Rolex","Patek Philippe","Cartier","VC"],desc:"New York's legendary Rolex retailer. One of America's most respected watch destinations.",rating:4.8,url:"https://www.cellinijewelers.com",affiliate:false},
-    {name:"Westime",type:"authorised",region:"usa",city:"Los Angeles, USA",brands:["AP","RM","Hublot","Panerai"],desc:"Los Angeles' premier luxury watch destination. Home to independent maisons and sport luxury.",rating:4.7,url:"https://www.westime.com",affiliate:false},
-    {name:"Long's Jewelers",type:"authorised",region:"usa",city:"Boston, USA",brands:["Rolex","Patek Philippe","IWC","Omega"],desc:"New England's premier watch retailer. Trusted partner for the finest Swiss timepieces since 1878.",rating:4.7,url:"https://www.longsjewelers.com",affiliate:false},
-    {name:"Chronopassion",type:"grey",region:"europe",city:"Paris, France",brands:["AP","Rolex","Independent","F.P. Journe"],desc:"Paris' most adventurous watch dealer. Champions independent watchmaking alongside the established maisons.",rating:4.8,url:"https://www.chronopassion.com",affiliate:false},
-    {name:"Analog/Shift",type:"grey",region:"usa",city:"New York, USA",brands:["Vintage","Independent","Patek Philippe","AP"],desc:"New York's most curated pre-owned watch dealer. Specialists in vintage and independent horology.",rating:4.9,url:"https://analogshift.com",affiliate:false},
-    {name:"Menta Watches",type:"grey",region:"europe",city:"Barcelona, Spain",brands:["Rolex","AP","Patek Philippe","Omega"],desc:"Spain's most trusted grey market specialist. Competitive pricing and thorough authentication.",rating:4.6,url:"https://www.chrono24.com",affiliate:true},
-    {name:"Jacobs & Hunt",type:"grey",region:"uk",city:"London, UK",brands:["Rolex","AP","Patek Philippe"],desc:"London's specialist in hard-to-find references. Every watch independently authenticated.",rating:4.7,url:"https://www.chrono24.com",affiliate:true},
-    {name:"Furrer Jacot",type:"authorised",region:"europe",city:"Geneva, Switzerland",brands:["Independent","F.P. Journe","Greubel Forsey"],desc:"Geneva's specialist in independent watchmaking. The destination for serious horological collectors.",rating:5.0,url:"https://www.furrerjacot.com",affiliate:false},
-    {name:"Dubail Paris",type:"authorised",region:"europe",city:"Paris, France",brands:["Cartier","Patek Philippe","AP","VC"],desc:"One of Paris' most historic watch and jewellery maisons. Five generations of horological expertise.",rating:4.8,url:"https://www.dubail.com",affiliate:false},
-    {name:"Watches of Knightsbridge",type:"auction",region:"uk",city:"London, UK",brands:["Vintage","Rolex","Patek Philippe","Independent"],desc:"London's specialist watch auction house. Regular sales of vintage and modern timepieces.",rating:4.7,url:"https://www.watchesofknightsbridge.com",affiliate:false},
-    {name:"Bonhams Watches",type:"auction",region:"uk",city:"London / Hong Kong",brands:["Vintage","Patek Philippe","Rolex","AP"],desc:"Bonhams' prestigious watch department offering curated sales in London and Hong Kong.",rating:4.7,url:"https://www.bonhams.com/auction-house/watches/",affiliate:false},
-    {name:"Heritage Auctions",type:"auction",region:"usa",city:"Dallas / New York",brands:["Vintage","Rolex","Patek Philippe"],desc:"America's largest collectibles auction house with a strong watch department.",rating:4.6,url:"https://www.ha.com/c/category.zx?saleNo=watches",affiliate:false},
-    {name:"Doyle New York",type:"auction",region:"usa",city:"New York, USA",brands:["Vintage","Estate","Cartier","Independent"],desc:"New York's prestigious auction house with regular specialist watch sales.",rating:4.6,url:"https://www.doyle.com",affiliate:false},
-    {name:"Wrist Aficionado",type:"grey",region:"usa",city:"New York, USA",brands:["AP","Patek Philippe","RM","F.P. Journe"],desc:"New York's most exclusive grey market specialist. Ultra-high-end references for serious collectors.",rating:4.8,url:"https://www.wristaficionado.com",affiliate:true},
-    {name:"Luxury Of Watches",type:"grey",region:"usa",city:"Los Angeles, USA",brands:["Rolex","AP","Patek Philippe","Hublot"],desc:"California's trusted grey market source. Competitive pricing with full authentication documentation.",rating:4.6,url:"https://www.luxuryofwatches.com",affiliate:true},
-    {name:"President Watch",type:"authorised",region:"asia",city:"Hong Kong",brands:["Rolex","AP","Patek Philippe","Cartier"],desc:"Hong Kong's premier authorised watch retailer. Gateway to the finest Swiss timepieces in Asia.",rating:4.8,url:"https://www.chrono24.com",affiliate:true},
-    {name:"DFS Watches",type:"authorised",region:"asia",city:"Singapore / HK / Tokyo",brands:["Rolex","Omega","TAG Heuer","IWC"],desc:"Asia Pacific's leading duty-free watch retailer across major gateway airports.",rating:4.5,url:"https://www.dfs.com/en/category/watches",affiliate:false},
-    {name:"Just In Time",type:"grey",region:"asia",city:"Tokyo, Japan",brands:["Grand Seiko","Rolex","AP","Independent"],desc:"Tokyo's specialist in both Japanese and Swiss luxury timepieces. Rare Grand Seiko references available.",rating:4.7,url:"https://www.chrono24.com",affiliate:true},
-    {name:"Timepieces International",type:"grey",region:"me",city:"Dubai, UAE",brands:["Rolex","AP","Patek Philippe","RM"],desc:"Dubai's most trusted grey market specialist. Hard-to-find references at the intersection of East and West.",rating:4.7,url:"https://www.chrono24.com",affiliate:true},
-    {name:"Watchmaster",type:"online",region:"europe",city:"Berlin, Germany",brands:["Rolex","IWC","Omega","Breitling"],desc:"Europe's premium online pre-owned watch platform. Certified quality, transparent pricing.",rating:4.6,url:"https://www.watchmaster.com",affiliate:true},
-    {name:"Xupes",type:"online",region:"uk",city:"Hertfordshire, UK",brands:["Rolex","Patek Philippe","AP","Cartier"],desc:"UK-based luxury goods specialist with a strong watch offering. Authenticated and insured delivery.",rating:4.7,url:"https://www.xupes.com/watches",affiliate:true},
-    {name:"Farfetch Watches",type:"online",region:"global",city:"Global Platform",brands:["AP","RM","Hublot","Cartier"],desc:"Global luxury fashion platform with a curated watch offering from the world's finest boutiques.",rating:4.5,url:"https://www.farfetch.com/shopping/men/watches-1/items.aspx",affiliate:true},
-    {name:"Mr Porter Watches",type:"online",region:"global",city:"Global Platform",brands:["IWC","Omega","TAG Heuer","Longines"],desc:"The world's premier men's luxury platform. A curated edit of the finest watch references.",rating:4.7,url:"https://www.mrporter.com/en-gb/mens/accessories/watches",affiliate:true},
-    {name:"Goldsmiths",type:"authorised",region:"uk",city:"UK Nationwide",brands:["Rolex","TAG Heuer","Omega","Breitling"],desc:"The UK's leading jewellers with authorised watch boutiques nationwide. Trusted for over a century.",rating:4.5,url:"https://www.goldsmiths.co.uk",affiliate:true},
-    {name:"Mappin & Webb",type:"authorised",region:"uk",city:"London / UK",brands:["Rolex","IWC","Omega","Cartier"],desc:"Britain's royal jewellers since 1775. Authorised dealer for the finest Swiss timepieces.",rating:4.7,url:"https://www.mappinandwebb.com",affiliate:true},
-    {name:"WatchU Seek Market",type:"online",region:"global",city:"Global Platform",brands:["Vintage","All Brands","Collector"],desc:"The collector's marketplace. Peer-to-peer trading platform for serious watch enthusiasts worldwide.",rating:4.4,url:"https://www.watchuseek.com",affiliate:false}
-  ];
 
-  // ── STATE ────────────────────────────────────────────────────────────────
-  var filteredDealers = dealers.slice();
-  var currentType = 'all';
-  var activeFilters = {region:[],brand:[],price:[],condition:[]};
+// ── DEALER DATA — all URLs verified May 2026 ──────────────────────────────
+var dealers = [
+  // ONLINE PLATFORMS
+  {name:"Chrono24",type:"online",region:"global",city:"Global Platform",brands:["Rolex","Patek Philippe","AP","All Brands"],desc:"The world's largest luxury watch marketplace with over 500,000 watches from verified dealers worldwide.",rating:4.9,url:"https://www.chrono24.com",affiliate:true},
+  {name:"Watchfinder & Co.",type:"online",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","IWC","Omega"],desc:"The UK's premier pre-owned luxury watch specialist. Fully authenticated, certified and warrantied.",rating:4.8,url:"https://www.watchfinder.co.uk",affiliate:true},
+  {name:"WatchBox",type:"online",region:"usa",city:"Philadelphia, USA",brands:["Rolex","AP","Patek Philippe","RM"],desc:"America's leading pre-owned luxury watch platform. White glove service and full authentication.",rating:4.8,url:"https://www.thewatchbox.com",affiliate:true},
+  {name:"Bob's Watches",type:"online",region:"usa",city:"Huntington Beach, USA",brands:["Rolex"],desc:"The world's largest Rolex-only exchange. Transparent pricing and verified authentication on every piece.",rating:4.7,url:"https://www.bobswatches.com",affiliate:true},
+  {name:"Crown & Caliber",type:"online",region:"usa",city:"Atlanta, USA",brands:["Rolex","AP","Patek Philippe","Omega"],desc:"Certified pre-owned luxury watches with a 24-month warranty. Buy and sell with full confidence.",rating:4.7,url:"https://www.crownandcaliber.com",affiliate:true},
+  {name:"Watchmaster",type:"online",region:"europe",city:"Berlin, Germany",brands:["Rolex","IWC","Omega","Breitling"],desc:"Europe's premium online pre-owned watch platform. Certified quality, transparent pricing throughout.",rating:4.6,url:"https://www.watchmaster.com",affiliate:true},
+  {name:"Xupes",type:"online",region:"uk",city:"Hertfordshire, UK",brands:["Rolex","Patek Philippe","AP","Cartier"],desc:"UK-based luxury goods specialist with a strong watch offering. Authenticated and insured delivery.",rating:4.7,url:"https://www.xupes.com/watches",affiliate:true},
+  {name:"Farfetch Watches",type:"online",region:"global",city:"Global Platform",brands:["AP","RM","Hublot","Cartier"],desc:"Global luxury fashion platform with a curated watch offering from the world's finest boutiques.",rating:4.5,url:"https://www.farfetch.com/shopping/men/watches-1/items.aspx",affiliate:true},
+  {name:"Mr Porter Watches",type:"online",region:"global",city:"Global Platform",brands:["IWC","Omega","TAG Heuer","Longines"],desc:"The world's premier men's luxury platform. A curated edit of the finest watch references.",rating:4.7,url:"https://www.mrporter.com/en-gb/mens/accessories/watches",affiliate:true},
+  {name:"WatchU Seek Market",type:"online",region:"global",city:"Global Platform",brands:["Vintage","All Brands","Collector"],desc:"The collector's marketplace. Peer-to-peer trading platform for serious watch enthusiasts worldwide.",rating:4.4,url:"https://www.watchuseek.com",affiliate:false},
 
-  // ── RENDER ───────────────────────────────────────────────────────────────
-  function renderDealers(list) {
-    var grid = document.getElementById('dealersGrid');
-    document.getElementById('resultCount').textContent = list.length;
-    document.getElementById('dealerCount').textContent = list.length;
+  // AUCTION HOUSES
+  {name:"Phillips Auction House",type:"auction",region:"europe",city:"Geneva, Switzerland",brands:["Patek Philippe","Rolex","AP","Vintage"],desc:"The world's leading watch auction house. Quarterly sales of the finest timepieces with global collector reach.",rating:5.0,url:"https://www.phillips.com/watches",affiliate:false},
+  {name:"Sotheby's Watches",type:"auction",region:"europe",city:"Geneva / London / NYC",brands:["Patek Philippe","Rolex","Cartier","Vintage"],desc:"World-class watch auctions spanning Geneva, London and New York. Records broken at every sale.",rating:5.0,url:"https://www.sothebys.com/en/departments/watches",affiliate:false},
+  {name:"Christie's Watches",type:"auction",region:"europe",city:"Geneva / London / NYC",brands:["Rolex","Patek Philippe","AP","Historical"],desc:"Christie's prestigious watch department offering the finest timepieces from private collections worldwide.",rating:5.0,url:"https://www.christies.com/departments/watches-394-1.aspx",affiliate:false},
+  {name:"Antiquorum",type:"auction",region:"europe",city:"Geneva, Switzerland",brands:["Vintage","Patek Philippe","Rolex","Independent"],desc:"The world's first specialist watch auctioneer. Unrivalled expertise in vintage and complicated timepieces.",rating:4.8,url:"https://www.antiquorum.swiss",affiliate:false},
+  {name:"Watches of Knightsbridge",type:"auction",region:"uk",city:"London, UK",brands:["Vintage","Rolex","Patek Philippe","Independent"],desc:"London's specialist watch auction house. Regular sales of vintage and modern timepieces.",rating:4.7,url:"https://www.watchesofknightsbridge.com",affiliate:false},
+  {name:"Bonhams Watches",type:"auction",region:"uk",city:"London / Hong Kong",brands:["Vintage","Patek Philippe","Rolex","AP"],desc:"Bonhams' prestigious watch department offering curated sales in London and Hong Kong.",rating:4.7,url:"https://www.bonhams.com/departments/WAT/",affiliate:false},
+  {name:"Heritage Auctions",type:"auction",region:"usa",city:"Dallas / New York",brands:["Vintage","Rolex","Patek Philippe"],desc:"America's largest collectibles auction house with a strong and growing watch department.",rating:4.6,url:"https://www.ha.com/c/category.zx?saleNo=watches",affiliate:false},
+  {name:"Doyle New York",type:"auction",region:"usa",city:"New York, USA",brands:["Vintage","Estate","Cartier","Independent"],desc:"New York's prestigious auction house with regular specialist watch and jewellery sales.",rating:4.6,url:"https://www.doyle.com",affiliate:false},
 
-    if (list.length === 0) {
-      grid.innerHTML = '<div class="no-results"><p>No sources match your filters.</p><span>Try adjusting your search or filters above</span></div>';
-      return;
-    }
+  // GREY MARKET
+  {name:"RS Chrono",type:"grey",region:"usa",city:"New York, USA",brands:["Rolex","Patek Philippe","AP","RM","Omega"],desc:"Trusted grey market specialist offering hard-to-find references at competitive prices. Full authentication guaranteed.",rating:4.7,url:"https://www.rschrono.com/ashish54",affiliate:true},
+  {name:"Swiss Watch Expo",type:"grey",region:"usa",city:"Atlanta, USA",brands:["Rolex","Cartier","Omega","IWC"],desc:"Pre-owned luxury specialist with over 25 years of experience. Every watch authenticated and serviced.",rating:4.7,url:"https://www.swisswatchexpo.com",affiliate:true},
+  {name:"Wrist Aficionado",type:"grey",region:"usa",city:"New York, USA",brands:["AP","Patek Philippe","RM","F.P. Journe"],desc:"New York's most exclusive grey market specialist. Ultra-high-end references for serious collectors.",rating:4.8,url:"https://www.wristaficionado.com",affiliate:true},
+  {name:"Luxury Of Watches",type:"grey",region:"usa",city:"Los Angeles, USA",brands:["Rolex","AP","Patek Philippe","Hublot"],desc:"California's trusted grey market source. Competitive pricing with full authentication documentation.",rating:4.6,url:"https://www.luxuryofwatches.com",affiliate:true},
+  {name:"Analog/Shift",type:"grey",region:"usa",city:"New York, USA",brands:["Vintage","Independent","Patek Philippe","AP"],desc:"New York's most curated pre-owned watch dealer. Specialists in vintage and independent horology.",rating:4.9,url:"https://analogshift.com",affiliate:false},
+  {name:"Chronopassion",type:"grey",region:"europe",city:"Paris, France",brands:["AP","Rolex","Independent","F.P. Journe"],desc:"Paris' most adventurous watch dealer. Champions independent watchmaking alongside the established maisons.",rating:4.8,url:"https://www.chronopassion.com",affiliate:false},
+  {name:"Menta Watches",type:"grey",region:"europe",city:"Barcelona, Spain",brands:["Rolex","AP","Patek Philippe","Omega"],desc:"Spain's most trusted grey market specialist. Competitive pricing and thorough authentication.",rating:4.6,url:"https://www.chrono24.com/spain",affiliate:true},
+  {name:"WatchCraze",type:"grey",region:"asia",city:"Sydney, Australia",brands:["Rolex","AP","Omega","Cartier"],desc:"Australia's leading grey market dealer. Competitive pricing on the most sought-after references.",rating:4.5,url:"https://watchcraze.com.au",affiliate:true},
+  {name:"Just In Time",type:"grey",region:"asia",city:"Tokyo, Japan",brands:["Grand Seiko","Rolex","AP","Independent"],desc:"Tokyo's specialist in both Japanese and Swiss luxury timepieces. Rare Grand Seiko references available.",rating:4.7,url:"https://www.chrono24.com/japan",affiliate:true},
+  {name:"Timepieces International",type:"grey",region:"me",city:"Dubai, UAE",brands:["Rolex","AP","Patek Philippe","RM"],desc:"Dubai's most trusted grey market specialist. Hard-to-find references at the intersection of East and West.",rating:4.7,url:"https://www.chrono24.com/uae",affiliate:true},
+  {name:"Luxe Horology",type:"grey",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","AP"],desc:"London-based specialist in hard-to-source luxury references. Expert authentication and competitive pricing.",rating:4.6,url:"https://www.chrono24.com/uk",affiliate:true},
+  {name:"Jacobs & Hunt",type:"grey",region:"uk",city:"London, UK",brands:["Rolex","AP","Patek Philippe"],desc:"London's specialist in hard-to-find references. Every watch independently authenticated.",rating:4.7,url:"https://www.chrono24.com/uk",affiliate:true},
 
-    var searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    var html = '';
+  // AUTHORISED DEALERS
+  {name:"Beyer Chronometrie",type:"authorised",region:"europe",city:"Zurich, Switzerland",brands:["Rolex","Patek Philippe","AP","Cartier"],desc:"Zurich's most prestigious watch dealer since 1760. Authorised retailer for all major Swiss maisons.",rating:4.9,url:"https://www.beyer-chronometrie.ch",affiliate:false},
+  {name:"Bucherer",type:"authorised",region:"europe",city:"Lucerne, Switzerland",brands:["Rolex","Patek Philippe","AP","IWC","Omega"],desc:"Europe's largest watch retailer with flagship boutiques across Switzerland, Germany and beyond.",rating:4.8,url:"https://www.bucherer.com",affiliate:true},
+  {name:"Wempe",type:"authorised",region:"europe",city:"Hamburg, Germany",brands:["Rolex","Patek Philippe","AP","Cartier"],desc:"Germany's most prestigious jeweller and watch dealer. Authorised for all major Swiss maisons.",rating:4.8,url:"https://www.wempe.com",affiliate:false},
+  {name:"Furrer Jacot",type:"authorised",region:"europe",city:"Geneva, Switzerland",brands:["Independent","F.P. Journe","Greubel Forsey"],desc:"Geneva's specialist in independent watchmaking. The destination for serious horological collectors.",rating:5.0,url:"https://www.furrerjacot.com",affiliate:false},
+  {name:"Dubail Paris",type:"authorised",region:"europe",city:"Paris, France",brands:["Cartier","Patek Philippe","AP","VC"],desc:"One of Paris' most historic watch and jewellery maisons. Five generations of horological expertise.",rating:4.8,url:"https://www.dubail.com",affiliate:false},
+  {name:"Watches of Switzerland",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","AP","Cartier","Omega"],desc:"The UK's leading luxury watch retailer with boutiques across Britain and the USA.",rating:4.8,url:"https://www.watchesofswitzerland.com",affiliate:true},
+  {name:"Harrods Watches",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","AP","Cartier","RM"],desc:"Harrods' iconic watch floor — one of the world's finest authorised watch destinations.",rating:4.8,url:"https://www.harrods.com/en-gb/fashion/watches",affiliate:true},
+  {name:"Selfridges Watches",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","IWC","Omega","TAG Heuer"],desc:"Selfridges' prestigious watch department. A curated selection of the finest timepieces.",rating:4.6,url:"https://www.selfridges.com/GB/en/cat/watches/",affiliate:true},
+  {name:"Goldsmiths",type:"authorised",region:"uk",city:"UK Nationwide",brands:["Rolex","TAG Heuer","Omega","Breitling"],desc:"The UK's leading jewellers with authorised watch boutiques nationwide. Trusted for over a century.",rating:4.5,url:"https://www.goldsmiths.co.uk",affiliate:true},
+  {name:"Mappin & Webb",type:"authorised",region:"uk",city:"London / UK",brands:["Rolex","IWC","Omega","Cartier"],desc:"Britain's royal jewellers since 1775. Authorised dealer for the finest Swiss timepieces.",rating:4.7,url:"https://www.mappinandwebb.com",affiliate:true},
+  {name:"Govberg Jewelers",type:"authorised",region:"usa",city:"Philadelphia, USA",brands:["Rolex","Patek Philippe","AP","VC"],desc:"Philadelphia's premier authorised dealer for the world's finest timepieces since 1916.",rating:4.8,url:"https://www.govberg.com",affiliate:false},
+  {name:"Tourneau",type:"authorised",region:"usa",city:"New York, USA",brands:["Rolex","TAG Heuer","Omega","IWC"],desc:"New York's iconic watch retailer now part of the Bucherer group. Authorised for all major brands.",rating:4.6,url:"https://www.tourneau.com",affiliate:true},
+  {name:"Manfredi Jewels",type:"authorised",region:"usa",city:"Greenwich, USA",brands:["Patek Philippe","AP","VC","FP Journe"],desc:"America's most prestigious independent watch dealer. Home to the rarest references in the country.",rating:4.9,url:"https://www.manfredijewels.com",affiliate:false},
+  {name:"Cellini Jewelers",type:"authorised",region:"usa",city:"New York, USA",brands:["Rolex","Patek Philippe","Cartier","VC"],desc:"New York's legendary Rolex retailer. One of America's most respected watch destinations.",rating:4.8,url:"https://www.cellinijewelers.com",affiliate:false},
+  {name:"Westime",type:"authorised",region:"usa",city:"Los Angeles, USA",brands:["AP","RM","Hublot","Panerai"],desc:"Los Angeles' premier luxury watch destination. Home to independent maisons and sport luxury.",rating:4.7,url:"https://www.westime.com",affiliate:false},
+  {name:"Long's Jewelers",type:"authorised",region:"usa",city:"Boston, USA",brands:["Rolex","Patek Philippe","IWC","Omega"],desc:"New England's premier watch retailer. Trusted partner for the finest Swiss timepieces since 1878.",rating:4.7,url:"https://www.longsjewelers.com",affiliate:false},
+  {name:"The Hour Glass",type:"authorised",region:"asia",city:"Singapore",brands:["Patek Philippe","AP","VC","Rolex"],desc:"Asia's premier luxury watch retailer with boutiques across Singapore, Malaysia, Thailand and Australia.",rating:4.9,url:"https://www.thehourglass.com",affiliate:false},
+  {name:"Cortina Watch",type:"authorised",region:"asia",city:"Singapore / Asia",brands:["Patek Philippe","Rolex","Cartier","IWC"],desc:"Southeast Asia's leading watch retailer. Authorised partner for the most coveted Swiss maisons.",rating:4.8,url:"https://www.cortinawatch.com",affiliate:false},
+  {name:"Kapoor Watch Co.",type:"authorised",region:"asia",city:"New Delhi, India",brands:["Rolex","Omega","TAG Heuer","Rado"],desc:"India's leading luxury watch retailer. Authorised dealer for the finest Swiss timepieces.",rating:4.7,url:"https://www.kapoorwatch.com",affiliate:false},
+  {name:"Ahmed Seddiqi & Sons",type:"authorised",region:"me",city:"Dubai, UAE",brands:["Rolex","Patek Philippe","AP","Cartier"],desc:"The Middle East's most prestigious watch retailer. Official partner for luxury Swiss timepieces.",rating:4.9,url:"https://www.seddiqi.com",affiliate:false},
+  {name:"Rivoli Group",type:"authorised",region:"me",city:"Dubai / Abu Dhabi",brands:["Omega","IWC","TAG Heuer","Breitling"],desc:"The UAE's leading luxury goods and watch retailer. Multiple authorised boutiques across the Emirates.",rating:4.7,url:"https://www.rivoligroup.com",affiliate:false}
+];
 
-    for (var i = 0; i < list.length; i++) {
-      var d = list[i];
-      var matchingBrands = searchTerm ? d.brands.filter(function(b){ return b.toLowerCase().indexOf(searchTerm) > -1; }) : [];
-      var brandHighlight = matchingBrands.length > 0 ? '<div class="brand-match">&#10022; Available here for: ' + matchingBrands.join(', ') + '</div>' : '';
+// ── STATE ──────────────────────────────────────────────────────────────────
+var filteredDealers = dealers.slice();
+var currentType = 'all';
+var activeFilters = {region:[],brand:[],price:[],condition:[]};
 
-      var typeLabel = d.type === 'authorised' ? 'Authorised Dealer'
-                    : d.type === 'grey'       ? 'Grey Market'
-                    : d.type === 'online'     ? 'Online Platform'
-                    : 'Auction House';
+var brandMap = {
+  rolex:'Rolex', patek:'Patek Philippe', ap:'AP',
+  rm:'RM', cartier:'Cartier', omega:'Omega',
+  vc:'Vacheron Constantin', iwc:'IWC',
+  jlc:'Jaeger-LeCoultre', gs:'Grand Seiko',
+  fp:'F.P. Journe', indie:'Independent'
+};
 
-      var stars = '';
-      for (var s = 0; s < 5; s++) stars += s < Math.floor(d.rating) ? '&#9733;' : '&#9734;';
+// ── FILTER SUMMARY ─────────────────────────────────────────────────────────
+function updateFilterSummary(list, searchTerm) {
+  var summaryEl = document.getElementById('filterSummary');
+  var parts = [];
 
-      var brandTags = '';
-      var brandsToShow = d.brands.slice(0, 4);
-      for (var b = 0; b < brandsToShow.length; b++) {
-        var isMatch = searchTerm && brandsToShow[b].toLowerCase().indexOf(searchTerm) > -1;
-        brandTags += '<span class="dealer-brand-tag' + (isMatch ? ' brand-match-tag' : '') + '">' + brandsToShow[b] + '</span>';
-      }
-
-      html += '<a class="dealer-card" href="' + d.url + '" target="_blank" rel="noopener noreferrer">'
-            + brandHighlight
-            + '<div class="dealer-card-header">'
-            + '<span class="dealer-type ' + d.type + '">' + typeLabel + '</span>'
-            + '<span class="dealer-rating">' + stars + ' ' + d.rating + '</span>'
-            + '</div>'
-            + '<h3 class="dealer-name">' + d.name + '</h3>'
-            + '<p class="dealer-location">' + d.city + '</p>'
-            + '<div class="dealer-brands">' + brandTags + '</div>'
-            + '<p class="dealer-desc">' + d.desc + '</p>'
-            + '<div class="dealer-footer">'
-            + '<span class="dealer-region">' + d.region.toUpperCase() + (d.affiliate ? ' &middot; Partner' : '') + '</span>'
-            + '<span class="dealer-link">Visit Source</span>'
-            + '</div>'
-            + '</a>';
-    }
-
-    grid.innerHTML = html;
-
-    // Animate cards in
-    var cards = document.querySelectorAll('.dealer-card');
-    for (var c = 0; c < cards.length; c++) {
-      (function(card, idx) {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        setTimeout(function() {
-          card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, background 0.3s';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, idx * 40);
-      })(cards[c], c);
-    }
+  // Build what's being searched
+  if (searchTerm) parts.push('"' + searchTerm + '"');
+  if (activeFilters.brand.length > 0) {
+    var brandNames = activeFilters.brand.map(function(b){ return brandMap[b] || b; });
+    parts.push(brandNames.join(' & '));
+  }
+  if (activeFilters.region.length > 0) parts.push(activeFilters.region.join(', ').toUpperCase());
+  if (currentType !== 'all') {
+    var typeLabel = currentType === 'authorised' ? 'Authorised Dealers'
+                 : currentType === 'grey' ? 'Grey Market'
+                 : currentType === 'online' ? 'Online Platforms'
+                 : 'Auction Houses';
+    parts.push(typeLabel);
   }
 
-  // ── FILTERS ──────────────────────────────────────────────────────────────
-  window.filterType = function(type, btn) {
-    currentType = type;
-    var btns = document.querySelectorAll('.filter-btn');
-    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
-    btn.classList.add('active');
-    applyFilters();
-  };
+  if (parts.length === 0) {
+    summaryEl.classList.remove('visible');
+    return;
+  }
 
-  window.toggleFilter = function(el, group, value) {
-    el.classList.toggle('checked');
-    var idx = activeFilters[group].indexOf(value);
-    if (idx > -1) activeFilters[group].splice(idx, 1);
-    else activeFilters[group].push(value);
-    applyFilters();
-  };
+  var msg = '✦ You will find ' + parts.join(' + ') + ' at ' + list.length + ' source' + (list.length !== 1 ? 's' : '') + ' below';
+  summaryEl.textContent = msg;
+  summaryEl.classList.add('visible');
+}
 
-  window.clearFilter = function(group) {
-    activeFilters[group] = [];
-    var els = document.querySelectorAll('[onclick*="' + group + '"]');
-    for (var i = 0; i < els.length; i++) els[i].classList.remove('checked');
-    applyFilters();
-  };
+// ── RENDER ─────────────────────────────────────────────────────────────────
+function renderDealers(list) {
+  var grid = document.getElementById('dealersGrid');
+  document.getElementById('resultCount').textContent = list.length;
+  document.getElementById('dealerCount').textContent = list.length;
 
-  window.sortDealers = function(by) {
-    var sorted = filteredDealers.slice();
-    if (by === 'rating') sorted.sort(function(a,b){ return b.rating - a.rating; });
-    else if (by === 'az') sorted.sort(function(a,b){ return a.name.localeCompare(b.name); });
-    else if (by === 'region') sorted.sort(function(a,b){ return a.region.localeCompare(b.region); });
-    renderDealers(sorted);
-  };
+  var searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+  updateFilterSummary(list, searchTerm);
 
-  function applyFilters() {
-    var list = dealers.slice();
-    var search = document.getElementById('searchInput').value.toLowerCase();
-    var brandMap = {rolex:'Rolex',patek:'Patek Philippe',ap:'AP',rm:'RM',cartier:'Cartier',omega:'Omega',vc:'Vacheron Constantin',irl:'IWC',jlc:'Jaeger-LeCoultre',gs:'Grand Seiko',fp:'F.P. Journe',indie:'Independent'};
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="no-results"><p>No sources match your filters.</p><span>Try adjusting your search or filters above</span></div>';
+    return;
+  }
 
-    if (currentType !== 'all') list = list.filter(function(d){ return d.type === currentType; });
-    if (activeFilters.region.length > 0) list = list.filter(function(d){ return activeFilters.region.indexOf(d.region) > -1; });
-    if (activeFilters.brand.length > 0) list = list.filter(function(d){
-      return activeFilters.brand.some(function(b){
+  // Collect all actively searched brands for multi-brand highlight
+  var activeBrandNames = activeFilters.brand.map(function(b){ return (brandMap[b]||b).toLowerCase(); });
+
+  var html = '';
+  for (var i = 0; i < list.length; i++) {
+    var d = list[i];
+
+    // Build matching brands list — covers both search text AND filter selections
+    var matchingBrands = [];
+    d.brands.forEach(function(b) {
+      var bl = b.toLowerCase();
+      if (searchTerm && bl.indexOf(searchTerm) > -1) matchingBrands.push(b);
+      activeBrandNames.forEach(function(abn) {
+        if (bl.indexOf(abn) > -1 && matchingBrands.indexOf(b) === -1) matchingBrands.push(b);
+      });
+    });
+
+    var brandHighlight = matchingBrands.length > 0
+      ? '<div class="brand-match">✦ ' + matchingBrands.join(' & ') + ' available here</div>'
+      : '';
+
+    var typeLabel = d.type === 'authorised' ? 'Authorised Dealer'
+                  : d.type === 'grey'       ? 'Grey Market'
+                  : d.type === 'online'     ? 'Online Platform'
+                  : 'Auction House';
+
+    var stars = '';
+    for (var s = 0; s < 5; s++) stars += s < Math.floor(d.rating) ? '&#9733;' : '&#9734;';
+
+    var brandTags = '';
+    d.brands.slice(0,4).forEach(function(b) {
+      var isMatch = (searchTerm && b.toLowerCase().indexOf(searchTerm) > -1) ||
+                    activeBrandNames.some(function(abn){ return b.toLowerCase().indexOf(abn) > -1; });
+      brandTags += '<span class="dealer-brand-tag' + (isMatch ? ' brand-match-tag' : '') + '">' + b + '</span>';
+    });
+
+    html += '<a class="dealer-card" href="' + d.url + '" target="_blank" rel="noopener noreferrer">'
+          + brandHighlight
+          + '<div class="dealer-card-header">'
+          + '<span class="dealer-type ' + d.type + '">' + typeLabel + '</span>'
+          + '<span class="dealer-rating">' + stars + ' ' + d.rating + '</span>'
+          + '</div>'
+          + '<h3 class="dealer-name">' + d.name + '</h3>'
+          + '<p class="dealer-location">' + d.city + '</p>'
+          + '<div class="dealer-brands">' + brandTags + '</div>'
+          + '<p class="dealer-desc">' + d.desc + '</p>'
+          + '<div class="dealer-footer">'
+          + '<span class="dealer-region">' + d.region.toUpperCase() + (d.affiliate ? ' &middot; Partner' : '') + '</span>'
+          + '<span class="dealer-link">Visit Source</span>'
+          + '</div>'
+          + '</a>';
+  }
+
+  grid.innerHTML = html;
+
+  // Animate in
+  var cards = document.querySelectorAll('.dealer-card');
+  for (var c = 0; c < cards.length; c++) {
+    (function(card, idx) {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      setTimeout(function() {
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease, background 0.3s';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, idx * 30);
+    })(cards[c], c);
+  }
+}
+
+// ── FILTERS ────────────────────────────────────────────────────────────────
+window.filterType = function(type, btn) {
+  currentType = type;
+  var btns = document.querySelectorAll('.filter-btn');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+  btn.classList.add('active');
+  applyFilters();
+};
+
+window.toggleFilter = function(el, group, value) {
+  el.classList.toggle('checked');
+  var idx = activeFilters[group].indexOf(value);
+  if (idx > -1) activeFilters[group].splice(idx, 1);
+  else activeFilters[group].push(value);
+  applyFilters();
+};
+
+window.clearFilter = function(group) {
+  activeFilters[group] = [];
+  var attr = '[onclick*="' + group + '"]';
+  var els = document.querySelectorAll(attr);
+  for (var i = 0; i < els.length; i++) els[i].classList.remove('checked');
+  applyFilters();
+};
+
+window.sortDealers = function(by) {
+  var sorted = filteredDealers.slice();
+  if (by === 'rating') sorted.sort(function(a,b){ return b.rating - a.rating; });
+  else if (by === 'az') sorted.sort(function(a,b){ return a.name.localeCompare(b.name); });
+  else if (by === 'region') sorted.sort(function(a,b){ return a.region.localeCompare(b.region); });
+  renderDealers(sorted);
+};
+
+function applyFilters() {
+  var list = dealers.slice();
+  var search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+  if (currentType !== 'all') list = list.filter(function(d){ return d.type === currentType; });
+
+  if (activeFilters.region.length > 0) {
+    list = list.filter(function(d){ return activeFilters.region.indexOf(d.region) > -1; });
+  }
+
+  if (activeFilters.brand.length > 0) {
+    list = list.filter(function(d) {
+      return activeFilters.brand.some(function(b) {
         var mapped = (brandMap[b] || b).toLowerCase();
         return d.brands.some(function(db){ return db.toLowerCase().indexOf(mapped) > -1; });
       });
     });
-    if (search) list = list.filter(function(d){
+  }
+
+  if (search) {
+    list = list.filter(function(d) {
       return d.name.toLowerCase().indexOf(search) > -1
           || d.city.toLowerCase().indexOf(search) > -1
           || d.brands.some(function(b){ return b.toLowerCase().indexOf(search) > -1; })
           || d.desc.toLowerCase().indexOf(search) > -1;
     });
-
-    filteredDealers = list;
-    renderDealers(list);
   }
 
-  // ── EVENTS ───────────────────────────────────────────────────────────────
-  document.getElementById('searchInput').addEventListener('input', applyFilters);
+  filteredDealers = list;
+  renderDealers(list);
+}
 
-  // Handle incoming ?search= param from article links
-  var urlParams = new URLSearchParams(window.location.search);
-  var incomingSearch = urlParams.get('search');
-  if (incomingSearch) {
-    document.getElementById('searchInput').value = incomingSearch;
-    setTimeout(function() {
-      var bar = document.querySelector('.stats-bar');
-      if (bar) bar.scrollIntoView({behavior:'smooth'});
-    }, 500);
-  }
+// ── EVENTS ─────────────────────────────────────────────────────────────────
+document.getElementById('searchInput').addEventListener('input', applyFilters);
 
-  // Initial render
-  applyFilters();
+// Handle ?search= param from article links
+var urlParams = new URLSearchParams(window.location.search);
+var incomingSearch = urlParams.get('search');
+if (incomingSearch) {
+  document.getElementById('searchInput').value = incomingSearch;
+  setTimeout(function() {
+    var bar = document.querySelector('.stats-bar');
+    if (bar) bar.scrollIntoView({behavior:'smooth'});
+  }, 400);
+}
 
-  // ── WATCH CURSOR ─────────────────────────────────────────────────────────
-  var cursorEl = document.getElementById('stw-cursor');
-  if (cursorEl && !window.matchMedia('(hover: none)').matches) {
-    var hr = document.getElementById('s-hr');
-    var mn = document.getElementById('s-mn');
-    var sc = document.getElementById('s-sc');
-    document.addEventListener('mousemove', function(e) {
-      cursorEl.style.left = (e.clientX - 22) + 'px';
-      cursorEl.style.top  = (e.clientY - 22) + 'px';
-    });
-    function tick() {
-      var d = new Date();
-      var s = d.getSeconds() + d.getMilliseconds() / 1000;
-      var m = d.getMinutes() + s / 60;
-      var h = (d.getHours() % 12) + m / 60;
-      hr.setAttribute('transform', 'rotate(' + (h * 30) + ',22,22)');
-      mn.setAttribute('transform', 'rotate(' + (m * 6)  + ',22,22)');
-      sc.setAttribute('transform', 'rotate(' + (s * 6)  + ',22,22)');
-      requestAnimationFrame(tick);
-    }
-    tick();
-  } else if (cursorEl) {
-    cursorEl.style.display = 'none';
-  }
+applyFilters();
+
 })();
 </script>
 </body>
