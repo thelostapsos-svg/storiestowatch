@@ -53,6 +53,28 @@
   .mobile-menu a.gold { color: var(--gold); }
   .mobile-menu a.gold-light { color: var(--gold-light); }
 
+  /* MOBILE NAV QUICK LINKS */
+  .nav-quick { display: none; align-items: center; gap: 6px; }
+  .nav-quick a { font-size: 8px; letter-spacing: 0.2em; color: var(--text-dim); text-decoration: none; text-transform: uppercase; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); padding: 5px 10px; border-radius: 2px; white-space: nowrap; transition: all 0.2s; }
+  .nav-quick a:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,0.1); }
+  @media (max-width: 900px) { .nav-quick { display: flex; } }
+
+  /* ARTICLE QUICK-ACCESS STRIP */
+  .quick-strip-wrap { background: var(--deep); border-bottom: 1px solid rgba(201,168,76,0.1); overflow: hidden; position: relative; }
+  .quick-strip-wrap::before { content: 'QUICK ACCESS'; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); font-size: 7px; letter-spacing: 0.4em; color: var(--gold-dim); text-transform: uppercase; white-space: nowrap; z-index: 2; }
+  .quick-strip-wrap::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 60px; background: linear-gradient(to right, transparent, var(--deep)); z-index: 2; pointer-events: none; }
+  .quick-strip { display: flex; gap: 8px; padding: 12px 20px 12px 130px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+  .quick-strip::-webkit-scrollbar { display: none; }
+  .quick-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 9px; letter-spacing: 0.2em; color: var(--text-dim); text-decoration: none; text-transform: uppercase; background: var(--surface); border: 1px solid rgba(201,168,76,0.12); padding: 7px 14px; white-space: nowrap; flex-shrink: 0; transition: all 0.25s; }
+  .quick-pill:hover { color: var(--gold); border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.06); }
+  .quick-pill.hot { border-color: rgba(201,168,76,0.3); color: var(--gold-light); }
+  .quick-pill.hot::before { content: '⚡'; font-size: 8px; }
+  @media (max-width: 900px) {
+    .quick-strip-wrap::before { display: none; }
+    .quick-strip { padding: 10px 12px; gap: 6px; }
+    .quick-pill { font-size: 8px; padding: 6px 12px; }
+  }
+
   .hero { height: 100vh; min-height: 700px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; overflow: hidden; padding: 0 80px; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 30% 50%, rgba(201,168,76,0.07) 0%, transparent 60%), radial-gradient(ellipse 100% 100% at 50% 50%, #0A0A08 0%, #050505 100%); }
   .hero-left { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding-right: 40px; }
@@ -326,6 +348,11 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <li><a href="#about">About</a></li>
     <li><a href="mediakit.html" style="color:var(--gold);">Advertise</a></li>
   </ul>
+  <div class="nav-quick">
+    <a href="cannes-2026-watches.html">⚡ Cannes</a>
+    <a href="watchfinder.html">⌕ Finder</a>
+    <a href="#guides">Guides</a>
+  </div>
   <div class="nav-time" id="navTime">Loading...</div>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -456,6 +483,22 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <span class="ticker-item">Watches & Wonders 2026: Market Shifts <span class="ticker-dot">◆</span></span>
     <span class="ticker-item">AP Royal Oak: New Limited Editions Drop <span class="ticker-dot">◆</span></span>
     <span class="ticker-item">Luxury Watch Market: $62B Valuation <span class="ticker-dot">◆</span></span>
+  </div>
+</div>
+
+<!-- QUICK ACCESS STRIP -->
+<div class="quick-strip-wrap">
+  <div class="quick-strip">
+    <a href="cannes-2026-watches.html" class="quick-pill hot">Cannes 2026 &mdash; 14 Watches</a>
+    <a href="the-rock-met-gala-watch-2026.html" class="quick-pill">The Rock's $3.3M Watch</a>
+    <a href="ronaldo-watch-collection-2026.html" class="quick-pill">Ronaldo's $16M Collection</a>
+    <a href="kevin-hart-roast-watches-2026.html" class="quick-pill">Kevin Hart Roast Watches</a>
+    <a href="nautilus-buying-guide.html" class="quick-pill">Patek Nautilus Guide</a>
+    <a href="royal-oak-price-guide.html" class="quick-pill">Royal Oak Prices 2026</a>
+    <a href="rolex-submariner-london.html" class="quick-pill">Rolex Submariner London</a>
+    <a href="omega-speedmaster-guide.html" class="quick-pill">Omega Speedmaster Guide</a>
+    <a href="cartier-buying-guide.html" class="quick-pill">Cartier Buying Guide</a>
+    <a href="watchfinder.html" class="quick-pill"><!-- FEATURED -->#8981; Watch Finder</a>
   </div>
 </div>
 
