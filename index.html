@@ -86,9 +86,9 @@
   .hero-content { text-align: left; position: relative; z-index: 2; animation: textReveal 2.5s ease forwards; opacity: 0; animation-delay: 0.5s; }
   @keyframes textReveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   .hero-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
-  .hero-title { font-family: 'Cinzel', serif; font-size: clamp(42px, 7vw, 88px); font-weight: 900; line-height: 0.9; letter-spacing: 0.05em; color: var(--white); margin-bottom: 24px; }
+  .hero-title { font-family: 'Cinzel', serif; font-size: clamp(44px, 7.5vw, 96px); font-weight: 900; line-height: 0.88; letter-spacing: 0.06em; color: var(--white); margin-bottom: 28px; }
   .hero-title span { color: var(--gold); display: block; }
-  .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 20px; }
+  .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(22px, 2.5vw, 32px); color: var(--text-dim); letter-spacing: 0.15em; margin-bottom: 20px; line-height: 1.3; }
   .hero-divider { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 0; animation: dividerGrow 2s ease forwards; animation-delay: 1.5s; transform: scaleY(0); transform-origin: top; }
   @keyframes dividerGrow { to { transform: scaleY(1); } }
   .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(201,168,76,0.15); }
@@ -255,6 +255,48 @@
     [style*="padding:36px 32px"] { padding: 28px 20px !important; }
     [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
   }
+
+  /* PARTICLE BACKGROUND */
+  #particle-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+  }
+  @media (max-width: 768px) { #particle-canvas { opacity: 0.3; } }
+
+  /* GLASSMORPHISM CARDS */
+  .news-card {
+    background: rgba(10,10,8,0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(201,168,76,0.08) !important;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(201,168,76,0.06) !important;
+    transition: background 0.4s, box-shadow 0.4s, border-color 0.4s !important;
+  }
+  .news-card:hover {
+    background: rgba(20,18,14,0.85) !important;
+    border-color: rgba(201,168,76,0.2) !important;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,168,76,0.12) !important;
+  }
+
+  /* GLASSMORPHISM DEALER CARDS — Watch Finder style carried to homepage dealer references */
+  .featured-image {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 8px 64px rgba(201,168,76,0.08), inset 0 1px 0 rgba(201,168,76,0.06);
+  }
+
+  /* SECTION BREATHING — more generous whitespace */
+  .brands-section { padding: 60px 0; }
+  .quote-section { padding: 180px 60px; }
+  @media (max-width: 900px) {
+    .quote-section { padding: 100px 20px; }
+    .brands-section { padding: 40px 0; }
+  }
 </style>
 <script>
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -359,6 +401,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <!-- HERO -->
 <section class="hero" style="max-width:100%;">
   <div class="hero-bg"></div>
+  <canvas id="particle-canvas"></canvas>
   <div class="hero-left">
     <div class="hero-content">
       <p class="hero-eyebrow">The World's Finest Luxury Editorial</p>
@@ -802,5 +845,66 @@ window.addEventListener('load',function(){setTimeout(function(){fetchWatchNews()
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
 document.querySelectorAll('.featured-text,.featured-image').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.8s ease,transform 0.8s ease';obs.observe(el);});
 </script>
+
+<script>
+// GOLD PARTICLE SYSTEM — lightweight, CSS-only fallback on mobile
+(function() {
+  var canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  // Skip on mobile/touch for performance
+  if (window.matchMedia('(hover: none)').matches) {
+    canvas.style.display = 'none';
+    return;
+  }
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var W, H;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Create particles
+  var COUNT = 55;
+  for (var i = 0; i < COUNT; i++) {
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.2 + 0.3,
+      opacity: Math.random() * 0.5 + 0.1,
+      speedX: (Math.random() - 0.5) * 0.25,
+      speedY: (Math.random() - 0.5) * 0.15 - 0.08,
+      pulse: Math.random() * Math.PI * 2
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    var t = Date.now() / 1000;
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.pulse += 0.018;
+      var alpha = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(201,168,76,' + alpha + ')';
+      ctx.fill();
+      p.x += p.speedX;
+      p.y += p.speedY;
+      // Wrap around
+      if (p.x < -5) p.x = W + 5;
+      if (p.x > W + 5) p.x = -5;
+      if (p.y < -5) p.y = H + 5;
+      if (p.y > H + 5) p.y = -5;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
 </body>
 </html>
