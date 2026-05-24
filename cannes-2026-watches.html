@@ -351,6 +351,10 @@
 </style>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<style>
+  *, a, button, input, select { cursor: crosshair; }
+  @media (hover: none) { *, a, button, input, select { cursor: auto; } }
+</style>
 </head>
 <body>
 
@@ -644,30 +648,7 @@
   <p style="color:var(--gold-dim);">storiestowatch.com</p>
 </footer>
 
-<!-- Watch cursor -->
-<svg id="stw-cursor" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" style="position:fixed;width:44px;height:44px;top:-100px;left:-100px;pointer-events:none;z-index:9999;overflow:visible;display:block;">
-  <circle cx="22" cy="22" r="16" fill="rgba(5,5,5,0.92)" stroke="#C9A84C" stroke-width="1.2"/>
-  <line id="s-hr" x1="22" y1="22" x2="22" y2="11" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/>
-  <line id="s-mn" x1="22" y1="22" x2="22" y2="8" stroke="#E8E4D9" stroke-width="2" stroke-linecap="round"/>
-  <line id="s-sc" x1="22" y1="26" x2="22" y2="7" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
-  <circle cx="22" cy="22" r="2.5" fill="#C9A84C"/>
-  <circle cx="22" cy="22" r="1" fill="#050505"/>
-</svg>
-<style>
-  body { cursor:none !important; }
-  a, button { cursor:none !important; }
-  @media (hover:none) { body,a,button { cursor:auto !important; } #stw-cursor { display:none !important; } }
-</style>
-<script>
-(function(){
-  var el=document.getElementById('stw-cursor');
-  if(!el||window.matchMedia('(hover:none)').matches){if(el)el.style.display='none';return;}
-  var hr=document.getElementById('s-hr'),mn=document.getElementById('s-mn'),sc=document.getElementById('s-sc');
-  document.addEventListener('mousemove',function(e){el.style.left=(e.clientX-22)+'px';el.style.top=(e.clientY-22)+'px';});
-  function tick(){var d=new Date(),s=d.getSeconds()+d.getMilliseconds()/1000,m=d.getMinutes()+s/60,h=(d.getHours()%12)+m/60;hr.setAttribute('transform','rotate('+(h*30)+',22,22)');mn.setAttribute('transform','rotate('+(m*6)+',22,22)');sc.setAttribute('transform','rotate('+(s*6)+',22,22)');requestAnimationFrame(tick);}
-  tick();
-})();
-</script>
+
 
 </body>
 </html>
