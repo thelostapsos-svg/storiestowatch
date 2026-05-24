@@ -95,10 +95,6 @@
   .hero-stat-num { font-family: 'Cinzel', serif; font-size: 22px; color: var(--gold); display: block; margin-bottom: 4px; }
   .hero-stat-label { font-size: 8px; letter-spacing: 0.3em; color: var(--text-dim); text-transform: uppercase; }
   .hero-vertical-line { position: absolute; top: 15%; bottom: 15%; left: 50%; width: 1px; background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.2), transparent); }
-  .scroll-indicator { position: absolute; bottom: 24px; right: 60px; display: flex; flex-direction: row; align-items: center; gap: 16px; animation: fadeInUp 3s ease forwards; animation-delay: 2s; opacity: 0; z-index: 3; }
-  @keyframes fadeInUp { to { opacity: 1; } }
-  .scroll-line { width: 50px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
-  .scroll-text { font-size: 8px; letter-spacing: 0.4em; color: var(--gold-dim); text-transform: uppercase; }
 
   .side-dial { position: fixed; top: 50%; transform: translateY(-50%); width: 80px; height: 80px; opacity: 0.15; z-index: 100; pointer-events: none; transition: opacity 0.5s ease; }
   .side-dial-left { left: 16px; }
@@ -452,7 +448,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       </div>
     </div>
   </div>
-  <div class="scroll-indicator"><div class="scroll-line"></div><span class="scroll-text">Scroll</span></div>
+  
 </section>
 
 <!-- TICKER -->
@@ -496,36 +492,64 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   <div class="featured-inner">
     <p class="section-label">Cover Story</p>
     <div class="featured-grid">
-      <a href="article.html" class="featured-image" style="text-decoration:none; cursor:crosshair;">
-        <div class="featured-tag">Feature</div>
+      <a href="cannes-2026-watches.html" class="featured-image" style="text-decoration:none; cursor:crosshair;">
+        <div class="featured-tag">⚡ Breaking · Cannes 2026</div>
         <div class="featured-image-inner">
+          <!-- Cannes 2026 SVG illustration — red carpet / watch dial motif -->
           <svg viewBox="0 0 300 380" class="watch-illustration" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="dialGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" style="stop-color:#C9A84C;stop-opacity:0.15"/>
+                <stop offset="100%" style="stop-color:#C9A84C;stop-opacity:0"/>
+              </radialGradient>
+            </defs>
+            <!-- Case -->
             <rect x="110" y="10" width="80" height="30" rx="6" fill="#1A1A16" stroke="#2A2820" stroke-width="1"/>
             <rect x="120" y="40" width="60" height="12" rx="3" fill="#141412"/>
-            <rect x="70" y="52" width="160" height="276" rx="40" fill="#111110" stroke="#C9A84C" stroke-width="0.5"/>
+            <rect x="70" y="52" width="160" height="276" rx="40" fill="#1A1816" stroke="#C9A84C" stroke-width="0.8"/>
             <rect x="82" y="64" width="136" height="252" rx="32" fill="#0A0A08"/>
-            <circle cx="150" cy="190" r="60" fill="#0D0D0B" stroke="#1E1E1C" stroke-width="1"/>
-            <circle cx="150" cy="190" r="55" fill="none" stroke="#C9A84C" stroke-width="0.3" opacity="0.5"/>
-            <text x="150" y="170" text-anchor="middle" font-family="Cinzel, serif" font-size="7" fill="#C9A84C" letter-spacing="2">STORIES TO</text>
-            <text x="150" y="182" text-anchor="middle" font-family="Cinzel, serif" font-size="7" fill="#C9A84C" letter-spacing="2">WATCH</text>
-            <line x1="150" y1="190" x2="150" y2="145" stroke="#E8E4D9" stroke-width="2" stroke-linecap="round"/>
-            <line x1="150" y1="190" x2="175" y2="170" stroke="#E8E4D9" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="150" y1="190" x2="150" y2="135" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round"/>
-            <circle cx="150" cy="190" r="3" fill="#C9A84C"/>
-            <line x1="150" y1="138" x2="150" y2="143" stroke="#C9A84C" stroke-width="1.5"/>
-            <line x1="205" y1="190" x2="200" y2="190" stroke="#C9A84C" stroke-width="1.5"/>
-            <line x1="150" y1="242" x2="150" y2="237" stroke="#C9A84C" stroke-width="1.5"/>
-            <line x1="95" y1="190" x2="100" y2="190" stroke="#C9A84C" stroke-width="1.5"/>
+            <!-- Dial glow -->
+            <circle cx="150" cy="190" r="62" fill="url(#dialGlow)"/>
+            <!-- Dial -->
+            <circle cx="150" cy="190" r="58" fill="#0D0D0B" stroke="#C9A84C" stroke-width="0.5" opacity="0.8"/>
+            <circle cx="150" cy="190" r="52" fill="none" stroke="#2A2820" stroke-width="0.5"/>
+            <!-- Hour markers — bold at 12,3,6,9 -->
+            <line x1="150" y1="135" x2="150" y2="143" stroke="#C9A84C" stroke-width="2.5"/>
+            <line x1="205" y1="190" x2="197" y2="190" stroke="#C9A84C" stroke-width="2.5"/>
+            <line x1="150" y1="245" x2="150" y2="237" stroke="#C9A84C" stroke-width="2.5"/>
+            <line x1="95" y1="190" x2="103" y2="190" stroke="#C9A84C" stroke-width="2.5"/>
+            <!-- Minor markers -->
+            <line x1="179" y1="138" x2="176" y2="143" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <line x1="200" y1="161" x2="196" y2="165" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <line x1="200" y1="219" x2="196" y2="215" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <line x1="179" y1="242" x2="176" y2="237" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <line x1="121" y1="242" x2="124" y2="237" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <line x1="100" y1="219" x2="104" y2="215" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <line x1="100" y1="161" x2="104" y2="165" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <line x1="121" y1="138" x2="124" y2="143" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            <!-- Brand text -->
+            <text x="150" y="174" text-anchor="middle" font-family="Cinzel, serif" font-size="6.5" fill="#C9A84C" letter-spacing="2" opacity="0.9">CANNES 2026</text>
+            <text x="150" y="185" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="5" fill="#4A4838" letter-spacing="2">14 WATCHES · RED CARPET</text>
+            <!-- Hour hand — pointing to ~10 -->
+            <line x1="150" y1="190" x2="126" y2="158" stroke="#E8E4D9" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Minute hand — pointing to ~2 -->
+            <line x1="150" y1="190" x2="172" y2="148" stroke="#E8E4D9" stroke-width="2" stroke-linecap="round"/>
+            <!-- Second hand — gold -->
+            <line x1="150" y1="200" x2="150" y2="140" stroke="#C9A84C" stroke-width="1" stroke-linecap="round"/>
+            <!-- Centre cap -->
+            <circle cx="150" cy="190" r="5" fill="#C9A84C"/>
+            <circle cx="150" cy="190" r="2.5" fill="#0A0A08"/>
+            <!-- Strap bottom -->
             <rect x="120" y="328" width="60" height="12" rx="3" fill="#141412"/>
             <rect x="110" y="340" width="80" height="30" rx="6" fill="#1A1A16" stroke="#2A2820" stroke-width="1"/>
           </svg>
         </div>
       </a>
       <div class="featured-text">
-        <div class="featured-meta"><span>Cover Story</span> May 18, 2026</div>
-        <h2>The <em>Century of Craft</em>: How Rolex Quietly Redefined What a Watch Could Be</h2>
-        <p>As the Oyster case marks its centenary, we examine how a single engineering decision — sealing a watch against the elements — became the foundation of the world's most recognised luxury object. A story of precision, obsession, and the quiet triumph of restraint over spectacle.</p>
-        <a href="article.html" class="btn-read">Read Full Story</a>
+        <div class="featured-meta"><span>Cover Story</span> 23 May 2026</div>
+        <h2>The Croisette <em>Watch Report</em>: 14 Timepieces from the 79th Cannes Film Festival</h2>
+        <p>Audemars Piguet dominated five wrists. Adam Driver wore a £120,000 Perpetual Calendar. Bella Hadid chose a vintage Rolex in yellow gold. Carlos Sainz arrived with a Girard-Perregaux tourbillon. The Croisette doubled as the world's most glamorous watch exhibition — we identified every piece.</p>
+        <a href="cannes-2026-watches.html" class="btn-read">Read Full Report</a>
       </div>
     </div>
   </div>
