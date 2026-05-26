@@ -17,7 +17,8 @@
 <title>STORIES TO WATCH — Every Story. Every Second.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
     --gold: #C9A84C; --gold-light: #E8C96A; --gold-dim: #8B6914;
@@ -408,7 +409,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
 <!-- HERO -->
 <section class="hero" style="max-width:100%;">
-  <div class="hero-bg"></div>
+  <div class="hero-bg" fetchpriority="high"></div>
   <canvas id="particle-canvas"></canvas>
   <div class="hero-left">
     <div class="hero-content">
@@ -864,13 +865,15 @@ updateClock();setInterval(updateClock,50);
 function updateCards(articles){var fb=[{category:"Milestone",title:"Rolex Marks a Century of the Oyster Case",excerpt:"Rolex unveiled a commemorative Oyster Perpetual 41 marking 100 years since the world's first waterproof wristwatch. The release sold out within hours at authorised dealers globally.",source:"Hodinkee",brand:"Rolex"},{category:"Auction",title:"Sotheby's $15M Cartier Collection Breaks Records",excerpt:"A curated archive of vintage Cartier timepieces achieved hammer prices far beyond estimate at Sotheby's Geneva sale. The headline lot drew bidders from five continents.",source:"Phillips",brand:"Cartier"},{category:"Anniversary",title:"Patek Philippe Nautilus at Fifty: An Enduring Icon",excerpt:"Half a century after Gérald Genta's sketch, the Nautilus remains the most coveted steel sports watch on the secondary market.",source:"Europa Star",brand:"Patek Philippe"},{category:"Market",title:"Watches & Wonders 2026: Craft Over Spectacle",excerpt:"Geneva's annual showcase delivered restraint over fireworks as brands doubled down on finishing quality and mechanical depth.",source:"WatchPro",brand:""},{category:"Brand Story",title:"F.P. Journe: Independent Watchmaking's Quiet Revolution",excerpt:"As independent maisons continue their meteoric rise, François-Paul Journe's atelier stands as the benchmark for true horological independence.",source:"Revolution",brand:"F.P. Journe"},{category:"Innovation",title:"Grand Seiko Introduces New Micro-Artist Studio Dial",excerpt:"The Japanese manufacturer unveiled a breathtaking new dial crafted by its Micro Artist Studio. Only 30 pieces will reach collectors worldwide.",source:"WatchTime",brand:"Grand Seiko"}];var data=(articles&&articles.length===6)?articles:fb;data.forEach(function(a,i){var card=document.getElementById('card'+i),sk=document.getElementById('skeleton'+i);if(!card)return;if(sk)sk.style.display='none';card.href='article.html?title='+encodeURIComponent(a.title)+'&category='+encodeURIComponent(a.category)+'&excerpt='+encodeURIComponent(a.excerpt)+'&source='+encodeURIComponent(a.source);document.getElementById('cat'+i).textContent=a.category;document.getElementById('title'+i).textContent=a.title;document.getElementById('excerpt'+i).textContent=a.excerpt;document.getElementById('source'+i).textContent=a.source;var fe=document.getElementById('find'+i);if(a.brand)fe.innerHTML='<a href="watchfinder.html?search='+encodeURIComponent(a.brand)+'" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;">⌕ '+a.brand+'</a>';card.style.display='block';card.style.opacity='1';});}
 async function fetchWatchNews(){var today=new Date(),ds=today.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),my=today.toLocaleDateString('en-GB',{month:'long',year:'numeric'});try{var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:'Today is '+ds+'. Search for 6 recent luxury watch news stories from '+my+'. Return ONLY a JSON array (no markdown) with exactly 6 items each having: title, excerpt (2 sentences), category, source, brand.'}]})});var d=await r.json();var t=d.content.filter(function(b){return b.type==='text';}).map(function(b){return b.text;}).join('');var c=t.replace(/```json|```/g,'').trim();var m=c.match(/\[[\s\S]*\]/);updateCards(JSON.parse(m?m[0]:c));}catch(e){updateCards(null);}}
 document.addEventListener('DOMContentLoaded',function(){updateCards(window._fallbackNews);});
-window.addEventListener('load',function(){setTimeout(function(){fetchWatchNews();},3000);});
+window.addEventListener('load',function(){setTimeout(function(){fetchWatchNews();},6000);});
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
 document.querySelectorAll('.featured-text,.featured-image').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.8s ease,transform 0.8s ease';obs.observe(el);});
 </script>
 
 <script>
-// GOLD PARTICLE SYSTEM — enhanced visibility
+// GOLD PARTICLE SYSTEM — deferred after page load
+window.addEventListener('load', function() {
+setTimeout(function() {
 (function() {
   var canvas = document.getElementById('particle-canvas');
   if (!canvas) return;
@@ -944,6 +947,8 @@ document.querySelectorAll('.featured-text,.featured-image').forEach(function(el)
   }
   draw();
 })();
+}, 500);
+});
 </script>
 
 </body>
