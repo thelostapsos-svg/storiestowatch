@@ -5,133 +5,116 @@
 <link rel="canonical" href="https://www.storiestowatch.com/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050505">
-<meta name="google-site-verification" content="qJ7flnto7pnqLWOyd1TR1A7pgqOoQ65vuCPt6RAqQhY" />
-<meta name="google-site-verification" content="c1ebKQ39n-uiwrBx9NJxuAwp2-ha7j6J5sSboSpzhCc" />
+<meta name="google-site-verification" content="qJ7flnto7pnqLWOyd1TR1A7pgqOoQ65vuCPt6RAqQhY"/>
+<meta name="google-site-verification" content="c1ebKQ39n-uiwrBx9NJxuAwp2-ha7j6J5sSboSpzhCc"/>
 <meta name='impact-site-verification' value='646fc02e-039d-4fde-ac97-13253cd0b3a7'>
 <meta name="description" content="The world's most comprehensive luxury watch sourcing tool — 50 verified dealers, 24 countries, 147 brands. Plus the finest independent watch editorial.">
 <meta name="keywords" content="where to buy luxury watch, watch finder, rolex dealer, patek philippe, audemars piguet, watch sourcing, luxury watch guide 2026">
 <title>STORIES TO WATCH — Find Any Luxury Watch. Every Story. Every Second.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet"></noscript>
 <style>
+/* ============================================================
+   STORIES TO WATCH — Global Stylesheet + Homepage
+   Victorian Gas Lamp Theme · v3.0 · Self-Contained
+   ============================================================ */
+
+/* ── TOKENS ── */
 :root{
   --gold:#C9A84C;--gold-light:#E8C96A;--gold-dim:#8B6914;
-  --black:#050505;--deep:#0A0A08;--surface:#111110;--surface2:#1A1A18;
+  --black:#050505;--deep:#0A0A08;--surface:#0F0F0D;--surface2:#161614;
   --text:#E8E4D9;--text-dim:#8A8578;--white:#F5F1E8;
+  --lamp:#F5C842;--lamp-glow:rgba(245,200,66,0.18);
+  --font-display:'Cinzel','Trajan Pro',serif;
+  --font-serif:'Cormorant Garamond','Garamond',serif;
+  --font-accent:'Playfair Display','Palatino',serif;
+  --font-body:'IM Fell English','Palatino Linotype',serif;
+  --font-ui:'Montserrat',system-ui,sans-serif;
+  --section-pad:80px 24px;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
+
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{background:var(--black);color:var(--text);font-family:'Montserrat',system-ui,sans-serif;font-weight:300;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9990;opacity:0.3;}
+body{background:var(--black);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 img{max-width:100%;height:auto;}
 a{color:var(--gold);-webkit-tap-highlight-color:transparent;}
 
+/* grain */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");pointer-events:none;z-index:9990;opacity:0.3;}
+
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;background:#050505ee;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.12);}
-.nav-logo{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:0.3em;color:var(--gold);text-decoration:none;white-space:nowrap;}
-.nav-desktop{display:flex;gap:28px;list-style:none;align-items:center;}
-.nav-desktop a{font-size:9px;font-weight:300;letter-spacing:0.25em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;transition:color 0.3s;white-space:nowrap;}
-.nav-desktop a:hover{color:var(--gold);}
-.nav-time{font-size:9px;letter-spacing:0.15em;color:var(--gold-dim);white-space:nowrap;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;-webkit-tap-highlight-color:transparent;}
-.hamburger span{width:22px;height:1.5px;background:var(--gold);display:block;transition:all 0.3s ease;}
+.stw-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,3,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,0.12);}
+.stw-nav::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(245,200,66,0.3),transparent);}
+.nav-logo{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.32em;color:var(--gold);text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--font-ui);font-size:9px;font-weight:300;letter-spacing:0.24em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;transition:color 0.3s;white-space:nowrap;}
+.nav-links a:hover{color:var(--gold);}
+.nav-time{font-family:var(--font-ui);font-size:9px;letter-spacing:0.15em;color:var(--gold-dim);white-space:nowrap;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.hamburger span{width:22px;height:1.5px;background:var(--gold);display:block;transition:all 0.3s;}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
 .hamburger.open span:nth-child(2){opacity:0;width:0;}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
-.mobile-menu{display:none;position:fixed;inset:0;background:rgba(5,5,5,0.97);z-index:999;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(5,5,3,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{font-family:'Cinzel',serif;font-size:18px;letter-spacing:0.18em;color:var(--text-dim);text-decoration:none;padding:16px 40px;text-transform:uppercase;transition:color 0.3s;width:100%;text-align:center;border-bottom:1px solid rgba(201,168,76,0.08);}
+.mobile-menu a{font-family:var(--font-display);font-size:17px;letter-spacing:0.18em;color:var(--text-dim);text-decoration:none;padding:15px 40px;text-transform:uppercase;transition:color 0.3s;width:100%;text-align:center;border-bottom:1px solid rgba(201,168,76,0.08);}
 .mobile-menu a:first-child{border-top:1px solid rgba(201,168,76,0.08);}
-.mobile-menu a:hover,.mobile-menu a.gold{color:var(--gold);}
-@media(max-width:900px){
-  .nav-desktop{display:none;}
-  .nav-time{display:none;}
-  .hamburger{display:flex;}
-}
+.mobile-menu a:hover,.mobile-menu a.mgold{color:var(--gold);}
 
 /* ── QUICK STRIP ── */
 .quick-strip-wrap{background:var(--deep);border-bottom:1px solid rgba(201,168,76,0.1);overflow:hidden;position:relative;}
 .quick-strip-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(to right,transparent,var(--deep));z-index:2;pointer-events:none;}
 .quick-strip{display:flex;gap:6px;padding:10px 16px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
 .quick-strip::-webkit-scrollbar{display:none;}
-.quick-pill{display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:0.18em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;background:var(--surface);border:1px solid rgba(201,168,76,0.12);padding:7px 13px;white-space:nowrap;flex-shrink:0;transition:all 0.2s;border-radius:1px;}
+.quick-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-ui);font-size:8px;letter-spacing:0.18em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;background:var(--surface);border:1px solid rgba(201,168,76,0.12);padding:7px 13px;white-space:nowrap;flex-shrink:0;transition:all 0.2s;}
 .quick-pill:hover,.quick-pill:active{color:var(--gold);border-color:rgba(201,168,76,0.35);}
 .quick-pill.hot{border-color:rgba(201,168,76,0.28);color:var(--gold-light);}
 .quick-pill.hot::before{content:'⚡';font-size:8px;}
 
-/* ── HERO ── */
-.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:88px 20px 48px;position:relative;overflow:hidden;text-align:center;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,0.07) 0%,transparent 70%);pointer-events:none;}
-.hero-content{position:relative;z-index:2;width:100%;max-width:700px;}
-.hero-eyebrow{font-size:8px;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
-.hero-title{font-family:'Cinzel',serif;font-size:clamp(36px,10vw,80px);font-weight:900;line-height:0.9;letter-spacing:0.06em;color:var(--white);margin-bottom:10px;}
-.hero-title span{color:var(--gold);display:block;}
-.hero-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,4vw,22px);color:var(--text-dim);letter-spacing:0.12em;margin-bottom:36px;}
-
-/* ── FINDER HERO ── */
-.finder-hero{width:100%;margin-bottom:28px;}
-.finder-label{font-size:8px;letter-spacing:0.4em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:12px;}
-.finder-bar{display:flex;background:var(--surface);border:1.5px solid rgba(201,168,76,0.3);overflow:hidden;transition:border-color 0.3s;}
-.finder-bar:focus-within{border-color:var(--gold);}
-.finder-bar input{flex:1;background:transparent;border:none;outline:none;padding:16px 18px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;letter-spacing:0.1em;color:var(--white);min-width:0;}
-.finder-bar input::placeholder{color:var(--text-dim);font-size:13px;}
-.finder-bar button{background:var(--gold);border:none;padding:16px 22px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.25em;color:var(--black);cursor:pointer;transition:background 0.3s;white-space:nowrap;font-weight:600;-webkit-tap-highlight-color:transparent;}
-.finder-bar button:active{background:var(--gold-light);}
-.finder-stats{display:flex;justify-content:center;gap:0;margin-top:0;border:1px solid rgba(201,168,76,0.1);border-top:none;}
-.finder-stat-item{flex:1;text-align:center;padding:10px 8px;border-right:1px solid rgba(201,168,76,0.1);}
-.finder-stat-item:last-child{border-right:none;}
-.finder-stat-item strong{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);display:block;margin-bottom:2px;font-weight:400;}
-.finder-stat-item span{font-size:7px;letter-spacing:0.2em;color:var(--text-dim);text-transform:uppercase;}
-.brand-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:14px;}
-.brand-pill{font-size:8px;letter-spacing:0.18em;color:var(--text-dim);text-transform:uppercase;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.12);padding:6px 12px;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;border-radius:1px;}
-.brand-pill:hover,.brand-pill:active{color:var(--gold);border-color:rgba(201,168,76,0.35);background:rgba(201,168,76,0.06);}
-
-/* ── HERO DIVIDER + STATS ── */
-.hero-divider{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);margin:0 auto 24px;}
-.hero-stats{display:flex;gap:0;justify-content:center;border-top:1px solid rgba(201,168,76,0.12);padding-top:24px;}
-.hero-stat{flex:1;text-align:center;padding:0 12px;border-right:1px solid rgba(201,168,76,0.1);}
-.hero-stat:last-child{border-right:none;}
-.stat-num{font-family:'Cinzel',serif;font-size:20px;color:var(--gold);display:block;margin-bottom:4px;}
-.stat-label{font-size:7px;letter-spacing:0.25em;color:var(--text-dim);text-transform:uppercase;}
-
-/* ── STORY PILLS ── */
-.stories-strip{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:24px;}
-.story-pill{font-size:8px;letter-spacing:0.15em;color:var(--text-dim);text-decoration:none;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.1);padding:7px 13px;transition:all 0.2s;white-space:nowrap;}
-.story-pill:hover,.story-pill:active{color:var(--gold);border-color:rgba(201,168,76,0.28);}
-.story-pill.hot{color:var(--gold-light);border-color:rgba(201,168,76,0.22);}
-
 /* ── TICKER ── */
 .ticker-wrap{background:var(--gold);padding:9px 0;overflow:hidden;}
-.ticker{display:flex;animation:ticker 28s linear infinite;white-space:nowrap;}
-.ticker-item{font-size:8px;font-weight:400;letter-spacing:0.22em;color:var(--black);text-transform:uppercase;padding:0 32px;flex-shrink:0;}
+.ticker{display:flex;animation:tickerScroll 28s linear infinite;white-space:nowrap;}
+.ticker-item{font-family:var(--font-ui);font-size:8px;font-weight:400;letter-spacing:0.22em;color:var(--black);text-transform:uppercase;padding:0 32px;flex-shrink:0;}
 .ticker-dot{color:rgba(0,0,0,0.4);padding:0 8px;}
-@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes tickerScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-/* ── SECTIONS ── */
-.section-wrap{padding:64px 20px;max-width:1400px;margin:0 auto;}
-.section-label{font-size:8px;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:16px;}
+/* ── BRANDS ── */
+.brands-section{background:var(--surface);padding:44px 0;overflow:hidden;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);}
+.brands-track{display:flex;animation:tickerScroll 22s linear infinite;white-space:nowrap;}
+.brand-name{font-family:var(--font-display);font-size:10px;letter-spacing:0.38em;color:var(--text-dim);text-transform:uppercase;padding:0 44px;flex-shrink:0;}
+
+/* ── DIVIDER ── */
+.gold-line{height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);}
+
+/* ── SECTION ── */
+.section-wrap{padding:var(--section-pad);max-width:1400px;margin:0 auto;}
+.section-label{font-family:var(--font-ui);font-size:8px;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:16px;}
 .section-label::after{content:'';height:1px;flex:1;max-width:48px;background:var(--gold-dim);}
-.section-title{font-family:'Cinzel',serif;font-size:clamp(22px,5vw,40px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:36px;}
+.section-title{font-family:var(--font-display);font-size:clamp(22px,5vw,40px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:36px;}
 
-/* ── FEATURED ── */
-.featured-wrap{background:var(--deep);}
-.featured-inner{max-width:1400px;margin:0 auto;padding:64px 20px;}
-.featured-grid{display:grid;grid-template-columns:1fr;gap:32px;}
-@media(min-width:900px){.featured-grid{grid-template-columns:1fr 1fr;gap:64px;align-items:center;}}
-.featured-image{position:relative;aspect-ratio:16/9;background:var(--surface);overflow:hidden;}
-@media(min-width:900px){.featured-image{aspect-ratio:4/5;}}
-.featured-image::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,transparent 60%);z-index:1;}
-.featured-tag{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--black);font-size:7px;font-weight:400;letter-spacing:0.28em;padding:5px 12px;text-transform:uppercase;z-index:2;}
-.featured-image-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
-.featured-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,5vw,42px);font-weight:300;line-height:1.15;color:var(--white);margin-bottom:16px;}
-.featured-text h2 em{font-style:italic;color:var(--gold-light);}
-.featured-meta{font-size:8px;letter-spacing:0.2em;color:var(--text-dim);text-transform:uppercase;margin-bottom:16px;}
-.featured-text p{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,18px);line-height:1.8;color:var(--text-dim);margin-bottom:28px;}
-.btn-read{display:inline-flex;align-items:center;gap:12px;font-size:9px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:6px;transition:all 0.3s;}
-.btn-read::after{content:'→';transition:transform 0.3s;}
-.btn-read:hover::after{transform:translateX(5px);}
+/* ── CARD GRID ── */
+.card-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--surface2);}
+@media(min-width:600px){.card-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1000px){.card-grid{grid-template-columns:repeat(3,1fr);}}
+.content-card{background:var(--surface);padding:28px 24px;text-decoration:none;display:block;transition:background 0.3s;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;}
+.content-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.5s;}
+.content-card:hover::before,.content-card:active::before{width:100%;}
+.content-card:hover,.content-card:active{background:var(--surface2);}
+.content-card.dark{background:var(--deep);}
+.content-card.dark:hover,.content-card.dark:active{background:#0F0F0D;}
+.content-card.highlight{border-left:2px solid var(--gold);}
+.cc-tag{font-family:var(--font-ui);font-size:7px;letter-spacing:0.32em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.cc-title{font-family:var(--font-accent);font-size:20px;color:var(--white);line-height:1.3;margin-bottom:10px;}
+.cc-text{font-family:var(--font-serif);font-size:16px;color:var(--text-dim);line-height:1.7;margin-bottom:14px;}
+.cc-link{font-family:var(--font-ui);font-size:8px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;}
+.hl-stats{display:flex;gap:0;margin-top:16px;}
+.hl-stat{flex:1;text-align:center;padding:10px 6px;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.08);border-right:none;}
+.hl-stat:last-child{border-right:1px solid rgba(201,168,76,0.08);}
+.hl-stat strong{font-family:var(--font-display);font-size:18px;color:var(--gold);display:block;font-weight:400;}
+.hl-stat span{font-family:var(--font-ui);font-size:7px;letter-spacing:0.15em;color:var(--text-dim);text-transform:uppercase;}
 
 /* ── NEWS GRID ── */
 .news-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--surface2);}
@@ -139,27 +122,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 20px;display:f
 @media(min-width:1000px){.news-grid{grid-template-columns:repeat(3,1fr);}}
 .news-card{background:rgba(10,10,8,0.8);border:1px solid rgba(201,168,76,0.08);padding:28px 20px;position:relative;overflow:hidden;transition:background 0.3s,border-color 0.3s;display:block;color:var(--text);text-decoration:none;}
 @media(min-width:600px){.news-card{padding:32px 28px;}}
-.news-card:hover,.news-card:active{background:rgba(20,18,14,0.9);border-color:rgba(201,168,76,0.18);}
-.news-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.4s ease;}
+.news-card:hover,.news-card:active{background:rgba(20,18,14,0.9);border-color:rgba(201,168,76,0.2);}
+.news-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.4s;}
 .news-card:hover::before{width:100%;}
-.nc-tag{font-size:8px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
-.news-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--white);margin-bottom:12px;}
-@media(min-width:600px){.news-card h3{font-size:22px;}}
-.news-card p{font-size:13px;line-height:1.65;color:var(--text-dim);margin-bottom:20px;}
-.nc-source{font-size:8px;letter-spacing:0.18em;color:var(--gold-dim);text-transform:uppercase;display:flex;align-items:center;gap:8px;}
-.nc-source::before{content:'';width:16px;height:1px;background:var(--gold-dim);}
-.nc-link{display:inline-flex;align-items:center;gap:8px;font-size:8px;letter-spacing:0.25em;color:var(--gold-dim);text-transform:uppercase;margin-top:16px;transition:color 0.3s,gap 0.3s;}
-.news-card:hover .nc-link{color:var(--gold);gap:14px;}
-.nc-link::after{content:'→';}
-.nc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid rgba(201,168,76,0.08);}
-.nc-find a{font-size:8px;letter-spacing:0.18em;color:var(--gold-dim);text-decoration:none;}
-.nc-find a:hover{color:var(--gold);}
-.nc-num{position:absolute;top:16px;right:18px;font-family:'Cinzel',serif;font-size:32px;font-weight:900;color:rgba(201,168,76,0.05);line-height:1;}
-.nc-bar{height:2px;background:linear-gradient(to right,var(--gold-dim),var(--gold),var(--gold-dim));margin-bottom:20px;transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
-.news-card:hover .nc-bar{transform:scaleX(1);}
 .nc-accent{position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.4s;}
 .news-card:hover .nc-accent{opacity:1;}
-/* skeleton */
+.nc-num{position:absolute;top:16px;right:18px;font-family:var(--font-display);font-size:32px;font-weight:900;color:rgba(201,168,76,0.05);line-height:1;}
+.nc-bar{height:2px;background:linear-gradient(to right,var(--gold-dim),var(--gold),var(--gold-dim));margin-bottom:20px;transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.news-card:hover .nc-bar{transform:scaleX(1);}
+.nc-tag{font-family:var(--font-ui);font-size:8px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.news-card h3{font-family:var(--font-accent);font-size:20px;font-weight:400;line-height:1.3;color:var(--white);margin-bottom:12px;}
+@media(min-width:600px){.news-card h3{font-size:22px;}}
+.news-card p{font-family:var(--font-serif);font-size:15px;line-height:1.7;color:var(--text-dim);margin-bottom:20px;}
+.nc-source{font-family:var(--font-ui);font-size:8px;letter-spacing:0.18em;color:var(--gold-dim);text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.nc-source::before{content:'';width:16px;height:1px;background:var(--gold-dim);}
+.nc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid rgba(201,168,76,0.08);}
+.nc-link{font-family:var(--font-ui);display:inline-flex;align-items:center;gap:8px;font-size:8px;letter-spacing:0.25em;color:var(--gold-dim);text-transform:uppercase;transition:color 0.3s,gap 0.3s;}
+.news-card:hover .nc-link{color:var(--gold);gap:14px;}
+.nc-link::after{content:'→';}
+.nc-find a{font-family:var(--font-ui);font-size:8px;letter-spacing:0.18em;color:var(--gold-dim);text-decoration:none;transition:color 0.3s;}
+.nc-find a:hover{color:var(--gold);}
 .news-skeleton{background:var(--deep);padding:28px 20px;position:relative;overflow:hidden;}
 .news-skeleton::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.05) 50%,transparent 100%);animation:shimmer 1.8s ease-in-out infinite;}
 @keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
@@ -169,77 +151,153 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 20px;display:f
 .sk-l{height:11px;width:100%;background:rgba(255,255,255,0.04);border-radius:2px;margin-bottom:7px;}
 .sk-ls{height:11px;width:55%;background:rgba(255,255,255,0.04);border-radius:2px;margin-bottom:20px;}
 
-/* ── BRANDS ── */
-.brands-section{background:var(--surface);padding:44px 0;overflow:hidden;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);}
-.brands-track{display:flex;animation:ticker 20s linear infinite;white-space:nowrap;}
-.brand-name{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.38em;color:var(--text-dim);text-transform:uppercase;padding:0 44px;flex-shrink:0;}
-
 /* ── AD ── */
 .ad-placement{background:var(--surface);border:1px solid rgba(201,168,76,0.15);padding:40px 20px;text-align:center;margin:48px 0;position:relative;}
-.ad-label{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--surface);padding:0 14px;font-size:7px;letter-spacing:0.28em;color:var(--gold-dim);text-transform:uppercase;white-space:nowrap;}
-.ad-placeholder{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;color:var(--text-dim);text-transform:uppercase;margin-bottom:7px;}
-.ad-sub{font-size:9px;color:var(--gold-dim);letter-spacing:0.15em;}
+.ad-label{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--surface);padding:0 14px;font-family:var(--font-ui);font-size:7px;letter-spacing:0.28em;color:var(--gold-dim);text-transform:uppercase;white-space:nowrap;}
+.ad-placeholder{font-family:var(--font-display);font-size:10px;letter-spacing:0.35em;color:var(--text-dim);text-transform:uppercase;margin-bottom:7px;}
+.ad-sub{font-family:var(--font-ui);font-size:9px;color:var(--gold-dim);letter-spacing:0.15em;}
 
-/* ── CONTENT GRIDS ── */
-.card-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--surface2);}
-@media(min-width:600px){.card-grid{grid-template-columns:1fr 1fr;}}
-@media(min-width:1000px){.card-grid{grid-template-columns:repeat(3,1fr);}}
-.content-card{background:var(--surface);padding:28px 24px;text-decoration:none;display:block;transition:background 0.3s;-webkit-tap-highlight-color:transparent;}
-.content-card:hover,.content-card:active{background:#161614;}
-.content-card.dark{background:var(--deep);}
-.content-card.dark:hover,.content-card.dark:active{background:#111110;}
-.cc-tag{font-size:7px;letter-spacing:0.32em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
-.cc-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--white);line-height:1.3;margin-bottom:10px;}
-.cc-text{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--text-dim);line-height:1.65;margin-bottom:14px;}
-.cc-link{font-size:8px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;}
-.content-card.highlight{border-left:2px solid var(--gold);}
-.highlight-stats{display:flex;gap:0;margin-top:16px;}
-.hs-item{flex:1;text-align:center;padding:10px 6px;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.08);border-right:none;}
-.hs-item:last-child{border-right:1px solid rgba(201,168,76,0.08);}
-.hs-item strong{font-family:'Cinzel',serif;font-size:18px;color:var(--gold);display:block;font-weight:400;}
-.hs-item span{font-size:7px;letter-spacing:0.15em;color:var(--text-dim);text-transform:uppercase;}
+/* ── FEATURED ── */
+.featured-wrap{background:var(--deep);}
+.featured-inner{max-width:1400px;margin:0 auto;padding:64px 24px;}
+.featured-grid{display:grid;grid-template-columns:1fr;gap:32px;}
+@media(min-width:900px){.featured-grid{grid-template-columns:1fr 1fr;gap:64px;align-items:center;}}
+.featured-image{position:relative;aspect-ratio:16/9;background:var(--surface);overflow:hidden;}
+@media(min-width:900px){.featured-image{aspect-ratio:4/5;}}
+.featured-image::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,transparent 60%);z-index:1;}
+.featured-tag{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--black);font-family:var(--font-ui);font-size:7px;font-weight:400;letter-spacing:0.28em;padding:5px 12px;text-transform:uppercase;z-index:2;}
+.featured-image-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.featured-meta{font-family:var(--font-ui);font-size:8px;letter-spacing:0.2em;color:var(--text-dim);text-transform:uppercase;margin-bottom:16px;}
+.featured-text h2{font-family:var(--font-accent);font-size:clamp(24px,4.5vw,42px);font-weight:400;line-height:1.15;color:var(--white);margin-bottom:16px;}
+.featured-text h2 em{font-style:italic;color:var(--gold-light);}
+.featured-text p{font-family:var(--font-serif);font-size:clamp(15px,2vw,18px);line-height:1.8;color:var(--text-dim);margin-bottom:28px;}
+.btn-read{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-ui);font-size:9px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:6px;transition:all 0.3s;}
+.btn-read::after{content:'→';transition:transform 0.3s;}
+.btn-read:hover::after{transform:translateX(5px);}
 
 /* ── QUOTE ── */
 .quote-section{text-align:center;padding:100px 24px;background:var(--deep);position:relative;overflow:hidden;}
-.quote-section::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:280px;color:rgba(201,168,76,0.04);position:absolute;top:-40px;left:50%;transform:translateX(-50%);line-height:1;pointer-events:none;}
-@media(min-width:600px){.quote-section::before{font-size:400px;}}
-.quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4.5vw,42px);font-style:italic;font-weight:300;line-height:1.4;color:var(--white);max-width:800px;margin:0 auto 22px;position:relative;z-index:1;}
-.quote-attr{font-size:8px;letter-spacing:0.38em;color:var(--gold);text-transform:uppercase;}
+.quote-section::before{content:'"';font-family:var(--font-serif);font-size:320px;color:rgba(201,168,76,0.04);position:absolute;top:-60px;left:50%;transform:translateX(-50%);line-height:1;pointer-events:none;}
+.quote-text{font-family:var(--font-accent);font-size:clamp(20px,4vw,40px);font-style:italic;font-weight:400;line-height:1.4;color:var(--white);max-width:800px;margin:0 auto 22px;position:relative;z-index:1;}
+.quote-attr{font-family:var(--font-ui);font-size:8px;letter-spacing:0.38em;color:var(--gold);text-transform:uppercase;}
+
+/* ── FINDER ── */
+.finder-bar{display:flex;background:var(--surface);border:1.5px solid rgba(201,168,76,0.3);overflow:hidden;transition:border-color 0.3s;}
+.finder-bar:focus-within{border-color:var(--gold);}
+.finder-bar input{flex:1;background:transparent;border:none;outline:none;padding:16px 18px;font-family:var(--font-body);font-size:15px;color:var(--white);min-width:0;}
+.finder-bar input::placeholder{color:var(--text-dim);font-size:14px;}
+.finder-bar button{background:var(--gold);border:none;padding:16px 22px;font-family:var(--font-display);font-size:10px;letter-spacing:0.25em;color:var(--black);cursor:pointer;transition:background 0.3s;white-space:nowrap;font-weight:600;}
+.finder-bar button:hover,.finder-bar button:active{background:var(--gold-light);}
+.finder-stats{display:flex;border:1px solid rgba(201,168,76,0.1);border-top:none;}
+.finder-stat-item{flex:1;text-align:center;padding:10px 8px;border-right:1px solid rgba(201,168,76,0.1);}
+.finder-stat-item:last-child{border-right:none;}
+.finder-stat-item strong{font-family:var(--font-display);font-size:15px;color:var(--gold);display:block;margin-bottom:2px;font-weight:400;}
+.finder-stat-item span{font-family:var(--font-ui);font-size:7px;letter-spacing:0.2em;color:var(--text-dim);text-transform:uppercase;}
+.brand-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:14px;}
+.brand-pill{font-family:var(--font-ui);font-size:8px;letter-spacing:0.18em;color:var(--text-dim);text-transform:uppercase;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.12);padding:6px 12px;cursor:pointer;transition:all 0.2s;}
+.brand-pill:hover,.brand-pill:active{color:var(--gold);border-color:rgba(201,168,76,0.35);background:rgba(201,168,76,0.07);}
+
+/* ── FOOTER ── */
+.stw-footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgba(201,168,76,0.1);}
+.footer-top{display:grid;grid-template-columns:1fr;gap:36px;margin-bottom:40px;}
+@media(min-width:600px){.footer-top{grid-template-columns:2fr 1fr 1fr;gap:40px;}}
+@media(min-width:900px){.footer-top{grid-template-columns:2fr 1fr 1fr 1fr;}}
+.footer-brand{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--gold);letter-spacing:0.1em;margin-bottom:10px;}
+.footer-tagline{font-family:var(--font-serif);font-style:italic;font-size:15px;color:var(--text-dim);margin-bottom:16px;}
+.footer-col h4{font-family:var(--font-ui);font-size:8px;letter-spacing:0.38em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:9px;}
+.footer-col ul li a{font-family:var(--font-ui);color:var(--text-dim);text-decoration:none;transition:color 0.3s;letter-spacing:0.08em;font-size:12px;}
+.footer-col ul li a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid rgba(201,168,76,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.footer-bottom p{font-family:var(--font-ui);font-size:9px;color:var(--text-dim);letter-spacing:0.12em;}
 
 /* ── ABOUT ── */
 .about-section{padding:80px 24px;text-align:center;background:var(--surface);}
 .about-inner{max-width:760px;margin:0 auto;}
-.about-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5vw,42px);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:22px;}
+.about-inner h2{font-family:var(--font-accent);font-size:clamp(22px,4.5vw,40px);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:20px;}
 .about-inner h2 em{font-style:italic;color:var(--gold-light);}
-.about-inner p{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.5vw,18px);line-height:1.85;color:var(--text-dim);margin-bottom:24px;}
-.about-cta{display:inline-flex;align-items:center;gap:10px;font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(201,168,76,0.35);padding:13px 22px;text-decoration:none;transition:all 0.3s;margin-bottom:36px;}
+.about-inner p{font-family:var(--font-body);font-size:clamp(15px,2.2vw,18px);line-height:1.85;color:var(--text-dim);margin-bottom:22px;}
+.about-cta{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:9px;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(201,168,76,0.35);padding:13px 22px;text-decoration:none;transition:all 0.3s;margin-bottom:36px;}
 .about-cta:hover,.about-cta:active{background:rgba(201,168,76,0.08);}
 .about-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid rgba(201,168,76,0.15);padding-top:32px;}
 @media(min-width:600px){.about-grid{grid-template-columns:repeat(4,1fr);}}
-.about-stat{padding:20px 10px;border-right:1px solid rgba(201,168,76,0.1);}
-.about-stat:nth-child(2){border-right:none;}
-@media(min-width:600px){.about-stat:nth-child(2){border-right:1px solid rgba(201,168,76,0.1);}.about-stat:last-child{border-right:none;}}
+.about-stat{padding:18px 8px;border-right:1px solid rgba(201,168,76,0.1);}
 .about-stat:last-child{border-right:none;}
-.as-num{font-family:'Cinzel',serif;font-size:clamp(22px,5vw,28px);color:var(--gold);display:block;margin-bottom:4px;}
-.as-label{font-size:7px;letter-spacing:0.22em;color:var(--text-dim);text-transform:uppercase;}
+@media(max-width:599px){.about-stat:nth-child(2){border-right:none;}.about-stat:nth-child(3){border-right:1px solid rgba(201,168,76,0.1);}}
+.as-num{font-family:var(--font-display);font-size:clamp(20px,4vw,28px);color:var(--gold);display:block;margin-bottom:4px;}
+.as-label{font-family:var(--font-ui);font-size:7px;letter-spacing:0.22em;color:var(--text-dim);text-transform:uppercase;}
 
-/* ── FOOTER ── */
-footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgba(201,168,76,0.1);}
-.footer-top{display:grid;grid-template-columns:1fr;gap:36px;margin-bottom:40px;}
-@media(min-width:600px){.footer-top{grid-template-columns:2fr 1fr 1fr;gap:40px;}}
-@media(min-width:900px){.footer-top{grid-template-columns:2fr 1fr 1fr 1fr;}}
-.footer-brand{font-family:'Cinzel',serif;font-size:18px;font-weight:600;color:var(--gold);letter-spacing:0.1em;margin-bottom:10px;}
-.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--text-dim);margin-bottom:16px;}
-.footer-col h4{font-size:8px;letter-spacing:0.38em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
-.footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:9px;}
-.footer-col ul li a{color:var(--text-dim);text-decoration:none;transition:color 0.3s;letter-spacing:0.08em;font-size:12px;}
-.footer-col ul li a:hover{color:var(--gold);}
-.footer-bottom{border-top:1px solid rgba(201,168,76,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-.footer-bottom p{font-size:9px;color:var(--text-dim);letter-spacing:0.12em;}
+/* ── HERO ── */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:88px 20px 56px;position:relative;overflow:hidden;text-align:center;background:radial-gradient(ellipse 120% 80% at 50% 100%,#1A1200 0%,#050505 55%);}
+/* cobblestone base */
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:repeating-linear-gradient(90deg,transparent 0px,transparent 38px,rgba(201,168,76,0.03) 38px,rgba(201,168,76,0.03) 40px),repeating-linear-gradient(0deg,transparent 0px,transparent 26px,rgba(201,168,76,0.025) 26px,rgba(201,168,76,0.025) 28px),linear-gradient(to top,rgba(10,8,2,0.9) 0%,transparent 100%);pointer-events:none;z-index:1;}
 
-/* ── DIVIDER ── */
-.gold-line{height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);}
+/* silhouettes */
+.silhouette-left,.silhouette-right{position:absolute;bottom:0;z-index:2;pointer-events:none;opacity:0;animation:silFade 2s ease 1.2s forwards;}
+@keyframes silFade{to{opacity:1;}}
+.silhouette-left{left:0;width:clamp(130px,20vw,260px);}
+.silhouette-right{right:0;width:clamp(110px,17vw,220px);}
+
+/* gas lamps */
+.gas-lamp{position:absolute;z-index:3;pointer-events:none;opacity:0;animation:silFade 2s ease 0.8s forwards;}
+.gas-lamp-left{left:clamp(16px,5vw,72px);bottom:clamp(55px,9vw,110px);}
+.gas-lamp-right{right:clamp(16px,5vw,72px);bottom:clamp(55px,9vw,110px);}
+.lamp-corona{position:absolute;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(245,200,66,0.2) 0%,rgba(245,200,66,0.06) 45%,transparent 70%);pointer-events:none;animation:lampFlicker 3.5s ease-in-out infinite;}
+.corona-left{left:clamp(-8px,2vw,36px);bottom:clamp(100px,13vw,165px);}
+.corona-right{right:clamp(-8px,2vw,36px);bottom:clamp(100px,13vw,165px);}
+@keyframes lampFlicker{0%,100%{opacity:0.65;transform:scale(1);}25%{opacity:0.88;transform:scale(1.05);}50%{opacity:0.7;transform:scale(0.96);}75%{opacity:0.85;transform:scale(1.03);}}
+
+/* fog */
+.fog-band{position:absolute;left:-5%;width:110%;pointer-events:none;z-index:2;background:linear-gradient(to right,transparent 0%,rgba(232,228,217,0.07) 25%,rgba(232,228,217,0.11) 50%,rgba(232,228,217,0.07) 75%,transparent 100%);filter:blur(28px);}
+.fog-band-1{height:90px;bottom:28px;animation:fogDrift 20s ease-in-out infinite;}
+.fog-band-2{height:70px;bottom:95px;animation:fogDrift 28s ease-in-out infinite reverse;opacity:0.55;}
+.fog-band-3{height:50px;bottom:155px;animation:fogDrift 36s ease-in-out infinite 8s;opacity:0.35;}
+@keyframes fogDrift{0%,100%{transform:translateX(0) translateY(0);}33%{transform:translateX(3%) translateY(-8px);}66%{transform:translateX(-2%) translateY(6px);}}
+
+/* hero content */
+.hero-content{position:relative;z-index:10;width:100%;max-width:720px;animation:heroReveal 1.8s ease forwards;opacity:0;}
+@keyframes heroReveal{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.hero-eyebrow{font-family:var(--font-ui);font-size:8px;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+.hero-title{font-family:var(--font-display);font-size:clamp(34px,9vw,84px);font-weight:900;line-height:0.9;letter-spacing:0.06em;color:var(--white);margin-bottom:10px;}
+.hero-title span{color:var(--gold);display:block;}
+.hero-tagline{font-family:var(--font-serif);font-style:italic;font-size:clamp(15px,3.5vw,21px);color:var(--text-dim);letter-spacing:0.12em;margin-bottom:32px;}
+.finder-label{font-family:var(--font-ui);font-size:8px;letter-spacing:0.4em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:11px;}
+.hero-divider{width:1px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);margin:0 auto 20px;}
+.hero-stats{display:flex;justify-content:center;border-top:1px solid rgba(201,168,76,0.12);padding-top:20px;}
+.hero-stat{flex:1;text-align:center;padding:0 10px;border-right:1px solid rgba(201,168,76,0.1);}
+.hero-stat:last-child{border-right:none;}
+.stat-num{font-family:var(--font-display);font-size:19px;color:var(--gold);display:block;margin-bottom:3px;}
+.stat-label{font-family:var(--font-ui);font-size:7px;letter-spacing:0.25em;color:var(--text-dim);text-transform:uppercase;}
+.stories-strip{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:20px;}
+.story-pill{font-family:var(--font-ui);font-size:8px;letter-spacing:0.15em;color:var(--text-dim);text-decoration:none;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.1);padding:7px 13px;transition:all 0.2s;}
+.story-pill:hover,.story-pill:active{color:var(--gold);border-color:rgba(201,168,76,0.28);}
+.story-pill.hot{color:var(--gold-light);border-color:rgba(201,168,76,0.22);}
+
+/* ── POCKET WATCH ── */
+#pocket-watch-wrap{position:absolute;right:clamp(16px,7vw,90px);top:50%;transform:translateY(-52%);z-index:8;filter:drop-shadow(0 0 40px rgba(201,168,76,0.18));animation:watchDangle 6s ease-in-out infinite;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+@keyframes watchDangle{0%,100%{transform:translateY(-52%) rotate(-1.5deg);}50%{transform:translateY(-52%) rotate(1.5deg);}}
+#pocket-watch-wrap:hover{filter:drop-shadow(0 0 60px rgba(201,168,76,0.36));}
+#pocket-watch-wrap.lid-open #pw-lid{animation:lidOpen 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards;transform-origin:140px 180px;}
+#pocket-watch-wrap.lid-closed #pw-lid{animation:lidClose 0.45s ease-in forwards;transform-origin:140px 180px;}
+@keyframes lidOpen{from{transform:rotate(0deg);}to{transform:rotate(-95deg);}}
+@keyframes lidClose{from{transform:rotate(-95deg);}to{transform:rotate(0deg);}}
+@media(max-width:600px){#pocket-watch-wrap{position:relative;right:auto;top:auto;transform:none;margin:0 auto 28px;display:block;animation:none;}#pocket-watch-wrap svg{width:170px;height:auto;}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  :root{--section-pad:48px 20px;}
+  .nav-links,.nav-time{display:none;}
+  .hamburger{display:flex;}
+  .featured-inner{padding:48px 20px;}
+  .quote-section{padding:72px 20px;}
+  .stw-footer{padding:48px 20px 24px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:480px){
+  .finder-bar{flex-direction:column;}
+  .finder-bar button{width:100%;padding:14px;}
+}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7JCE0VBEF"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X7JCE0VBEF');</script>
@@ -247,9 +305,9 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
 <body>
 
 <!-- NAV -->
-<nav>
+<nav class="stw-nav">
   <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
-  <ul class="nav-desktop">
+  <ul class="nav-links">
     <li><a href="watchfinder.html" style="color:var(--gold-light);">&#8981; Watch Finder</a></li>
     <li><a href="#editorial">Editorial</a></li>
     <li><a href="#guides">Guides</a></li>
@@ -263,27 +321,288 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="watchfinder.html" class="gold" onclick="closeMenu()">&#8981; Watch Finder</a>
+  <a href="watchfinder.html" class="mgold" onclick="closeMenu()">&#8981; Watch Finder</a>
   <a href="#editorial" onclick="closeMenu()">Editorial</a>
   <a href="#guides" onclick="closeMenu()">Guides</a>
   <a href="#investing" onclick="closeMenu()">Investing</a>
   <a href="#about" onclick="closeMenu()">About</a>
-  <a href="mediakit.html" class="gold" onclick="closeMenu()">Advertise</a>
+  <a href="mediakit.html" class="mgold" onclick="closeMenu()">Advertise</a>
 </div>
 
-<!-- HERO -->
+<!-- ═══════════════════════════════
+     HERO — VICTORIAN GAS LAMP SCENE
+═══════════════════════════════ -->
 <section class="hero">
-  <div class="hero-bg"></div>
+
+  <!-- FOG -->
+  <div class="fog-band fog-band-1"></div>
+  <div class="fog-band fog-band-2"></div>
+  <div class="fog-band fog-band-3"></div>
+
+  <!-- LAMP GLOWS -->
+  <div class="lamp-corona corona-left"></div>
+  <div class="lamp-corona corona-right"></div>
+
+  <!-- GAS LAMP LEFT -->
+  <div class="gas-lamp gas-lamp-left">
+    <svg width="50" height="155" viewBox="0 0 50 155" xmlns="http://www.w3.org/2000/svg">
+      <defs><radialGradient id="gL" cx="50%" cy="30%" r="55%"><stop offset="0%" style="stop-color:#F5C842;stop-opacity:0.95"/><stop offset="55%" style="stop-color:#D4A020;stop-opacity:0.55"/><stop offset="100%" style="stop-color:#C8892A;stop-opacity:0"/></radialGradient></defs>
+      <rect x="21" y="58" width="6" height="97" rx="3" fill="#1A1710"/>
+      <rect x="22" y="58" width="2" height="97" rx="1" fill="rgba(201,168,76,0.12)"/>
+      <path d="M24,63 Q9,53 9,40" stroke="#1A1710" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M24,63 Q9,53 9,40" stroke="rgba(201,168,76,0.08)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <rect x="2" y="14" width="15" height="21" rx="2" fill="#1A1710" stroke="#2A2410" stroke-width="0.8"/>
+      <rect x="4" y="16" width="11" height="17" rx="1" fill="url(#gL)" opacity="0.92"/>
+      <ellipse cx="9.5" cy="21" rx="2.8" ry="3.8" fill="#F5C842" opacity="0.75">
+        <animate attributeName="ry" values="3.8;4.8;3.2;4.4;3.8" dur="0.9s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.75;0.95;0.6;0.88;0.75" dur="0.9s" repeatCount="indefinite"/>
+      </ellipse>
+      <path d="M2,14 L9.5,6 L17,14 Z" fill="#1A1710" stroke="#2A2410" stroke-width="0.7"/>
+      <ellipse cx="24" cy="155" rx="9" ry="3.5" fill="#1A1710" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <!-- GAS LAMP RIGHT (mirror) -->
+  <div class="gas-lamp gas-lamp-right">
+    <svg width="50" height="155" viewBox="0 0 50 155" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1)">
+      <defs><radialGradient id="gR" cx="50%" cy="30%" r="55%"><stop offset="0%" style="stop-color:#F5C842;stop-opacity:0.95"/><stop offset="55%" style="stop-color:#D4A020;stop-opacity:0.55"/><stop offset="100%" style="stop-color:#C8892A;stop-opacity:0"/></radialGradient></defs>
+      <rect x="21" y="58" width="6" height="97" rx="3" fill="#1A1710"/>
+      <rect x="22" y="58" width="2" height="97" rx="1" fill="rgba(201,168,76,0.12)"/>
+      <path d="M24,63 Q9,53 9,40" stroke="#1A1710" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <rect x="2" y="14" width="15" height="21" rx="2" fill="#1A1710" stroke="#2A2410" stroke-width="0.8"/>
+      <rect x="4" y="16" width="11" height="17" rx="1" fill="url(#gR)" opacity="0.92"/>
+      <ellipse cx="9.5" cy="21" rx="2.8" ry="3.8" fill="#F5C842" opacity="0.75">
+        <animate attributeName="ry" values="3.8;4.5;3.4;4.6;3.8" dur="1.1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.75;0.92;0.62;0.86;0.75" dur="1.1s" repeatCount="indefinite"/>
+      </ellipse>
+      <path d="M2,14 L9.5,6 L17,14 Z" fill="#1A1710" stroke="#2A2410" stroke-width="0.7"/>
+      <ellipse cx="24" cy="155" rx="9" ry="3.5" fill="#1A1710" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <!-- SILHOUETTE LEFT — Victorian Gentleman -->
+  <div class="silhouette-left">
+    <svg viewBox="0 0 180 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs><linearGradient id="sG1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#1C1608;stop-opacity:0.96"/><stop offset="100%" style="stop-color:#060400;stop-opacity:1"/></linearGradient></defs>
+      <!-- Top hat -->
+      <rect x="68" y="18" width="52" height="50" rx="3" fill="url(#sG1)"/>
+      <ellipse cx="94" cy="68" rx="36" ry="7.5" fill="url(#sG1)"/>
+      <!-- Head -->
+      <ellipse cx="94" cy="92" rx="21" ry="23" fill="url(#sG1)"/>
+      <!-- Cravat/collar suggestion -->
+      <path d="M84,113 L94,108 L104,113" fill="url(#sG1)"/>
+      <!-- Coat -->
+      <path d="M58,116 Q38,138 36,198 L54,198 L58,168 L73,173 L73,378 L115,378 L115,173 L130,168 L132,198 L152,198 Q149,138 130,116 Q113,106 94,106 Q75,106 58,116Z" fill="url(#sG1)"/>
+      <!-- Coat tails -->
+      <path d="M54,198 Q42,258 46,378 L70,378 L73,255 L73,198Z" fill="url(#sG1)" opacity="0.82"/>
+      <path d="M132,198 Q144,258 142,378 L116,378 L115,255 L115,198Z" fill="url(#sG1)" opacity="0.82"/>
+      <!-- Cane arm -->
+      <path d="M130,138 L158,198 L160,358" stroke="url(#sG1)" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+      <!-- Cane handle -->
+      <path d="M158,198 Q170,186 166,174 Q162,162 154,166" stroke="url(#sG1)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      <!-- Watch chain glint -->
+      <path d="M88,158 Q94,163 96,170" stroke="rgba(201,168,76,0.35)" stroke-width="1.2" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- SILHOUETTE RIGHT — Victorian Lady -->
+  <div class="silhouette-right">
+    <svg viewBox="0 0 160 390" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs><linearGradient id="sG2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#1C1608;stop-opacity:0.96"/><stop offset="100%" style="stop-color:#060400;stop-opacity:1"/></linearGradient></defs>
+      <!-- Bonnet -->
+      <path d="M53,16 Q58,6 78,8 Q98,6 106,16 Q112,26 108,40 L48,40 Z" fill="url(#sG2)"/>
+      <path d="M48,40 Q46,50 50,56 L106,56 Q110,50 108,40Z" fill="url(#sG2)"/>
+      <!-- Bonnet ribbon -->
+      <path d="M50,56 Q40,70 42,86" stroke="url(#sG2)" stroke-width="4.5" fill="none"/>
+      <!-- Head -->
+      <ellipse cx="78" cy="74" rx="19" ry="21" fill="url(#sG2)"/>
+      <!-- Neck / bodice -->
+      <path d="M66,93 Q48,106 42,126 L114,126 Q108,106 90,93Z" fill="url(#sG2)"/>
+      <!-- Corset -->
+      <path d="M42,126 Q34,146 36,163 L120,163 Q122,146 114,126Z" fill="url(#sG2)"/>
+      <!-- Bustle skirt -->
+      <path d="M36,163 Q18,198 20,258 Q22,308 28,390 L128,390 Q134,308 136,258 Q138,198 120,163Z" fill="url(#sG2)"/>
+      <!-- Skirt volume hint -->
+      <path d="M78,218 Q108,228 118,258 Q110,248 78,243 Q46,248 38,258 Q48,228 78,218Z" fill="url(#sG2)" opacity="0.45"/>
+      <!-- Parasol arm -->
+      <path d="M42,138 L18,178 L12,198" stroke="url(#sG2)" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+      <!-- Parasol canopy -->
+      <path d="M12,198 Q-4,176 12,160 Q28,144 46,160 Q62,144 78,160" stroke="url(#sG2)" stroke-width="4.5" fill="url(#sG2)" stroke-linecap="round"/>
+      <line x1="28" y1="160" x2="12" y2="208" stroke="url(#sG2)" stroke-width="3.5"/>
+    </svg>
+  </div>
+
+  <!-- ═══════════ POCKET WATCH ═══════════ -->
+  <div id="pocket-watch-wrap" onclick="toggleLid()" title="Tap to open">
+    <svg id="pw-svg" viewBox="0 0 280 460" width="230" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="caseG" cx="35%" cy="32%" r="68%">
+          <stop offset="0%" style="stop-color:#3C3520"/>
+          <stop offset="45%" style="stop-color:#1E1A0C"/>
+          <stop offset="100%" style="stop-color:#0C0A04"/>
+        </radialGradient>
+        <radialGradient id="dialG" cx="50%" cy="42%" r="60%">
+          <stop offset="0%" style="stop-color:#1C1808"/>
+          <stop offset="100%" style="stop-color:#080600"/>
+        </radialGradient>
+        <radialGradient id="dialGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" style="stop-color:#F5C842;stop-opacity:0.14"/>
+          <stop offset="100%" style="stop-color:#F5C842;stop-opacity:0"/>
+        </radialGradient>
+        <radialGradient id="rimG" cx="50%" cy="50%" r="50%">
+          <stop offset="72%" style="stop-color:transparent"/>
+          <stop offset="86%" style="stop-color:#C9A84C;stop-opacity:0.55"/>
+          <stop offset="94%" style="stop-color:#E8C96A;stop-opacity:0.88"/>
+          <stop offset="100%" style="stop-color:#C9A84C;stop-opacity:0.55"/>
+        </radialGradient>
+        <filter id="wShadow">
+          <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#F5C842" flood-opacity="0.14"/>
+          <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.65"/>
+        </filter>
+        <clipPath id="dialClip"><circle cx="140" cy="288" r="108"/></clipPath>
+      </defs>
+
+      <!-- CHAIN -->
+      <g opacity="0.88">
+        <g stroke="#A88030" stroke-width="1.8" fill="none">
+          <ellipse cx="140" cy="14" rx="5" ry="3"/>
+          <ellipse cx="140" cy="22" rx="3" ry="5"/>
+          <ellipse cx="140" cy="30" rx="5" ry="3"/>
+          <ellipse cx="140" cy="38" rx="3" ry="5"/>
+          <ellipse cx="140" cy="46" rx="5" ry="3"/>
+          <ellipse cx="140" cy="54" rx="3" ry="5"/>
+          <ellipse cx="140" cy="62" rx="5" ry="3"/>
+          <ellipse cx="140" cy="70" rx="3" ry="5"/>
+        </g>
+        <!-- Crown -->
+        <rect x="132" y="74" width="16" height="14" rx="4" fill="#1A1508" stroke="#C9A84C" stroke-width="1.2"/>
+        <ellipse cx="140" cy="80" rx="7" ry="5" fill="none" stroke="#C9A84C" stroke-width="1.8"/>
+      </g>
+
+      <!-- OUTER CASE -->
+      <g filter="url(#wShadow)">
+        <circle cx="140" cy="288" r="160" fill="url(#caseG)"/>
+        <circle cx="140" cy="288" r="158" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.28"/>
+        <circle cx="140" cy="288" r="146" fill="none" stroke="#C9A84C" stroke-width="0.25" opacity="0.15"/>
+        <!-- Victorian case engravings -->
+        <g stroke="#C9A84C" stroke-width="0.45" opacity="0.18" fill="none">
+          <path d="M52,192 Q36,186 34,202 Q32,218 48,216"/>
+          <path d="M228,192 Q244,186 246,202 Q248,218 232,216"/>
+          <path d="M52,384 Q36,390 34,374 Q32,358 48,360"/>
+          <path d="M228,384 Q244,390 246,374 Q248,358 232,360"/>
+        </g>
+        <circle cx="140" cy="288" r="160" fill="url(#rimG)"/>
+      </g>
+
+      <!-- LID -->
+      <g id="pw-lid">
+        <circle cx="140" cy="288" r="113" fill="url(#caseG)" stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="140" cy="288" r="109" fill="none" stroke="#C9A84C" stroke-width="0.45" opacity="0.38"/>
+        <!-- Lid engraving — botanical -->
+        <g stroke="#C9A84C" fill="none" opacity="0.22">
+          <circle cx="140" cy="288" r="56" stroke-width="0.75"/>
+          <circle cx="140" cy="288" r="48" stroke-width="0.4"/>
+          <!-- Cardinal petals -->
+          <path d="M140,232 Q151,247 140,262 Q129,247 140,232Z" stroke-width="0.75"/>
+          <path d="M140,314 Q151,329 140,344 Q129,329 140,314Z" stroke-width="0.75"/>
+          <path d="M84,288 Q99,277 114,288 Q99,299 84,288Z" stroke-width="0.75"/>
+          <path d="M166,288 Q181,277 196,288 Q181,299 166,288Z" stroke-width="0.75"/>
+          <!-- Diagonal petals -->
+          <path d="M98,248 Q113,260 106,275 Q96,264 98,248Z" stroke-width="0.55"/>
+          <path d="M182,248 Q167,260 174,275 Q184,264 182,248Z" stroke-width="0.55"/>
+          <path d="M98,328 Q113,316 106,301 Q96,312 98,328Z" stroke-width="0.55"/>
+          <path d="M182,328 Q167,316 174,301 Q184,312 182,328Z" stroke-width="0.55"/>
+          <!-- Centre -->
+          <circle cx="140" cy="288" r="15" stroke-width="0.9"/>
+          <circle cx="140" cy="288" r="8" stroke-width="0.55"/>
+          <circle cx="140" cy="288" r="3" stroke-width="0.75" fill="rgba(201,168,76,0.12)"/>
+        </g>
+        <text x="140" y="292" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.45" letter-spacing="3">STW</text>
+        <!-- Lid catch -->
+        <rect x="135" y="396" width="10" height="6" rx="2.5" fill="#C9A84C" opacity="0.55"/>
+        <!-- Tap hint -->
+        <text x="140" y="420" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7" fill="#C9A84C" opacity="0.3" letter-spacing="2">TAP TO OPEN</text>
+      </g>
+
+      <!-- DIAL (behind lid, revealed on open) -->
+      <g clip-path="url(#dialClip)">
+        <circle cx="140" cy="288" r="108" fill="url(#dialG)"/>
+        <circle cx="140" cy="288" r="108" fill="url(#dialGlow)"/>
+        <circle cx="140" cy="288" r="104" fill="rgba(245,235,200,0.05)"/>
+        <circle cx="140" cy="288" r="102" fill="none" stroke="#C9A84C" stroke-width="0.55" opacity="0.45"/>
+        <circle cx="140" cy="288" r="94" fill="none" stroke="#C9A84C" stroke-width="0.28" opacity="0.2"/>
+        <!-- Roman numerals -->
+        <text x="140" y="200" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#C9A84C" opacity="0.88">XII</text>
+        <text x="228" y="294" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#C9A84C" opacity="0.88">III</text>
+        <text x="140" y="382" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#C9A84C" opacity="0.88">VI</text>
+        <text x="52" y="294" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#C9A84C" opacity="0.88">IX</text>
+        <!-- Minor -->
+        <text x="192" y="220" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.55">I</text>
+        <text x="218" y="248" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.55">II</text>
+        <text x="218" y="340" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.55">IV</text>
+        <text x="192" y="368" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.55">V</text>
+        <text x="88" y="368" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.55">VII</text>
+        <text x="62" y="340" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.55">VIII</text>
+        <text x="62" y="248" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.55">X</text>
+        <text x="88" y="220" text-anchor="middle" font-family="Cinzel,serif" font-size="9" fill="#C9A84C" opacity="0.55">XI</text>
+        <!-- Brand -->
+        <text x="140" y="262" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#C9A84C" letter-spacing="2.5" opacity="0.78">STORIES TO WATCH</text>
+        <text x="140" y="273" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="4.8" fill="#4A4030" letter-spacing="2.2">EST. MMXXVI · LONDON</text>
+        <!-- Tick marks — generated by JS -->
+        <g id="pw-ticks" stroke="#C9A84C"></g>
+        <!-- Sub-dial 6 o'clock -->
+        <circle cx="140" cy="340" r="16" fill="rgba(8,6,0,0.65)" stroke="#C9A84C" stroke-width="0.5" opacity="0.58"/>
+        <g stroke="#C9A84C" stroke-width="0.8" opacity="0.45">
+          <line x1="140" y1="325" x2="140" y2="328"/>
+          <line x1="155" y1="340" x2="152" y2="340"/>
+          <line x1="140" y1="355" x2="140" y2="352"/>
+          <line x1="125" y1="340" x2="128" y2="340"/>
+        </g>
+        <g id="pw-second-sub"><line x1="140" y1="340" x2="140" y2="328" stroke="#C9A84C" stroke-width="1" stroke-linecap="round"/></g>
+        <!-- HOUR HAND -->
+        <g id="pw-hour">
+          <path d="M140,288 L136,258 L140,226 L144,258 Z" fill="#E8E4D9" opacity="0.94"/>
+          <path d="M140,288 L139,266 L140,240 L141,266 Z" fill="#0A0800" opacity="0.35"/>
+          <line x1="140" y1="288" x2="140" y2="304" stroke="#E8E4D9" stroke-width="4" stroke-linecap="round" opacity="0.28"/>
+        </g>
+        <!-- MINUTE HAND -->
+        <g id="pw-minute">
+          <path d="M140,288 L137,244 L140,208 L143,244 Z" fill="#E8E4D9" opacity="0.88"/>
+          <path d="M140,288 L139,250 L140,216 L141,250 Z" fill="#0A0800" opacity="0.28"/>
+          <line x1="140" y1="288" x2="140" y2="308" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round" opacity="0.22"/>
+        </g>
+        <!-- SECOND HAND — gold sweep -->
+        <g id="pw-second">
+          <line x1="140" y1="198" x2="140" y2="288" stroke="#C9A84C" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="140" y1="288" x2="140" y2="316" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" opacity="0.65"/>
+        </g>
+        <!-- Centre -->
+        <circle cx="140" cy="288" r="7" fill="#C9A84C"/>
+        <circle cx="140" cy="288" r="4.5" fill="#1C1808"/>
+        <circle cx="140" cy="288" r="2" fill="#C9A84C"/>
+        <circle cx="140" cy="340" r="2.5" fill="#C9A84C"/>
+        <circle cx="140" cy="340" r="1.5" fill="#1C1808"/>
+      </g>
+
+      <!-- Case rim over dial -->
+      <circle cx="140" cy="288" r="113" fill="none" stroke="#C9A84C" stroke-width="1.4" opacity="0.48"/>
+      <circle cx="140" cy="288" r="111" fill="none" stroke="rgba(245,200,66,0.18)" stroke-width="0.5"/>
+
+    </svg>
+  </div>
+  <!-- END POCKET WATCH -->
+
+  <!-- HERO TEXT -->
   <div class="hero-content">
-    <p class="hero-eyebrow">The World's Finest Luxury Watch Platform</p>
+    <p class="hero-eyebrow">The World's Finest Independent Watch Platform</p>
     <h1 class="hero-title">STORIES TO<span>WATCH</span></h1>
     <p class="hero-tagline">Find any watch. Read every story.</p>
 
-    <!-- WATCH FINDER — HERO -->
-    <div class="finder-hero">
-      <p class="finder-label">&#8981; Watch Finder — 50 verified dealers · 24 countries</p>
+    <!-- FINDER -->
+    <div style="width:100%;margin-bottom:24px;">
+      <p class="finder-label">&#8981; Watch Finder — 50 verified dealers across 24 countries</p>
       <div class="finder-bar">
-        <input type="text" id="heroSearch" placeholder="Search by brand — Rolex, Patek, AP..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter')goFinder()">
+        <input type="text" id="heroSearch" placeholder="Search by brand — Rolex, Patek Philippe, AP..." autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')goFinder()">
         <button onclick="goFinder()">Find →</button>
       </div>
       <div class="finder-stats">
@@ -311,16 +630,16 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
       <div class="hero-stat"><span class="stat-num">24/7</span><span class="stat-label">Editorial</span></div>
     </div>
 
-    <!-- LATEST STORIES -->
     <div class="stories-strip">
       <a href="hublot-mbappe-big-bang-reloaded-2026.html" class="story-pill hot">Mbappé Hublot</a>
       <a href="ucl-final-2026-watches.html" class="story-pill hot">UCL Final</a>
       <a href="cannes-2026-watches.html" class="story-pill">Cannes 2026</a>
       <a href="ronaldo-watch-collection-2026.html" class="story-pill">Ronaldo $16M</a>
       <a href="nautilus-buying-guide.html" class="story-pill">Nautilus Guide</a>
-      <a href="royal-oak-price-guide.html" class="story-pill">Royal Oak Prices</a>
+      <a href="royal-oak-price-guide.html" class="story-pill">Royal Oak</a>
     </div>
   </div>
+
 </section>
 
 <!-- TICKER -->
@@ -369,7 +688,7 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
 </div>
 <div class="gold-line"></div>
 
-<!-- FEATURED / EDITORIAL -->
+<!-- EDITORIAL -->
 <div id="editorial" class="featured-wrap">
   <div class="featured-inner">
     <p class="section-label">Cover Story</p>
@@ -447,32 +766,31 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
   </div>
 </section>
 
-<!-- CELEBRITY WATCHES -->
+<!-- CELEBRITY -->
 <section style="background:var(--surface);padding:0;">
   <div class="section-wrap">
     <p class="section-label">Celebrity Watches</p>
     <h2 class="section-title">Verified Sightings &amp; Known Collections</h2>
-    <!-- MBAPPE HERO -->
     <div style="margin-bottom:2px;">
-      <a href="hublot-mbappe-big-bang-reloaded-2026.html" class="content-card highlight dark" style="display:block;text-decoration:none;margin-bottom:0;">
+      <a href="hublot-mbappe-big-bang-reloaded-2026.html" class="content-card highlight dark" style="display:block;text-decoration:none;">
         <p class="cc-tag">⚡ New · Watches &amp; Wonders 2026 · Limited Edition</p>
         <h3 class="cc-title" style="font-size:clamp(20px,4vw,26px);">The First Watch Kylian Mbappé Actually Built — Hublot Big Bang Reloaded</h3>
         <p class="cc-text">After 8 years as ambassador he finally co-designed his own. 200 pieces. $30,000. "Trust Yourself" engraved at 6 o'clock.</p>
-        <div class="highlight-stats">
-          <div class="hs-item"><strong>200</strong><span>Pieces</span></div>
-          <div class="hs-item"><strong>$30K</strong><span>Retail</span></div>
-          <div class="hs-item"><strong>44mm</strong><span>Case</span></div>
+        <div class="hl-stats">
+          <div class="hl-stat"><strong>200</strong><span>Pieces</span></div>
+          <div class="hl-stat"><strong>$30K</strong><span>Retail</span></div>
+          <div class="hl-stat"><strong>44mm</strong><span>Case</span></div>
         </div>
         <span class="cc-link" style="display:inline-flex;margin-top:16px;">Read Full Story →</span>
       </a>
     </div>
     <div class="card-grid" style="margin-top:2px;">
-      <a href="cannes-2026-watches.html" class="content-card dark"><p class="cc-tag">⚡ 8 Verified · Cannes 2026</p><h3 class="cc-title">The Croisette Watch Report — 79th Cannes Film Festival</h3><p class="cc-text">Vin Diesel's $65K AP. Gunna's $91,200 Daytona. 8 watches, all verified.</p><span class="cc-link">Read Story →</span></a>
-      <a href="messi-watch-collection-2026.html" class="content-card dark"><p class="cc-tag">World Cup 2026</p><h3 class="cc-title">Lionel Messi's Watch Collection — Every Piece Identified</h3><p class="cc-text">Jacob &amp; Co., Patek Philippe, Audemars Piguet. Seven watches valued.</p><span class="cc-link">Read Story →</span></a>
-      <a href="the-rock-met-gala-watch-2026.html" class="content-card dark"><p class="cc-tag">Met Gala 2026</p><h3 class="cc-title">The Rock's $3.3 Million Watch at the Met Gala</h3><p class="cc-text">Jacob &amp; Co. Billionaire III. 714 diamonds. 130 carats.</p><span class="cc-link">Read Story →</span></a>
-      <a href="kevin-hart-roast-watches-2026.html" class="content-card dark"><p class="cc-tag">Netflix Roast 2026</p><h3 class="cc-title">Every Watch at the Kevin Hart Netflix Roast</h3><p class="cc-text">$7.8 million in one room. Every piece identified.</p><span class="cc-link">Read Story →</span></a>
-      <a href="ronaldo-watch-collection-2026.html" class="content-card dark"><p class="cc-tag">Celebrity Collection</p><h3 class="cc-title">Cristiano Ronaldo's $16 Million Watch Collection</h3><p class="cc-text">54 timepieces. $16.8 million. Every piece identified and valued.</p><span class="cc-link">Read Story →</span></a>
-      <a href="ucl-final-2026-watches.html" class="content-card dark highlight"><p class="cc-tag">⚡ UCL Final · Budapest</p><h3 class="cc-title">The Watches of the 2026 Champions League Final</h3><p class="cc-text">PSG vs Arsenal. Dembélé's Richard Mille. Kvaratskhelia's AP. Verified sources only.</p><span class="cc-link">Read Story →</span></a>
+      <a href="cannes-2026-watches.html" class="content-card dark"><p class="cc-tag">⚡ 8 Verified · Cannes 2026</p><h3 class="cc-title">The Croisette Watch Report</h3><p class="cc-text">Vin Diesel's $65K AP. Gunna's $91,200 Daytona. 8 watches, all verified.</p><span class="cc-link">Read Story →</span></a>
+      <a href="messi-watch-collection-2026.html" class="content-card dark"><p class="cc-tag">World Cup 2026</p><h3 class="cc-title">Lionel Messi's Watch Collection</h3><p class="cc-text">Jacob &amp; Co., Patek Philippe, Audemars Piguet. Seven watches valued.</p><span class="cc-link">Read Story →</span></a>
+      <a href="the-rock-met-gala-watch-2026.html" class="content-card dark"><p class="cc-tag">Met Gala 2026</p><h3 class="cc-title">The Rock's $3.3 Million Watch</h3><p class="cc-text">Jacob &amp; Co. Billionaire III. 714 diamonds. 130 carats.</p><span class="cc-link">Read Story →</span></a>
+      <a href="kevin-hart-roast-watches-2026.html" class="content-card dark"><p class="cc-tag">Netflix Roast 2026</p><h3 class="cc-title">Every Watch at the Kevin Hart Roast</h3><p class="cc-text">$7.8 million in one room. Every piece identified.</p><span class="cc-link">Read Story →</span></a>
+      <a href="ronaldo-watch-collection-2026.html" class="content-card dark"><p class="cc-tag">Celebrity Collection</p><h3 class="cc-title">Ronaldo's $16 Million Watch Collection</h3><p class="cc-text">54 timepieces. $16.8 million. Every piece identified and valued.</p><span class="cc-link">Read Story →</span></a>
+      <a href="ucl-final-2026-watches.html" class="content-card dark highlight"><p class="cc-tag">⚡ UCL Final · Budapest</p><h3 class="cc-title">The Watches of the Champions League Final</h3><p class="cc-text">Dembélé's Richard Mille. Kvaratskhelia's AP. Verified sources only.</p><span class="cc-link">Read Story →</span></a>
     </div>
   </div>
 </section>
@@ -480,8 +798,8 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
 <div class="gold-line"></div>
 
 <div class="quote-section">
-  <p class="quote-text">"A man who has to ask about the price of a yacht cannot afford one. A watch, however, tells the world what he has already decided."</p>
-  <p class="quote-attr">— The Stories To Watch Editorial Philosophy</p>
+  <p class="quote-text">"Time is the only true luxury. A watch is the only honest way to wear it."</p>
+  <p class="quote-attr">— Stories To Watch · Est. London 2026</p>
 </div>
 
 <div class="gold-line"></div>
@@ -507,7 +825,7 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
     <p class="section-label" style="justify-content:center;">About</p>
     <h2>The world's most useful luxury watch platform — <em>and the finest independent editorial</em></h2>
     <p>The Watch Finder connects you to 50 verified dealers across 24 countries — the largest free sourcing tool of its kind. The editorial tells you what the world's most discerning collectors are wearing, buying and investing in.</p>
-    <p>For advertising, dealer partnerships and press: <a href="mailto:bringlifetobrand@gmail.com" style="color:var(--gold);border-bottom:1px solid var(--gold-dim);">bringlifetobrand@gmail.com</a></p>
+    <p>For advertising, dealer partnerships and press: <a href="mailto:bringlifetobrand@gmail.com" style="color:var(--gold);border-bottom:1px solid var(--gold-dim);text-decoration:none;">bringlifetobrand@gmail.com</a></p>
     <a href="mediakit.html" class="about-cta">&#128196; Download Media Kit →</a>
     <div class="about-grid">
       <div class="about-stat"><span class="as-num">50</span><span class="as-label">Verified Dealers</span></div>
@@ -519,12 +837,12 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="stw-footer">
   <div class="footer-top">
     <div>
       <p class="footer-brand">STORIES TO WATCH</p>
       <p class="footer-tagline">Find any watch. Read every story.</p>
-      <p style="font-size:12px;color:var(--text-dim);line-height:1.7;">50 verified dealers. 24 countries. Free to use. The finest independent luxury watch editorial.</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:12px;color:var(--text-dim);line-height:1.7;">50 verified dealers. 24 countries. Free to use. The finest independent luxury watch editorial. Est. London 2026.</p>
     </div>
     <div class="footer-col">
       <h4>Find a Watch</h4>
@@ -557,26 +875,70 @@ footer{background:var(--surface);padding:56px 24px 28px;border-top:1px solid rgb
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Stories To Watch. All rights reserved.</p>
+    <p>© 2026 Stories To Watch. All rights reserved. Est. London.</p>
     <p style="color:var(--gold-dim);">Find any watch. Read every story.</p>
   </div>
 </footer>
 
 <script>
+/* ── MENU ── */
 function toggleMenu(){var m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
 function closeMenu(){var m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
 
+/* ── FINDER ── */
 function goFinder(){var v=document.getElementById('heroSearch').value.trim();window.location.href=v?'watchfinder.html?search='+encodeURIComponent(v):'watchfinder.html';}
 function searchBrand(b){window.location.href='watchfinder.html?search='+encodeURIComponent(b);}
 
-function updateClock(){document.getElementById('navTime').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});}
-updateClock();setInterval(updateClock,1000);
+/* ── CLOCK ── */
+function setRot(id,deg,cx,cy){var el=document.getElementById(id);if(el)el.setAttribute('transform','rotate('+deg+','+cx+','+cy+')');}
+function updateClock(){
+  var n=new Date();
+  document.getElementById('navTime').textContent=n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  var h=n.getHours()%12,mi=n.getMinutes(),s=n.getSeconds(),ms=n.getMilliseconds(),ss=s+ms/1000;
+  setRot('pw-hour',(h+mi/60+ss/3600)*30,140,288);
+  setRot('pw-minute',(mi+ss/60)*6,140,288);
+  setRot('pw-second',ss*6,140,288);
+  setRot('pw-second-sub',ss*6,140,340);
+}
+updateClock();setInterval(updateClock,50);
 
+/* ── POCKET WATCH LID ── */
+var lidIsOpen=false;
+function toggleLid(){
+  var w=document.getElementById('pocket-watch-wrap');
+  lidIsOpen=!lidIsOpen;
+  if(lidIsOpen){
+    w.classList.remove('lid-closed');
+    w.classList.add('lid-open');
+  } else {
+    w.classList.remove('lid-open');
+    w.classList.add('lid-closed');
+  }
+}
+
+/* ── TICK MARKS ── */
+(function(){
+  var g=document.getElementById('pw-ticks');
+  if(!g)return;
+  for(var i=0;i<60;i++){
+    var l=document.createElementNS('http://www.w3.org/2000/svg','line');
+    var isH=i%5===0;
+    l.setAttribute('x1','140');l.setAttribute('y1',isH?'188':'191');
+    l.setAttribute('x2','140');l.setAttribute('y2','196');
+    l.setAttribute('stroke','#C9A84C');
+    l.setAttribute('stroke-width',isH?'1.8':'0.9');
+    l.setAttribute('opacity',isH?'0.55':'0.22');
+    l.setAttribute('transform','rotate('+(i*6)+',140,288)');
+    g.appendChild(l);
+  }
+})();
+
+/* ── NEWS CARDS ── */
 function updateCards(articles){
   var fb=[
     {category:"Limited Edition",title:"Mbappé's First Hublot — Big Bang Reloaded 2026",excerpt:"200 pieces. $30,000. After 8 years as ambassador, Mbappé co-designed his first watch. 'Trust Yourself' engraved at 6 o'clock.",source:"Hublot",brand:"hublot",url:"hublot-mbappe-big-bang-reloaded-2026.html"},
-    {category:"Cannes 2026",title:"The Croisette Watch Report — 8 Verified Timepieces",excerpt:"Vin Diesel's $65K AP Starwheel. Gunna's $91,200 Daytona. Carlos Sainz's GP tourbillon. Eight watches, all verified.",source:"Stories To Watch",brand:"audemars+piguet",url:"cannes-2026-watches.html"},
+    {category:"Cannes 2026",title:"The Croisette Watch Report — 8 Verified Timepieces",excerpt:"Vin Diesel's $65K AP Starwheel. Gunna's $91,200 Daytona. Carlos Sainz's tourbillon. Eight watches, all verified.",source:"Stories To Watch",brand:"audemars+piguet",url:"cannes-2026-watches.html"},
     {category:"Buying Guide",title:"Best Place to Buy a Patek Philippe Nautilus in 2026",excerpt:"50 verified dealers across 24 countries. Authorised dealers, grey market and auction houses — where serious collectors source it.",source:"Stories To Watch",brand:"patek+philippe",url:"nautilus-buying-guide.html"},
     {category:"Price Guide",title:"Audemars Piguet Royal Oak — Complete Price Guide 2026",excerpt:"Every reference valued from the 15202 Jumbo to the Chronograph. Current secondary market prices.",source:"Stories To Watch",brand:"audemars+piguet",url:"royal-oak-price-guide.html"},
     {category:"Investment",title:"Patek Philippe vs Rolex — Which Holds Value in 2026?",excerpt:"Real secondary market data. Honest multiples. The definitive verdict on which belongs in your portfolio.",source:"Stories To Watch",brand:"patek+philippe",url:"patek-vs-rolex-investment-2026.html"},
@@ -593,7 +955,7 @@ function updateCards(articles){
     document.getElementById('excerpt'+i).textContent=a.excerpt;
     document.getElementById('source'+i).textContent=a.source;
     var fe=document.getElementById('find'+i);
-    if(a.brand)fe.innerHTML='<a href="watchfinder.html?search='+a.brand+'" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.18em;color:var(--gold-dim);text-decoration:none;">&#8981; Find This Watch</a>';
+    if(a.brand)fe.innerHTML='<a href="watchfinder.html?search='+a.brand+'" onclick="event.stopPropagation();" style="font-family:\'Montserrat\',sans-serif;font-size:8px;letter-spacing:0.18em;color:var(--gold-dim);text-decoration:none;">&#8981; Find This Watch</a>';
     card.style.display='block';
   });
 }
@@ -602,7 +964,7 @@ window.addEventListener('load',function(){
   setTimeout(function(){
     (async function(){
       try{
-        var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:'Search for 6 recent luxury watch news stories from May 2026. Return ONLY a JSON array with exactly 6 objects, each with keys: title, excerpt (2 sentences), category, source, brand (lowercase or empty string).'}]})});
+        var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:'Search for 6 recent luxury watch news stories from May 2026. Return ONLY a JSON array with exactly 6 objects, each with keys: title, excerpt (2 sentences max), category, source, brand (lowercase brand name or empty string).'}]})});
         var d=await r.json();
         var t=d.content.filter(function(b){return b.type==='text';}).map(function(b){return b.text;}).join('');
         var m=t.replace(/```json|```/g,'').trim().match(/\[[\s\S]*\]/);
