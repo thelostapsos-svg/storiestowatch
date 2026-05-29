@@ -122,6 +122,14 @@
 
   /* hero article links */
   .hero-links{display:flex;flex-direction:column;gap:8px;margin-top:20px;padding-top:20px;border-top:1px solid rgba(201,168,76,0.12);}
+  /* ── TIME COLUMN ── */
+  .hero-time-col{display:none;flex-direction:column;align-items:center;justify-content:center;}
+  .time-vline{width:1px;height:56px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.55));}
+  .time-vline-bottom{width:1px;height:56px;background:linear-gradient(to bottom,rgba(201,168,76,0.55),transparent);}
+  .time-hm{font-family:'Cinzel',serif;font-size:clamp(26px,3vw,42px);font-weight:300;color:#C9A84C;letter-spacing:0.12em;line-height:1;text-align:center;opacity:0.85;text-shadow:0 0 40px rgba(201,168,76,0.2);}
+  .time-ss{font-family:'Cinzel',serif;font-size:clamp(11px,1.2vw,16px);font-weight:300;color:#8B6914;letter-spacing:0.3em;text-align:center;margin-top:3px;opacity:0.65;}
+  .time-lbl{font-family:'Montserrat',sans-serif;font-size:6.5px;letter-spacing:0.5em;color:#4A3810;text-transform:uppercase;text-align:center;margin-top:12px;opacity:0.7;}
+  .time-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(9px,1vw,12px);color:#8B6914;letter-spacing:0.15em;text-align:center;margin-top:8px;opacity:0.5;}
   .hero-link-item{display:flex;align-items:center;justify-content:space-between;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.14);padding:11px 14px;text-decoration:none;transition:all 0.25s;gap:12px;text-align:left;}
   .hero-link-item:hover,.hero-link-item:active{background:rgba(201,168,76,0.09);border-color:var(--gold);}
   .hero-link-label{font-size:11px;color:var(--gold);letter-spacing:0.08em;flex:1;}
@@ -235,9 +243,9 @@
     .nav-time{display:block;}
     .side-dial{display:block;}
     .hero{padding:100px 72px 40px;}
-    .hero-inner{flex-direction:row;align-items:center;justify-content:space-between;gap:48px;}
-    .hero-text-col{text-align:left;max-width:520px;}
-    .hero-watch-col{flex-shrink:0;}
+    .hero-inner{display:grid;grid-template-columns:220px 1fr 520px;align-items:center;gap:0;}
+    .hero-text-col{text-align:left;max-width:520px;padding-left:40px;}
+    .hero-watch-col{flex-shrink:0;justify-content:center;}
     .watch-container{width:210px;height:520px;}
     .hero-eyebrow{text-align:left;}
     .hero-title{font-size:clamp(48px,7vw,88px);}
@@ -245,6 +253,7 @@
     .hero-links .hero-link-item{justify-content:space-between;}
     .hero-stats{justify-content:flex-start;}
     .hero-divider{margin:0 0 20px;}
+    .hero-time-col{display:flex;}
   }
 
   /* ══════════════════════════════
@@ -468,6 +477,16 @@
           <line x1="140" y1="585" x2="140" y2="603" stroke="#C9A84C" stroke-width="0.4"/>
         </svg>
       </div>
+    </div>
+
+    <!-- TIME DISPLAY — gap filler, desktop only -->
+    <div class="hero-time-col" id="heroTimeCol">
+      <div class="time-vline"></div>
+      <div class="time-hm" id="tHM">--:--</div>
+      <div class="time-ss" id="tSS">--</div>
+      <div class="time-lbl">Local Time</div>
+      <div class="time-date" id="tDate"></div>
+      <div class="time-vline-bottom"></div>
     </div>
 
     <!-- TEXT + FINDER -->
@@ -783,8 +802,22 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();
 var lastScrollY=0,cAL=0,cAR=0;
 window.addEventListener('scroll',function(){var s=window.scrollY,d=s-lastScrollY;lastScrollY=s;cAL+=d*0.3;cAR-=d*0.3;var nL=document.getElementById('compassNeedleLeft'),nR=document.getElementById('compassNeedleRight');if(nL)nL.style.transform='rotate('+cAL+'deg)';if(nR)nR.style.transform='rotate('+cAR+'deg)';});
 
-function updateClock(){var n=new Date(),h=n.getHours()%12,mi=n.getMinutes(),s=n.getSeconds(),ms=n.getMilliseconds(),ss=s+ms/1000;document.getElementById('secondHand').setAttribute('transform','rotate('+(ss*6)+',140,310)');document.getElementById('minuteHand').setAttribute('transform','rotate('+((mi+ss/60)*6)+',140,310)');document.getElementById('hourHand').setAttribute('transform','rotate('+((h+mi/60+s/3600)*30)+',140,310)');document.getElementById('navTime').textContent=n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});document.getElementById('dateDisplay').textContent=n.getDate();}
-updateClock();setInterval(updateClock,50);
+function updateClock(){
+  // Time column
+  var n=new Date();
+  var tHM=document.getElementById('tHM');
+  var tSS=document.getElementById('tSS');
+  var tDate=document.getElementById('tDate');
+  if(tHM) tHM.textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+  if(tSS) tSS.textContent=String(n.getSeconds()).padStart(2,'0');
+  if(tDate){
+    var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    tDate.textContent=days[n.getDay()]+', '+n.getDate()+' '+months[n.getMonth()];
+  }
+}
+function updateClock_watch(){var n=new Date(),h=n.getHours()%12,mi=n.getMinutes(),s=n.getSeconds(),ms=n.getMilliseconds(),ss=s+ms/1000;document.getElementById('secondHand').setAttribute('transform','rotate('+(ss*6)+',140,310)');document.getElementById('minuteHand').setAttribute('transform','rotate('+((mi+ss/60)*6)+',140,310)');document.getElementById('hourHand').setAttribute('transform','rotate('+((h+mi/60+s/3600)*30)+',140,310)');document.getElementById('navTime').textContent=n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});document.getElementById('dateDisplay').textContent=n.getDate();}
+updateClock();updateClock_watch();setInterval(function(){updateClock();updateClock_watch();},50);
 
 function updateCards(articles){var fb=[{category:"Milestone",title:"Rolex Marks a Century of the Oyster Case",excerpt:"Rolex unveiled a commemorative Oyster Perpetual 41 marking 100 years since the world's first waterproof wristwatch. The release sold out within hours at authorised dealers globally.",source:"Hodinkee",brand:"Rolex"},{category:"Auction",title:"Sotheby's $15M Cartier Collection Breaks Records",excerpt:"A curated archive of vintage Cartier timepieces achieved hammer prices far beyond estimate at Sotheby's Geneva sale. The headline lot drew bidders from five continents.",source:"Phillips",brand:"Cartier"},{category:"Anniversary",title:"Patek Philippe Nautilus at Fifty: An Enduring Icon",excerpt:"Half a century after Gérald Genta's sketch, the Nautilus remains the most coveted steel sports watch on the secondary market.",source:"Europa Star",brand:"Patek Philippe"},{category:"Market",title:"Watches & Wonders 2026: Craft Over Spectacle",excerpt:"Geneva's annual showcase delivered restraint over fireworks as brands doubled down on finishing quality and mechanical depth.",source:"WatchPro",brand:""},{category:"Brand Story",title:"F.P. Journe: Independent Watchmaking's Quiet Revolution",excerpt:"As independent maisons continue their meteoric rise, François-Paul Journe's atelier stands as the benchmark for true horological independence.",source:"Revolution",brand:"F.P. Journe"},{category:"Innovation",title:"Grand Seiko Introduces New Micro-Artist Studio Dial",excerpt:"The Japanese manufacturer unveiled a breathtaking new dial crafted by its Micro Artist Studio. Only 30 pieces will reach collectors worldwide.",source:"WatchTime",brand:"Grand Seiko"}];var data=(articles&&articles.length===6)?articles:fb;data.forEach(function(a,i){var card=document.getElementById('card'+i),sk=document.getElementById('skeleton'+i);if(!card)return;if(sk)sk.style.display='none';card.href='article.html?title='+encodeURIComponent(a.title)+'&category='+encodeURIComponent(a.category)+'&excerpt='+encodeURIComponent(a.excerpt)+'&source='+encodeURIComponent(a.source);document.getElementById('cat'+i).textContent=a.category;document.getElementById('title'+i).textContent=a.title;document.getElementById('excerpt'+i).textContent=a.excerpt;document.getElementById('source'+i).textContent=a.source;var fe=document.getElementById('find'+i);if(a.brand)fe.innerHTML='<a href="watchfinder.html?search='+encodeURIComponent(a.brand)+'" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;">&#8981; '+a.brand+'</a>';card.style.display='block';});}
 
