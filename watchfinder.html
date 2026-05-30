@@ -40,11 +40,22 @@
   .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2.5vw,26px); color:var(--text-dim); margin:20px 0 48px; max-width:700px; line-height:1.5; }
 
   /* SEARCH */
-  .search-wrap { width:100%; max-width:800px; position:relative; z-index:2; margin-bottom:40px; }
+  .search-wrap { width:100%; max-width:800px; position:relative; z-index:50; margin-bottom:40px; }
   .search-input { width:100%; background:var(--surface); border:1px solid rgba(201,168,76,0.3); color:var(--white); font-family:'Montserrat',sans-serif; font-size:14px; font-weight:300; letter-spacing:0.1em; padding:20px 60px 20px 28px; outline:none; transition:border-color 0.3s; }
   .search-input::placeholder { color:var(--text-dim); }
   .search-input:focus { border-color:var(--gold); }
-  .search-icon { position:absolute; right:20px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:18px; pointer-events:none; }
+  .search-icon { position:absolute; right:20px; top:32px; transform:translateY(-50%); color:var(--gold); font-size:18px; pointer-events:none; }
+
+  /* AUTOCOMPLETE SUGGESTIONS */
+  .suggestions { position:absolute; top:100%; left:0; right:0; background:var(--surface); border:1px solid rgba(201,168,76,0.3); border-top:none; max-height:320px; overflow-y:auto; z-index:60; display:none; text-align:left; }
+  .suggestions.visible { display:block; }
+  .suggestions::-webkit-scrollbar { width:3px; }
+  .suggestions::-webkit-scrollbar-thumb { background:var(--gold-dim); }
+  .suggestion-item { padding:13px 28px; font-size:13px; letter-spacing:0.06em; color:var(--text-body); border-bottom:1px solid rgba(201,168,76,0.06); display:flex; align-items:center; justify-content:space-between; transition:all 0.15s; }
+  .suggestion-item:last-child { border-bottom:none; }
+  .suggestion-item:hover, .suggestion-item.active { background:rgba(201,168,76,0.08); color:var(--gold-light); padding-left:34px; }
+  .suggestion-item .sug-cat { font-size:7px; letter-spacing:0.25em; color:var(--gold-dim); text-transform:uppercase; }
+  .suggestion-item b { color:var(--gold); font-weight:400; }
 
   /* FILTERS */
   .filters { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:16px; position:relative; z-index:2; }
@@ -169,6 +180,7 @@
     .map-dot-label { display:none; }
     .submit-cta { padding:32px 20px; }
     footer { padding:24px 20px; flex-direction:column; align-items:flex-start; }
+    .suggestion-item { padding:14px 20px; font-size:14px; }
   }
 </style>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
@@ -194,8 +206,9 @@
   <h1 class="hero-title">FIND YOUR<span>WATCH</span></h1>
   <p class="hero-subtitle">The world's most comprehensive luxury watch sourcing tool. Authorised dealers, grey market specialists and auction houses — all in one place.</p>
   <div class="search-wrap">
-    <input type="text" class="search-input" id="searchInput" placeholder="Search by brand, dealer or location..." />
+    <input type="text" class="search-input" id="searchInput" placeholder="Search by brand, dealer or location..." autocomplete="off" />
     <span class="search-icon">⌕</span>
+    <div class="suggestions" id="suggestions"></div>
   </div>
   <div class="filters">
     <button class="filter-btn active" onclick="filterType('all',this)">All Sources</button>
@@ -392,6 +405,70 @@ var dealers = [
   {name:"Rivoli Group",type:"authorised",region:"me",city:"Dubai / Abu Dhabi",brands:["Omega","IWC","TAG Heuer","Breitling"],desc:"The UAE's leading luxury goods and watch retailer. Multiple authorised boutiques across the Emirates.",rating:4.7,url:"https://www.rivoligroup.com",affiliate:false}
 ];
 
+// ── BRAND SUGGESTION LIST — all major brands + common references ──────────
+// Each entry: {label shown, search term applied, category note}
+var brandSuggestions = [
+  {name:"Rolex", cat:"Brand"},
+  {name:"Rolex Submariner", cat:"Reference", term:"Rolex"},
+  {name:"Rolex Daytona", cat:"Reference", term:"Rolex"},
+  {name:"Rolex GMT-Master II", cat:"Reference", term:"Rolex"},
+  {name:"Rolex Datejust", cat:"Reference", term:"Rolex"},
+  {name:"Rolex Day-Date", cat:"Reference", term:"Rolex"},
+  {name:"Rolex Oyster Perpetual", cat:"Reference", term:"Rolex"},
+  {name:"Patek Philippe", cat:"Brand"},
+  {name:"Patek Philippe Nautilus", cat:"Reference", term:"Patek Philippe"},
+  {name:"Patek Philippe Aquanaut", cat:"Reference", term:"Patek Philippe"},
+  {name:"Patek Philippe Calatrava", cat:"Reference", term:"Patek Philippe"},
+  {name:"Audemars Piguet", cat:"Brand"},
+  {name:"Audemars Piguet Royal Oak", cat:"Reference", term:"Audemars Piguet"},
+  {name:"Royal Oak Offshore", cat:"Reference", term:"Audemars Piguet"},
+  {name:"Richard Mille", cat:"Brand"},
+  {name:"Cartier", cat:"Brand"},
+  {name:"Cartier Santos", cat:"Reference", term:"Cartier"},
+  {name:"Cartier Tank", cat:"Reference", term:"Cartier"},
+  {name:"Omega", cat:"Brand"},
+  {name:"Omega Speedmaster", cat:"Reference", term:"Omega"},
+  {name:"Omega Seamaster", cat:"Reference", term:"Omega"},
+  {name:"Vacheron Constantin", cat:"Brand"},
+  {name:"Vacheron Overseas", cat:"Reference", term:"Vacheron Constantin"},
+  {name:"IWC", cat:"Brand"},
+  {name:"IWC Portugieser", cat:"Reference", term:"IWC"},
+  {name:"Jaeger-LeCoultre", cat:"Brand"},
+  {name:"Reverso", cat:"Reference", term:"Jaeger-LeCoultre"},
+  {name:"Grand Seiko", cat:"Brand"},
+  {name:"F.P. Journe", cat:"Brand"},
+  {name:"A. Lange & Söhne", cat:"Brand"},
+  {name:"Lange Lange 1", cat:"Reference", term:"A. Lange"},
+  {name:"Hublot", cat:"Brand"},
+  {name:"Hublot Big Bang", cat:"Reference", term:"Hublot"},
+  {name:"Panerai", cat:"Brand"},
+  {name:"TAG Heuer", cat:"Brand"},
+  {name:"TAG Heuer Carrera", cat:"Reference", term:"TAG Heuer"},
+  {name:"TAG Heuer Monaco", cat:"Reference", term:"TAG Heuer"},
+  {name:"Breitling", cat:"Brand"},
+  {name:"Breitling Navitimer", cat:"Reference", term:"Breitling"},
+  {name:"Tudor", cat:"Brand"},
+  {name:"Tudor Black Bay", cat:"Reference", term:"Tudor"},
+  {name:"Zenith", cat:"Brand"},
+  {name:"Zenith El Primero", cat:"Reference", term:"Zenith"},
+  {name:"Breguet", cat:"Brand"},
+  {name:"Blancpain", cat:"Brand"},
+  {name:"Piaget", cat:"Brand"},
+  {name:"Girard-Perregaux", cat:"Brand"},
+  {name:"Ulysse Nardin", cat:"Brand"},
+  {name:"Glashütte Original", cat:"Brand"},
+  {name:"Chopard", cat:"Brand"},
+  {name:"Greubel Forsey", cat:"Brand", term:"Independent"},
+  {name:"H. Moser & Cie", cat:"Brand", term:"Independent"},
+  {name:"MB&F", cat:"Brand", term:"Independent"},
+  {name:"Longines", cat:"Brand"},
+  {name:"Rado", cat:"Brand"},
+  {name:"Tag Heuer", cat:"Brand", term:"TAG Heuer"},
+  {name:"Seiko", cat:"Brand", term:"Grand Seiko"},
+  {name:"Independent Makers", cat:"Category", term:"Independent"},
+  {name:"Vintage", cat:"Category"}
+];
+
 // ── STATE ──────────────────────────────────────────────────────────────────
 var filteredDealers = dealers.slice();
 var currentType = 'all';
@@ -405,12 +482,87 @@ var brandMap = {
   fp:'F.P. Journe', indie:'Independent'
 };
 
+// ── AUTOCOMPLETE ───────────────────────────────────────────────────────────
+var suggestionsEl = document.getElementById('suggestions');
+var searchEl = document.getElementById('searchInput');
+var activeSuggestionIndex = -1;
+var currentMatches = [];
+
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function showSuggestions(query) {
+  var q = query.toLowerCase().trim();
+  if (q.length < 3) { hideSuggestions(); return; }
+
+  // Match where query appears anywhere in the suggestion name
+  currentMatches = brandSuggestions.filter(function(b){
+    return b.name.toLowerCase().indexOf(q) > -1;
+  }).slice(0, 8);
+
+  if (currentMatches.length === 0) { hideSuggestions(); return; }
+
+  var html = '';
+  currentMatches.forEach(function(b, i){
+    // Bold the matched portion
+    var name = escapeHtml(b.name);
+    var idx = b.name.toLowerCase().indexOf(q);
+    if (idx > -1) {
+      var before = escapeHtml(b.name.slice(0, idx));
+      var match = escapeHtml(b.name.slice(idx, idx + q.length));
+      var after = escapeHtml(b.name.slice(idx + q.length));
+      name = before + '<b>' + match + '</b>' + after;
+    }
+    html += '<div class="suggestion-item" data-index="' + i + '">'
+          + '<span>' + name + '</span>'
+          + '<span class="sug-cat">' + b.cat + '</span>'
+          + '</div>';
+  });
+  suggestionsEl.innerHTML = html;
+  suggestionsEl.classList.add('visible');
+  activeSuggestionIndex = -1;
+
+  // Click handlers
+  var items = suggestionsEl.querySelectorAll('.suggestion-item');
+  items.forEach(function(item){
+    item.addEventListener('click', function(){
+      var idx = parseInt(item.getAttribute('data-index'), 10);
+      selectSuggestion(currentMatches[idx]);
+    });
+  });
+}
+
+function hideSuggestions() {
+  suggestionsEl.classList.remove('visible');
+  suggestionsEl.innerHTML = '';
+  activeSuggestionIndex = -1;
+}
+
+function selectSuggestion(b) {
+  // Use the brand term if defined (e.g. "Rolex Submariner" -> search "Rolex"), else the name
+  var searchValue = b.term || b.name;
+  searchEl.value = searchValue;
+  hideSuggestions();
+  applyFilters();
+  // Scroll results into view
+  setTimeout(function(){
+    var bar = document.querySelector('.stats-bar');
+    if (bar) bar.scrollIntoView({behavior:'smooth'});
+  }, 200);
+}
+
+function updateActiveSuggestion() {
+  var items = suggestionsEl.querySelectorAll('.suggestion-item');
+  items.forEach(function(item, i){
+    if (i === activeSuggestionIndex) item.classList.add('active');
+    else item.classList.remove('active');
+  });
+}
+
 // ── FILTER SUMMARY ─────────────────────────────────────────────────────────
 function updateFilterSummary(list, searchTerm) {
   var summaryEl = document.getElementById('filterSummary');
   var parts = [];
 
-  // Build what's being searched
   if (searchTerm) parts.push('"' + searchTerm + '"');
   if (activeFilters.brand.length > 0) {
     var brandNames = activeFilters.brand.map(function(b){ return brandMap[b] || b; });
@@ -449,14 +601,12 @@ function renderDealers(list) {
     return;
   }
 
-  // Collect all actively searched brands for multi-brand highlight
   var activeBrandNames = activeFilters.brand.map(function(b){ return (brandMap[b]||b).toLowerCase(); });
 
   var html = '';
   for (var i = 0; i < list.length; i++) {
     var d = list[i];
 
-    // Build matching brands list — covers both search text AND filter selections
     var matchingBrands = [];
     d.brands.forEach(function(b) {
       var bl = b.toLowerCase();
@@ -504,7 +654,6 @@ function renderDealers(list) {
 
   grid.innerHTML = html;
 
-  // Animate in
   var cards = document.querySelectorAll('.dealer-card');
   for (var c = 0; c < cards.length; c++) {
     (function(card, idx) {
@@ -585,7 +734,38 @@ function applyFilters() {
 }
 
 // ── EVENTS ─────────────────────────────────────────────────────────────────
-document.getElementById('searchInput').addEventListener('input', applyFilters);
+searchEl.addEventListener('input', function(){
+  showSuggestions(this.value);
+  applyFilters();
+});
+
+// Keyboard navigation for suggestions
+searchEl.addEventListener('keydown', function(e){
+  if (!suggestionsEl.classList.contains('visible')) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    activeSuggestionIndex = Math.min(activeSuggestionIndex + 1, currentMatches.length - 1);
+    updateActiveSuggestion();
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    activeSuggestionIndex = Math.max(activeSuggestionIndex - 1, 0);
+    updateActiveSuggestion();
+  } else if (e.key === 'Enter') {
+    if (activeSuggestionIndex > -1 && currentMatches[activeSuggestionIndex]) {
+      e.preventDefault();
+      selectSuggestion(currentMatches[activeSuggestionIndex]);
+    } else {
+      hideSuggestions();
+    }
+  } else if (e.key === 'Escape') {
+    hideSuggestions();
+  }
+});
+
+// Hide suggestions when clicking outside
+document.addEventListener('click', function(e){
+  if (!e.target.closest('.search-wrap')) hideSuggestions();
+});
 
 // Handle ?search= param from article links
 var urlParams = new URLSearchParams(window.location.search);
@@ -594,7 +774,6 @@ if (incomingSearch) {
   document.getElementById('searchInput').value = incomingSearch;
 }
 
-// Always run applyFilters AFTER setting any incoming search value
 applyFilters();
 
 if (incomingSearch) {
