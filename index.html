@@ -836,6 +836,56 @@ function setBrand(brand){
   window.location.href = 'watchfinder.html?search=' + encodeURIComponent(brand);
 }
 
+// ── HOMEPAGE LIVE BRAND SUGGESTIONS ──
+var heroBrandList = [
+  {name:"Rolex",term:"Rolex"},{name:"Rolex Submariner",term:"Rolex"},{name:"Rolex Daytona",term:"Rolex"},
+  {name:"Rolex GMT-Master II",term:"Rolex"},{name:"Rolex Datejust",term:"Rolex"},{name:"Rolex Day-Date",term:"Rolex"},
+  {name:"Patek Philippe",term:"Patek Philippe"},{name:"Patek Philippe Nautilus",term:"Patek Philippe"},
+  {name:"Patek Philippe Aquanaut",term:"Patek Philippe"},{name:"Patek Philippe Calatrava",term:"Patek Philippe"},
+  {name:"Audemars Piguet",term:"Audemars Piguet"},{name:"Royal Oak",term:"Audemars Piguet"},
+  {name:"Royal Oak Offshore",term:"Audemars Piguet"},{name:"Richard Mille",term:"Richard Mille"},
+  {name:"Cartier",term:"Cartier"},{name:"Cartier Santos",term:"Cartier"},{name:"Cartier Tank",term:"Cartier"},
+  {name:"Omega",term:"Omega"},{name:"Omega Speedmaster",term:"Omega"},{name:"Omega Seamaster",term:"Omega"},
+  {name:"Vacheron Constantin",term:"Vacheron Constantin"},{name:"Vacheron Overseas",term:"Vacheron Constantin"},
+  {name:"IWC",term:"IWC"},{name:"IWC Portugieser",term:"IWC"},{name:"Jaeger-LeCoultre",term:"Jaeger-LeCoultre"},
+  {name:"Reverso",term:"Jaeger-LeCoultre"},{name:"Grand Seiko",term:"Grand Seiko"},{name:"F.P. Journe",term:"F.P. Journe"},
+  {name:"A. Lange & Söhne",term:"A. Lange"},{name:"Hublot",term:"Hublot"},{name:"Hublot Big Bang",term:"Hublot"},
+  {name:"Panerai",term:"Panerai"},{name:"TAG Heuer",term:"TAG Heuer"},{name:"TAG Heuer Carrera",term:"TAG Heuer"},
+  {name:"TAG Heuer Monaco",term:"TAG Heuer"},{name:"Breitling",term:"Breitling"},{name:"Breitling Navitimer",term:"Breitling"},
+  {name:"Tudor",term:"Tudor"},{name:"Tudor Black Bay",term:"Tudor"},{name:"Zenith",term:"Zenith"},
+  {name:"Zenith El Primero",term:"Zenith"},{name:"Breguet",term:"Breguet"},{name:"Blancpain",term:"Blancpain"},
+  {name:"Piaget",term:"Piaget"},{name:"Girard-Perregaux",term:"Girard-Perregaux"},{name:"Ulysse Nardin",term:"Ulysse Nardin"},
+  {name:"Chopard",term:"Chopard"},{name:"Greubel Forsey",term:"Independent"},{name:"H. Moser & Cie",term:"Independent"},
+  {name:"MB&F",term:"Independent"},{name:"Longines",term:"Longines"}
+];
+var heroDefaultPills = '<span class="hero-finder-pill" onclick="setBrand(\'rolex\')">Rolex</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'patek philippe\')">Patek Philippe</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'audemars piguet\')">Audemars Piguet</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'richard mille\')">Richard Mille</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'cartier\')">Cartier</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'omega\')">Omega</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'hublot\')">Hublot</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'iwc\')">IWC</span>';
+
+function heroSuggest(){
+  var input = document.getElementById('heroSearchInput');
+  var pills = document.querySelector('.hero-finder-pills');
+  if(!input || !pills) return;
+  var q = input.value.toLowerCase().trim();
+  if(q.length < 3){ pills.innerHTML = heroDefaultPills; return; }
+  var matches = heroBrandList.filter(function(b){ return b.name.toLowerCase().indexOf(q) > -1; }).slice(0,6);
+  if(matches.length === 0){ pills.innerHTML = '<span class="hero-finder-pill" style="border-color:rgba(201,168,76,0.05);color:var(--text-dim);">No brand match — press Find to search anyway</span>'; return; }
+  var html = '';
+  matches.forEach(function(b){
+    html += '<span class="hero-finder-pill" style="border-color:rgba(201,168,76,0.4);color:var(--gold);" onclick="setBrand(\'' + b.term.toLowerCase().replace(/'/g,"\\'") + '\')">' + b.name + '</span>';
+  });
+  pills.innerHTML = html;
+}
+(function(){
+  var input = document.getElementById('heroSearchInput');
+  if(input) input.addEventListener('input', heroSuggest);
+})();
+
 window.addEventListener('load',function(){setTimeout(function(){(function(){var canvas=document.getElementById('particle-canvas');if(!canvas)return;if(window.matchMedia('(hover: none)').matches){canvas.style.display='none';return;}var ctx=canvas.getContext('2d');var particles=[];var W,H;function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;particles=[];for(var i=0;i<80;i++){particles.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.2+0.6,opacity:Math.random()*0.55+0.25,speedX:(Math.random()-0.5)*0.3,speedY:(Math.random()-0.5)*0.2-0.1,pulse:Math.random()*Math.PI*2,pulseSpeed:0.012+Math.random()*0.02});}}resize();window.addEventListener('resize',resize);function draw(){ctx.clearRect(0,0,W,H);for(var i=0;i<particles.length;i++){var p=particles[i];p.pulse+=p.pulseSpeed;var alpha=p.opacity*(0.55+0.45*Math.sin(p.pulse));if(p.r>1.5){var grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3);grd.addColorStop(0,'rgba(201,168,76,'+(alpha*0.9)+')');grd.addColorStop(1,'rgba(201,168,76,0)');ctx.beginPath();ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2);ctx.fillStyle=grd;ctx.fill();}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(201,168,76,'+alpha+')';ctx.fill();p.x+=p.speedX;p.y+=p.speedY;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;}requestAnimationFrame(draw);}draw();})();},500);});
 </script>
 </body>
