@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="canonical" href="https://www.storiestowatch.com/">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<meta name="theme-color" content="#050505">
+<meta name="google-site-verification" content="qJ7flnto7pnqLWOyd1TR1A7pgqOoQ65vuCPt6RAqQhY" />
+<meta name="google-site-verification" content="c1ebKQ39n-uiwrBx9NJxuAwp2-ha7j6J5sSboSpzhCc" />
+<meta name='impact-site-verification' value='646fc02e-039d-4fde-ac97-13253cd0b3a7'>
+<meta name="description" content="Stories To Watch — The world's finest independent luxury watch editorial. Sourced globally. Written with precision. Every story. Every second.">
+<meta name="keywords" content="luxury watches, rolex, patek philippe, audemars piguet, watch collecting, horology, watch investment, watch news, cannes 2026 watches, mbappe hublot">
+<title>STORIES TO WATCH — Find Watches Worth Finding. Read Stories Told to the Minute.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet"></noscript>
+<style>
+  :root {
+    --gold:#C9A84C; --gold-light:#E8C96A; --gold-dim:#8B6914;
+    --black:#050505; --deep:#0A0A08; --surface:#111110; --surface2:#1A1A18;
+    --text:#E8E4D9; --text-dim:#8A8578; --white:#F5F1E8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--text);font-family:'Montserrat',system-ui,sans-serif;font-weight:300;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9990;opacity:0.35;}
+
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;background:#050505;border-bottom:1px solid rgba(201,168,76,0.1);gap:8px;overflow:hidden;}
+  .nav-logo{font-family:'Cinzel',serif;font-size:10px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-decoration:none;white-space:nowrap;flex-shrink:0;}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{font-size:9px;font-weight:300;letter-spacing:0.22em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;transition:color 0.3s;white-space:nowrap;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-time{font-size:9px;letter-spacing:0.15em;color:var(--gold-dim);white-space:nowrap;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;flex-shrink:0;}
+  .hamburger span{width:22px;height:1.5px;background:var(--gold);display:block;transition:all 0.3s ease;}
+  .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
+  .hamburger.open span:nth-child(2){opacity:0;width:0;}
+  .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
+  .mobile-menu{display:none;position:fixed;inset:0;background:rgba(5,5,5,0.98);z-index:1001;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(20px);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{font-family:'Cinzel',serif;font-size:18px;letter-spacing:0.2em;color:var(--text-dim);text-decoration:none;padding:16px 40px;text-transform:uppercase;transition:color 0.3s;width:100%;text-align:center;border-bottom:1px solid rgba(201,168,76,0.08);}
+  .mobile-menu a:first-child{border-top:1px solid rgba(201,168,76,0.08);}
+  .mobile-menu a:hover,.mobile-menu a.gold{color:var(--gold);}
+  .mobile-menu a.gold-light{color:var(--gold-light);}
+  .nav-quick{display:none;align-items:center;gap:4px;overflow:hidden;flex:1;justify-content:flex-end;min-width:0;}
+  .nav-quick a{font-size:7px;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:4px 8px;white-space:nowrap;transition:all 0.2s;flex-shrink:0;}
+  .nav-quick a:hover{color:var(--gold);}
+  .side-dial{position:fixed;top:50%;transform:translateY(-50%);width:80px;height:80px;opacity:0.15;z-index:100;pointer-events:none;}
+  .side-dial-left{left:16px;}
+  .side-dial-right{right:16px;}
+
+  /* ── QUICK STRIP ── */
+  .quick-strip-wrap{background:var(--deep);border-bottom:1px solid rgba(201,168,76,0.1);overflow:hidden;position:relative;}
+  .quick-strip-wrap::before{content:'QUICK ACCESS';position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:7px;letter-spacing:0.4em;color:var(--gold-dim);text-transform:uppercase;white-space:nowrap;z-index:2;}
+  .quick-strip-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:60px;background:linear-gradient(to right,transparent,var(--deep));z-index:2;pointer-events:none;}
+  .quick-strip{display:flex;gap:8px;padding:11px 20px 11px 130px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .quick-strip::-webkit-scrollbar{display:none;}
+  .quick-pill{display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:0.18em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;background:var(--surface);border:1px solid rgba(201,168,76,0.12);padding:6px 13px;white-space:nowrap;flex-shrink:0;transition:all 0.22s;}
+  .quick-pill:hover{color:var(--gold);border-color:rgba(201,168,76,0.4);}
+  .quick-pill.hot{border-color:rgba(201,168,76,0.3);color:var(--gold-light);}
+  .quick-pill.hot::before{content:'⚡';font-size:8px;}
+
+  /* ── HERO ── */
+  .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 20px 40px;}
+  .hero-portrait-wrap{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .hero-portrait-left{
+    position:absolute;top:0;left:0;width:50%;height:100%;
+    opacity:0.45;
+    filter:grayscale(100%) brightness(0.7);
+    background:url("woman-portrait.jpg") center 20%/cover no-repeat;
+}
+  .hero-portrait-left::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(5,5,5,0.4) 0%,rgba(5,5,5,0.85) 100%);}
+  .hero-portrait-right{
+    position:absolute;top:0;right:0;width:50%;height:100%;
+    opacity:0.4;
+    filter:grayscale(100%) brightness(0.65);
+    background:url("man-portrait.jpg") center 30%/cover no-repeat;
+}
+  .hero-portrait-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to left,rgba(5,5,5,0.4) 0%,rgba(5,5,5,0.85) 100%);}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(201,168,76,0.05) 0%,transparent 65%);z-index:0;}
+  #particle-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+
+  /* Hero inner layout — stacked on mobile, side-by-side on desktop */
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:1200px;display:flex;flex-direction:column;align-items:center;gap:32px;}
+  .hero-watch-col{display:flex;justify-content:center;align-items:center;}
+  .hero-text-col{width:100%;max-width:600px;text-align:center;}
+  .watch-container{position:relative;width:180px;height:440px;}
+  .watch-glow{position:absolute;inset:-40px;background:radial-gradient(ellipse at center,rgba(201,168,76,0.15) 0%,transparent 70%);animation:pulseGlow 4s ease-in-out infinite;}
+  @keyframes pulseGlow{0%,100%{opacity:0.6;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
+  @keyframes watchReveal{from{opacity:0;transform:scale(0.88);}to{opacity:1;transform:scale(1);}}
+  .watch-container svg{animation:watchReveal 2s ease forwards;}
+
+  .hero-eyebrow{font-size:8px;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+  .hero-title{font-family:'Cinzel',serif;font-size:clamp(36px,8vw,80px);font-weight:900;line-height:0.88;letter-spacing:0.06em;color:var(--white);margin-bottom:16px;}
+  .hero-title span{color:var(--gold);display:block;}
+  .hero-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,3.5vw,24px);color:var(--text-dim);letter-spacing:0.15em;margin-bottom:24px;line-height:1.3;}
+
+  /* WATCH FINDER — hero box */
+  .hero-finder{width:100%;max-width:560px;margin:0 auto 20px;background:rgba(10,10,8,0.7);border:1.5px solid rgba(201,168,76,0.32);overflow:hidden;backdrop-filter:blur(8px);}
+  .hero-finder-header{padding:12px 16px 10px;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .hero-finder-title{font-family:'Cinzel',serif;font-size:13px;color:var(--white);letter-spacing:0.12em;margin-bottom:2px;}
+  .hero-finder-sub{font-size:8px;color:var(--text-dim);letter-spacing:0.15em;}
+  .hero-finder-bar{display:flex;}
+  .hero-finder-bar input{flex:1;background:transparent;border:none;outline:none;padding:13px 16px;font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--white);min-width:0;}
+  .hero-finder-bar input::placeholder{color:var(--text-dim);font-size:14px;}
+  .hero-finder-bar button{background:var(--gold);border:none;padding:13px 20px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.25em;color:var(--black);cursor:pointer;font-weight:600;white-space:nowrap;transition:background 0.2s;-webkit-tap-highlight-color:transparent;}
+  .hero-finder-bar button:hover,.hero-finder-bar button:active{background:var(--gold-light);}
+  .hero-finder-pills{display:flex;gap:6px;padding:9px 12px;overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(201,168,76,0.1);}
+  .hero-finder-pills::-webkit-scrollbar{display:none;}
+  .hero-finder-pill{font-size:8px;letter-spacing:0.15em;color:var(--text-dim);text-transform:uppercase;border:1px solid rgba(201,168,76,0.15);padding:5px 10px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+  .hero-finder-pill:hover,.hero-finder-pill:active{color:var(--gold);border-color:rgba(201,168,76,0.4);}
+
+  .hero-divider{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);margin:0 auto 20px;}
+  .hero-stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(201,168,76,0.15);}
+  .hero-stat-num{font-family:'Cinzel',serif;font-size:20px;color:var(--gold);display:block;margin-bottom:3px;}
+  .hero-stat-label{font-size:7px;letter-spacing:0.28em;color:var(--text-dim);text-transform:uppercase;}
+
+  /* hero article links */
+  .hero-links{display:flex;flex-direction:column;gap:8px;margin-top:20px;padding-top:20px;border-top:1px solid rgba(201,168,76,0.12);}
+  /* ── TIME COLUMN ── */
+  .hero-time-col{display:none;flex-direction:column;align-items:center;justify-content:center;}
+  .time-vline{width:1px;height:56px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.55));}
+  .time-vline-bottom{width:1px;height:56px;background:linear-gradient(to bottom,rgba(201,168,76,0.55),transparent);}
+  .time-hm{font-family:'Cinzel',serif;font-size:clamp(26px,3vw,42px);font-weight:300;color:#C9A84C;letter-spacing:0.12em;line-height:1;text-align:center;opacity:0.85;text-shadow:0 0 40px rgba(201,168,76,0.2);}
+  .time-ss{font-family:'Cinzel',serif;font-size:clamp(11px,1.2vw,16px);font-weight:300;color:#8B6914;letter-spacing:0.3em;text-align:center;margin-top:3px;opacity:0.65;}
+  .time-lbl{font-family:'Montserrat',sans-serif;font-size:6.5px;letter-spacing:0.5em;color:#4A3810;text-transform:uppercase;text-align:center;margin-top:12px;opacity:0.7;}
+  .time-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(9px,1vw,12px);color:#8B6914;letter-spacing:0.15em;text-align:center;margin-top:8px;opacity:0.5;}
+  .hero-link-item{display:flex;align-items:center;justify-content:space-between;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.14);padding:11px 14px;text-decoration:none;transition:all 0.25s;gap:12px;text-align:left;}
+  .hero-link-item:hover,.hero-link-item:active{background:rgba(201,168,76,0.09);border-color:var(--gold);}
+  .hero-link-label{font-size:11px;color:var(--gold);letter-spacing:0.08em;flex:1;}
+  .hero-link-label.dim{color:var(--text-dim);}
+  .hero-link-arrow{font-size:8px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;white-space:nowrap;flex-shrink:0;}
+
+  /* ── TICKER ── */
+  .ticker-wrap{background:var(--gold);padding:9px 0;overflow:hidden;}
+  .ticker{display:flex;animation:tickerAnim 30s linear infinite;white-space:nowrap;}
+  .ticker-item{font-size:8px;font-weight:400;letter-spacing:0.22em;color:var(--black);text-transform:uppercase;padding:0 36px;flex-shrink:0;}
+  .ticker-dot{color:rgba(0,0,0,0.4);padding:0 8px;}
+  @keyframes tickerAnim{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ── SECTIONS ── */
+  .section-label{font-size:9px;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:18px;}
+  .section-label::after{content:'';height:1px;width:52px;background:var(--gold-dim);}
+  .section-title{font-family:'Cinzel',serif;font-size:clamp(24px,4vw,48px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:48px;}
+
+  /* ── FEATURED ── */
+  .featured{background:var(--deep);padding:0;max-width:100%;}
+  .featured-inner{max-width:1400px;margin:0 auto;padding:80px 60px;}
+  .featured-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;}
+  .featured-image{position:relative;aspect-ratio:4/5;background:var(--surface);overflow:hidden;}
+  .featured-image::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,transparent 60%);z-index:1;}
+  .featured-image-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+  .featured-tag{position:absolute;top:20px;left:20px;background:var(--gold);color:var(--black);font-size:7px;font-weight:400;letter-spacing:0.28em;padding:5px 12px;text-transform:uppercase;z-index:2;}
+  .featured-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,44px);font-weight:300;line-height:1.15;color:var(--white);margin-bottom:18px;}
+  .featured-text h2 em{font-style:italic;color:var(--gold-light);}
+  .featured-meta{font-size:8px;letter-spacing:0.2em;color:var(--text-dim);text-transform:uppercase;margin-bottom:16px;display:flex;gap:16px;flex-wrap:wrap;}
+  .featured-text p{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.8vw,18px);line-height:1.8;color:var(--text-dim);margin-bottom:32px;}
+  .btn-read{display:inline-flex;align-items:center;gap:14px;font-size:9px;letter-spacing:0.32em;color:var(--gold);text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:6px;transition:all 0.3s;}
+  .btn-read::after{content:'→';transition:transform 0.3s;}
+  .btn-read:hover::after{transform:translateX(5px);}
+
+  /* ── NEWS GRID ── */
+  .news-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--surface2);}
+  .news-card{background:rgba(10,10,8,0.7);border:1px solid rgba(201,168,76,0.08);padding:36px;position:relative;overflow:hidden;transition:background 0.4s,border-color 0.4s;display:block;color:var(--text);text-decoration:none;}
+  .news-card:hover{background:rgba(20,18,14,0.85);border-color:rgba(201,168,76,0.2);}
+  .news-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.5s ease;}
+  .news-card:hover::before{width:100%;}
+  .news-card-tag{font-size:8px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+  .news-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--white);margin-bottom:12px;}
+  .news-card p{font-size:13px;line-height:1.65;color:var(--text-dim);margin-bottom:20px;}
+  .news-source{font-size:8px;letter-spacing:0.18em;color:var(--gold-dim);text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+  .news-source::before{content:'';width:16px;height:1px;background:var(--gold-dim);}
+  .news-card-link{display:inline-flex;align-items:center;gap:8px;font-size:8px;letter-spacing:0.28em;color:var(--gold-dim);text-transform:uppercase;margin-top:16px;transition:color 0.3s,gap 0.3s;}
+  .news-card:hover .news-card-link{color:var(--gold);gap:14px;}
+  .news-card-link::after{content:'→';}
+  .news-card-number{position:absolute;top:18px;right:20px;font-family:'Cinzel',serif;font-size:32px;font-weight:900;color:rgba(201,168,76,0.05);line-height:1;}
+  .news-card-visual{height:2px;background:linear-gradient(to right,var(--gold-dim),var(--gold),var(--gold-dim));margin-bottom:20px;transform:scaleX(0);transform-origin:left;transition:transform 0.5s ease;}
+  .news-card:hover .news-card-visual{transform:scaleX(1);}
+  .gold-accent-left{position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.5s;}
+  .news-card:hover .gold-accent-left{opacity:1;}
+  .news-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid rgba(201,168,76,0.08);}
+  .news-find-link a{font-size:8px;letter-spacing:0.18em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;transition:color 0.3s;}
+  .news-find-link a:hover{color:var(--gold);}
+  .news-skeleton{background:var(--deep);padding:36px;position:relative;overflow:hidden;}
+  .news-skeleton::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.06) 50%,transparent 100%);animation:shimmer 1.8s ease-in-out infinite;}
+  @keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+  .skeleton-tag{height:9px;width:72px;background:rgba(201,168,76,0.1);border-radius:2px;margin-bottom:14px;}
+  .skeleton-title{height:18px;width:90%;background:rgba(255,255,255,0.06);border-radius:2px;margin-bottom:9px;}
+  .skeleton-title-2{height:18px;width:68%;background:rgba(255,255,255,0.06);border-radius:2px;margin-bottom:18px;}
+  .skeleton-line{height:11px;width:100%;background:rgba(255,255,255,0.04);border-radius:2px;margin-bottom:7px;}
+  .skeleton-line-short{height:11px;width:58%;background:rgba(255,255,255,0.04);border-radius:2px;margin-bottom:20px;}
+
+  /* ── BRANDS ── */
+  .brands-section{background:var(--surface);padding:48px 0;overflow:hidden;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);}
+  .brands-track{display:flex;animation:tickerAnim 22s linear infinite;white-space:nowrap;}
+  .brand-name{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.4em;color:var(--text-dim);text-transform:uppercase;padding:0 52px;flex-shrink:0;}
+
+  /* ── QUOTE ── */
+  .quote-section{text-align:center;padding:140px 60px;background:var(--deep);position:relative;overflow:hidden;}
+  .quote-section::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:360px;color:rgba(201,168,76,0.04);position:absolute;top:-60px;left:50%;transform:translateX(-50%);line-height:1;pointer-events:none;}
+  .quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,44px);font-style:italic;font-weight:300;line-height:1.4;color:var(--white);max-width:840px;margin:0 auto 24px;position:relative;z-index:1;}
+  .quote-attr{font-size:8px;letter-spacing:0.38em;color:var(--gold);text-transform:uppercase;}
+
+  /* ── AD ── */
+  .ad-placement{background:var(--surface);border:1px solid rgba(201,168,76,0.15);padding:52px;text-align:center;margin:64px 0;position:relative;}
+  .ad-label{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--surface);padding:0 14px;font-size:7px;letter-spacing:0.28em;color:var(--gold-dim);text-transform:uppercase;}
+  .ad-placeholder{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.38em;color:var(--text-dim);text-transform:uppercase;margin-bottom:6px;}
+  .ad-sub{font-size:9px;color:var(--gold-dim);letter-spacing:0.15em;}
+
+  /* ── FOOTER ── */
+  footer{background:var(--surface);padding:72px 60px 36px;border-top:1px solid rgba(201,168,76,0.1);}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px;}
+  .footer-brand{font-family:'Cinzel',serif;font-size:18px;font-weight:600;color:var(--gold);letter-spacing:0.1em;margin-bottom:12px;}
+  .footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--text-dim);margin-bottom:18px;}
+  .footer-col h4{font-size:8px;letter-spacing:0.38em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{margin-bottom:9px;}
+  .footer-col ul li a{color:var(--text-dim);text-decoration:none;transition:color 0.3s;letter-spacing:0.08em;font-size:12px;}
+  .footer-col ul li a:hover{color:var(--gold);}
+  .footer-bottom{border-top:1px solid rgba(201,168,76,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-bottom p{font-size:9px;color:var(--text-dim);letter-spacing:0.12em;}
+
+  /* ── GOLD LINE ── */
+  .gold-line{height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);}
+
+  /* ══════════════════════════════
+     DESKTOP — side by side hero
+  ══════════════════════════════ */
+  @media(min-width:900px){
+    nav{padding:20px 52px;}
+    .news-grid{grid-template-columns:repeat(3,1fr);} .featured-grid{grid-template-columns:1fr 1fr;gap:56px;}
+    .guides-col-grid{grid-template-columns:repeat(3,1fr)!important;}
+    .celeb-col-grid{grid-template-columns:repeat(3,1fr)!important;}
+
+    .nav-quick{display:none;}
+    .hamburger{display:none;}
+    .nav-links{display:flex;}
+    .nav-time{display:block;}
+    .side-dial{display:block;}
+    .hero{padding:100px 72px 40px;}
+    .hero-inner{display:grid;grid-template-columns:220px 1fr 520px;align-items:center;gap:0;}
+    .hero-text-col{text-align:left;max-width:520px;padding-left:40px;}
+    .hero-watch-col{flex-shrink:0;justify-content:center;}
+    .watch-container{width:210px;height:520px;}
+    .hero-eyebrow{text-align:left;}
+    .hero-title{font-size:clamp(48px,7vw,88px);}
+    .hero-finder{margin:0 0 20px;}
+    .hero-links .hero-link-item{justify-content:space-between;}
+    .hero-stats{justify-content:flex-start;}
+    .hero-divider{margin:0 0 20px;}
+    .hero-time-col{display:flex;}
+  }
+
+  /* ══════════════════════════════
+     TABLET
+  ══════════════════════════════ */
+  @media(min-width:600px) and (max-width:899px){
+    .nav-quick{display:flex;}
+    .news-grid{grid-template-columns:1fr 1fr;}
+
+    .hamburger{display:flex;}
+    .nav-links{display:none;}
+    .watch-container{width:200px;height:490px;}
+    .featured-grid{grid-template-columns:1fr;gap:32px;}
+    .featured-image{aspect-ratio:16/9;}
+    .featured-inner{padding:60px 32px;}
+    .news-grid{grid-template-columns:1fr 1fr;}
+    footer{padding:56px 32px 28px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+    .quote-section{padding:100px 32px;}
+  }
+
+  /* ══════════════════════════════
+     MOBILE — everything stacked
+  ══════════════════════════════ */
+  @media(max-width:599px){
+    nav{padding:12px 12px;}
+    .hero-portrait-left{width:100%;opacity:0.3;filter:grayscale(100%) brightness(0.6);background-position:center 20%!important;}
+    .hero-portrait-right{width:100%;opacity:0.25;filter:grayscale(100%) brightness(0.6);background-position:center 30%!important;}
+    .nav-logo{font-size:9px;letter-spacing:0.14em;}
+    .nav-quick a:nth-child(3){display:none;}
+    .nav-quick a{font-size:7px;padding:4px 7px;letter-spacing:0.08em;}
+    .nav-links{display:none;}
+    .nav-time{display:none;}
+    .side-dial{display:none;}
+    .nav-quick{display:flex;}
+    .hamburger{display:flex;}
+
+    .hero{padding:62px 16px 32px;min-height:100svh;}
+    .hero-inner{flex-direction:column;gap:20px;}
+    .hero-text-col{text-align:center;max-width:100%;}
+    .hero-watch-col{order:-1;}
+    .watch-container{width:150px;height:368px;}
+    .hero-eyebrow{font-size:7px;letter-spacing:0.35em;margin-bottom:10px;}
+    .hero-title{font-size:clamp(34px,9vw,48px);margin-bottom:12px;}
+    .hero-tagline{font-size:clamp(14px,3.8vw,18px);margin-bottom:18px;}
+    .hero-finder{margin-bottom:16px;}
+    .hero-finder-title{font-size:12px;}
+    .hero-finder-bar input{padding:12px 14px;font-size:14px;}
+    .hero-finder-bar button{padding:12px 16px;font-size:9px;}
+    .hero-stats{gap:18px;padding-top:16px;}
+    .hero-stat-num{font-size:17px;}
+    .hero-links{gap:6px;margin-top:16px;padding-top:16px;} .hero-link-item{text-align:left;}
+    .hero-link-item{padding:10px 12px;}
+    .hero-link-label{font-size:10px;}
+
+    .quick-strip-wrap::before{display:none;}
+    .quick-strip{padding:9px 12px;gap:5px;}
+    .quick-pill{font-size:7px;padding:5px 10px;}
+
+    .featured-inner{padding:44px 16px;}
+    .featured-grid{grid-template-columns:1fr;gap:24px;}
+    .featured-image{aspect-ratio:16/9;}
+    .featured-text h2{font-size:clamp(20px,5vw,28px);}
+
+    .news-grid{grid-template-columns:1fr;}
+    .news-card{padding:24px 16px;}
+    .news-card h3{font-size:18px;}
+    .news-skeleton{padding:24px 16px;}
+
+    section{padding:48px 16px!important;}
+
+    .brands-section{padding:36px 0;}
+    .brand-name{font-size:9px;padding:0 32px;}
+
+    .quote-section{padding:72px 16px;}
+    .quote-section::before{font-size:200px;}
+    .quote-text{font-size:clamp(18px,4.5vw,26px);}
+
+    footer{padding:44px 16px 24px;}
+    .footer-grid{grid-template-columns:1fr;gap:24px;}
+    .footer-bottom{flex-direction:column;gap:6px;align-items:flex-start;}
+
+    #particle-canvas{opacity:0.4;}
+  }
+
+  @media(max-width:599px){
+    [style*="padding:80px 60px"]{padding:44px 16px!important;}
+    [style*="padding:0 60px"]{padding:0 16px!important;}
+    .guides-inner{padding:0 16px!important;}
+  }
+
+  /* ── IMAGERY (added for visual upgrade) ── */
+  /* Cover Story real image */
+  .featured-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .featured-image.has-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,0.55) 0%,transparent 50%);z-index:1;}
+  /* Image placeholder (swap for <img> when ready) */
+  .photo-slot{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:20px;background:repeating-linear-gradient(45deg,#0c0c0a,#0c0c0a 14px,#0f0e0b 14px,#0f0e0b 28px);z-index:0;}
+  .photo-slot .ps-big{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;}
+  .photo-slot .ps-sm{font-size:10px;color:var(--text-dim);max-width:260px;line-height:1.5;letter-spacing:0.05em;}
+  /* Guide-card thumbnail strip */
+  .guide-thumb{width:100%;height:140px;object-fit:cover;display:block;border-bottom:1px solid rgba(201,168,76,0.12);}
+  .guide-thumb-slot{width:100%;height:140px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#0c0c0a,#0c0c0a 12px,#100f0c 12px,#100f0c 24px);border-bottom:1px solid rgba(201,168,76,0.12);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.16em;color:var(--gold-dim);text-transform:uppercase;text-align:center;padding:10px;}
+  /* About atmospheric image */
+  .about-photo{width:100%;max-width:520px;height:auto;border:1px solid rgba(201,168,76,0.15);margin:0 auto 40px;display:block;}
+  .about-photo-slot{width:100%;max-width:520px;aspect-ratio:16/9;margin:0 auto 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:repeating-linear-gradient(45deg,#0c0c0a,#0c0c0a 14px,#0f0e0b 14px,#0f0e0b 28px);border:1px solid rgba(201,168,76,0.15);text-align:center;padding:20px;}
+  .about-photo-slot .ps-big{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;}
+  .about-photo-slot .ps-sm{font-size:10px;color:var(--text-dim);max-width:300px;line-height:1.5;}
+</style>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7JCE0VBEF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X7JCE0VBEF');</script>
+</head>
+<body>
+
+<!-- Side dials -->
+<div class="side-dial side-dial-left">
+  <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="0.8"/><circle cx="40" cy="40" r="28" fill="none" stroke="#C9A84C" stroke-width="0.4"/><line x1="40" y1="6" x2="40" y2="12" stroke="#C9A84C" stroke-width="1.5"/><line x1="74" y1="40" x2="68" y2="40" stroke="#C9A84C" stroke-width="1.5"/><line x1="40" y1="74" x2="40" y2="68" stroke="#C9A84C" stroke-width="1.5"/><line x1="6" y1="40" x2="12" y2="40" stroke="#C9A84C" stroke-width="1.5"/><g id="compassNeedleLeft" style="transform-origin:40px 40px;"><line x1="40" y1="40" x2="40" y2="16" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/><line x1="40" y1="40" x2="40" y2="56" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/><polygon points="40,14 37,22 40,20 43,22" fill="#C9A84C" opacity="0.8"/></g><circle cx="40" cy="40" r="2.5" fill="#C9A84C"/><circle cx="40" cy="40" r="1" fill="#0A0A08"/><text x="40" y="5" text-anchor="middle" font-family="Cinzel,serif" font-size="4" fill="#C9A84C" opacity="0.6">N</text></svg>
+</div>
+<div class="side-dial side-dial-right">
+  <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="0.8"/><circle cx="40" cy="40" r="28" fill="none" stroke="#C9A84C" stroke-width="0.4"/><line x1="40" y1="6" x2="40" y2="12" stroke="#C9A84C" stroke-width="1.5"/><line x1="74" y1="40" x2="68" y2="40" stroke="#C9A84C" stroke-width="1.5"/><line x1="40" y1="74" x2="40" y2="68" stroke="#C9A84C" stroke-width="1.5"/><line x1="6" y1="40" x2="12" y2="40" stroke="#C9A84C" stroke-width="1.5"/><g id="compassNeedleRight" style="transform-origin:40px 40px;"><line x1="40" y1="40" x2="40" y2="16" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/><line x1="40" y1="40" x2="40" y2="56" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/><polygon points="40,14 37,22 40,20 43,22" fill="#C9A84C" opacity="0.8"/></g><circle cx="40" cy="40" r="2.5" fill="#C9A84C"/><circle cx="40" cy="40" r="1" fill="#0A0A08"/><text x="40" y="5" text-anchor="middle" font-family="Cinzel,serif" font-size="4" fill="#C9A84C" opacity="0.6">N</text></svg>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
+  <ul class="nav-links">
+    <li><a href="#latest">Latest</a></li>
+    <li><a href="#auctions">Auctions</a></li>
+    <li><a href="#maisons">Maisons</a></li>
+    <li><a href="#investing">Investing</a></li>
+    <li><a href="#guides">Guides</a></li>
+    <li><a href="watchfinder.html" style="color:var(--gold-light);">&#8981; Watch Finder</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mediakit.html" style="color:var(--gold);">Advertise</a></li>
+  </ul>
+  <div class="nav-quick">
+    <a href="#guides">★ Guides</a>
+    <a href="watchfinder.html">&#8981; Finder</a>
+  </div>
+  <div class="nav-time" id="navTime">Loading...</div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#latest" onclick="closeMenu()">Latest</a>
+  <a href="#auctions" onclick="closeMenu()">Auctions</a>
+  <a href="#maisons" onclick="closeMenu()">Maisons</a>
+  <a href="#investing" onclick="closeMenu()">Investing</a>
+  <a href="#guides" onclick="closeMenu()">Guides</a>
+  <a href="watchfinder.html" class="gold-light" onclick="closeMenu()">&#8981; Watch Finder</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="mediakit.html" class="gold" onclick="closeMenu()">Advertise</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="max-width:100%;">
+  <div class="hero-portrait-wrap">
+    <div class="hero-portrait-left"></div>
+    <div class="hero-portrait-right"></div>
+  </div>
+  <div class="hero-bg"></div>
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="hero-inner">
+
+    <!-- WATCH — appears first on mobile via order:-1 -->
+    <div class="hero-watch-col">
+      <div class="watch-container">
+        <div class="watch-glow"></div>
+        <svg viewBox="0 0 280 620" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <linearGradient id="strapGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0A0A08"/><stop offset="50%" style="stop-color:#2A2820"/><stop offset="100%" style="stop-color:#0A0A08"/></linearGradient>
+            <linearGradient id="linkGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3A3830"/><stop offset="40%" style="stop-color:#1E1C18"/><stop offset="100%" style="stop-color:#2A2820"/></linearGradient>
+            <linearGradient id="caseGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#1A1A16"/><stop offset="50%" style="stop-color:#2A2820"/><stop offset="100%" style="stop-color:#1A1A16"/></linearGradient>
+            <linearGradient id="dialGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#141412"/><stop offset="100%" style="stop-color:#0A0A08"/></linearGradient>
+            <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#C9A84C;stop-opacity:0.15"/><stop offset="100%" style="stop-color:#C9A84C;stop-opacity:0"/></radialGradient>
+            <filter id="watchShadow"><feDropShadow dx="0" dy="8" stdDeviation="20" flood-color="#C9A84C" flood-opacity="0.2"/></filter>
+          </defs>
+          <!-- TOP BRACELET -->
+          <rect x="104" y="4" width="72" height="18" rx="4" fill="#1A1A16" stroke="#C9A84C" stroke-width="0.5"/>
+          <line x1="140" y1="4" x2="140" y2="22" stroke="#C9A84C" stroke-width="0.4"/>
+          <rect x="88" y="24" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="44" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="64" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="84" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="104" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="124" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <!-- CASE -->
+          <rect x="62" y="155" width="156" height="310" rx="34" fill="url(#caseGrad)" stroke="#C9A84C" stroke-width="0.5" filter="url(#watchShadow)"/>
+          <rect x="216" y="290" width="16" height="28" rx="5" fill="url(#caseGrad)" stroke="#C9A84C" stroke-width="0.5"/>
+          <!-- DIAL -->
+          <circle cx="140" cy="310" r="118" fill="url(#dialGrad)"/>
+          <circle cx="140" cy="310" r="114" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/>
+          <circle cx="140" cy="310" r="118" fill="url(#glowGrad)" opacity="0.4"/>
+          <!-- MARKERS -->
+          <g stroke="#C9A84C" stroke-linecap="round">
+            <line x1="140" y1="198" x2="140" y2="212" stroke-width="2.5"/>
+            <line x1="252" y1="310" x2="238" y2="310" stroke-width="2.5"/>
+            <line x1="140" y1="422" x2="140" y2="408" stroke-width="2.5"/>
+            <line x1="28" y1="310" x2="42" y2="310" stroke-width="2.5"/>
+            <line x1="197" y1="213" x2="190" y2="225" stroke-width="1.2" opacity="0.6"/>
+            <line x1="237" y1="253" x2="227" y2="261" stroke-width="1.2" opacity="0.6"/>
+            <line x1="237" y1="367" x2="227" y2="359" stroke-width="1.2" opacity="0.6"/>
+            <line x1="197" y1="407" x2="190" y2="395" stroke-width="1.2" opacity="0.6"/>
+            <line x1="83" y1="407" x2="90" y2="395" stroke-width="1.2" opacity="0.6"/>
+            <line x1="43" y1="367" x2="53" y2="359" stroke-width="1.2" opacity="0.6"/>
+            <line x1="43" y1="253" x2="53" y2="261" stroke-width="1.2" opacity="0.6"/>
+            <line x1="83" y1="213" x2="90" y2="225" stroke-width="1.2" opacity="0.6"/>
+          </g>
+          <!-- BRAND TEXT -->
+          <text x="140" y="280" text-anchor="middle" font-family="Cinzel, serif" font-size="8" fill="#C9A84C" letter-spacing="3" opacity="0.9">STORIES TO WATCH</text>
+          <text x="140" y="292" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="5.5" fill="#4A4838" letter-spacing="2.5">EDITORIAL · EST. 2026</text>
+          <text x="140" y="222" text-anchor="middle" font-family="Cinzel, serif" font-size="11" fill="#C9A84C" opacity="0.85">XII</text>
+          <text x="246" y="315" text-anchor="middle" font-family="Cinzel, serif" font-size="11" fill="#C9A84C" opacity="0.85">III</text>
+          <text x="140" y="404" text-anchor="middle" font-family="Cinzel, serif" font-size="11" fill="#C9A84C" opacity="0.85">VI</text>
+          <text x="34" y="315" text-anchor="middle" font-family="Cinzel, serif" font-size="11" fill="#C9A84C" opacity="0.85">IX</text>
+          <!-- DATE WINDOW -->
+          <rect x="213" y="303" width="20" height="14" rx="2" fill="#0A0A08" stroke="#C9A84C" stroke-width="0.5"/>
+          <text x="223" y="313" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="7" fill="#E8E4D9" id="dateDisplay">27</text>
+          <!-- HANDS -->
+          <g id="hourHand"><line x1="140" y1="310" x2="140" y2="245" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round"/><line x1="140" y1="310" x2="140" y2="326" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round" opacity="0.3"/></g>
+          <g id="minuteHand"><line x1="140" y1="310" x2="140" y2="225" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/><line x1="140" y1="310" x2="140" y2="332" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round" opacity="0.3"/></g>
+          <g id="secondHand"><line x1="140" y1="310" x2="140" y2="210" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/><line x1="140" y1="310" x2="140" y2="338" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.9"/></g>
+          <circle cx="140" cy="310" r="6" fill="#C9A84C"/>
+          <circle cx="140" cy="310" r="3.5" fill="#0E0E0C"/>
+          <circle cx="140" cy="310" r="1.5" fill="#C9A84C"/>
+          <!-- BOTTOM BRACELET -->
+          <rect x="88" y="465" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="485" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="505" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="525" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="545" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="88" y="565" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
+          <rect x="104" y="585" width="72" height="18" rx="4" fill="#1A1A16" stroke="#C9A84C" stroke-width="0.5"/>
+          <line x1="140" y1="585" x2="140" y2="603" stroke="#C9A84C" stroke-width="0.4"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- TIME DISPLAY — gap filler, desktop only -->
+    <div class="hero-time-col" id="heroTimeCol">
+      <div class="time-vline"></div>
+      <div class="time-hm" id="tHM">--:--</div>
+      <div class="time-ss" id="tSS">--</div>
+      <div class="time-lbl">Local Time</div>
+      <div class="time-date" id="tDate"></div>
+      <div class="time-vline-bottom"></div>
+    </div>
+
+    <!-- TEXT + FINDER -->
+    <div class="hero-text-col">
+      <p class="hero-eyebrow">Find Watches Worth Finding · Read Stories Told to the Minute</p>
+      <h1 class="hero-title">STORIES TO<span>WATCH</span></h1>
+      <p class="hero-tagline">Find watches worth finding. Read stories told to the minute.</p>
+
+      <!-- WATCH FINDER — centre stage -->
+      <div class="hero-finder">
+        <div class="hero-finder-header">
+          <p class="hero-finder-title">⌕ WATCH FINDER</p>
+          <p class="hero-finder-sub">50 verified dealers · 24 countries · 147 brands · Free</p>
+        </div>
+        <div class="hero-finder-bar">
+          <input id="heroSearchInput" type="text" placeholder="Search by brand — Rolex, Patek, AP..." autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')goHeroSearch()">
+          <button onclick="goHeroSearch()">Find →</button>
+        </div>
+        <div class="hero-finder-pills">
+          <span class="hero-finder-pill" onclick="setBrand('rolex')">Rolex</span>
+          <span class="hero-finder-pill" onclick="setBrand('patek philippe')">Patek Philippe</span>
+          <span class="hero-finder-pill" onclick="setBrand('audemars piguet')">Audemars Piguet</span>
+          <span class="hero-finder-pill" onclick="setBrand('richard mille')">Richard Mille</span>
+          <span class="hero-finder-pill" onclick="setBrand('cartier')">Cartier</span>
+          <span class="hero-finder-pill" onclick="setBrand('omega')">Omega</span>
+          <span class="hero-finder-pill" onclick="setBrand('hublot')">Hublot</span>
+          <span class="hero-finder-pill" onclick="setBrand('iwc')">IWC</span>
+        </div>
+      </div>
+
+      <div class="hero-divider"></div>
+
+      <div class="hero-stats">
+        <div><span class="hero-stat-num">$62B</span><span class="hero-stat-label">Market Value</span></div>
+        <div><span class="hero-stat-num">147</span><span class="hero-stat-label">Maisons Covered</span></div>
+        <div><span class="hero-stat-num">24/7</span><span class="hero-stat-label">Live Editorial</span></div>
+      </div>
+
+      <div class="hero-links">
+        <a href="watchfinder.html" class="hero-link-item">
+          <span class="hero-link-label">⌕ Watch Finder — 50 Sources · 24 Countries</span>
+          <span class="hero-link-arrow">Open →</span>
+        </a>
+        <a href="hublot-mbappe-big-bang-reloaded-2026.html" class="hero-link-item">
+          <span class="hero-link-label">⚡ Mbappé's First Hublot — 200 Pieces, $30,000</span>
+          <span class="hero-link-arrow">Read →</span>
+        </a>
+        <a href="ucl-final-2026-watches.html" class="hero-link-item">
+          <span class="hero-link-label">⚡ UCL Final 2026 — The Watches on Show</span>
+          <span class="hero-link-arrow">Read →</span>
+        </a>
+        <a href="bruno-fernandes-watch-2026.html" class="hero-link-item">
+          <span class="hero-link-label dim">Bruno Fernandes — 21 Assists, Two Watches</span>
+          <span class="hero-link-arrow">Read →</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">⚡ Mbappé's First Hublot — 200 Pieces · $30,000 <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">UCL Final 2026 · The Watches <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Cannes 2026: 8 Verified Watches <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Rolex Oyster Perpetual Turns 100 <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Patek Philippe Nautilus: 50th Anniversary <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">AP Royal Oak — New Limited Editions <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Luxury Watch Market: $62B Valuation <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">⚡ Mbappé's First Hublot — 200 Pieces · $30,000 <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">UCL Final 2026 · The Watches <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Cannes 2026: 8 Verified Watches <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Rolex Oyster Perpetual Turns 100 <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Patek Philippe Nautilus: 50th Anniversary <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">AP Royal Oak — New Limited Editions <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Luxury Watch Market: $62B Valuation <span class="ticker-dot">◆</span></span>
+  </div>
+</div>
+
+<!-- QUICK ACCESS STRIP -->
+<div class="quick-strip-wrap">
+  <div class="quick-strip">
+    <a href="hublot-mbappe-big-bang-reloaded-2026.html" class="quick-pill hot">Mbappé's First Hublot</a>
+    <a href="ucl-final-2026-watches.html" class="quick-pill hot">UCL Final Watches</a>
+    <a href="bruno-fernandes-watch-2026.html" class="quick-pill">Bruno Fernandes</a>
+    <a href="cannes-2026-watches.html" class="quick-pill">Cannes 2026 &mdash; 8 Verified</a>
+    <a href="the-rock-met-gala-watch-2026.html" class="quick-pill">The Rock's $3.3M Watch</a>
+    <a href="ronaldo-watch-collection-2026.html" class="quick-pill">Ronaldo's $16M Collection</a>
+    <a href="kevin-hart-roast-watches-2026.html" class="quick-pill">Kevin Hart Roast Watches</a>
+    <a href="nautilus-buying-guide.html" class="quick-pill">Patek Nautilus Guide</a>
+    <a href="royal-oak-price-guide.html" class="quick-pill">Royal Oak Prices 2026</a>
+    <a href="rolex-submariner-london.html" class="quick-pill">Rolex Submariner London</a>
+    <a href="rolex-submariner-dubai.html" class="quick-pill">Rolex Submariner Dubai</a>
+    <a href="omega-speedmaster-guide.html" class="quick-pill">Omega Speedmaster Guide</a>
+    <a href="messi-watch-collection-2026.html" class="quick-pill hot">Messi Watch Collection</a>
+    <a href="cartier-buying-guide.html" class="quick-pill">Cartier Buying Guide</a>
+    <a href="watchfinder.html" class="quick-pill">&#8981; Watch Finder</a>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<div class="featured">
+  <div class="featured-inner">
+    <p class="section-label">Cover Story</p>
+    <div class="featured-grid">
+      <a href="patek-vs-rolex-investment-2026.html" class="featured-image has-photo" style="text-decoration:none; cursor:crosshair;">
+        <div class="featured-tag">Investment Analysis · 2026</div>
+        <!-- IMAGE 1 — COVER STORY HERO -->
+        <img class="featured-photo" src="cover-ucl-watches.jpg" alt="Luxury Rolex Submariner resting on an open magazine" loading="lazy">
+      </a>
+      <div class="featured-text">
+        <div class="featured-meta"><span>Cover Story</span> Investment Analysis</div>
+        <h2>Patek Philippe vs Rolex — <em>Which Actually Holds</em> Its Value in 2026?</h2>
+        <p>Rolex produces a million watches a year. Patek produces seventy thousand. That gap shapes everything — liquidity, multiples, and which one belongs in your collection. The 2026 secondary-market data, the references serious collectors are actually buying, and an honest verdict on where your money is safest.</p>
+        <a href="patek-vs-rolex-investment-2026.html" class="btn-read">Read the Analysis</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+<div class="brands-section" id="maisons">
+  <div class="brands-track">
+    <span class="brand-name">Rolex</span><span class="brand-name">Patek Philippe</span><span class="brand-name">Audemars Piguet</span><span class="brand-name">A. Lange &amp; Söhne</span><span class="brand-name">Vacheron Constantin</span><span class="brand-name">Richard Mille</span><span class="brand-name">F.P. Journe</span><span class="brand-name">Jaeger-LeCoultre</span><span class="brand-name">IWC</span><span class="brand-name">Breguet</span><span class="brand-name">Cartier</span><span class="brand-name">Grand Seiko</span><span class="brand-name">Hublot</span>
+    <span class="brand-name">Rolex</span><span class="brand-name">Patek Philippe</span><span class="brand-name">Audemars Piguet</span><span class="brand-name">A. Lange &amp; Söhne</span><span class="brand-name">Vacheron Constantin</span><span class="brand-name">Richard Mille</span><span class="brand-name">F.P. Journe</span><span class="brand-name">Jaeger-LeCoultre</span><span class="brand-name">IWC</span><span class="brand-name">Breguet</span><span class="brand-name">Cartier</span><span class="brand-name">Grand Seiko</span><span class="brand-name">Hublot</span>
+  </div>
+</div>
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+
+<!-- LATEST NEWS -->
+<section id="latest" style="padding:80px 60px; max-width:100%;">
+  <div style="max-width:1400px; margin:0 auto;">
+    <p class="section-label">Latest Dispatches</p>
+    <h2 class="section-title">From the World's<br>Finest Maisons</h2>
+    <div class="ad-placement"><span class="ad-label">Premium Placement</span><p class="ad-placeholder">Your Luxury Brand Here</p><p class="ad-sub">Exclusive advertising opportunities — bringlifetobrand@gmail.com</p></div>
+    <div class="news-grid" id="newsGrid">
+      <div class="news-skeleton" id="skeleton0"><div class="skeleton-tag"></div><div class="skeleton-title"></div><div class="skeleton-title-2"></div><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line-short"></div></div>
+      <a class="news-card" id="card0" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">01</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat0"></p><h3 id="title0"></h3><p id="excerpt0"></p><p class="news-source" id="source0"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find0"></span></div></a>
+      <div class="news-skeleton" id="skeleton1"><div class="skeleton-tag"></div><div class="skeleton-title"></div><div class="skeleton-title-2"></div><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line-short"></div></div>
+      <a class="news-card" id="card1" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">02</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat1"></p><h3 id="title1"></h3><p id="excerpt1"></p><p class="news-source" id="source1"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find1"></span></div></a>
+      <div class="news-skeleton" id="skeleton2"><div class="skeleton-tag"></div><div class="skeleton-title"></div><div class="skeleton-title-2"></div><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line-short"></div></div>
+      <a class="news-card" id="card2" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">03</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat2"></p><h3 id="title2"></h3><p id="excerpt2"></p><p class="news-source" id="source2"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find2"></span></div></a>
+      <div class="news-skeleton" id="skeleton3"><div class="skeleton-tag"></div><div class="skeleton-title"></div><div class="skeleton-title-2"></div><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line-short"></div></div>
+      <a class="news-card" id="card3" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">04</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat3"></p><h3 id="title3"></h3><p id="excerpt3"></p><p class="news-source" id="source3"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find3"></span></div></a>
+      <div class="news-skeleton" id="skeleton4"><div class="skeleton-tag"></div><div class="skeleton-title"></div><div class="skeleton-title-2"></div><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line-short"></div></div>
+      <a class="news-card" id="card4" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">05</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat4"></p><h3 id="title4"></h3><p id="excerpt4"></p><p class="news-source" id="source4"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find4"></span></div></a>
+      <div class="news-skeleton" id="skeleton5"><div class="skeleton-tag"></div><div class="skeleton-title"></div><div class="skeleton-title-2"></div><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line-short"></div></div>
+      <a class="news-card" id="card5" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">06</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat5"></p><h3 id="title5"></h3><p id="excerpt5"></p><p class="news-source" id="source5"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find5"></span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section id="guides" style="background:var(--deep); padding:80px 0;">
+  <div style="max-width:1400px; margin:0 auto; padding:0 60px;" class="guides-inner">
+    <p class="section-label">Collector's Guides</p>
+    <h2 class="section-title">Buying Guides &amp;<br>Market Intelligence</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:2px; background:var(--surface2); margin-bottom:2px; /* guides-grid-inner */">
+      <a href="grand-seiko-buying-guide.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="grand-seiko-thumb.jpg" alt="Grand Seiko Spring Drive with snowflake dial" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Collector's Guide · Grand Seiko</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Best Place to Buy a Grand Seiko in 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Authorised dealers, grey market reality and current prices for the Snowflake, Spring Drive and Hi-Beat — where serious collectors actually source Grand Seiko.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Guide →</span></div></a>
+      <a href="patek-vs-rolex-investment-2026.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="patek-nautilus-blue.jpg" alt="Patek vs Rolex" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Investment Analysis · Patek Philippe · Rolex</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Patek Philippe vs Rolex — Which Holds Its Value in 2026?</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Secondary market data, five-year price performance and which references serious collectors are actually buying as investments in 2026.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Analysis →</span></div></a>
+      <a href="nautilus-buying-guide.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="patek-nautilus-blue.jpg" alt="Nautilus" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Collector's Guide · Patek Philippe</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Best Place to Buy a Patek Philippe Nautilus in 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Authorised dealers, grey market specialists and auction houses — where serious collectors actually source the world's most coveted steel sports watch.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Guide →</span></div></a>
+      <a href="rolex-submariner-london.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="submariner-wrist.jpg" alt="Submariner London" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Collector's Guide · Rolex · London</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Best Place to Buy a Rolex Submariner in London 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">From Mayfair's authorised dealers to the grey market specialists who actually have stock — where London's serious collectors source the Submariner.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Guide →</span></div></a>
+      <a href="rolex-submariner-dubai.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="submariner-wrist.jpg" alt="Submariner Dubai" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Collector's Guide · Rolex · Dubai</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Best Place to Buy a Rolex Submariner in Dubai 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Authorised boutiques, certified pre-owned and grey market specialists — plus current AED prices and why Dubai's 5% VAT makes it one of the world's best cities to buy the Submariner.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Guide →</span></div></a>
+      <a href="royal-oak-price-guide.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="royal-oak-thumb.jpg" alt="Audemars Piguet Royal Oak watch" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Price Guide · Audemars Piguet</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Audemars Piguet Royal Oak Price Guide 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Every reference valued. From the 15202 Jumbo to the Chronograph — current market prices and what serious collectors worldwide are actually paying.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Guide →</span></div></a>
+      <a href="nautilus-investment-guide.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="patek-nautilus-blue.jpg" alt="Nautilus Investment" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Investment Analysis · Patek Philippe</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Is the Patek Philippe Nautilus Still a Good Investment in 2026?</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Honest market analysis. Price history, current valuations and which references hold value — what the data actually says.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Analysis →</span></div></a>
+      <a href="cartier-buying-guide.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="cartier-thumb.jpg" alt="Cartier Santos watch" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Collector's Guide · Cartier</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Best Place to Buy a Cartier Santos or Tank in 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Authorised boutiques, grey market and auction houses — what they pay and what to avoid.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Guide →</span></div></a>
+      <a href="iwc-portugieser-guide.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="iwc-thumb.jpg" alt="IWC Portugieser Chronograph watch" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Price Guide · IWC</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">IWC Portugieser Price Guide & Where to Buy in 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Every reference valued and the definitive sourcing guide for one of Swiss watchmaking's most enduring grand complications.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Guide →</span></div></a>
+      <a href="omega-speedmaster-guide.html" style="background:var(--surface); padding:0; overflow:hidden; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='#161614'" onmouseout="this.style.background='var(--surface)'"><img class="guide-thumb" src="omega-thumb.jpg" alt="Omega Speedmaster Professional watch" loading="lazy"><div style="padding:28px 32px 32px;"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Collector's Guide · Omega</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Best Place to Buy an Omega Speedmaster in 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">From the Moonwatch Professional to rare vintage references — authorised dealers, grey market and auction houses across 24 countries.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Guide →</span></div></a>
+    </div>
+
+    <!-- CELEBRITY WATCHES -->
+    <p style="font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin:48px 0 16px; display:flex; align-items:center; gap:20px;">Celebrity Watches <span style="height:1px; flex:1; background:var(--gold-dim); opacity:0.4; display:inline-block;"></span></p>
+
+    <!-- MBAPPE HERO CARD — NEW -->
+    <div style="display:grid; gap:2px; background:var(--surface2); margin-bottom:2px;">
+      <a href="hublot-mbappe-big-bang-reloaded-2026.html" style="background:var(--deep); padding:40px 36px; text-decoration:none; display:block; transition:background 0.3s; position:relative; border-left:3px solid var(--gold);" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='var(--deep)'">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div style="flex:1; min-width:280px;">
+            <p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:10px;">⚡ New · Watches &amp; Wonders 2026 · Limited Edition</p>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--white); line-height:1.2; margin-bottom:12px;">The First Watch Kylian Mbappé Actually Built — Hublot Big Bang Reloaded</h3>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:16px;">After 8 years as a Hublot ambassador, Mbappé finally co-designed his own watch. 200 pieces. $30,000. "Trust Yourself" engraved at 6 o'clock. A gold "10" on the dial. Debuts the night before the UCL Final.</p>
+            <span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Full Story →</span>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px; font-size:9px; letter-spacing:0.12em; color:var(--text-dim); text-transform:uppercase; flex-shrink:0; max-width:280px;">
+            <div style="text-align:center; padding:12px; background:rgba(201,168,76,0.04); border:1px solid rgba(201,168,76,0.1);"><span style="font-family:'Cinzel',serif; font-size:20px; color:var(--gold); display:block;">200</span>pieces</div>
+            <div style="text-align:center; padding:12px; background:rgba(201,168,76,0.04); border:1px solid rgba(201,168,76,0.1);"><span style="font-family:'Cinzel',serif; font-size:20px; color:var(--gold); display:block;">$30K</span>retail</div>
+            <div style="text-align:center; padding:12px; background:rgba(201,168,76,0.04); border:1px solid rgba(201,168,76,0.1);"><span style="font-family:'Cinzel',serif; font-size:20px; color:var(--gold); display:block;">44mm</span>case</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- CANNES HERO CARD -->
+    <div style="display:grid; gap:2px; background:var(--surface2); margin-bottom:2px;">
+      <a href="cannes-2026-watches.html" style="background:var(--deep); padding:40px 36px; text-decoration:none; display:block; transition:background 0.3s; position:relative; border-left:2px solid rgba(201,168,76,0.5);" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='var(--deep)'">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div style="flex:1; min-width:280px;">
+            <p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:10px;">⚡ Breaking · 79th Cannes Film Festival 2026</p>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--white); line-height:1.2; margin-bottom:12px;">The Croisette Watch Report — 8 Verified Timepieces</h3>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:16px;">Vin Diesel's $65K AP Starwheel. Adam Driver's Royal Oak Sand Gold. Gunna's $91,200 platinum Rolex Daytona. Carlos Sainz's Girard-Perregaux tourbillon. Every watch verified from Robb Report.</p>
+            <span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Full Report → 8 Watches Verified</span>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px; font-size:9px; letter-spacing:0.12em; color:var(--text-dim); text-transform:uppercase; flex-shrink:0; max-width:280px;">
+            <div style="text-align:center; padding:12px; background:rgba(201,168,76,0.04); border:1px solid rgba(201,168,76,0.1);"><span style="font-family:'Cinzel',serif; font-size:20px; color:var(--gold); display:block;">3</span>AP watches</div>
+            <div style="text-align:center; padding:12px; background:rgba(201,168,76,0.04); border:1px solid rgba(201,168,76,0.1);"><span style="font-family:'Cinzel',serif; font-size:20px; color:var(--gold); display:block;">8</span>Verified</div>
+            <div style="text-align:center; padding:12px; background:rgba(201,168,76,0.04); border:1px solid rgba(201,168,76,0.1);"><span style="font-family:'Cinzel',serif; font-size:20px; color:var(--gold); display:block;">9</span>Brands</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:2px; background:var(--surface2);">
+      <a href="ucl-final-2026-watches.html" style="background:var(--deep); padding:36px 32px; text-decoration:none; display:block; transition:background 0.3s; border-left:2px solid var(--gold);" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='var(--deep)'"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">⚡ UCL Final · Budapest · 2026</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">The Watches of the 2026 Champions League Final</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">Mbappé's Hublot. Saka's AP Royal Oak. Ødegaard's Rolex Submariner. Every significant watch from PSG and Arsenal identified.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Story →</span></a>
+      <a href="bruno-fernandes-watch-2026.html" style="background:var(--deep); padding:36px 32px; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='var(--deep)'"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">⚡ Breaking · Premier League 2025/26</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Bruno Fernandes — 21 Assists, Record Season. This is What He Wears.</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">The most creative season in Premier League history. Off the pitch: a Rolex Submariner and an AP Royal Oak.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Story →</span></a>
+      <a href="messi-watch-collection-2026.html" style="background:var(--deep); padding:36px 32px; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='var(--deep)'"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">⚽ World Cup 2026 · Celebrity Watches</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Lionel Messi's Watch Collection — Every Piece Identified</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">From his $600,000 Jacob &amp; Co. to his Patek Philippe worn during the 2022 World Cup win. Seven watches identified and valued.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Story →</span></a>
+      <a href="the-rock-met-gala-watch-2026.html" style="background:var(--deep); padding:36px 32px; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='var(--deep)'"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Celebrity · Met Gala 2026</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">The Rock's $3.3 Million Watch at the Met Gala 2026</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">The Jacob &amp; Co. Billionaire III. 714 diamonds. 130 carats. The most expensive watch ever worn on those steps.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Story →</span></a>
+      <a href="kevin-hart-roast-watches-2026.html" style="background:var(--deep); padding:36px 32px; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='var(--deep)'"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Celebrity · Netflix Roast 2026</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Every Watch at the Kevin Hart Netflix Roast — Identified</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">$7.8 million of horological firepower in one room. We identified every piece.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Story →</span></a>
+      <a href="ronaldo-watch-collection-2026.html" style="background:var(--deep); padding:36px 32px; text-decoration:none; display:block; transition:background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='var(--deep)'"><p style="font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Celebrity Collection · 2026</p><h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); line-height:1.3; margin-bottom:12px;">Cristiano Ronaldo's $16 Million Watch Collection — Every Piece</h3><p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.6; margin-bottom:20px;">54 timepieces. $16.8 million. A 20-year relationship with Jacob &amp; Co. Every piece identified and valued.</p><span style="font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase;">Read Story →</span></a>
+    </div>
+  </div>
+</section>
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+
+<div class="quote-section">
+  <p class="quote-text">"A man who has to ask about the price of a yacht cannot afford one. A watch, however, tells the world what he has already decided."</p>
+  <p class="quote-attr">— The Stories To Watch Editorial Philosophy</p>
+</div>
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+
+<!-- AUCTIONS -->
+<section id="auctions" style="padding:80px 60px; max-width:100%; background:var(--surface);">
+  <div style="max-width:1400px; margin:0 auto;">
+    <p class="section-label">Auction Watch</p>
+    <h2 class="section-title">Under the Hammer</h2>
+    <div class="news-grid">
+      <a href="article.html" class="news-card" style="text-decoration:none;display:block;"><p class="news-card-tag">Auction</p><h3>Sotheby's Geneva: Record Season for Vintage Patek</h3><p>Geneva's spring sale delivered record prices, with a 1518 in steel achieving CHF 11.1 million — a new benchmark for the reference.</p><p class="news-source">Phillips Auction House</p><span class="news-card-link">Read Story</span></a>
+      <a href="article.html" class="news-card" style="text-decoration:none;display:block;"><p class="news-card-tag">Auction</p><h3>Christie's Rolex Daytona Archive Sale</h3><p>A private archive of 22 Daytona references across six decades — the most significant single-owner Rolex collection ever offered at auction.</p><p class="news-source">Christie's</p><span class="news-card-link">Read Story</span></a>
+      <a href="article.html" class="news-card" style="text-decoration:none;display:block;"><p class="news-card-tag">Preview</p><h3>Phillips Autumn Sale: What to Watch</h3><p>Phillips Geneva previews its autumn highlights, led by a rare F.P. Journe Tourbillon Souverain in platinum — one of fewer than 20 known examples.</p><p class="news-source">Phillips Auction House</p><span class="news-card-link">Read Story</span></a>
+    </div>
+  </div>
+</section>
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+
+<!-- INVESTING -->
+<section id="investing" style="padding:80px 60px; max-width:100%; background:var(--deep);">
+  <div style="max-width:1400px; margin:0 auto;">
+    <p class="section-label">Investment Guide</p>
+    <h2 class="section-title">Watches as Wealth</h2>
+    <div class="news-grid">
+      <a href="patek-vs-rolex-investment-2026.html" class="news-card" style="text-decoration:none;display:block;"><p class="news-card-tag">Investment Analysis</p><h3>Patek Philippe vs Rolex — Which Actually Holds Value in 2026?</h3><p>Rolex produces 1 million watches a year. Patek produces 70,000. Real 2026 secondary market data and the definitive verdict on which belongs in your portfolio.</p><p class="news-source">Stories To Watch</p><span class="news-card-link">Read Story</span></a>
+      <a href="article.html" class="news-card" style="text-decoration:none;display:block;"><p class="news-card-tag">Investing</p><h3>The Five Watches That Always Appreciate</h3><p>From the Rolex Daytona to the Patek Philippe 5711 — the references that have consistently outperformed the market over two decades.</p><p class="news-source">WatchCharts</p><span class="news-card-link">Read Story</span></a>
+      <a href="article.html" class="news-card" style="text-decoration:none;display:block;"><p class="news-card-tag">Market Report</p><h3>Secondary Market Report: Q2 2026</h3><p>WatchCharts data shows the secondary market stabilising after two years of correction, with select references returning to premium territory.</p><p class="news-source">WatchCharts</p><span class="news-card-link">Read Story</span></a>
+    </div>
+  </div>
+</section>
+
+<div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+
+<!-- ABOUT -->
+<section id="about" style="padding:120px 60px; max-width:100%; background:var(--surface);">
+  <div style="max-width:900px; margin:0 auto; text-align:center;">
+    <p class="section-label" style="justify-content:center;">About Stories To Watch</p>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,56px); font-weight:300; color:var(--white); line-height:1.2; margin-bottom:32px;">The world's finest independent voice in <em style="font-style:italic; color:var(--gold-light);">luxury horology</em></h2>
+    <!-- IMAGE — ABOUT ATMOSPHERIC -->
+    <img class="about-photo" src="movement-closeup.jpg" alt="Close-up of a luxury watch movement and gold rotor" loading="lazy">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2vw,20px); line-height:1.8; color:var(--text-dim); margin-bottom:32px;">Stories To Watch is built around our <strong style="color:var(--white); font-weight:400;">Watch Finder</strong> — the world's most comprehensive luxury watch sourcing tool, covering 50 verified dealers, grey market specialists and auction houses across 24 countries — and editorial sourced from the world's most respected horological publications.</p>
+    <a href="watchfinder.html" style="display:inline-flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; border:1px solid rgba(201,168,76,0.4); padding:14px 28px; text-decoration:none; transition:all 0.3s; margin-bottom:40px;" onmouseover="this.style.background='rgba(201,168,76,0.08)'" onmouseout="this.style.background='transparent'">&#8981; Open Watch Finder — 50 Sources · 24 Countries →</a>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(14px,1.6vw,17px); line-height:1.8; color:var(--text-dim); margin-bottom:60px;">For advertising and partnerships contact <a href="mailto:bringlifetobrand@gmail.com" style="color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-dim);">bringlifetobrand@gmail.com</a> or download our <a href="mediakit.html" style="color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-dim);">Media Kit →</a></p>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; padding-top:40px; border-top:1px solid rgba(201,168,76,0.15);">
+      <div><p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">50</p><p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase;">Verified Dealers</p></div>
+      <div><p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">24</p><p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase;">Countries</p></div>
+      <div><p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">147</p><p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase;">Brands Covered</p></div>
+      <div><p style="font-family:'Cinzel',serif; font-size:clamp(20px,3vw,32px); color:var(--gold);">$62B</p><p style="font-size:8px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase;">Market Covered</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><p class="footer-brand">STORIES TO WATCH</p><p class="footer-tagline">Find watches worth finding. Read stories told to the minute.</p><p style="font-size:12px; color:var(--text-dim); line-height:1.7;">The world's finest independent editorial on luxury watches. Sourced globally. Written with precision.</p></div>
+    <div class="footer-col"><h4>Navigate</h4><ul><li><a href="watchfinder.html">&#8981; Watch Finder</a></li><li><a href="hublot-mbappe-big-bang-reloaded-2026.html">Mbappé Hublot</a></li><li><a href="cannes-2026-watches.html">Cannes 2026 Watches</a></li><li><a href="#latest">Latest News</a></li><li><a href="#auctions">Auction Watch</a></li><li><a href="#investing">Investment Guide</a></li></ul></div>
+    <div class="footer-col"><h4>Maisons</h4><ul><li><a href="rolex-submariner-london.html">Rolex</a></li><li><a href="nautilus-buying-guide.html">Patek Philippe</a></li><li><a href="royal-oak-price-guide.html">Audemars Piguet</a></li><li><a href="cartier-buying-guide.html">Cartier</a></li><li><a href="omega-speedmaster-guide.html">Omega</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mediakit.html">&#128196; Media Kit</a></li><li><a href="mailto:bringlifetobrand@gmail.com">Advertise With Us</a></li><li><a href="mailto:bringlifetobrand@gmail.com">Editorial Enquiries</a></li><li><a href="mailto:bringlifetobrand@gmail.com">Partnerships</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Stories To Watch. All rights reserved.</p><p style="color:var(--gold-dim);">Find watches worth finding. Read stories told to the minute.</p></div>
+</footer>
+
+<script>
+function toggleMenu(){var m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+function closeMenu(){var m=document.getElementById('mobileMenu'),b=document.getElementById('hamburger');m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+
+var lastScrollY=0,cAL=0,cAR=0;
+window.addEventListener('scroll',function(){var s=window.scrollY,d=s-lastScrollY;lastScrollY=s;cAL+=d*0.3;cAR-=d*0.3;var nL=document.getElementById('compassNeedleLeft'),nR=document.getElementById('compassNeedleRight');if(nL)nL.style.transform='rotate('+cAL+'deg)';if(nR)nR.style.transform='rotate('+cAR+'deg)';});
+
+function updateClock(){
+  // Time column
+  var n=new Date();
+  var tHM=document.getElementById('tHM');
+  var tSS=document.getElementById('tSS');
+  var tDate=document.getElementById('tDate');
+  if(tHM) tHM.textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+  if(tSS) tSS.textContent=String(n.getSeconds()).padStart(2,'0');
+  if(tDate){
+    var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    tDate.textContent=days[n.getDay()]+', '+n.getDate()+' '+months[n.getMonth()];
+  }
+}
+function updateClock_watch(){var n=new Date(),h=n.getHours()%12,mi=n.getMinutes(),s=n.getSeconds(),ms=n.getMilliseconds(),ss=s+ms/1000;document.getElementById('secondHand').setAttribute('transform','rotate('+(ss*6)+',140,310)');document.getElementById('minuteHand').setAttribute('transform','rotate('+((mi+ss/60)*6)+',140,310)');document.getElementById('hourHand').setAttribute('transform','rotate('+((h+mi/60+s/3600)*30)+',140,310)');document.getElementById('navTime').textContent=n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});document.getElementById('dateDisplay').textContent=n.getDate();}
+updateClock();updateClock_watch();setInterval(function(){updateClock();updateClock_watch();},50);
+
+function updateCards(articles){var fb=[{category:"Milestone",title:"Rolex Marks a Century of the Oyster Case",excerpt:"Rolex unveiled a commemorative Oyster Perpetual 41 marking 100 years since the world's first waterproof wristwatch. The release sold out within hours at authorised dealers globally.",source:"Hodinkee",brand:"Rolex"},{category:"Auction",title:"Sotheby's $15M Cartier Collection Breaks Records",excerpt:"A curated archive of vintage Cartier timepieces achieved hammer prices far beyond estimate at Sotheby's Geneva sale. The headline lot drew bidders from five continents.",source:"Phillips",brand:"Cartier"},{category:"Anniversary",title:"Patek Philippe Nautilus at Fifty: An Enduring Icon",excerpt:"Half a century after Gérald Genta's sketch, the Nautilus remains the most coveted steel sports watch on the secondary market.",source:"Europa Star",brand:"Patek Philippe"},{category:"Market",title:"Watches & Wonders 2026: Craft Over Spectacle",excerpt:"Geneva's annual showcase delivered restraint over fireworks as brands doubled down on finishing quality and mechanical depth.",source:"WatchPro",brand:""},{category:"Brand Story",title:"F.P. Journe: Independent Watchmaking's Quiet Revolution",excerpt:"As independent maisons continue their meteoric rise, François-Paul Journe's atelier stands as the benchmark for true horological independence.",source:"Revolution",brand:"F.P. Journe"},{category:"Innovation",title:"Grand Seiko Introduces New Micro-Artist Studio Dial",excerpt:"The Japanese manufacturer unveiled a breathtaking new dial crafted by its Micro Artist Studio. Only 30 pieces will reach collectors worldwide.",source:"WatchTime",brand:"Grand Seiko"}];var data=(articles&&articles.length===6)?articles:fb;data.forEach(function(a,i){var card=document.getElementById('card'+i),sk=document.getElementById('skeleton'+i);if(!card)return;if(sk)sk.style.display='none';card.href='article.html?title='+encodeURIComponent(a.title)+'&category='+encodeURIComponent(a.category)+'&excerpt='+encodeURIComponent(a.excerpt)+'&source='+encodeURIComponent(a.source);document.getElementById('cat'+i).textContent=a.category;document.getElementById('title'+i).textContent=a.title;document.getElementById('excerpt'+i).textContent=a.excerpt;document.getElementById('source'+i).textContent=a.source;var fe=document.getElementById('find'+i);if(a.brand)fe.innerHTML='<a href="watchfinder.html?search='+encodeURIComponent(a.brand)+'" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;">&#8981; '+a.brand+'</a>';card.style.display='block';});}
+
+window.addEventListener('load',function(){updateCards(null);setTimeout(function(){(async function(){try{var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:'Search for 6 recent luxury watch news stories from May 2026. Return ONLY a JSON array with exactly 6 items each having: title, excerpt (2 sentences), category, source, brand.'}]})});var d=await r.json();var t=d.content.filter(function(b){return b.type==='text';}).map(function(b){return b.text;}).join('');var c=t.replace(/```json|```/g,'').trim();var m=c.match(/\\[[\\s\\S]*\\]/);updateCards(JSON.parse(m?m[0]:c));}catch(e){updateCards(null);}})();},6000);});
+
+function goHeroSearch(){
+  var v = document.getElementById('heroSearchInput');
+  if(v && v.value.trim()) {
+    window.location.href = 'watchfinder.html?search=' + encodeURIComponent(v.value.trim());
+  } else {
+    window.location.href = 'watchfinder.html';
+  }
+}
+function setBrand(brand){
+  window.location.href = 'watchfinder.html?search=' + encodeURIComponent(brand);
+}
+
+// ── HOMEPAGE LIVE BRAND SUGGESTIONS ──
+var heroBrandList = [
+  {name:"Rolex",term:"Rolex"},{name:"Rolex Submariner",term:"Rolex"},{name:"Rolex Daytona",term:"Rolex"},
+  {name:"Rolex GMT-Master II",term:"Rolex"},{name:"Rolex Datejust",term:"Rolex"},{name:"Rolex Day-Date",term:"Rolex"},
+  {name:"Patek Philippe",term:"Patek Philippe"},{name:"Patek Philippe Nautilus",term:"Patek Philippe"},
+  {name:"Patek Philippe Aquanaut",term:"Patek Philippe"},{name:"Patek Philippe Calatrava",term:"Patek Philippe"},
+  {name:"Audemars Piguet",term:"Audemars Piguet"},{name:"Royal Oak",term:"Audemars Piguet"},
+  {name:"Royal Oak Offshore",term:"Audemars Piguet"},{name:"Richard Mille",term:"Richard Mille"},
+  {name:"Cartier",term:"Cartier"},{name:"Cartier Santos",term:"Cartier"},{name:"Cartier Tank",term:"Cartier"},
+  {name:"Omega",term:"Omega"},{name:"Omega Speedmaster",term:"Omega"},{name:"Omega Seamaster",term:"Omega"},
+  {name:"Vacheron Constantin",term:"Vacheron Constantin"},{name:"Vacheron Overseas",term:"Vacheron Constantin"},
+  {name:"IWC",term:"IWC"},{name:"IWC Portugieser",term:"IWC"},{name:"Jaeger-LeCoultre",term:"Jaeger-LeCoultre"},
+  {name:"Reverso",term:"Jaeger-LeCoultre"},{name:"Grand Seiko",term:"Grand Seiko"},{name:"F.P. Journe",term:"F.P. Journe"},
+  {name:"A. Lange & Söhne",term:"A. Lange"},{name:"Hublot",term:"Hublot"},{name:"Hublot Big Bang",term:"Hublot"},
+  {name:"Panerai",term:"Panerai"},{name:"TAG Heuer",term:"TAG Heuer"},{name:"TAG Heuer Carrera",term:"TAG Heuer"},
+  {name:"TAG Heuer Monaco",term:"TAG Heuer"},{name:"Breitling",term:"Breitling"},{name:"Breitling Navitimer",term:"Breitling"},
+  {name:"Tudor",term:"Tudor"},{name:"Tudor Black Bay",term:"Tudor"},{name:"Zenith",term:"Zenith"},
+  {name:"Zenith El Primero",term:"Zenith"},{name:"Breguet",term:"Breguet"},{name:"Blancpain",term:"Blancpain"},
+  {name:"Piaget",term:"Piaget"},{name:"Girard-Perregaux",term:"Girard-Perregaux"},{name:"Ulysse Nardin",term:"Ulysse Nardin"},
+  {name:"Chopard",term:"Chopard"},{name:"Greubel Forsey",term:"Independent"},{name:"H. Moser & Cie",term:"Independent"},
+  {name:"MB&F",term:"Independent"},{name:"Longines",term:"Longines"}
+];
+var heroDefaultPills = '<span class="hero-finder-pill" onclick="setBrand(\'rolex\')">Rolex</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'patek philippe\')">Patek Philippe</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'audemars piguet\')">Audemars Piguet</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'richard mille\')">Richard Mille</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'cartier\')">Cartier</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'omega\')">Omega</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'hublot\')">Hublot</span>'
+  + '<span class="hero-finder-pill" onclick="setBrand(\'iwc\')">IWC</span>';
+
+function heroSuggest(){
+  var input = document.getElementById('heroSearchInput');
+  var pills = document.querySelector('.hero-finder-pills');
+  if(!input || !pills) return;
+  var q = input.value.toLowerCase().trim();
+  if(q.length < 3){ pills.innerHTML = heroDefaultPills; return; }
+  var matches = heroBrandList.filter(function(b){ return b.name.toLowerCase().indexOf(q) > -1; }).slice(0,6);
+  if(matches.length === 0){ pills.innerHTML = '<span class="hero-finder-pill" style="border-color:rgba(201,168,76,0.05);color:var(--text-dim);">No brand match — press Find to search anyway</span>'; return; }
+  var html = '';
+  matches.forEach(function(b){
+    html += '<span class="hero-finder-pill" style="border-color:rgba(201,168,76,0.4);color:var(--gold);" onclick="setBrand(\'' + b.term.toLowerCase().replace(/'/g,"\\'") + '\')">' + b.name + '</span>';
+  });
+  pills.innerHTML = html;
+}
+(function(){
+  var input = document.getElementById('heroSearchInput');
+  if(input) input.addEventListener('input', heroSuggest);
+})();
+
+window.addEventListener('load',function(){setTimeout(function(){(function(){var canvas=document.getElementById('particle-canvas');if(!canvas)return;if(window.matchMedia('(hover: none)').matches){canvas.style.display='none';return;}var ctx=canvas.getContext('2d');var particles=[];var W,H;function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;particles=[];for(var i=0;i<80;i++){particles.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.2+0.6,opacity:Math.random()*0.55+0.25,speedX:(Math.random()-0.5)*0.3,speedY:(Math.random()-0.5)*0.2-0.1,pulse:Math.random()*Math.PI*2,pulseSpeed:0.012+Math.random()*0.02});}}resize();window.addEventListener('resize',resize);function draw(){ctx.clearRect(0,0,W,H);for(var i=0;i<particles.length;i++){var p=particles[i];p.pulse+=p.pulseSpeed;var alpha=p.opacity*(0.55+0.45*Math.sin(p.pulse));if(p.r>1.5){var grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3);grd.addColorStop(0,'rgba(201,168,76,'+(alpha*0.9)+')');grd.addColorStop(1,'rgba(201,168,76,0)');ctx.beginPath();ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2);ctx.fillStyle=grd;ctx.fill();}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(201,168,76,'+alpha+')';ctx.fill();p.x+=p.speedX;p.y+=p.speedY;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;}requestAnimationFrame(draw);}draw();})();},500);});
+</script>
+</body>
+</html>
