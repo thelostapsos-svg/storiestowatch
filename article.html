@@ -15,15 +15,13 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; cursor:none; }
+  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
-  .cursor { width:8px; height:8px; background:var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; }
-  .cursor-ring { width:36px; height:36px; border:1px solid var(--gold); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; opacity:0.6; }
   .progress-bar { position:fixed; top:0; left:0; height:2px; background:var(--gold); z-index:9999; width:0%; transition:width 0.1s linear; }
 
   nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:24px 60px; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,rgba(5,5,5,0.98),transparent); backdrop-filter:blur(10px); }
   .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; }
-  .nav-back { display:flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; cursor:none; }
+  .nav-back { display:flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
   .nav-back:hover { color:var(--gold); }
   .nav-back::before { content:'←'; font-size:14px; }
 
@@ -60,7 +58,7 @@
   .pull-quote p { font-family:'Cormorant Garamond',serif !important; font-size:26px !important; font-style:italic; line-height:1.4 !important; color:var(--white) !important; margin:0 !important; }
   .pull-quote p::first-letter { all:unset !important; float:none !important; }
 
-  .source-cite { display:inline-flex; align-items:center; gap:6px; font-size:9px; letter-spacing:0.2em; color:var(--gold-dim); text-transform:uppercase; border-bottom:1px solid var(--gold-dim); padding-bottom:2px; text-decoration:none; cursor:none; transition:color 0.3s; }
+  .source-cite { display:inline-flex; align-items:center; gap:6px; font-size:9px; letter-spacing:0.2em; color:var(--gold-dim); text-transform:uppercase; border-bottom:1px solid var(--gold-dim); padding-bottom:2px; text-decoration:none; transition:color 0.3s; }
   .source-cite:hover { color:var(--gold); }
   .source-cite::before { content:'↗'; }
 
@@ -84,7 +82,7 @@
   .more-label::after { content:''; flex:1; height:1px; background:var(--gold-dim); opacity:0.3; }
   .more-title { font-family:'Cinzel',serif; font-size:28px; font-weight:400; color:var(--white); margin-bottom:48px; }
   .more-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--surface2); }
-  .more-card { background:var(--deep); padding:36px; text-decoration:none; display:block; position:relative; overflow:hidden; transition:background 0.3s; cursor:none; }
+  .more-card { background:var(--deep); padding:36px; text-decoration:none; display:block; position:relative; overflow:hidden; transition:background 0.3s; }
   .more-card::after { content:''; position:absolute; bottom:0; left:0; height:1px; width:0; background:var(--gold); transition:width 0.5s ease; }
   .more-card:hover::after { width:100%; }
   .more-card:hover { background:var(--surface); }
@@ -96,7 +94,7 @@
   /* TAGS */
   .article-tags-section { padding:0 120px 60px; max-width:1400px; margin:0 auto; }
   .article-tags { display:flex; gap:10px; flex-wrap:wrap; }
-  .tag { font-size:8px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase; border:1px solid rgba(201,168,76,0.2); padding:7px 14px; transition:all 0.3s; cursor:none; }
+  .tag { font-size:8px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase; border:1px solid rgba(201,168,76,0.2); padding:7px 14px; transition:all 0.3s; }
   .tag:hover { color:var(--gold); border-color:var(--gold); }
 
   footer { background:var(--surface); padding:40px 120px; border-top:1px solid rgba(201,168,76,0.1); }
@@ -128,8 +126,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
   <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
@@ -179,9 +175,9 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <aside class="article-sidebar">
       <div class="sidebar-section">
         <p class="sidebar-label">Key Figures</p>
-        <div class="key-fact"><span class="key-fact-num">$62B</span><span class="key-fact-desc">Global Luxury Watch Market 2026</span></div>
+        <div class="key-fact"><span class="key-fact-num">$60B+</span><span class="key-fact-desc">Global Luxury Watch Market 2026</span></div>
         <div class="key-fact"><span class="key-fact-num">8.47%</span><span class="key-fact-desc">Projected CAGR to 2034</span></div>
-        <div class="key-fact"><span class="key-fact-num">24/7</span><span class="key-fact-desc">Live Editorial Coverage</span></div>
+        <div class="key-fact"><span class="key-fact-num">Original</span><span class="key-fact-desc">Editorial in Our Own Voice</span></div>
       </div>
       <div class="sidebar-section">
         <div class="sidebar-ad">
@@ -225,12 +221,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </div>
 
 <script>
-// CURSOR
-const cursor=document.getElementById('cursor'), cursorRing=document.getElementById('cursorRing');
-let mouseX=0,mouseY=0,ringX=0,ringY=0;
-document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX-4+'px';cursor.style.top=mouseY-4+'px';});
-(function loop(){ringX+=(mouseX-ringX-18)*.15;ringY+=(mouseY-ringY-18)*.15;cursorRing.style.left=ringX+'px';cursorRing.style.top=ringY+'px';requestAnimationFrame(loop);})();
-
 window.addEventListener('scroll',()=>{
   const d=document.documentElement;
   document.getElementById('progressBar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
@@ -265,7 +255,7 @@ document.getElementById('sidebarRelated').innerHTML=related.map(s=>`
   <div style="margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.05);">
     <p style="font-size:8px;letter-spacing:0.3em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:6px;">${s.category}</p>
     <a href="article.html?title=${encodeURIComponent(s.title)}&category=${encodeURIComponent(s.category)}&excerpt=${encodeURIComponent(s.excerpt)}&source=${encodeURIComponent(s.source)}"
-       style="font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.3;color:var(--text);text-decoration:none;cursor:none;"
+       style="font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.3;color:var(--text);text-decoration:none;"
        onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--text)'">${s.title}</a>
   </div>`).join('');
 
@@ -326,7 +316,7 @@ Write in luxury editorial tone like Revolution Magazine. 60-100 words per paragr
   } catch(e) {
     document.getElementById('articleMain').innerHTML=`
       <p>${storyExcerpt} This story represents one of the most compelling developments in luxury horology this season, drawing attention from collectors and enthusiasts worldwide.</p>
-      <p>The luxury watch market, valued at $62 billion in 2026 and projected to reach $119 billion by 2034, continues to reward stories built on genuine craft and emotional resonance.</p>
+      <p>The luxury watch market, valued at over $60 billion in 2026 and projected to grow steadily through 2034, continues to reward stories built on genuine craft and emotional resonance.</p>
       <div class="pull-quote"><p>"In 2026, luxury is less about visibility — and more about credibility. The pieces that endure are those built on substance."</p></div>
       <h2>THE COLLECTOR'S PERSPECTIVE</h2>
       <p>For seasoned collectors, developments like this reinforce the enduring appeal of mechanical watchmaking as both an art form and a store of value.</p>
