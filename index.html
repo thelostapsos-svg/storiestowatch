@@ -287,10 +287,11 @@
      MOBILE — everything stacked
   ══════════════════════════════ */
   @media(max-width:599px){
-    nav{padding:12px 12px;}
-    .nav-logo{font-size:9px;letter-spacing:0.14em;}
+    nav{padding:12px 12px;gap:6px;}
+    .nav-logo{font-size:8.5px;letter-spacing:0.1em;flex-shrink:0;}
     .nav-quick a:nth-child(3){display:none;}
     .nav-quick a{font-size:7px;padding:4px 7px;letter-spacing:0.08em;}
+    .nav-quick{margin-left:6px;}
     .nav-links{display:none;}
     .nav-time{display:none;}
     .side-dial{display:none;}
@@ -343,6 +344,13 @@
     .footer-bottom{flex-direction:column;gap:6px;align-items:flex-start;}
 
     #particle-canvas{opacity:0.4;}
+  }
+
+  /* very narrow phones — protect the priority WC pill from clipping */
+  @media(max-width:380px){
+    .nav-logo{font-size:7.5px;letter-spacing:0.06em;}
+    .nav-quick a:nth-child(2){display:none;}
+    .nav-quick a{font-size:6.5px;padding:4px 6px;}
   }
 
   @media(max-width:599px){
@@ -537,12 +545,8 @@
           <span class="hero-link-label">⚡ Mbappé's First Hublot — 200 Pieces, $30,000</span>
           <span class="hero-link-arrow">Read →</span>
         </a>
-        <a href="ucl-final-2026-watches.html" class="hero-link-item">
-          <span class="hero-link-label">⚡ UCL Final 2026 — The Watches on Show</span>
-          <span class="hero-link-arrow">Read →</span>
-        </a>
-        <a href="bruno-fernandes-watch-2026.html" class="hero-link-item">
-          <span class="hero-link-label dim">Bruno Fernandes — 21 Assists, Two Watches</span>
+        <a href="rolex-cpo-vs-grey-market-2026.html" class="hero-link-item">
+          <span class="hero-link-label">Is Rolex CPO Worth It? CPO vs Grey Market</span>
           <span class="hero-link-arrow">Read →</span>
         </a>
       </div>
