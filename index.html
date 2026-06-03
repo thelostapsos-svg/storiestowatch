@@ -67,30 +67,38 @@
 
   /* ── HERO ── */
   .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:80px 20px 40px;}
-  .hero-portrait-wrap{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-  .hero-portrait-left{
-    position:absolute;top:0;left:0;width:50%;height:100%;
-    opacity:0.45;
-    filter:grayscale(100%) brightness(0.7);
-    background:url("woman-portrait.jpg") center 20%/cover no-repeat;
-}
-  .hero-portrait-left::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(5,5,5,0.4) 0%,rgba(5,5,5,0.85) 100%);}
-  .hero-portrait-right{
-    position:absolute;top:0;right:0;width:50%;height:100%;
-    opacity:0.4;
-    filter:grayscale(100%) brightness(0.65);
-    background:url("man-portrait.jpg") center 30%/cover no-repeat;
-}
-  .hero-portrait-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to left,rgba(5,5,5,0.4) 0%,rgba(5,5,5,0.85) 100%);}
-  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(201,168,76,0.05) 0%,transparent 65%);z-index:0;}
+  /* layered atmospheric scene — directional light, world map, god-rays, haze, vignette */
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:
+     radial-gradient(circle 30% at 50% 46%, rgba(232,201,106,0.16), transparent 56%),
+     radial-gradient(ellipse 50% 55% at 50% 50%, rgba(201,168,76,0.10), transparent 64%),
+     radial-gradient(ellipse 90% 80% at 50% 54%, rgba(201,168,76,0.04), transparent 74%);
+     animation:heroGlowBreathe 6.5s ease-in-out infinite;}
+  @keyframes heroGlowBreathe{0%,100%{opacity:0.82;transform:scale(1);}50%{opacity:1;transform:scale(1.04);}}
+  .hero-map{position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;opacity:0.85;}
+  .hero-map svg{width:108%;max-width:1500px;height:auto;}
+  .hero-map .continent{fill:#6E5410;opacity:0.28;}
+  .hero-map .grat{stroke:#5E4A1E;stroke-width:0.5;opacity:0.16;fill:none;}
+  .hero-map .arc{fill:none;stroke:#C9A84C;stroke-width:0.8;opacity:0.28;stroke-dasharray:3 5;animation:heroArc 12s linear infinite;}
+  @keyframes heroArc{to{stroke-dashoffset:-160;}}
+  .hero-map .node-halo{fill:#C9A84C;opacity:0.12;}
+  @keyframes heroDot{0%,100%{opacity:0.4;r:2;}50%{opacity:1;r:3.4;}}
+  .hero-rays{position:absolute;inset:-20%;z-index:0;opacity:0.45;pointer-events:none;mix-blend-mode:screen;
+     background:conic-gradient(from 210deg at 50% 47%,
+        transparent 0deg, rgba(232,201,106,0.09) 10deg, transparent 22deg,
+        transparent 60deg, rgba(201,168,76,0.06) 74deg, transparent 88deg,
+        transparent 150deg, rgba(232,201,106,0.07) 168deg, transparent 184deg);
+     animation:heroRaySpin 60s linear infinite;}
+  @keyframes heroRaySpin{to{transform:rotate(360deg);}}
   #particle-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+  .hero-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
+     background:radial-gradient(ellipse 78% 78% at 50% 50%, transparent 50%, rgba(0,0,0,0.42) 82%, rgba(0,0,0,0.72) 100%);}
 
   /* Hero inner layout — stacked on mobile, side-by-side on desktop */
   .hero-inner{position:relative;z-index:2;width:100%;max-width:1200px;display:flex;flex-direction:column;align-items:center;gap:32px;}
   .hero-watch-col{display:flex;justify-content:center;align-items:center;}
   .hero-text-col{width:100%;max-width:600px;text-align:center;}
-  .watch-container{position:relative;width:180px;height:440px;}
-  .watch-glow{position:absolute;inset:-40px;background:radial-gradient(ellipse at center,rgba(201,168,76,0.15) 0%,transparent 70%);animation:pulseGlow 4s ease-in-out infinite;}
+  .watch-container{position:relative;width:300px;height:300px;}
+  .watch-glow{position:absolute;inset:-16%;background:radial-gradient(ellipse at 50% 48%,rgba(201,168,76,0.2),transparent 60%);animation:pulseGlow 5s ease-in-out infinite;}
   @keyframes pulseGlow{0%,100%{opacity:0.6;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
   @keyframes watchReveal{from{opacity:0;transform:scale(0.88);}to{opacity:1;transform:scale(1);}}
   .watch-container svg{animation:watchReveal 2s ease forwards;}
@@ -243,10 +251,10 @@
     .nav-time{display:block;}
     .side-dial{display:block;}
     .hero{padding:100px 72px 40px;}
-    .hero-inner{display:grid;grid-template-columns:220px 1fr 520px;align-items:center;gap:0;}
+    .hero-inner{display:grid;grid-template-columns:360px 1fr 500px;align-items:center;gap:0;}
     .hero-text-col{text-align:left;max-width:520px;padding-left:40px;}
     .hero-watch-col{flex-shrink:0;justify-content:center;}
-    .watch-container{width:210px;height:520px;}
+    .watch-container{width:340px;height:340px;}
     .hero-eyebrow{text-align:left;}
     .hero-title{font-size:clamp(48px,7vw,88px);}
     .hero-finder{margin:0 0 20px;}
@@ -265,7 +273,7 @@
 
     .hamburger{display:flex;}
     .nav-links{display:none;}
-    .watch-container{width:200px;height:490px;}
+    .watch-container{width:300px;height:300px;}
     .featured-grid{grid-template-columns:1fr;gap:32px;}
     .featured-image{aspect-ratio:16/9;}
     .featured-inner{padding:60px 32px;}
@@ -280,8 +288,6 @@
   ══════════════════════════════ */
   @media(max-width:599px){
     nav{padding:12px 12px;}
-    .hero-portrait-left{width:100%;opacity:0.3;filter:grayscale(100%) brightness(0.6);background-position:center 20%!important;}
-    .hero-portrait-right{width:100%;opacity:0.25;filter:grayscale(100%) brightness(0.6);background-position:center 30%!important;}
     .nav-logo{font-size:9px;letter-spacing:0.14em;}
     .nav-quick a:nth-child(3){display:none;}
     .nav-quick a{font-size:7px;padding:4px 7px;letter-spacing:0.08em;}
@@ -295,7 +301,7 @@
     .hero-inner{flex-direction:column;gap:20px;}
     .hero-text-col{text-align:center;max-width:100%;}
     .hero-watch-col{order:-1;}
-    .watch-container{width:150px;height:368px;}
+    .watch-container{width:240px;height:240px;}
     .hero-eyebrow{font-size:7px;letter-spacing:0.35em;margin-bottom:10px;}
     .hero-title{font-size:clamp(34px,9vw,48px);margin-bottom:12px;}
     .hero-tagline{font-size:clamp(14px,3.8vw,18px);margin-bottom:18px;}
@@ -420,12 +426,11 @@
 
 <!-- HERO -->
 <section class="hero" style="max-width:100%;">
-  <div class="hero-portrait-wrap">
-    <div class="hero-portrait-left"></div>
-    <div class="hero-portrait-right"></div>
-  </div>
   <div class="hero-bg"></div>
+  <div class="hero-map" id="heroMap"></div>
+  <div class="hero-rays"></div>
   <canvas id="particle-canvas"></canvas>
+  <div class="hero-vignette"></div>
 
   <div class="hero-inner">
 
@@ -433,72 +438,46 @@
     <div class="hero-watch-col">
       <div class="watch-container">
         <div class="watch-glow"></div>
-        <svg viewBox="0 0 280 620" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="filter:drop-shadow(0 24px 60px rgba(0,0,0,0.7));">
           <defs>
-            <linearGradient id="strapGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0A0A08"/><stop offset="50%" style="stop-color:#2A2820"/><stop offset="100%" style="stop-color:#0A0A08"/></linearGradient>
-            <linearGradient id="linkGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#3A3830"/><stop offset="40%" style="stop-color:#1E1C18"/><stop offset="100%" style="stop-color:#2A2820"/></linearGradient>
-            <linearGradient id="caseGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#1A1A16"/><stop offset="50%" style="stop-color:#2A2820"/><stop offset="100%" style="stop-color:#1A1A16"/></linearGradient>
-            <linearGradient id="dialGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#141412"/><stop offset="100%" style="stop-color:#0A0A08"/></linearGradient>
-            <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#C9A84C;stop-opacity:0.15"/><stop offset="100%" style="stop-color:#C9A84C;stop-opacity:0"/></radialGradient>
-            <filter id="watchShadow"><feDropShadow dx="0" dy="8" stdDeviation="20" flood-color="#C9A84C" flood-opacity="0.2"/></filter>
+            <linearGradient id="bzG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FBF3DC"/><stop offset="18%" stop-color="#C9B98A"/><stop offset="38%" stop-color="#8A7C52"/><stop offset="52%" stop-color="#E8DBB0"/><stop offset="68%" stop-color="#7E7048"/><stop offset="86%" stop-color="#C4B584"/><stop offset="100%" stop-color="#5A4E2C"/></linearGradient>
+            <linearGradient id="bziG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9A8C5E"/><stop offset="50%" stop-color="#5E5230"/><stop offset="100%" stop-color="#3A3018"/></linearGradient>
+            <radialGradient id="dlG" cx="42%" cy="34%" r="72%"><stop offset="0%" stop-color="#23211A"/><stop offset="45%" stop-color="#15140E"/><stop offset="100%" stop-color="#070605"/></radialGradient>
+            <radialGradient id="dsunG" cx="40%" cy="32%" r="60%"><stop offset="0%" stop-color="#C9A84C" stop-opacity="0.16"/><stop offset="55%" stop-color="#C9A84C" stop-opacity="0.03"/><stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/></radialGradient>
+            <linearGradient id="gdG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F4E2A0"/><stop offset="45%" stop-color="#C9A84C"/><stop offset="100%" stop-color="#6E5410"/></linearGradient>
+            <linearGradient id="rsG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F0C9A8"/><stop offset="50%" stop-color="#C98A5E"/><stop offset="100%" stop-color="#8A5A38"/></linearGradient>
+            <linearGradient id="glsG" x1="0%" y1="0%" x2="55%" y2="90%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/><stop offset="38%" stop-color="#FFFFFF" stop-opacity="0.04"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+            <radialGradient id="vgG" cx="50%" cy="50%" r="50%"><stop offset="60%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity="0.55"/></radialGradient>
+            <filter id="cshG" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="20" flood-color="#000" flood-opacity="0.6"/></filter>
+            <filter id="ggG"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#C9A84C" flood-opacity="0.5"/></filter>
           </defs>
-          <!-- TOP BRACELET -->
-          <rect x="104" y="4" width="72" height="18" rx="4" fill="#1A1A16" stroke="#C9A84C" stroke-width="0.5"/>
-          <line x1="140" y1="4" x2="140" y2="22" stroke="#C9A84C" stroke-width="0.4"/>
-          <rect x="88" y="24" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="44" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="64" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="84" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="104" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="124" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
           <!-- CASE -->
-          <rect x="62" y="155" width="156" height="310" rx="34" fill="url(#caseGrad)" stroke="#C9A84C" stroke-width="0.5" filter="url(#watchShadow)"/>
-          <rect x="216" y="290" width="16" height="28" rx="5" fill="url(#caseGrad)" stroke="#C9A84C" stroke-width="0.5"/>
+          <circle cx="210" cy="210" r="190" fill="#1a1206" filter="url(#cshG)"/>
+          <circle cx="210" cy="210" r="188" fill="url(#bzG)"/>
+          <circle cx="210" cy="210" r="188" fill="none" stroke="#FFF6DA" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="210" cy="210" r="166" fill="url(#bziG)"/>
+          <rect x="394" y="196" width="20" height="28" rx="5" fill="url(#bzG)"/>
+          <rect x="398" y="201" width="12" height="18" rx="3" fill="url(#bziG)"/>
           <!-- DIAL -->
-          <circle cx="140" cy="310" r="118" fill="url(#dialGrad)"/>
-          <circle cx="140" cy="310" r="114" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.5"/>
-          <circle cx="140" cy="310" r="118" fill="url(#glowGrad)" opacity="0.4"/>
-          <!-- MARKERS -->
-          <g stroke="#C9A84C" stroke-linecap="round">
-            <line x1="140" y1="198" x2="140" y2="212" stroke-width="2.5"/>
-            <line x1="252" y1="310" x2="238" y2="310" stroke-width="2.5"/>
-            <line x1="140" y1="422" x2="140" y2="408" stroke-width="2.5"/>
-            <line x1="28" y1="310" x2="42" y2="310" stroke-width="2.5"/>
-            <line x1="197" y1="213" x2="190" y2="225" stroke-width="1.2" opacity="0.6"/>
-            <line x1="237" y1="253" x2="227" y2="261" stroke-width="1.2" opacity="0.6"/>
-            <line x1="237" y1="367" x2="227" y2="359" stroke-width="1.2" opacity="0.6"/>
-            <line x1="197" y1="407" x2="190" y2="395" stroke-width="1.2" opacity="0.6"/>
-            <line x1="83" y1="407" x2="90" y2="395" stroke-width="1.2" opacity="0.6"/>
-            <line x1="43" y1="367" x2="53" y2="359" stroke-width="1.2" opacity="0.6"/>
-            <line x1="43" y1="253" x2="53" y2="261" stroke-width="1.2" opacity="0.6"/>
-            <line x1="83" y1="213" x2="90" y2="225" stroke-width="1.2" opacity="0.6"/>
-          </g>
-          <!-- BRAND TEXT -->
-          <text x="140" y="280" text-anchor="middle" font-family="Cinzel, serif" font-size="8" fill="#C9A84C" letter-spacing="3" opacity="0.9">STORIES TO WATCH</text>
-          <text x="140" y="292" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="5.5" fill="#4A4838" letter-spacing="2.5">EDITORIAL · EST. 2026</text>
-          <text x="140" y="222" text-anchor="middle" font-family="Cinzel, serif" font-size="11" fill="#C9A84C" opacity="0.85">XII</text>
-          <text x="246" y="315" text-anchor="middle" font-family="Cinzel, serif" font-size="11" fill="#C9A84C" opacity="0.85">III</text>
-          <text x="140" y="404" text-anchor="middle" font-family="Cinzel, serif" font-size="11" fill="#C9A84C" opacity="0.85">VI</text>
-          <text x="34" y="315" text-anchor="middle" font-family="Cinzel, serif" font-size="11" fill="#C9A84C" opacity="0.85">IX</text>
-          <!-- DATE WINDOW -->
-          <rect x="213" y="303" width="20" height="14" rx="2" fill="#0A0A08" stroke="#C9A84C" stroke-width="0.5"/>
-          <text x="223" y="313" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="7" fill="#E8E4D9" id="dateDisplay">27</text>
-          <!-- HANDS -->
-          <g id="hourHand"><line x1="140" y1="310" x2="140" y2="245" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round"/><line x1="140" y1="310" x2="140" y2="326" stroke="#E8E4D9" stroke-width="5" stroke-linecap="round" opacity="0.3"/></g>
-          <g id="minuteHand"><line x1="140" y1="310" x2="140" y2="225" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round"/><line x1="140" y1="310" x2="140" y2="332" stroke="#E8E4D9" stroke-width="3" stroke-linecap="round" opacity="0.3"/></g>
-          <g id="secondHand"><line x1="140" y1="310" x2="140" y2="210" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/><line x1="140" y1="310" x2="140" y2="338" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.9"/></g>
-          <circle cx="140" cy="310" r="6" fill="#C9A84C"/>
-          <circle cx="140" cy="310" r="3.5" fill="#0E0E0C"/>
-          <circle cx="140" cy="310" r="1.5" fill="#C9A84C"/>
-          <!-- BOTTOM BRACELET -->
-          <rect x="88" y="465" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="485" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="505" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="525" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="545" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="88" y="565" width="104" height="18" rx="2" fill="url(#linkGrad)" stroke="#3A3830" stroke-width="0.4"/>
-          <rect x="104" y="585" width="72" height="18" rx="4" fill="#1A1A16" stroke="#C9A84C" stroke-width="0.5"/>
-          <line x1="140" y1="585" x2="140" y2="603" stroke="#C9A84C" stroke-width="0.4"/>
+          <circle cx="210" cy="210" r="158" fill="url(#dlG)"/>
+          <circle cx="210" cy="210" r="158" fill="url(#dsunG)"/>
+          <circle cx="210" cy="210" r="158" fill="none" stroke="#3A3018" stroke-width="1" opacity="0.7"/>
+          <g id="watchTicks" stroke="#8B6914" opacity="0.7"></g>
+          <g id="watchMarkers"></g>
+          <text x="210" y="150" text-anchor="middle" font-family="Cinzel,serif" font-size="11" fill="#C9A84C" letter-spacing="3" opacity="0.92">STORIES TO WATCH</text>
+          <text x="210" y="164" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="6" fill="#6E5410" letter-spacing="3">EDITORIAL · EST. 2026</text>
+          <!-- DATE WINDOW (at 3 o'clock) -->
+          <rect x="300" y="203" width="22" height="15" rx="2" fill="#0A0A08" stroke="#C9A84C" stroke-width="0.6"/>
+          <text x="311" y="214" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="8" fill="#E8E4D9" id="dateDisplay">27</text>
+          <!-- HANDS (full-length, center 210,210 to match clock JS) -->
+          <g id="hourHand"><rect x="206" y="120" width="8" height="100" rx="4" fill="url(#gdG)" filter="url(#ggG)"/></g>
+          <g id="minuteHand"><rect x="207.5" y="78" width="5" height="142" rx="2.5" fill="url(#gdG)" filter="url(#ggG)"/></g>
+          <g id="secondHand"><line x1="210" y1="232" x2="210" y2="70" stroke="url(#rsG)" stroke-width="1.8" stroke-linecap="round"/><circle cx="210" cy="210" r="3" fill="url(#rsG)"/></g>
+          <circle cx="210" cy="210" r="9" fill="url(#gdG)"/>
+          <circle cx="210" cy="210" r="4" fill="#0C0B07"/>
+          <!-- GLASS GLARE -->
+          <path d="M 70 150 A 158 158 0 0 1 300 96 Q 220 150 150 230 Q 95 195 70 150 Z" fill="url(#glsG)" opacity="0.8"/>
+          <circle cx="210" cy="210" r="158" fill="url(#vgG)"/>
         </svg>
       </div>
     </div>
@@ -867,7 +846,47 @@ function updateClock(){
     tDate.textContent=days[n.getDay()]+', '+n.getDate()+' '+months[n.getMonth()];
   }
 }
-function updateClock_watch(){var n=new Date(),h=n.getHours()%12,mi=n.getMinutes(),s=n.getSeconds(),ms=n.getMilliseconds(),ss=s+ms/1000;document.getElementById('secondHand').setAttribute('transform','rotate('+(ss*6)+',140,310)');document.getElementById('minuteHand').setAttribute('transform','rotate('+((mi+ss/60)*6)+',140,310)');document.getElementById('hourHand').setAttribute('transform','rotate('+((h+mi/60+s/3600)*30)+',140,310)');document.getElementById('navTime').textContent=n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});document.getElementById('dateDisplay').textContent=n.getDate();}
+// build realistic watch ticks + applied markers
+(function(){
+  var g=document.getElementById('watchTicks');if(!g)return;var cx=210,cy=210,r=152,s='';
+  for(var i=0;i<60;i++){var a=i*6*Math.PI/180,maj=(i%5===0),r1=maj?r-9:r-4;s+='<line x1="'+(cx+r1*Math.sin(a)).toFixed(1)+'" y1="'+(cy-r1*Math.cos(a)).toFixed(1)+'" x2="'+(cx+r*Math.sin(a)).toFixed(1)+'" y2="'+(cy-r*Math.cos(a)).toFixed(1)+'" stroke-width="'+(maj?2:1)+'"/>';}
+  g.innerHTML=s;
+  var m=document.getElementById('watchMarkers'),mr=128,ms='';
+  for(var k=0;k<12;k++){if(k===3)continue;var a=k*30*Math.PI/180,x=cx+mr*Math.sin(a),y=cy-mr*Math.cos(a),big=(k%3===0);ms+='<rect x="'+(x-(big?5:3)).toFixed(1)+'" y="'+(y-3).toFixed(1)+'" width="'+(big?10:6)+'" height="6" rx="1.5" fill="url(#gdG)" transform="rotate('+(k*30)+' '+x.toFixed(1)+' '+y.toFixed(1)+')"/>';}
+  m.innerHTML=ms;
+})();
+
+// build world map (gold continents + dealer nodes + arcs) behind hero
+(function(){
+  var map=document.getElementById('heroMap');if(!map)return;
+  var continents=[
+    "M120,70 L210,60 L270,95 L255,130 L290,150 L250,200 L210,195 L200,150 L160,150 L150,110 L120,95 Z",
+    "M250,205 L275,215 L300,255 L285,265 L262,235 L250,215 Z",
+    "M300,270 L345,265 L365,300 L350,360 L320,420 L295,400 L290,340 L305,300 Z",
+    "M340,40 L385,38 L395,70 L360,80 L338,62 Z",
+    "M470,95 L540,88 L560,115 L535,135 L500,140 L478,160 L462,135 L470,110 Z",
+    "M480,175 L560,168 L590,210 L575,285 L530,330 L500,300 L488,240 L478,200 Z",
+    "M560,80 L720,70 L820,95 L860,130 L820,165 L740,160 L680,180 L610,170 L575,135 L560,110 Z",
+    "M640,180 L690,180 L700,220 L672,250 L650,215 Z",
+    "M740,200 L800,210 L820,240 L770,250 L745,225 Z",
+    "M780,330 L860,322 L885,365 L840,395 L795,378 L778,350 Z"
+  ];
+  var paths=continents.map(function(d){return '<path class="continent" d="'+d+'"/>';}).join('');
+  var grat='';
+  for(var gx=100;gx<=900;gx+=100){grat+='<line class="grat" x1="'+gx+'" y1="30" x2="'+gx+'" y2="460"/>';}
+  for(var gy=60;gy<=460;gy+=66){grat+='<line class="grat" x1="60" y1="'+gy+'" x2="940" y2="'+gy+'"/>';}
+  var cities=[[205,120],[505,108],[515,120],[615,185],[675,205],[775,235],[800,175],[835,140],[840,360]];
+  var nodes='',halos='';
+  for(var c=0;c<cities.length;c++){
+    halos+='<circle class="node-halo" cx="'+cities[c][0]+'" cy="'+cities[c][1]+'" r="8"/>';
+    nodes+='<circle cx="'+cities[c][0]+'" cy="'+cities[c][1]+'" r="2.4" fill="#E8C96A" style="animation:heroDot '+(2.6+Math.random()*2).toFixed(2)+'s ease-in-out infinite '+(Math.random()*2).toFixed(2)+'s"/>';
+  }
+  function arc(a,b){var ax=cities[a][0],ay=cities[a][1],bx=cities[b][0],by=cities[b][1];var mx=(ax+bx)/2,my=(ay+by)/2-Math.abs(bx-ax)*0.28;return '<path class="arc" d="M'+ax+' '+ay+' Q'+mx+' '+my+' '+bx+' '+by+'"/>';}
+  var arcs=arc(0,1)+arc(1,2)+arc(2,3)+arc(3,4)+arc(4,5)+arc(5,6)+arc(6,7)+arc(7,8)+arc(0,8);
+  map.innerHTML='<svg viewBox="0 0 1000 490" xmlns="http://www.w3.org/2000/svg">'+grat+paths+arcs+halos+nodes+'</svg>';
+})();
+
+function updateClock_watch(){var n=new Date(),h=n.getHours()%12,mi=n.getMinutes(),s=n.getSeconds(),ms=n.getMilliseconds(),ss=s+ms/1000;document.getElementById('secondHand').setAttribute('transform','rotate('+(ss*6)+',210,210)');document.getElementById('minuteHand').setAttribute('transform','rotate('+((mi+ss/60)*6)+',210,210)');document.getElementById('hourHand').setAttribute('transform','rotate('+((h+mi/60+s/3600)*30)+',210,210)');document.getElementById('navTime').textContent=n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});document.getElementById('dateDisplay').textContent=n.getDate();}
 updateClock();updateClock_watch();setInterval(function(){updateClock();updateClock_watch();},50);
 
 function updateCards(articles){var fb=[{category:"Milestone",title:"Rolex Marks a Century of the Oyster Case",excerpt:"2026 marks 100 years since Rolex introduced the Oyster case — the foundation of the modern waterproof wristwatch and still central to the brand's identity today.",source:"Stories To Watch",brand:"Rolex"},{category:"Auction",title:"Vintage Cartier Continues to Draw Strong Auction Interest",excerpt:"Curated archives of vintage Cartier timepieces remain a fixture of the major Geneva sales, where the strongest examples continue to attract committed international bidding.",source:"Stories To Watch",brand:"Cartier"},{category:"Anniversary",title:"Patek Philippe Nautilus at Fifty: An Enduring Icon",excerpt:"Half a century after Gérald Genta's sketch, the Nautilus remains the most coveted steel sports watch on the secondary market.",source:"Stories To Watch",brand:"Patek Philippe"},{category:"Market",title:"Watches & Wonders 2026: Craft Over Spectacle",excerpt:"Geneva's annual showcase leaned toward restraint, with several brands emphasising finishing quality and mechanical depth over headline complications.",source:"Stories To Watch",brand:""},{category:"Brand Story",title:"F.P. Journe and the Rise of Independent Watchmaking",excerpt:"As independent maisons continue their rise, François-Paul Journe's atelier remains a reference point for collectors drawn to true horological independence.",source:"Stories To Watch",brand:"F.P. Journe"},{category:"Innovation",title:"Grand Seiko's Micro Artist Studio in Focus",excerpt:"Grand Seiko's Micro Artist Studio remains among the most admired dial-making operations in the industry, producing limited pieces in tiny numbers for collectors worldwide.",source:"Stories To Watch",brand:"Grand Seiko"}];var data=fb;data.forEach(function(a,i){var card=document.getElementById('card'+i),sk=document.getElementById('skeleton'+i);if(!card)return;if(sk)sk.style.display='none';card.href='article.html?title='+encodeURIComponent(a.title)+'&category='+encodeURIComponent(a.category)+'&excerpt='+encodeURIComponent(a.excerpt)+'&source='+encodeURIComponent(a.source);document.getElementById('cat'+i).textContent=a.category;document.getElementById('title'+i).textContent=a.title;document.getElementById('excerpt'+i).textContent=a.excerpt;document.getElementById('source'+i).textContent=a.source;var fe=document.getElementById('find'+i);if(a.brand)fe.innerHTML='<a href="watchfinder.html?search='+encodeURIComponent(a.brand)+'" onclick="event.stopPropagation();" style="font-size:8px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;text-decoration:none;">&#8981; '+a.brand+'</a>';card.style.display='block';});}
@@ -937,6 +956,21 @@ function heroSuggest(){
 })();
 
 window.addEventListener('load',function(){setTimeout(function(){(function(){var canvas=document.getElementById('particle-canvas');if(!canvas)return;if(window.matchMedia('(hover: none)').matches){canvas.style.display='none';return;}var ctx=canvas.getContext('2d');var particles=[];var W,H;function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;particles=[];for(var i=0;i<80;i++){particles.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.2+0.6,opacity:Math.random()*0.55+0.25,speedX:(Math.random()-0.5)*0.3,speedY:(Math.random()-0.5)*0.2-0.1,pulse:Math.random()*Math.PI*2,pulseSpeed:0.012+Math.random()*0.02});}}resize();window.addEventListener('resize',resize);function draw(){ctx.clearRect(0,0,W,H);for(var i=0;i<particles.length;i++){var p=particles[i];p.pulse+=p.pulseSpeed;var alpha=p.opacity*(0.55+0.45*Math.sin(p.pulse));if(p.r>1.5){var grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3);grd.addColorStop(0,'rgba(201,168,76,'+(alpha*0.9)+')');grd.addColorStop(1,'rgba(201,168,76,0)');ctx.beginPath();ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2);ctx.fillStyle=grd;ctx.fill();}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(201,168,76,'+alpha+')';ctx.fill();p.x+=p.speedX;p.y+=p.speedY;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;}requestAnimationFrame(draw);}draw();})();},500);});
+
+// hero parallax — desktop only, respects reduced-motion
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(window.matchMedia('(hover: none)').matches)return;
+  var hero=document.querySelector('.hero'),map=document.getElementById('heroMap'),wc=document.querySelector('.watch-container');
+  if(!hero||!map)return;
+  var mx=0,my=0,tx=0,ty=0;
+  hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-0.5);ty=((e.clientY-r.top)/r.height-0.5);});
+  hero.addEventListener('mouseleave',function(){tx=0;ty=0;});
+  (function loop(){mx+=(tx-mx)*0.06;my+=(ty-my)*0.06;
+    map.style.transform='translate('+(mx*18)+'px,'+(my*18)+'px)';
+    if(wc)wc.style.transform='perspective(900px) rotateY('+(mx*6)+'deg) rotateX('+(-my*6)+'deg)';
+    requestAnimationFrame(loop);})();
+})();
 </script>
 </body>
 </html>
