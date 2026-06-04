@@ -73,7 +73,7 @@
   footer { background:var(--surface); padding:32px 80px; border-top:1px solid rgba(201,168,76,0.1); display:flex; justify-content:space-between; align-items:center; }
   footer p { font-size:10px; color:var(--text-dim); letter-spacing:0.12em; }
   @media (max-width:1000px) { .article-container { grid-template-columns:1fr; padding:60px 40px; gap:40px; } .article-sidebar { position:static; } .related-grid { grid-template-columns:1fr; } .related-section { padding:60px 40px; } }
-  @media (max-width:768px) { nav { padding:16px 20px; } .article-hero { padding:100px 20px 60px; } .article-container { padding:40px 20px; } .related-section { padding:48px 20px; } footer { padding:24px 20px; flex-direction:column; gap:8px; } }
+  @media (max-width:768px) { nav { padding:16px 20px; } .article-hero { padding:100px 20px 60px; } .article-container { padding:40px 20px; } .related-section { padding:48px 20px; } footer { padding:24px 20px; flex-direction:column; gap:8px; } .hero-photo-wrap { padding:0 20px !important; } }
 
   /* ===== MOBILE RESPONSIVE FIXES ===== */
   @media (max-width: 768px) {
@@ -188,10 +188,14 @@
 
 <div style="height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent);"></div>
 
-    <!-- WATCH ILLUSTRATION -->
-    <div style="width:100%;max-width:700px;margin:0 auto 60px;opacity:0.85;">
-      <img src="iwc-portugieser-illustration.svg" alt="IWC Portugieser illustration" style="width:100%;height:auto;display:block;" loading="lazy"/>
-    </div>
+    <!-- HERO IMAGE — real IWC Portugieser photo -->
+    <figure class="hero-photo-wrap" style="width:100%;max-width:920px;margin:0 auto 60px;padding:0 80px;">
+      <div style="position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(201,168,76,0.18);">
+        <img src="iwc.webp" alt="An IWC Portugieser Chronograph with silver dial and blue hands, photographed close-up" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,0.62) 0%,rgba(5,5,5,0.08) 45%,transparent 70%);pointer-events:none;"></div>
+        <figcaption style="position:absolute;left:18px;bottom:14px;font-size:8px;letter-spacing:0.28em;color:var(--text-dim);text-transform:uppercase;z-index:1;">IWC Portugieser Chronograph</figcaption>
+      </div>
+    </figure>
 <div class="article-container">
   <main class="article-main">
 
