@@ -304,7 +304,15 @@
     .hero-inner{flex-direction:column;gap:20px;}
     .hero-text-col{text-align:center;max-width:100%;}
     .hero-watch-col{order:-1;}
-    .watch-container{width:240px;height:240px;}
+    .watch-container{width:262px;height:262px;}
+    /* MOBILE HERO MAP — fills the full viewport behind a dominant watch, quiet fade */
+    .hero-map{opacity:0.85;animation:heroMapFade 9s ease-in-out infinite;}
+    .hero-map svg{width:140%;max-width:1100px;height:100%;}
+    .hero-map .continent{fill:#7A5E12;opacity:0.42;}
+    .hero-map .grat{opacity:0.12;}
+    .watch-glow{inset:-20%;background:radial-gradient(ellipse at 50% 48%,rgba(201,168,76,0.34),transparent 58%);}
+    .hero-vignette{background:radial-gradient(ellipse 95% 90% at 50% 42%, transparent 55%, rgba(0,0,0,0.45) 90%);}
+    @keyframes heroMapFade{0%,100%{opacity:0.6;}50%{opacity:0.92;}}
     .hero-eyebrow{font-size:7px;letter-spacing:0.35em;margin-bottom:10px;}
     .hero-title{font-size:clamp(32px,8.5vw,46px);margin-bottom:14px;}
     .hero-finder{margin-bottom:16px;}
@@ -887,7 +895,7 @@ function updateClock(){
   }
   function arc(a,b){var ax=cities[a][0],ay=cities[a][1],bx=cities[b][0],by=cities[b][1];var mx=(ax+bx)/2,my=(ay+by)/2-Math.abs(bx-ax)*0.28;return '<path class="arc" d="M'+ax+' '+ay+' Q'+mx+' '+my+' '+bx+' '+by+'"/>';}
   var arcs=arc(0,1)+arc(1,2)+arc(2,3)+arc(3,4)+arc(4,5)+arc(5,6)+arc(6,7)+arc(7,8)+arc(0,8);
-  map.innerHTML='<svg viewBox="0 0 1000 490" xmlns="http://www.w3.org/2000/svg">'+grat+paths+arcs+halos+nodes+'</svg>';
+  map.innerHTML='<svg viewBox="0 0 1000 490" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'+grat+paths+arcs+halos+nodes+'</svg>';
 })();
 
 function updateClock_watch(){var n=new Date(),h=n.getHours()%12,mi=n.getMinutes(),s=n.getSeconds(),ms=n.getMilliseconds(),ss=s+ms/1000;document.getElementById('secondHand').setAttribute('transform','rotate('+(ss*6)+',210,210)');document.getElementById('minuteHand').setAttribute('transform','rotate('+((mi+ss/60)*6)+',210,210)');document.getElementById('hourHand').setAttribute('transform','rotate('+((h+mi/60+s/3600)*30)+',210,210)');document.getElementById('navTime').textContent=n.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});document.getElementById('dateDisplay').textContent=n.getDate();}
@@ -974,6 +982,21 @@ window.addEventListener('load',function(){setTimeout(function(){(function(){var 
     map.style.transform='translate('+(mx*18)+'px,'+(my*18)+'px)';
     if(wc)wc.style.transform='perspective(900px) rotateY('+(mx*6)+'deg) rotateX('+(-my*6)+'deg)';
     requestAnimationFrame(loop);})();
+})();
+
+// mobile hero map — gentle fade as you scroll into content (touch only; desktop keeps parallax)
+(function(){
+  if(!window.matchMedia('(hover: none)').matches)return;
+  var map=document.getElementById('heroMap');if(!map)return;
+  var ticking=false;
+  window.addEventListener('scroll',function(){
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(function(){
+      var s=window.scrollY,h=window.innerHeight;
+      map.style.opacity=Math.max(0,0.85-s/(h*0.55));
+      ticking=false;
+    });
+  },{passive:true});
 })();
 </script>
 </body>
