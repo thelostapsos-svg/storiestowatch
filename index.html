@@ -218,30 +218,36 @@
 
   /* ── AD ── */
   .ad-placement{background:var(--surface);border:1px solid rgba(201,168,76,0.15);padding:52px;text-align:center;margin:64px 0;position:relative;}
-  /* ===== STW house banner component ===== */
-  .stwb{position:relative;width:100%;max-width:1200px;margin:0 auto;height:380px;border:1px solid rgba(201,168,76,0.28);overflow:hidden;display:grid;background:var(--surface);}
-  .stwb--right{grid-template-columns:1.05fr 0.95fr;}
-  .stwb--left{grid-template-columns:0.95fr 1.05fr;}
+  /* ===== STW house banner component — FULL BLEED ===== */
+  .stwb{position:relative;width:100%;height:460px;border-top:1px solid rgba(201,168,76,0.3);border-bottom:1px solid rgba(201,168,76,0.3);overflow:hidden;display:grid;background:var(--surface);}
+  .stwb--right{grid-template-columns:1fr 1fr;}
+  .stwb--left{grid-template-columns:1fr 1fr;}
   .stwb__iw{position:relative;overflow:hidden;}
   .stwb__img{width:100%;height:100%;object-fit:cover;display:block;}
-  .stwb__seamR{position:absolute;top:0;left:0;width:120px;height:100%;background:linear-gradient(90deg,var(--surface) 0%,rgba(20,19,18,0) 100%);}
-  .stwb__seamL{position:absolute;top:0;right:0;width:120px;height:100%;background:linear-gradient(270deg,var(--surface) 0%,rgba(20,19,18,0) 100%);}
-  .stwb__txt{position:relative;padding:0 52px;display:flex;flex-direction:column;justify-content:center;background:var(--surface);}
-  .stwb__kick{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;}
-  .stwb__line{font-family:'Cinzel',serif;font-weight:500;font-size:clamp(20px,2.3vw,30px);line-height:1.34;color:var(--white);}
+  .stwb__seamR{position:absolute;top:0;left:0;width:160px;height:100%;background:linear-gradient(90deg,var(--surface) 0%,rgba(20,19,18,0) 100%);}
+  .stwb__seamL{position:absolute;top:0;right:0;width:160px;height:100%;background:linear-gradient(270deg,var(--surface) 0%,rgba(20,19,18,0) 100%);}
+  .stwb__txt{position:relative;display:flex;flex-direction:column;justify-content:center;background:var(--surface);}
+  /* cap the text content to a centred column so it stays elegant on very wide screens */
+  .stwb--right .stwb__txt{align-items:flex-end;padding:0 56px;}
+  .stwb--right .stwb__txt>*{width:100%;max-width:560px;}
+  .stwb--left .stwb__txt{align-items:flex-start;padding:0 56px;}
+  .stwb--left .stwb__txt>*{width:100%;max-width:560px;}
+  .stwb__kick{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
+  .stwb__line{font-family:'Cinzel',serif;font-weight:500;font-size:clamp(22px,2.6vw,36px);line-height:1.32;color:var(--white);}
   .stwb__line .em{color:var(--gold-light);}
-  .stwb__sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,1.6vw,18px);color:var(--text-dim);margin-top:20px;}
-  .stwb__markR{position:absolute;bottom:18px;left:52px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;}
-  .stwb__markL{position:absolute;bottom:18px;right:52px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;}
-  .stwb__avail{position:absolute;bottom:16px;font-size:8px;letter-spacing:0.22em;color:#fff;text-transform:uppercase;background:rgba(10,10,9,0.6);padding:6px 10px;line-height:1.6;font-family:'Montserrat',sans-serif;}
+  .stwb__sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.7vw,20px);color:var(--text-dim);margin-top:22px;}
+  .stwb__markR{position:absolute;bottom:22px;left:56px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;}
+  .stwb__markL{position:absolute;bottom:22px;right:56px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;}
+  .stwb__avail{position:absolute;bottom:18px;font-size:8px;letter-spacing:0.22em;color:#fff;text-transform:uppercase;background:rgba(10,10,9,0.6);padding:6px 10px;line-height:1.6;font-family:'Montserrat',sans-serif;}
   .stwb__avail b{color:var(--gold-light);font-weight:400;}
-  .stwb-wrap{padding:24px 60px;}
+  .stwb-wrap{padding:0;margin:0;}
   @media(max-width:768px){
-    .stwb{grid-template-columns:1fr!important;grid-template-rows:46% 54%;height:480px;}
-    .stwb__iw{order:1;} .stwb__txt{order:2;padding:26px 24px;}
+    .stwb{grid-template-columns:1fr!important;grid-template-rows:48% 52%;height:520px;}
+    .stwb__iw{order:1;} 
+    .stwb__txt{order:2;padding:28px 24px!important;align-items:flex-start!important;}
+    .stwb__txt>*{max-width:100%!important;}
     .stwb__seamR,.stwb__seamL{width:100%;height:70px;top:auto;bottom:-1px;left:0;right:0;background:linear-gradient(0deg,var(--surface) 0%,rgba(20,19,18,0) 100%);}
-    .stwb__markR,.stwb__markL{left:24px;right:auto;bottom:16px;}
-    .stwb-wrap{padding:16px 16px;}
+    .stwb__markR,.stwb__markL{left:24px;right:auto;bottom:18px;}
   }
   .ad-label{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--surface);padding:0 14px;font-size:7px;letter-spacing:0.28em;color:var(--gold-dim);text-transform:uppercase;}
   .ad-placeholder{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.38em;color:var(--text-dim);text-transform:uppercase;margin-bottom:6px;}
@@ -807,19 +813,6 @@
   <div style="max-width:1400px; margin:0 auto;">
     <p class="section-label">The Briefing</p>
     <h2 class="section-title">Stories To Watch<br>Editorial Briefing</h2>
-    <div class="stwb stwb--left" role="complementary" aria-label="Advertisement">
-      <div class="stwb__iw">
-        <img class="stwb__img" style="object-position:50% 42%;" src="banner-wait.webp" alt="Luxury Cartier watch" loading="lazy">
-        <div class="stwb__seamL"></div>
-        <span class="stwb__avail" style="left:16px;text-align:left;">Premium Placement<br><b>bringlifetobrand@gmail.com</b></span>
-      </div>
-      <div class="stwb__txt">
-        <p class="stwb__kick">&mdash; Stories To Watch</p>
-        <h2 class="stwb__line">Time waits for no one.<br>The right watch makes<br>the <span class="em">wait</span> worth it.</h2>
-        <p class="stwb__sub">Find watches worth finding.</p>
-        <span class="stwb__markL">&#9678; STW</span>
-      </div>
-    </div>
     <div class="news-grid" id="newsGrid">
       <div class="news-skeleton" id="skeleton0"><div class="skeleton-tag"></div><div class="skeleton-title"></div><div class="skeleton-title-2"></div><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line-short"></div></div>
       <a class="news-card" id="card0" href="article.html" style="display:none;"><div class="gold-accent-left"></div><span class="news-card-number">01</span><div class="news-card-visual"></div><p class="news-card-tag" id="cat0"></p><h3 id="title0"></h3><p id="excerpt0"></p><p class="news-source" id="source0"></p><div class="news-card-footer"><span class="news-card-link">Read Story</span><span class="news-find-link" id="find0"></span></div></a>
@@ -846,6 +839,22 @@
 </div>
 
 <div style="height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+
+<div class="stwb-wrap">
+  <div class="stwb stwb--left" role="complementary" aria-label="Advertisement">
+    <div class="stwb__iw">
+      <img class="stwb__img" style="object-position:50% 42%;" src="banner-wait.webp" alt="Luxury Cartier watch" loading="lazy">
+      <div class="stwb__seamL"></div>
+      <span class="stwb__avail" style="left:16px;text-align:left;">Premium Placement<br><b>bringlifetobrand@gmail.com</b></span>
+    </div>
+    <div class="stwb__txt">
+      <p class="stwb__kick">&mdash; Stories To Watch</p>
+      <h2 class="stwb__line">Time waits for no one.<br>The right watch makes<br>the <span class="em">wait</span> worth it.</h2>
+      <p class="stwb__sub">Find watches worth finding.</p>
+      <span class="stwb__markL">&#9678; STW</span>
+    </div>
+  </div>
+</div>
 
 <!-- AUCTIONS -->
 <section id="auctions" style="padding:80px 60px; max-width:100%; background:var(--surface);">
