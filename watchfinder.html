@@ -249,7 +249,6 @@
       <p class="results-count">Showing <span id="resultCount">56</span> sources worldwide</p>
       <select class="sort-select" onchange="sortDealers(this.value)">
         <option value="recommended">Recommended</option>
-        <option value="rating">Highest Rated</option>
         <option value="region">By Region</option>
         <option value="az">A — Z</option>
       </select>
@@ -540,8 +539,6 @@ function renderDealers(list) {
                   : d.type === 'grey'       ? 'Grey Market'
                   : d.type === 'online'     ? 'Online Platform'
                   : 'Auction House';
-    var stars = '';
-    for (var s = 0; s < 5; s++) stars += s < Math.floor(d.rating) ? '&#9733;' : '&#9734;';
     var brandTags = '';
     d.brands.slice(0,4).forEach(function(b) {
       var isMatch = (searchTerm && b.toLowerCase().indexOf(searchTerm) > -1) ||
@@ -552,7 +549,6 @@ function renderDealers(list) {
           + brandHighlight
           + '<div class="dealer-card-header">'
           + '<span class="dealer-type ' + d.type + '">' + typeLabel + '</span>'
-          + '<span class="dealer-rating">' + stars + ' ' + d.rating + '</span>'
           + '</div>'
           + '<h3 class="dealer-name">' + d.name + '</h3>'
           + '<p class="dealer-location">' + d.city + '</p>'
@@ -605,8 +601,7 @@ window.clearFilter = function(group) {
 
 window.sortDealers = function(by) {
   var sorted = filteredDealers.slice();
-  if (by === 'rating') sorted.sort(function(a,b){ return b.rating - a.rating; });
-  else if (by === 'az') sorted.sort(function(a,b){ return a.name.localeCompare(b.name); });
+  if (by === 'az') sorted.sort(function(a,b){ return a.name.localeCompare(b.name); });
   else if (by === 'region') sorted.sort(function(a,b){ return a.region.localeCompare(b.region); });
   renderDealers(sorted);
 };
