@@ -62,6 +62,7 @@
   .stats-bar-divider { width:1px; height:24px; background:rgba(201,168,76,0.15); }
 
   .main-layout { display:grid; grid-template-columns:280px 1fr; min-height:calc(100vh - 200px); max-width:1500px; margin:0 auto; width:100%; }
+  #filtersToggle { display:none; }
   .sidebar { background:var(--deep); border-right:1px solid rgba(201,168,76,0.1); padding:40px 32px; position:sticky; top:70px; height:calc(100vh - 70px); overflow-y:auto; }
   .sidebar::-webkit-scrollbar { width:2px; }
   .sidebar::-webkit-scrollbar-thumb { background:var(--gold-dim); }
@@ -148,13 +149,23 @@
   }
   @media (max-width:768px) {
     nav { padding:14px 20px; }
-    .hero { padding:100px 20px 40px; }
+    .hero { padding:84px 20px 24px; min-height:auto; }
+    .hero-label { margin-bottom:12px; font-size:8px; }
+    .hero-title { font-size:clamp(34px,11vw,52px); line-height:0.9; }
+    .hero-subtitle { font-size:14px; margin:12px 0 22px; line-height:1.45; max-width:340px; }
+    .search-wrap { margin-bottom:20px; }
+    .filters { gap:8px; margin-bottom:8px; }
+    .filter-btn { font-size:9px; padding:8px 12px; }
     .stats-bar { padding:16px 20px; gap:12px; }
     .stats-bar-divider { display:none; }
     .stats-bar-item:last-child { display:none; }
     .main-layout { grid-template-columns:minmax(0,1fr) !important; width:100%; max-width:100%; overflow-x:hidden; }
     .sidebar { position:static !important; height:auto !important; padding:20px 16px !important; width:100% !important; max-width:100% !important; box-sizing:border-box !important; overflow-x:hidden !important; }
     .dealers-grid { grid-template-columns:1fr !important; gap:8px !important; }
+    /* MOBILE FILTER ACCORDION: collapse sidebar behind a Filters toggle so results sit near the top */
+    #filtersToggle { display:block; width:100%; box-sizing:border-box; padding:14px 16px; margin-bottom:2px; background:var(--deep); color:var(--gold); border:1px solid rgba(201,168,76,0.3); letter-spacing:0.25em; font-size:10px; text-transform:uppercase; text-align:center; cursor:pointer; }
+    .main-layout > .sidebar { display:none; }
+    .main-layout.filters-open > .sidebar { display:block; }
     .dealer-card { padding:20px 16px; }
     .dealer-name { font-size:16px; }
     .results-area { padding:16px !important; }
@@ -164,7 +175,8 @@
     .submit-cta { padding:32px 20px; }
     footer { padding:24px 20px; flex-direction:column; align-items:flex-start; }
     .suggestion-item { padding:14px 20px; font-size:14px; }
-    .verify-grid { grid-template-columns:repeat(2,1fr) !important; }
+    .verify-grid { grid-template-columns:1fr !important; gap:14px !important; max-width:360px; margin-left:auto; margin-right:auto; }
+    .verify-heading-label { font-size:9px !important; letter-spacing:0.18em !important; padding:0 12px !important; }
   }
 </style>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
@@ -217,6 +229,7 @@
 <p style="max-width:760px;margin:14px auto 0;text-align:center;font-size:11px;line-height:1.6;color:var(--text-dim);">We may earn a small commission when you buy through some of the links here — <strong style="color:var(--gold-dim);">at no extra cost to you, and never at any cost to the dealer.</strong> Commissions never influence which dealers we list, how they rank, or what you pay. The directory is built on what's worth finding, not what pays us.</p>
 
 <div class="main-layout">
+  <button id="filtersToggle" onclick="toggleFilters()" aria-expanded="false">⚙ Filters</button>
   <aside class="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-title">Region <span class="sidebar-clear" onclick="clearFilter('region')">Clear</span></div>
@@ -257,7 +270,7 @@
     <div class="dealers-grid" id="dealersGrid"></div>
 
     <div style="background:var(--surface);border:1px solid rgba(201,168,76,0.15);padding:40px;margin:40px 0;position:relative;">
-      <span style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--surface);padding:0 16px;font-size:8px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;">How We Verify Sources</span>
+      <span class="verify-heading-label" style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--surface);padding:0 16px;font-size:8px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;">How We Verify Sources</span>
       <div class="verify-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;">
         <div><p style="font-family:'Cinzel',serif;font-size:22px;color:var(--gold);margin-bottom:8px;">✦</p><p style="font-size:9px;letter-spacing:0.2em;color:var(--white);text-transform:uppercase;margin-bottom:6px;">Manually Curated</p><p style="font-size:11px;color:var(--text-dim);line-height:1.5;">Every source is hand-selected and individually reviewed on merit — never automated scraping.</p></div>
         <div><p style="font-family:'Cinzel',serif;font-size:22px;color:var(--gold);margin-bottom:8px;">✦</p><p style="font-size:9px;letter-spacing:0.2em;color:var(--white);text-transform:uppercase;margin-bottom:6px;">Checked Against Primary Sources</p><p style="font-size:11px;color:var(--text-dim);line-height:1.5;">Each dealer is checked against public, primary sources — official presence, stated dealer or trade status, and established trading reputation — before listing.</p></div>
@@ -584,6 +597,13 @@ window.filterType = function(type, btn) {
   applyFilters();
 };
 
+window.toggleFilters = function() {
+  var ml = document.querySelector('.main-layout');
+  var btn = document.getElementById('filtersToggle');
+  var open = ml.classList.toggle('filters-open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  btn.textContent = open ? '⚙ Filters ✕' : '⚙ Filters';
+};
 window.toggleFilter = function(el, group, value) {
   el.classList.toggle('checked');
   var idx = activeFilters[group].indexOf(value);
