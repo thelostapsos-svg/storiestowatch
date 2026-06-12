@@ -283,34 +283,34 @@
     .nav-links{display:flex;}
     .nav-time{display:block;}
     .side-dial{display:block;}
-    .hero{padding:84px 72px 0;}
+    .hero{padding:70px 72px 0;}
     /* MASTHEAD VARIANT: centered nameplate on top, dial+finder below, closes on stats */
-    .hero-inner-masthead{display:flex;flex-direction:column;align-items:center;gap:40px;max-width:1100px;}
+    .hero-inner-masthead{display:flex;flex-direction:column;align-items:center;gap:24px;max-width:1100px;}
     .hero-masthead{width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;}
-    .hero-eyebrow-mh{text-align:center;margin-bottom:20px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.25em;text-transform:none;color:var(--gold-light);}
+    .hero-eyebrow-mh{text-align:center;margin-bottom:14px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:0.25em;text-transform:none;color:var(--gold-light);}
     .masthead-rule{width:min(620px,82%);height:2.5px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.9),transparent);margin:0 auto;}
     .masthead-rule-bottom{width:min(420px,60%);height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent);margin:0 auto;}
-    .hero-title-line{font-size:clamp(40px,6.2vw,82px);line-height:1;letter-spacing:0.13em;margin:22px 0;white-space:nowrap;}
+    .hero-title-line{font-size:clamp(38px,5.6vw,74px);line-height:1;letter-spacing:0.12em;margin:16px 0;white-space:nowrap;}
     .hero-title-line span{display:inline;color:var(--gold);}
-    .hero-tagline-mh{text-align:center;margin-top:18px;margin-bottom:0;}
-    .hero-lower{display:grid;grid-template-columns:340px 1fr;align-items:center;gap:64px;width:100%;}
+    .hero-tagline-mh{text-align:center;margin-top:14px;margin-bottom:0;}
+    .hero-lower{display:grid;grid-template-columns:300px 1fr;align-items:center;gap:56px;width:100%;}
     .hero-text-col{text-align:left;max-width:560px;padding-left:0;}
     .hero-watch-col{flex-shrink:0;justify-content:center;}
-    .watch-container{width:300px;height:300px;}
+    .watch-container{width:260px;height:260px;}
     .hero-finder{margin:0;}
     .hero-links{display:none;}
     .hero-stats{justify-content:center;}
     .hero-divider{display:none;}
     .hero-time-col{display:none;}
-    .hero-stats-mh{display:flex;gap:48px;justify-content:center;padding-top:28px;margin-top:8px;border-top:1px solid rgba(201,168,76,0.15);width:min(620px,80%);}
+    .hero-stats-mh{display:flex;gap:44px;justify-content:center;padding-top:20px;margin-top:4px;border-top:1px solid rgba(201,168,76,0.15);width:min(620px,80%);}
     /* map drifts lower, behind the dial+finder row rather than the masthead */
     .hero-map{align-items:flex-end;}
     .hero-map svg{transform:translateY(8%);}
     .hero-scroll-cue{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:18px;text-decoration:none;cursor:pointer;}
     .hero-scroll-text{font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:var(--text-dim);transition:color 0.3s;}
-    .hero-scroll-chevron{font-size:26px;line-height:0.6;color:var(--gold);animation:scrollBob 2s ease-in-out infinite;background:linear-gradient(90deg,var(--gold-dim),var(--gold-light),var(--gold-dim));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero-scroll-chevron{color:var(--gold);animation:scrollBob 1.8s ease-in-out infinite;display:block;}
     .hero-scroll-cue:hover .hero-scroll-text{color:var(--gold);}
-    @keyframes scrollBob{0%,100%{transform:translateY(0);opacity:0.7;}50%{transform:translateY(6px);opacity:1;}}
+    @keyframes scrollBob{0%,100%{transform:translateY(0);opacity:0.65;}50%{transform:translateY(7px);opacity:1;}}
   }
 
   /* ══════════════════════════════
@@ -347,36 +347,39 @@
     .nav-quick{display:flex;}
     .hamburger{display:flex;}
 
-    .hero{padding:62px 16px 32px;min-height:100svh;}
-    .hero-inner{flex-direction:column;gap:18px;}
-    .hero-text-col{text-align:center;max-width:100%;display:flex;flex-direction:column;}
-    .hero-watch-col{order:-2;}
-    /* Cap the dial against viewport height so it never eats the fold; ~38-42vh */
-    .watch-container{width:min(248px,40vh);height:min(248px,40vh);}
-    /* MOBILE HERO MAP — fills the full viewport behind a dominant watch, quiet fade */
-    .hero-map{opacity:0.85;animation:heroMapFade 9s ease-in-out infinite;}
-    .hero-map svg{width:140%;max-width:1100px;height:100%;}
-    .hero-map .continent{fill:#7A5E12;opacity:0.42;}
-    .hero-map .grat{opacity:0.12;}
-    .watch-glow{inset:-20%;background:radial-gradient(ellipse at 50% 48%,rgba(201,168,76,0.34),transparent 58%);}
+    .hero{padding:72px 16px 24px;min-height:auto;}
+    /* MASTHEAD on mobile: kicker + rules + wordmark + rules + tagline, then dial + finder */
+    .hero-inner-masthead{display:flex;flex-direction:column;align-items:center;gap:20px;}
+    .hero-masthead{width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;order:0;}
+    .hero-eyebrow-mh{order:0;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.18em;text-transform:none;color:var(--gold-light);margin-bottom:10px;}
+    .masthead-rule{width:78%;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.85),transparent);margin:0 auto;}
+    .masthead-rule-bottom{width:55%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent);margin:0 auto;}
+    .hero-title-line{font-size:clamp(34px,12vw,52px);line-height:0.95;letter-spacing:0.04em;margin:12px 0;white-space:normal;text-align:center;}
+    .hero-title-line span{display:block;color:var(--gold);margin-top:2px;}
+    .hero-tagline-mh{font-size:14px;letter-spacing:0.06em;margin:12px 0 0;line-height:1.4;text-align:center;}
+    .hero-lower{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;}
+    .hero-watch-col{order:0;}
+    /* Cap the dial against viewport height so it never eats the fold */
+    .watch-container{width:min(210px,32vh);height:min(210px,32vh);}
+    .hero-map{opacity:0.7;animation:heroMapFade 9s ease-in-out infinite;}
+    .hero-map svg{width:140%;max-width:1100px;height:100%;transform:none;}
+    .hero-map .continent{fill:#7A5E12;opacity:0.34;}
+    .hero-map .grat{opacity:0.10;}
+    .watch-glow{inset:-20%;background:radial-gradient(ellipse at 50% 48%,rgba(201,168,76,0.30),transparent 58%);}
     .hero-vignette{background:radial-gradient(ellipse 95% 90% at 50% 42%, transparent 55%, rgba(0,0,0,0.45) 90%);}
-    @keyframes heroMapFade{0%,100%{opacity:0.6;}50%{opacity:0.92;}}
-    /* ORDER on mobile: dial -> wordmark -> tagline -> finder -> stats */
-    .hero-eyebrow{order:-1;font-size:9px;letter-spacing:0.35em;margin-bottom:6px;line-height:1.4;}
-    .hero-title{order:0;font-size:clamp(34px,11vw,52px);line-height:0.9;letter-spacing:0.05em;margin-bottom:10px;text-align:center;}
-    .hero-title span{display:block;margin-top:2px;}
-    .hero-tagline{order:1;font-size:14px;letter-spacing:0.08em;margin-bottom:18px;line-height:1.4;}
-    .hero-finder{order:2;margin-bottom:16px;}
-    .hero-divider{order:3;}
-    .hero-stats{order:4;gap:18px;padding-top:16px;}
-    .hero-links{order:5;}
+    @keyframes heroMapFade{0%,100%{opacity:0.5;}50%{opacity:0.8;}}
+    .hero-text-col{order:1;text-align:center;max-width:100%;display:flex;flex-direction:column;width:100%;}
+    .hero-finder{margin:0 0 4px;width:100%;}
     .hero-finder-title{font-size:12px;}
     .hero-finder-bar input{padding:12px 14px;font-size:14px;}
     .hero-finder-bar button{padding:12px 16px;font-size:9px;}
-    .hero-stat-num{font-size:17px;}
-    .hero-links{gap:6px;margin-top:16px;padding-top:16px;} .hero-link-item{text-align:left;}
-    .hero-link-item{padding:10px 12px;}
-    .hero-link-label{font-size:10px;}
+    .hero-divider{display:none;}
+    .hero-stats-mh{width:90%;gap:18px;padding-top:16px;margin-top:6px;justify-content:center;}
+    .hero-stat-num{font-size:16px;}
+    /* Scroll cue styled on mobile too (was rendering as a raw blue link) */
+    .hero-scroll-cue{display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:12px;text-decoration:none;}
+    .hero-scroll-text{font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim);}
+    .hero-scroll-chevron{color:var(--gold);animation:scrollBob 1.8s ease-in-out infinite;display:block;}
 
     .quick-strip-wrap::before{display:none;}
     .quick-strip{padding:9px 12px;gap:5px;}
@@ -610,7 +613,7 @@
     <!-- ANIMATED SCROLL-DOWN CUE -->
     <a href="#coverstory" class="hero-scroll-cue" aria-label="Scroll to read more">
       <span class="hero-scroll-text">More to discover</span>
-      <span class="hero-scroll-chevron">⌄</span>
+      <svg class="hero-scroll-chevron" width="22" height="13" viewBox="0 0 22 13" fill="none" aria-hidden="true"><path d="M2 2l9 9 9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
 
   </div>
