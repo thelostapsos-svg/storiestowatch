@@ -283,18 +283,34 @@
     .nav-links{display:flex;}
     .nav-time{display:block;}
     .side-dial{display:block;}
-    .hero{padding:100px 72px 40px;}
-    .hero-inner{display:grid;grid-template-columns:360px 1fr 500px;align-items:center;gap:0;}
-    .hero-text-col{text-align:left;max-width:520px;padding-left:40px;}
+    .hero{padding:84px 72px 0;}
+    /* MASTHEAD VARIANT: centered nameplate on top, dial+finder below, closes on stats */
+    .hero-inner-masthead{display:flex;flex-direction:column;align-items:center;gap:40px;max-width:1100px;}
+    .hero-masthead{width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;}
+    .hero-eyebrow-mh{text-align:center;margin-bottom:20px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.25em;text-transform:none;color:var(--gold-light);}
+    .masthead-rule{width:min(620px,82%);height:2.5px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.9),transparent);margin:0 auto;}
+    .masthead-rule-bottom{width:min(420px,60%);height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent);margin:0 auto;}
+    .hero-title-line{font-size:clamp(40px,6.2vw,82px);line-height:1;letter-spacing:0.13em;margin:22px 0;white-space:nowrap;}
+    .hero-title-line span{display:inline;color:var(--gold);}
+    .hero-tagline-mh{text-align:center;margin-top:18px;margin-bottom:0;}
+    .hero-lower{display:grid;grid-template-columns:340px 1fr;align-items:center;gap:64px;width:100%;}
+    .hero-text-col{text-align:left;max-width:560px;padding-left:0;}
     .hero-watch-col{flex-shrink:0;justify-content:center;}
-    .watch-container{width:340px;height:340px;}
-    .hero-eyebrow{text-align:left;}
-    .hero-title{font-size:clamp(48px,7vw,88px);}
-    .hero-finder{margin:0 0 20px;}
-    .hero-links .hero-link-item{justify-content:space-between;}
-    .hero-stats{justify-content:flex-start;}
-    .hero-divider{margin:0 0 20px;}
-    .hero-time-col{display:flex;}
+    .watch-container{width:300px;height:300px;}
+    .hero-finder{margin:0;}
+    .hero-links{display:none;}
+    .hero-stats{justify-content:center;}
+    .hero-divider{display:none;}
+    .hero-time-col{display:none;}
+    .hero-stats-mh{display:flex;gap:48px;justify-content:center;padding-top:28px;margin-top:8px;border-top:1px solid rgba(201,168,76,0.15);width:min(620px,80%);}
+    /* map drifts lower, behind the dial+finder row rather than the masthead */
+    .hero-map{align-items:flex-end;}
+    .hero-map svg{transform:translateY(8%);}
+    .hero-scroll-cue{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:18px;text-decoration:none;cursor:pointer;}
+    .hero-scroll-text{font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:var(--text-dim);transition:color 0.3s;}
+    .hero-scroll-chevron{font-size:26px;line-height:0.6;color:var(--gold);animation:scrollBob 2s ease-in-out infinite;background:linear-gradient(90deg,var(--gold-dim),var(--gold-light),var(--gold-dim));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero-scroll-cue:hover .hero-scroll-text{color:var(--gold);}
+    @keyframes scrollBob{0%,100%{transform:translateY(0);opacity:0.7;}50%{transform:translateY(6px);opacity:1;}}
   }
 
   /* ══════════════════════════════
@@ -486,8 +502,18 @@
   <canvas id="particle-canvas"></canvas>
   <div class="hero-vignette"></div>
 
-  <div class="hero-inner">
+  <div class="hero-inner hero-inner-masthead">
 
+    <!-- CENTERED MASTHEAD: italic kicker + thick gold rule + wordmark + thin rule + tagline -->
+    <div class="hero-masthead">
+      <p class="hero-eyebrow hero-eyebrow-mh">The watch is the easy part.</p>
+      <div class="masthead-rule"></div>
+      <h1 class="hero-title hero-title-line">STORIES&nbsp;&nbsp;TO&nbsp;&nbsp;<span>WATCH</span></h1>
+      <div class="masthead-rule-bottom"></div>
+      <p class="hero-tagline hero-tagline-mh">Know the watch. Find where to buy it. Know who you're dealing with.</p>
+    </div>
+
+    <div class="hero-lower">
     <!-- WATCH — appears first on mobile via order:-1 -->
     <div class="hero-watch-col">
       <div class="watch-container">
@@ -548,10 +574,6 @@
 
     <!-- TEXT + FINDER -->
     <div class="hero-text-col">
-      <p class="hero-eyebrow">The watch is the easy part.</p>
-      <h1 class="hero-title">STORIES TO<span>WATCH</span></h1>
-      <p class="hero-tagline">Know the watch. Find where to buy it. Know who you're dealing with.</p>
-
       <!-- WATCH FINDER — centre stage -->
       <div class="hero-finder">
         <div class="hero-finder-header">
@@ -575,28 +597,21 @@
       </div>
 
       <div class="hero-divider"></div>
-
-      <div class="hero-stats">
-        <div><span class="hero-stat-num">$60B+</span><span class="hero-stat-label">Global Market</span></div>
-        <div><span class="hero-stat-num">Global</span><span class="hero-stat-label">Reach</span></div>
-        <div><span class="hero-stat-num">Original</span><span class="hero-stat-label">Editorial</span></div>
-      </div>
-
-      <div class="hero-links">
-        <a href="watchfinder.html" class="hero-link-item">
-          <span class="hero-link-label">⌕ Watch Finder — 56 Sources · Worldwide</span>
-          <span class="hero-link-arrow">Open →</span>
-        </a>
-        <a href="hublot-mbappe-big-bang-reloaded-2026.html" class="hero-link-item">
-          <span class="hero-link-label">⚡ Mbappé's First Hublot — 200 Pieces, $30,000</span>
-          <span class="hero-link-arrow">Read →</span>
-        </a>
-        <a href="rolex-cpo-vs-grey-market-2026.html" class="hero-link-item">
-          <span class="hero-link-label">Is Rolex CPO Worth It? CPO vs Grey Market</span>
-          <span class="hero-link-arrow">Read →</span>
-        </a>
-      </div>
     </div>
+    </div><!-- /hero-lower -->
+
+    <!-- FULL-WIDTH CENTERED STAT STRIP — hero closes here -->
+    <div class="hero-stats hero-stats-mh">
+      <div><span class="hero-stat-num">$60B+</span><span class="hero-stat-label">Global Market</span></div>
+      <div><span class="hero-stat-num">Global</span><span class="hero-stat-label">Reach</span></div>
+      <div><span class="hero-stat-num">Original</span><span class="hero-stat-label">Editorial</span></div>
+    </div>
+
+    <!-- ANIMATED SCROLL-DOWN CUE -->
+    <a href="#coverstory" class="hero-scroll-cue" aria-label="Scroll to read more">
+      <span class="hero-scroll-text">More to discover</span>
+      <span class="hero-scroll-chevron">⌄</span>
+    </a>
 
   </div>
 </section>
@@ -644,7 +659,7 @@
 </div>
 
 <!-- FEATURED -->
-<div class="featured">
+<div class="featured" id="coverstory">
   <div class="featured-inner">
     <p class="section-label">Cover Story</p>
     <div class="featured-grid">
