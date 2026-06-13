@@ -56,6 +56,15 @@
   .filter-btn { font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:0.35em; color:var(--text-dim); text-transform:uppercase; background:var(--surface); border:1px solid rgba(201,168,76,0.15); padding:10px 20px; transition:all 0.3s; }
   .filter-btn:hover, .filter-btn.active { color:var(--gold); border-color:var(--gold); background:rgba(201,168,76,0.05); }
 
+  /* --- NEAREST CONTROL (new) — styled as a peer of the filter buttons but distinguished by the ◎ glyph --- */
+  .nearest-btn { font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; background:rgba(201,168,76,0.06); border:1px solid rgba(201,168,76,0.4); padding:10px 20px; transition:all 0.3s; display:inline-flex; align-items:center; gap:8px; }
+  .nearest-btn::before { content:'◎'; font-size:12px; }
+  .nearest-btn:hover { background:rgba(201,168,76,0.12); border-color:var(--gold); }
+  .nearest-btn.active { background:var(--gold); color:var(--black); border-color:var(--gold); }
+  .nearest-btn.locating { opacity:0.6; pointer-events:none; }
+  .geo-note { width:100%; text-align:center; font-size:10px; letter-spacing:0.12em; color:var(--text-dim); margin:4px auto 0; max-width:560px; min-height:0; transition:all 0.3s; }
+  .geo-note.error { color:var(--gold-dim); }
+
   .stats-bar { width:100%; max-width:1500px; margin:0 auto; background:var(--surface); border-top:1px solid rgba(201,168,76,0.1); border-bottom:1px solid rgba(201,168,76,0.1); padding:16px 60px; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; box-sizing:border-box; }
   .stats-bar-item { display:flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; }
   .stats-bar-num { font-family:'Cinzel',serif; font-size:18px; color:var(--gold); }
@@ -89,6 +98,11 @@
   .sort-select { background:var(--surface); border:1px solid rgba(201,168,76,0.2); color:var(--text-dim); font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.2em; padding:8px 16px; outline:none; text-transform:uppercase; }
 
   .dealers-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:2px; background:var(--surface2); }
+  /* band divider between pinned (nearby) results and online/multi in nearest-mode */
+  .results-band-label { grid-column:1/-1; background:var(--deep); border-top:1px solid rgba(201,168,76,0.18); padding:20px 24px 14px; margin-top:2px; }
+  .results-band-label .rb-title { font-size:9px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+  .results-band-label .rb-title::before { content:'◇'; font-size:10px; color:var(--gold-dim); }
+  .results-band-label .rb-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:var(--text-dim); margin-top:4px; }
   .dealer-card { background:var(--deep); padding:32px; position:relative; overflow:hidden; transition:background 0.3s; text-decoration:none; display:block; }
   .dealer-card::before { content:''; position:absolute; top:0; left:0; right:0; height:0; background:linear-gradient(to bottom,rgba(201,168,76,0.08),transparent); transition:height 0.4s ease; }
   .dealer-card:hover { background:var(--surface); }
@@ -99,6 +113,9 @@
   .dealer-type.online { background:rgba(201,168,76,0.15); color:var(--gold); border:1px solid rgba(201,168,76,0.3); }
   .dealer-type.auction { background:var(--surface); color:var(--gold-light); border:1px solid var(--gold); }
   .dealer-rating { display:flex; align-items:center; gap:4px; font-size:9px; color:var(--gold); }
+  /* distance chip shown only in nearest-mode */
+  .dealer-distance { font-size:8px; letter-spacing:0.25em; color:var(--gold-light); text-transform:uppercase; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); padding:3px 9px; white-space:nowrap; }
+  .dealer-distance::before { content:'◎ '; }
   .dealer-name { font-family:'Cinzel',serif; font-size:18px; font-weight:600; color:var(--white); margin-bottom:6px; line-height:1.2; }
   .dealer-location { font-size:10px; letter-spacing:0.2em; color:var(--text-dim); text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:6px; }
   .dealer-location::before { content:'◎'; font-size:8px; color:var(--gold); }
@@ -122,14 +139,6 @@
   .map-section { background:var(--surface); border-top:1px solid rgba(201,168,76,0.1); padding:80px 60px; text-align:center; }
   .map-section-label { font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; }
   .map-section-title { font-family:'Cinzel',serif; font-size:clamp(24px,3vw,40px); color:var(--white); margin-bottom:40px; }
-  .world-map-container { position:relative; max-width:1000px; margin:0 auto 40px; background:var(--deep); border:1px solid rgba(201,168,76,0.1); padding:40px; overflow:hidden; }
-  .map-dot { position:absolute; width:10px; height:10px; border-radius:50%; background:var(--gold); transform:translate(-50%,-50%); transition:all 0.3s; animation:mapPulse 3s ease-in-out infinite; }
-  .map-dot::before { content:''; position:absolute; inset:-4px; border-radius:50%; border:1px solid var(--gold); opacity:0.4; animation:mapRipple 3s ease-in-out infinite; }
-  .map-dot:hover { transform:translate(-50%,-50%) scale(1.5); background:var(--gold-light); }
-  .map-dot-label { position:absolute; top:-28px; left:50%; transform:translateX(-50%); font-size:8px; letter-spacing:0.2em; color:var(--gold); white-space:nowrap; opacity:0; transition:opacity 0.3s; pointer-events:none; text-transform:uppercase; }
-  .map-dot:hover .map-dot-label { opacity:1; }
-  @keyframes mapPulse { 0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0.4);}50%{box-shadow:0 0 0 8px rgba(201,168,76,0);} }
-  @keyframes mapRipple { 0%,100%{transform:scale(1);opacity:0.4;}50%{transform:scale(2);opacity:0;} }
 
   .submit-cta { background:var(--deep); border:1px solid rgba(201,168,76,0.2); padding:48px; text-align:center; margin:40px 0 0; }
   .submit-cta h3 { font-family:'Cinzel',serif; font-size:20px; color:var(--white); margin-bottom:12px; }
@@ -156,6 +165,8 @@
     .search-wrap { margin-bottom:20px; }
     .filters { gap:8px; margin-bottom:8px; }
     .filter-btn { font-size:9px; padding:8px 12px; }
+    .nearest-btn { font-size:9px; padding:8px 12px; }
+    .geo-note { font-size:10px; padding:0 16px; }
     .stats-bar { padding:16px 20px; gap:12px; }
     .stats-bar-divider { display:none; }
     .stats-bar-item:last-child { display:none; }
@@ -168,10 +179,11 @@
     .main-layout.filters-open > .sidebar { display:block; }
     .dealer-card { padding:20px 16px; }
     .dealer-name { font-size:16px; }
+    .dealer-card-header { gap:10px; }
+    .dealer-distance { font-size:8px; padding:3px 7px; }
     .results-area { padding:16px !important; }
+    .results-band-label { padding:16px 16px 10px; }
     .map-section { padding:48px 20px; }
-    .world-map-container { padding:20px; }
-    .map-dot-label { display:none; }
     .submit-cta { padding:32px 20px; }
     footer { padding:24px 20px; flex-direction:column; align-items:flex-start; }
     .suggestion-item { padding:14px 20px; font-size:14px; }
@@ -211,11 +223,13 @@
     <button class="filter-btn" onclick="filterType('grey',this)">Grey Market</button>
     <button class="filter-btn" onclick="filterType('online',this)">Online Platforms</button>
     <button class="filter-btn" onclick="filterType('auction',this)">Auction Houses</button>
+    <button class="nearest-btn" id="nearestBtn" onclick="toggleNearest()">Sort by nearest</button>
   </div>
+  <p class="geo-note" id="geoNote"></p>
 </div>
 
 <div class="stats-bar">
-  <div class="stats-bar-item"><span class="stats-bar-num" id="dealerCount">56</span><span>Verified Sources</span></div>
+  <div class="stats-bar-item"><span class="stats-bar-num" id="dealerCount">54</span><span>Verified Sources</span></div>
   <div class="stats-bar-divider"></div>
   <div class="stats-bar-item"><span class="stats-bar-num">Global</span><span>Reach</span></div>
   <div class="stats-bar-divider"></div>
@@ -259,8 +273,8 @@
 
   <div class="results-area">
     <div class="results-header">
-      <p class="results-count">Showing <span id="resultCount">56</span> sources worldwide</p>
-      <select class="sort-select" onchange="sortDealers(this.value)">
+      <p class="results-count">Showing <span id="resultCount">54</span> sources worldwide</p>
+      <select class="sort-select" id="sortSelect" onchange="sortDealers(this.value)">
         <option value="recommended">Recommended</option>
         <option value="region">By Region</option>
         <option value="az">A — Z</option>
@@ -302,8 +316,6 @@ var dealers = [
   {name:"Watchfinder & Co.",type:"online",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","IWC","Omega"],desc:"The UK's premier pre-owned luxury watch specialist. Fully authenticated, certified and warrantied.",rating:4.8,url:"https://www.watchfinder.co.uk/watches",affiliate:false},
   {name:"The 1916 Company",type:"online",region:"usa",city:"Philadelphia, USA",brands:["Rolex","Audemars Piguet","Patek Philippe","Richard Mille"],desc:"The global leader in pre-owned luxury watches (formerly WatchBox), with white-glove service and full authentication. An authorised Rolex Certified Pre-Owned dealer.",rating:4.8,url:"https://www.the1916company.com/collections/all-watches",affiliate:false},
   {name:"Bob's Watches",type:"online",region:"usa",city:"Huntington Beach, USA",brands:["Rolex"],desc:"The world's largest Rolex-only exchange. Transparent pricing and verified authentication on every piece.",rating:4.7,url:"https://www.bobswatches.com/rolex/",affiliate:false},
-  {name:"Crown & Caliber",type:"online",region:"usa",city:"Atlanta, USA",brands:["Rolex","Audemars Piguet","Patek Philippe","Omega"],desc:"Certified pre-owned luxury watches with a 24-month warranty. Buy and sell with full confidence.",rating:4.7,url:"https://www.crownandcaliber.com",affiliate:false},
-  {name:"Watchmaster",type:"online",region:"europe",city:"Berlin, Germany",brands:["Rolex","IWC","Omega","Breitling"],desc:"Europe's premium online pre-owned watch platform. Certified quality, transparent pricing throughout.",rating:4.6,url:"https://www.watchmaster.com",affiliate:false},
   {name:"Xupes",type:"online",region:"uk",city:"Hertfordshire, UK",brands:["Rolex","Patek Philippe","Audemars Piguet","Cartier"],desc:"UK-based luxury goods specialist with a strong watch offering. Authenticated and insured delivery.",rating:4.7,url:"https://www.xupes.com/watches",affiliate:false},
   {name:"Farfetch Watches",type:"online",region:"global",city:"Global Platform",brands:["Audemars Piguet","Richard Mille","Hublot","Cartier"],desc:"Global luxury fashion platform with a curated watch offering from the world's finest boutiques.",rating:4.5,url:"https://www.farfetch.com/shopping/men/watches-1/items.aspx",affiliate:false},
   {name:"Mr Porter Watches",type:"online",region:"global",city:"Global Platform",brands:["IWC","Omega","TAG Heuer","Longines"],desc:"The world's premier men's luxury platform. A curated edit of the finest watch references.",rating:4.7,url:"https://www.mrporter.com/en-gb/mens/accessories/watches",affiliate:false},
@@ -358,6 +370,14 @@ var dealers = [
   {name:"Patek Philippe Boutique Atlanta",type:"authorised",region:"usa",city:"Atlanta, USA",brands:["Patek Philippe"],desc:"Atlanta's exclusive Patek Philippe boutique by Brown & Co. Jewelers in Buckhead Village — an authorised Patek Philippe retailer.",rating:4.8,url:"https://patekboutiqueatlanta.com",affiliate:false},
   {name:"Al Manara International Jewellery",type:"authorised",region:"me",city:"Abu Dhabi, UAE",brands:["Patek Philippe","Rolex"],desc:"Official Patek Philippe retailer in Abu Dhabi, offering authorised sales and expert service for fine Swiss timepieces.",rating:4.7,url:"https://www.patek.com/en/points-of-sale/middle-east/united-arab-emirates/abu-dhabi/al-manara-international-jewellery",affiliate:false}
 ];
+
+// --- GEO METADATA (added 13 Jun 2026): merge locType + verified city-centre coords by name ---
+var GEO = {"Chrono24": {"locType": "online","coords": null},"Watchfinder & Co.": {"locType": "pinned","coords": [51.5074,-0.1278]},"The 1916 Company": {"locType": "pinned","coords": [39.9526,-75.1652]},"Bob's Watches": {"locType": "pinned","coords": [33.6595,-117.9988]},"Xupes": {"locType": "pinned","coords": [51.8098,-0.2377]},"Farfetch Watches": {"locType": "online","coords": null},"Mr Porter Watches": {"locType": "online","coords": null},"WatchU Seek Market": {"locType": "online","coords": null},"Phillips Auction House": {"locType": "pinned","coords": [46.2044,6.1432]},"Sotheby's Watches": {"locType": "multi","coords": null},"Christie's Watches": {"locType": "multi","coords": null},"Antiquorum": {"locType": "pinned","coords": [46.2044,6.1432]},"Watches of Knightsbridge": {"locType": "pinned","coords": [51.5074,-0.1278]},"Bonhams Watches": {"locType": "multi","coords": null},"Heritage Auctions": {"locType": "multi","coords": null},"Doyle New York": {"locType": "pinned","coords": [40.7128,-74.006]},"RS Chrono": {"locType": "pinned","coords": [40.7128,-74.006]},"Swiss Watch Expo": {"locType": "pinned","coords": [33.749,-84.388]},"Wrist Aficionado": {"locType": "pinned","coords": [40.7128,-74.006]},"Luxury Of Watches": {"locType": "pinned","coords": [34.0522,-118.2437]},"Analog/Shift": {"locType": "pinned","coords": [40.7128,-74.006]},"Chronopassion": {"locType": "pinned","coords": [48.8566,2.3522]},"RABAT": {"locType": "pinned","coords": [41.3874,2.1686]},"WatchCraze": {"locType": "pinned","coords": [-33.8688,151.2093]},"Ginza Rasin": {"locType": "pinned","coords": [35.6762,139.6503]},"The Watch Meister": {"locType": "pinned","coords": [25.2048,55.2708]},"David Duggan Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Watch Centre": {"locType": "pinned","coords": [51.5074,-0.1278]},"Beyer Chronometrie": {"locType": "pinned","coords": [47.3769,8.5417]},"Bucherer": {"locType": "pinned","coords": [47.0502,8.3093]},"Wempe": {"locType": "pinned","coords": [53.5511,9.9937]},"Geneva Watch Company": {"locType": "pinned","coords": [46.2044,6.1432]},"Dubail Paris": {"locType": "pinned","coords": [48.8566,2.3522]},"Watches of Switzerland": {"locType": "multi","coords": null},"Harrods Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Selfridges Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Goldsmiths": {"locType": "multi","coords": null},"Mappin & Webb": {"locType": "multi","coords": null},"Pisa 1940": {"locType": "pinned","coords": [45.4642,9.19]},"European Watch Company": {"locType": "pinned","coords": [42.3601,-71.0589]},"Manfredi Jewels": {"locType": "pinned","coords": [41.0262,-73.6282]},"Cellini Jewelers": {"locType": "pinned","coords": [40.7128,-74.006]},"Westime": {"locType": "pinned","coords": [34.0522,-118.2437]},"Long's Jewelers": {"locType": "pinned","coords": [42.3601,-71.0589]},"The Hour Glass": {"locType": "multi","coords": null},"Cortina Watch": {"locType": "multi","coords": null},"Kapoor Watch Co.": {"locType": "pinned","coords": [28.6139,77.209]},"Ahmed Seddiqi & Sons": {"locType": "pinned","coords": [25.2048,55.2708]},"Rivoli Group": {"locType": "multi","coords": null},"TIVOL": {"locType": "pinned","coords": [39.0997,-94.5786]},"Meierotto Jewelers": {"locType": "pinned","coords": [39.0997,-94.5786]},"Grand Caliber": {"locType": "pinned","coords": [32.7767,-96.797]},"Patek Philippe Boutique Atlanta": {"locType": "pinned","coords": [33.749,-84.388]},"Al Manara International Jewellery": {"locType": "pinned","coords": [24.4539,54.3773]}};
+dealers.forEach(function(d){
+  var g = GEO[d.name];
+  if (g) { d.locType = g.locType; d.coords = g.coords; }
+  else   { d.locType = "multi"; d.coords = null; }   // safe fallback: never fake a pin
+});
 
 var brandSuggestions = [
   {name:"Rolex", cat:"Brand"},
@@ -425,6 +445,10 @@ var filteredDealers = dealers.slice();
 var currentType = 'all';
 var activeFilters = {region:[],brand:[],price:[],condition:[]};
 
+// --- NEAREST-MODE state ---
+var nearestMode = false;
+var userPos = null;   // {lat, lon} once geolocation resolves
+
 var brandMap = {
   rolex:'Rolex', patek:'Patek Philippe', ap:'Audemars Piguet',
   rm:'Richard Mille', cartier:'Cartier', omega:'Omega',
@@ -439,6 +463,21 @@ var activeSuggestionIndex = -1;
 var currentMatches = [];
 
 function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// Haversine — great-circle distance in km between two lat/lon points
+function haversineKm(lat1, lon1, lat2, lon2) {
+  var R = 6371, toRad = function(x){ return x * Math.PI / 180; };
+  var dLat = toRad(lat2 - lat1), dLon = toRad(lon2 - lon1);
+  var a = Math.sin(dLat/2)*Math.sin(dLat/2) +
+          Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)*Math.sin(dLon/2);
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+function formatKm(km){
+  if (km < 15) return 'In your city';
+  if (km < 100) return Math.round(km/5)*5 + ' km away';
+  if (km < 1000) return Math.round(km/10)*10 + ' km away';
+  return (Math.round(km/50)*50).toLocaleString() + ' km away';
+}
 
 function showSuggestions(query) {
   var q = query.toLowerCase().trim();
@@ -524,6 +563,65 @@ function updateFilterSummary(list, searchTerm) {
   summaryEl.classList.add('visible');
 }
 
+function cardHtml(d, searchTerm, activeBrandNames) {
+  var matchingBrands = [];
+  d.brands.forEach(function(b) {
+    var bl = b.toLowerCase();
+    if (searchTerm && bl.indexOf(searchTerm) > -1) matchingBrands.push(b);
+    activeBrandNames.forEach(function(abn) {
+      if (bl.indexOf(abn) > -1 && matchingBrands.indexOf(b) === -1) matchingBrands.push(b);
+    });
+  });
+  var brandHighlight = matchingBrands.length > 0
+    ? '<div class="brand-match">✦ ' + matchingBrands.join(' & ') + ' available here</div>'
+    : '';
+  var typeLabel = d.type === 'authorised' ? 'Authorised Dealer'
+                : d.type === 'grey'       ? 'Grey Market'
+                : d.type === 'online'     ? 'Online Platform'
+                : 'Auction House';
+  var brandTags = '';
+  d.brands.slice(0,4).forEach(function(b) {
+    var isMatch = (searchTerm && b.toLowerCase().indexOf(searchTerm) > -1) ||
+                  activeBrandNames.some(function(abn){ return b.toLowerCase().indexOf(abn) > -1; });
+    brandTags += '<span class="dealer-brand-tag' + (isMatch ? ' brand-match-tag' : '') + '">' + b + '</span>';
+  });
+  // distance chip — only when in nearest-mode AND this dealer is pinned with a computed distance
+  var distanceChip = '';
+  if (nearestMode && typeof d._dist === 'number') {
+    distanceChip = '<span class="dealer-distance">' + formatKm(d._dist) + '</span>';
+  }
+  return '<a class="dealer-card" href="' + d.url + '" target="_blank" rel="noopener noreferrer">'
+       + brandHighlight
+       + '<div class="dealer-card-header">'
+       + '<span class="dealer-type ' + d.type + '">' + typeLabel + '</span>'
+       + distanceChip
+       + '</div>'
+       + '<h3 class="dealer-name">' + d.name + '</h3>'
+       + '<p class="dealer-location">' + d.city + '</p>'
+       + '<div class="dealer-brands">' + brandTags + '</div>'
+       + '<p class="dealer-desc">' + d.desc + '</p>'
+       + '<div class="dealer-footer">'
+       + '<span class="dealer-region">' + d.region.toUpperCase() + (d.affiliate ? ' &middot; Partner' : '') + '</span>'
+       + '<span class="dealer-link">Check availability</span>'
+       + '</div>'
+       + '</a>';
+}
+
+function animateCards() {
+  var cards = document.querySelectorAll('.dealer-card');
+  for (var c = 0; c < cards.length; c++) {
+    (function(card, idx) {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      setTimeout(function() {
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease, background 0.3s';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, idx * 25);
+    })(cards[c], c);
+  }
+}
+
 function renderDealers(list) {
   var grid = document.getElementById('dealersGrid');
   document.getElementById('resultCount').textContent = list.length;
@@ -536,57 +634,22 @@ function renderDealers(list) {
   }
   var activeBrandNames = activeFilters.brand.map(function(b){ return (brandMap[b]||b).toLowerCase(); });
   var html = '';
-  for (var i = 0; i < list.length; i++) {
-    var d = list[i];
-    var matchingBrands = [];
-    d.brands.forEach(function(b) {
-      var bl = b.toLowerCase();
-      if (searchTerm && bl.indexOf(searchTerm) > -1) matchingBrands.push(b);
-      activeBrandNames.forEach(function(abn) {
-        if (bl.indexOf(abn) > -1 && matchingBrands.indexOf(b) === -1) matchingBrands.push(b);
-      });
-    });
-    var brandHighlight = matchingBrands.length > 0
-      ? '<div class="brand-match">✦ ' + matchingBrands.join(' & ') + ' available here</div>'
-      : '';
-    var typeLabel = d.type === 'authorised' ? 'Authorised Dealer'
-                  : d.type === 'grey'       ? 'Grey Market'
-                  : d.type === 'online'     ? 'Online Platform'
-                  : 'Auction House';
-    var brandTags = '';
-    d.brands.slice(0,4).forEach(function(b) {
-      var isMatch = (searchTerm && b.toLowerCase().indexOf(searchTerm) > -1) ||
-                    activeBrandNames.some(function(abn){ return b.toLowerCase().indexOf(abn) > -1; });
-      brandTags += '<span class="dealer-brand-tag' + (isMatch ? ' brand-match-tag' : '') + '">' + b + '</span>';
-    });
-    html += '<a class="dealer-card" href="' + d.url + '" target="_blank" rel="noopener noreferrer">'
-          + brandHighlight
-          + '<div class="dealer-card-header">'
-          + '<span class="dealer-type ' + d.type + '">' + typeLabel + '</span>'
-          + '</div>'
-          + '<h3 class="dealer-name">' + d.name + '</h3>'
-          + '<p class="dealer-location">' + d.city + '</p>'
-          + '<div class="dealer-brands">' + brandTags + '</div>'
-          + '<p class="dealer-desc">' + d.desc + '</p>'
-          + '<div class="dealer-footer">'
-          + '<span class="dealer-region">' + d.region.toUpperCase() + (d.affiliate ? ' &middot; Partner' : '') + '</span>'
-          + '<span class="dealer-link">Check availability</span>'
-          + '</div>'
-          + '</a>';
+
+  if (nearestMode && userPos) {
+    // split: pinned (with distance) first, then a labelled band of online/multi
+    var pinned = list.filter(function(d){ return d.locType === 'pinned' && typeof d._dist === 'number'; });
+    var elsewhere = list.filter(function(d){ return !(d.locType === 'pinned' && typeof d._dist === 'number'); });
+    pinned.forEach(function(d){ html += cardHtml(d, searchTerm, activeBrandNames); });
+    if (elsewhere.length > 0) {
+      html += '<div class="results-band-label"><div class="rb-title">Online &amp; multi-location</div>'
+            + '<div class="rb-sub">Available wherever you are — these sources aren’t tied to one city.</div></div>';
+      elsewhere.forEach(function(d){ html += cardHtml(d, searchTerm, activeBrandNames); });
+    }
+  } else {
+    list.forEach(function(d){ html += cardHtml(d, searchTerm, activeBrandNames); });
   }
   grid.innerHTML = html;
-  var cards = document.querySelectorAll('.dealer-card');
-  for (var c = 0; c < cards.length; c++) {
-    (function(card, idx) {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(16px)';
-      setTimeout(function() {
-        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease, background 0.3s';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-      }, idx * 30);
-    })(cards[c], c);
-  }
+  animateCards();
 }
 
 window.filterType = function(type, btn) {
@@ -621,11 +684,78 @@ window.clearFilter = function(group) {
 };
 
 window.sortDealers = function(by) {
+  // explicit dropdown sort exits nearest-mode's automatic ordering but keeps distances if present
   var sorted = filteredDealers.slice();
   if (by === 'az') sorted.sort(function(a,b){ return a.name.localeCompare(b.name); });
   else if (by === 'region') sorted.sort(function(a,b){ return a.region.localeCompare(b.region); });
   renderDealers(sorted);
 };
+
+// --- NEAREST-MODE: geolocation handling ---
+var geoNote = document.getElementById('geoNote');
+var nearestBtn = document.getElementById('nearestBtn');
+
+function setGeoNote(msg, isError) {
+  geoNote.textContent = msg || '';
+  geoNote.classList.toggle('error', !!isError);
+}
+
+window.toggleNearest = function() {
+  if (nearestMode) {
+    // turn OFF -> back to default global ordering
+    nearestMode = false;
+    userPos = null;
+    nearestBtn.classList.remove('active');
+    nearestBtn.textContent = 'Sort by nearest';
+    setGeoNote('');
+    dealers.forEach(function(d){ delete d._dist; });
+    applyFilters();
+    return;
+  }
+  if (!('geolocation' in navigator)) {
+    setGeoNote('Location isn’t available on this device — showing all sources. Use Region filters to narrow by area.', true);
+    return;
+  }
+  nearestBtn.classList.add('locating');
+  nearestBtn.textContent = 'Locating…';
+  setGeoNote('Asking your browser for location…');
+  navigator.geolocation.getCurrentPosition(
+    function(pos) {
+      userPos = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+      nearestMode = true;
+      nearestBtn.classList.remove('locating');
+      nearestBtn.classList.add('active');
+      nearestBtn.textContent = '◎ Nearest to you ✓';
+      // reset the dropdown so it doesn't fight the nearest ordering
+      var sel = document.getElementById('sortSelect'); if (sel) sel.value = 'recommended';
+      computeDistances();
+      applyFilters();
+      setGeoNote('Sorted by distance from your location. Nearest physical sources first; online and multi-location sources follow.');
+      setTimeout(function(){
+        var bar = document.querySelector('.stats-bar');
+        if (bar) bar.scrollIntoView({behavior:'smooth'});
+      }, 150);
+    },
+    function(err) {
+      nearestBtn.classList.remove('locating');
+      nearestBtn.textContent = 'Sort by nearest';
+      if (err.code === 1) setGeoNote('No problem — location stayed private. Showing all sources; use Region filters to narrow by area.', true);
+      else setGeoNote('Couldn’t get your location just now — showing all sources. Use Region filters to narrow by area.', true);
+    },
+    { enableHighAccuracy:false, timeout:9000, maximumAge:600000 }
+  );
+};
+
+function computeDistances() {
+  if (!userPos) return;
+  dealers.forEach(function(d){
+    if (d.locType === 'pinned' && d.coords) {
+      d._dist = haversineKm(userPos.lat, userPos.lon, d.coords[0], d.coords[1]);
+    } else {
+      delete d._dist;
+    }
+  });
+}
 
 function applyFilters() {
   var list = dealers.slice();
@@ -648,6 +778,14 @@ function applyFilters() {
           || d.city.toLowerCase().indexOf(search) > -1
           || d.brands.some(function(b){ return b.toLowerCase().indexOf(search) > -1; })
           || d.desc.toLowerCase().indexOf(search) > -1;
+    });
+  }
+  // nearest-mode: sort pinned dealers by ascending distance (stacks ON TOP of all active filters)
+  if (nearestMode && userPos) {
+    list.sort(function(a,b){
+      var ad = (typeof a._dist === 'number') ? a._dist : Infinity;
+      var bd = (typeof b._dist === 'number') ? b._dist : Infinity;
+      return ad - bd;
     });
   }
   filteredDealers = list;
@@ -702,5 +840,6 @@ if (incomingSearch) {
 
 })();
 </script>
+
 </body>
 </html>
