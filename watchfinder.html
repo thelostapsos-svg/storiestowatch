@@ -347,8 +347,8 @@
 var dealers = [
   {name:"Chrono24",type:"online",region:"global",city:"Global Platform",brands:["Rolex","Patek Philippe","Audemars Piguet","All Brands"],desc:"The world's largest luxury watch marketplace with over 500,000 watches from verified dealers worldwide.",rating:4.9,url:"https://www.chrono24.com/search/browse.htm",search:"https://www.chrono24.com/search/index.htm?dosearch=true&query={q}",affiliate:false},
   {name:"Watchfinder & Co.",type:"online",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","IWC","Omega"],desc:"The UK's premier pre-owned luxury watch specialist. Fully authenticated, certified and warrantied.",rating:4.8,url:"https://www.watchfinder.co.uk/watches",search:"https://www.watchfinder.co.uk/search?q={q}",affiliate:false},
-  {name:"The 1916 Company",type:"online",region:"usa",city:"Philadelphia, USA",brands:["Rolex","Audemars Piguet","Patek Philippe","Richard Mille"],desc:"The global leader in pre-owned luxury watches (formerly WatchBox), with white-glove service and full authentication. An authorised Rolex Certified Pre-Owned dealer.",rating:4.8,url:"https://www.the1916company.com/pre-owned/",affiliate:false},
-  {name:"Bob's Watches",type:"online",region:"usa",city:"Huntington Beach, USA",brands:["Rolex"],desc:"The world's largest Rolex-only exchange. Transparent pricing and verified authentication on every piece.",rating:4.7,url:"https://www.bobswatches.com/rolex/",search:"https://www.bobswatches.com/catalogsearch/result/?q={q}",affiliate:false},
+  {search:"https://www.the1916company.com/search/pre-owned/?q={q}",name:"The 1916 Company",type:"online",region:"usa",city:"Philadelphia, USA",brands:["Rolex","Audemars Piguet","Patek Philippe","Richard Mille"],desc:"The global leader in pre-owned luxury watches (formerly WatchBox), with white-glove service and full authentication. An authorised Rolex Certified Pre-Owned dealer.",rating:4.8,brandMap:{"rolex":"https://www.the1916company.com/rolex/rolex-collection/","patek":"https://www.the1916company.com/patek-philippe/","cartier":"https://www.the1916company.com/pre-owned/cartier/","audemars":"https://www.the1916company.com/search/pre-owned/?q=Audemars%20Piguet","richard mille":"https://www.the1916company.com/search/pre-owned/?q=Richard%20Mille"},url:"https://www.the1916company.com/pre-owned/",affiliate:false},
+  {name:"Bob's Watches",type:"online",region:"usa",city:"Huntington Beach, USA",brands:["Rolex"],desc:"The world's largest Rolex-only exchange. Transparent pricing and verified authentication on every piece.",rating:4.7,url:"https://www.bobswatches.com/rolex/",affiliate:false},
   {name:"Xupes",type:"online",region:"uk",city:"Hertfordshire, UK",brands:["Rolex","Patek Philippe","Audemars Piguet","Cartier"],desc:"UK-based luxury goods specialist with a strong watch offering. Authenticated and insured delivery.",rating:4.7,url:"https://www.chrono24.com/search/browse.htm",affiliate:false},
   {name:"Farfetch Watches",type:"online",region:"global",city:"Global Platform",brands:["Audemars Piguet","Richard Mille","Hublot","Cartier"],desc:"Global luxury fashion platform with a curated watch offering from the world's finest boutiques.",rating:4.5,url:"https://www.farfetch.com",affiliate:false},
   {name:"Mr Porter Watches",type:"online",region:"global",city:"Global Platform",brands:["IWC","Omega","TAG Heuer","Longines"],desc:"The world's premier men's luxury platform. A curated edit of the finest watch references.",rating:4.7,url:"https://www.mrporter.com/en-gb/mens/accessories/watches",affiliate:false},
@@ -597,16 +597,25 @@ function updateFilterSummary(list, searchTerm) {
 }
 
 function dealerLink(d, searchTerm) {
-  // If the dealer has a verified search-URL template and the user searched a real term,
-  // build a deep link straight to that dealer's search results. {q} is replaced with the
-  // URL-encoded term. Otherwise return the dealer's normal landing URL (today's behaviour).
-  if (d.search && searchTerm && searchTerm.trim().length > 1) {
+  var t = (searchTerm || '').trim().toLowerCase();
+  // 1. brandMap: most streamlined — if the search matches a brand this dealer has a
+  //    dedicated page for, land the user straight on that brand page (verified URLs only).
+  if (d.brandMap && t.length > 1) {
+    for (var key in d.brandMap) {
+      if (d.brandMap.hasOwnProperty(key) && t.indexOf(key) > -1) {
+        return d.brandMap[key];
+      }
+    }
+  }
+  // 2. search template: dealer has a universal search URL ({q} = the term).
+  if (d.search && t.length > 1) {
     try {
       return d.search.replace('{q}', encodeURIComponent(searchTerm.trim()));
     } catch (e) {
       return d.url;
     }
   }
+  // 3. fallback: the dealer's normal landing URL (never 404s).
   return d.url;
 }
 
