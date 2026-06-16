@@ -98,6 +98,22 @@
   .sort-select { background:var(--surface); border:1px solid rgba(201,168,76,0.2); color:var(--text-dim); font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.2em; padding:8px 16px; outline:none; text-transform:uppercase; }
 
   .dealers-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:2px; background:var(--surface2); }
+
+  /* Featured Partner card — visually distinct from neutral grid, clearly a paid placement */
+  .featured-partner { display:block; text-decoration:none; background:linear-gradient(135deg, rgba(201,168,76,0.10), rgba(201,168,76,0.03)); border:1.5px solid rgba(201,168,76,0.45); padding:0; margin:0 0 18px; position:relative; transition:border-color 0.3s, background 0.3s; }
+  .featured-partner:hover { border-color:var(--gold); background:linear-gradient(135deg, rgba(201,168,76,0.16), rgba(201,168,76,0.05)); }
+  .fp-label { position:absolute; top:-1px; left:20px; background:var(--gold); color:var(--black); font-size:8px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; padding:5px 12px; }
+  .fp-body { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:34px 28px 12px; flex-wrap:wrap; }
+  .fp-main { flex:1; min-width:240px; }
+  .fp-name { font-family:'Cinzel',serif; font-size:22px; color:var(--gold-light); margin:0 0 8px; letter-spacing:0.04em; }
+  .fp-desc { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text-body, #C8C4B8); line-height:1.5; margin:0 0 8px; }
+  .fp-code { font-size:11px; color:var(--text-dim); letter-spacing:0.08em; margin:0; }
+  .fp-code strong { color:var(--gold); }
+  .fp-cta { font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold-dim, #8B6914); padding:13px 24px; white-space:nowrap; flex-shrink:0; transition:all 0.3s; }
+  .featured-partner:hover .fp-cta { background:var(--gold); color:var(--black); }
+  .fp-disclosure { font-size:10px; line-height:1.5; color:var(--text-dim); letter-spacing:0.04em; margin:0; padding:0 28px 22px; }
+  @media (max-width:480px){ .fp-body{ padding:32px 18px 12px; } .fp-cta{ width:100%; text-align:center; box-sizing:border-box; } .fp-disclosure{ padding:0 18px 20px; } }
+
   /* band divider between pinned (nearby) results and online/multi in nearest-mode */
   .results-band-label { grid-column:1/-1; background:var(--deep); border-top:1px solid rgba(201,168,76,0.18); padding:20px 24px 14px; margin-top:2px; }
   .results-band-label .rb-title { font-size:9px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; display:flex; align-items:center; gap:10px; }
@@ -281,6 +297,23 @@
       </select>
     </div>
     <div class="filter-summary" id="filterSummary"></div>
+
+    <!-- FEATURED PARTNER — labelled, separate from the neutral grid below.
+         This is an affiliate partner placement, clearly marked as such. It is NOT part of
+         the verified/curated ranking, which stays neutral and unbought in the grid below. -->
+    <a id="featuredPartner" class="featured-partner" href="https://www.rschrono.com/ashish54" target="_blank" rel="noopener sponsored">
+      <div class="fp-label">★ Featured Partner</div>
+      <div class="fp-body">
+        <div class="fp-main">
+          <h3 class="fp-name">RS Chrono</h3>
+          <p class="fp-desc">Our verified grey-market partner — strong inventory across Rolex, Patek Philippe, AP and more, with competitive pricing.</p>
+          <p class="fp-code">Use code <strong>ASHISH1011334177</strong> for exclusive savings</p>
+        </div>
+        <span class="fp-cta">Visit RS Chrono →</span>
+      </div>
+      <p class="fp-disclosure">Affiliate partner. We may earn a commission if you buy through this link, at no extra cost to you. This is a paid partnership and is shown separately from our neutral, unbought verified-source rankings below.</p>
+    </a>
+
     <div class="dealers-grid" id="dealersGrid"></div>
 
     <div style="background:var(--surface);border:1px solid rgba(201,168,76,0.15);padding:40px;margin:40px 0;position:relative;">
@@ -317,16 +350,16 @@ var dealers = [
   {name:"The 1916 Company",type:"online",region:"usa",city:"Philadelphia, USA",brands:["Rolex","Audemars Piguet","Patek Philippe","Richard Mille"],desc:"The global leader in pre-owned luxury watches (formerly WatchBox), with white-glove service and full authentication. An authorised Rolex Certified Pre-Owned dealer.",rating:4.8,url:"https://www.the1916company.com/pre-owned/",affiliate:false},
   {name:"Bob's Watches",type:"online",region:"usa",city:"Huntington Beach, USA",brands:["Rolex"],desc:"The world's largest Rolex-only exchange. Transparent pricing and verified authentication on every piece.",rating:4.7,url:"https://www.bobswatches.com/rolex/",search:"https://www.bobswatches.com/catalogsearch/result/?q={q}",affiliate:false},
   {name:"Xupes",type:"online",region:"uk",city:"Hertfordshire, UK",brands:["Rolex","Patek Philippe","Audemars Piguet","Cartier"],desc:"UK-based luxury goods specialist with a strong watch offering. Authenticated and insured delivery.",rating:4.7,url:"https://www.chrono24.com/search/browse.htm",affiliate:false},
-  {name:"Farfetch Watches",type:"online",region:"global",city:"Global Platform",brands:["Audemars Piguet","Richard Mille","Hublot","Cartier"],desc:"Global luxury fashion platform with a curated watch offering from the world's finest boutiques.",rating:4.5,url:"https://www.farfetch.com/shopping/watches-2/items.aspx",affiliate:false},
+  {name:"Farfetch Watches",type:"online",region:"global",city:"Global Platform",brands:["Audemars Piguet","Richard Mille","Hublot","Cartier"],desc:"Global luxury fashion platform with a curated watch offering from the world's finest boutiques.",rating:4.5,url:"https://www.farfetch.com",affiliate:false},
   {name:"Mr Porter Watches",type:"online",region:"global",city:"Global Platform",brands:["IWC","Omega","TAG Heuer","Longines"],desc:"The world's premier men's luxury platform. A curated edit of the finest watch references.",rating:4.7,url:"https://www.mrporter.com/en-gb/mens/accessories/watches",affiliate:false},
   {name:"WatchU Seek Market",type:"online",region:"global",city:"Global Platform",brands:["Vintage","All Brands","Collector"],desc:"The collector's marketplace. Peer-to-peer trading platform for serious watch enthusiasts worldwide.",rating:4.4,url:"https://www.watchuseek.com",affiliate:false},
 
   {name:"Phillips Auction House",type:"auction",region:"europe",city:"Geneva, Switzerland",brands:["Patek Philippe","Rolex","Audemars Piguet","Vintage"],desc:"The world's leading watch auction house. Quarterly sales of the finest timepieces with global collector reach.",rating:5.0,url:"https://www.phillips.com/watches",affiliate:false},
   {name:"Sotheby's Watches",type:"auction",region:"europe",city:"Geneva / London / NYC",brands:["Patek Philippe","Rolex","Cartier","Vintage"],desc:"World-class watch auctions spanning Geneva, London and New York. Records broken at every sale.",rating:5.0,url:"https://www.sothebys.com/en/departments/watches",affiliate:false},
-  {name:"Christie's Watches",type:"auction",region:"europe",city:"Geneva / London / NYC",brands:["Rolex","Patek Philippe","Audemars Piguet","Historical"],desc:"Christie's prestigious watch department offering the finest timepieces from private collections worldwide.",rating:5.0,url:"https://www.christies.com/en/departments/watches",affiliate:false},
+  {name:"Christie's Watches",type:"auction",region:"europe",city:"Geneva / London / NYC",brands:["Rolex","Patek Philippe","Audemars Piguet","Historical"],desc:"Christie's prestigious watch department offering the finest timepieces from private collections worldwide.",rating:5.0,url:"https://www.christies.com",affiliate:false},
   {name:"Antiquorum",type:"auction",region:"europe",city:"Geneva, Switzerland",brands:["Vintage","Patek Philippe","Rolex","Independent"],desc:"The world's first specialist watch auctioneer. Unrivalled expertise in vintage and complicated timepieces.",rating:4.8,url:"https://www.antiquorum.swiss",affiliate:false},
   {name:"Watches of Knightsbridge",type:"auction",region:"uk",city:"London, UK",brands:["Vintage","Rolex","Patek Philippe","Independent"],desc:"London's specialist watch auction house. Regular sales of vintage and modern timepieces.",rating:4.7,url:"https://www.watchesofknightsbridge.com",affiliate:false},
-  {name:"Bonhams Watches",type:"auction",region:"uk",city:"London / Hong Kong",brands:["Vintage","Patek Philippe","Rolex","Audemars Piguet"],desc:"Bonhams' prestigious watch department offering curated sales in London and Hong Kong.",rating:4.7,url:"https://www.bonhams.com/category/W/watches/",affiliate:false},
+  {name:"Bonhams Watches",type:"auction",region:"uk",city:"London / Hong Kong",brands:["Vintage","Patek Philippe","Rolex","Audemars Piguet"],desc:"Bonhams' prestigious watch department offering curated sales in London and Hong Kong.",rating:4.7,url:"https://www.bonhams.com",affiliate:false},
   {name:"Heritage Auctions",type:"auction",region:"usa",city:"Dallas / New York",brands:["Vintage","Rolex","Patek Philippe"],desc:"America's largest collectibles auction house with a strong and growing watch department.",rating:4.6,url:"https://www.ha.com/c/category.zx?saleNo=watches",affiliate:false},
   {name:"Doyle New York",type:"auction",region:"usa",city:"New York, USA",brands:["Vintage","Estate","Cartier","Independent"],desc:"New York's prestigious auction house with regular specialist watch and jewellery sales.",rating:4.6,url:"https://www.doyle.com",affiliate:false},
 
@@ -349,7 +382,7 @@ var dealers = [
   {name:"Geneva Watch Company",type:"grey",region:"europe",city:"Geneva, Switzerland",brands:["Rolex","Patek Philippe","Audemars Piguet","Vacheron Constantin"],desc:"Geneva pre-owned specialist carrying Rolex, Patek, AP and other fine Swiss references.",rating:4.6,url:"https://genevawatchco.com",affiliate:false},
   {name:"Dubail Paris",type:"authorised",region:"europe",city:"Paris, France",brands:["Cartier","Patek Philippe","Audemars Piguet","Vacheron Constantin"],desc:"One of Paris' most historic watch and jewellery maisons. Five generations of horological expertise.",rating:4.8,url:"https://www.dubail.fr",affiliate:false},
   {name:"Watches of Switzerland",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","Audemars Piguet","Cartier","Omega"],desc:"The UK's leading luxury watch retailer with boutiques across Britain and the USA.",rating:4.8,url:"https://www.watchesofswitzerland.com/en-int/collections/watches",affiliate:false},
-  {name:"Harrods Watches",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","Audemars Piguet","Cartier","Richard Mille"],desc:"Harrods' iconic watch floor — one of the world's finest authorised watch destinations.",rating:4.8,url:"https://www.harrods.com/en-gb/watches",affiliate:false},
+  {name:"Harrods Watches",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","Patek Philippe","Audemars Piguet","Cartier","Richard Mille"],desc:"Harrods' iconic watch floor — one of the world's finest authorised watch destinations.",rating:4.8,url:"https://www.harrods.com",affiliate:false},
   {name:"Selfridges Watches",type:"authorised",region:"uk",city:"London, UK",brands:["Rolex","IWC","Omega","TAG Heuer"],desc:"Selfridges' prestigious watch department. A curated selection of the finest timepieces.",rating:4.6,url:"https://www.selfridges.com/GB/en/cat/watches/",affiliate:false},
   {name:"Goldsmiths",type:"authorised",region:"uk",city:"UK Nationwide",brands:["Rolex","TAG Heuer","Omega","Breitling"],desc:"The UK's leading jewellers with authorised watch boutiques nationwide. Trusted for over a century.",rating:4.5,url:"https://www.goldsmiths.co.uk",affiliate:false},
   {name:"Mappin & Webb",type:"authorised",region:"uk",city:"London / UK",brands:["Rolex","IWC","Omega","Cartier"],desc:"Britain's royal jewellers since 1775. Authorised dealer for the finest Swiss timepieces.",rating:4.7,url:"https://www.mappinandwebb.com",affiliate:false},
@@ -646,6 +679,13 @@ function renderDealers(list) {
   document.getElementById('dealerCount').textContent = list.length;
   var searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
   updateFilterSummary(list, searchTerm);
+  // Update Featured Partner (RS Chrono) link to deep-search the user's term where present.
+  var fp = document.getElementById('featuredPartner');
+  if (fp) {
+    fp.href = (searchTerm && searchTerm.length > 1)
+      ? 'https://www.rschrono.com/ashish54?s=' + encodeURIComponent(searchTerm)
+      : 'https://www.rschrono.com/ashish54';
+  }
   if (list.length === 0) {
     grid.innerHTML = '<div class="no-results"><p>No sources match your filters.</p><span>Try adjusting your search or filters above</span></div>';
     return;
