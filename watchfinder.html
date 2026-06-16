@@ -112,6 +112,11 @@
   .fp-cta { font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold-dim, #8B6914); padding:13px 24px; white-space:nowrap; flex-shrink:0; transition:all 0.3s; }
   .featured-partner:hover .fp-cta { background:var(--gold); color:var(--black); }
   .fp-disclosure { font-size:10px; line-height:1.5; color:var(--text-dim); letter-spacing:0.04em; margin:0; padding:0 28px 22px; }
+  .fp-badge { position:absolute; top:-1px; right:0; background:var(--gold); color:var(--black); padding:7px 14px 6px; text-align:center; line-height:1; }
+  .fp-badge { font-family:'Cinzel',serif; font-size:15px; font-weight:600; letter-spacing:0.02em; }
+  .fp-badge span { display:block; font-family:'Montserrat',sans-serif; font-size:7px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; margin-top:3px; opacity:0.85; }
+  .fp-code strong { color:var(--gold); letter-spacing:0.06em; }
+  @media (max-width:480px){ .fp-badge{ font-size:13px; padding:6px 11px 5px; } .fp-badge span{ font-size:6.5px; } }
   @media (max-width:480px){ .fp-body{ padding:32px 18px 12px; } .fp-cta{ width:100%; text-align:center; box-sizing:border-box; } .fp-disclosure{ padding:0 18px 20px; } }
 
   /* band divider between pinned (nearby) results and online/multi in nearest-mode */
@@ -303,11 +308,12 @@
          the verified/curated ranking, which stays neutral and unbought in the grid below. -->
     <a id="featuredPartner" class="featured-partner" href="https://www.rschrono.com/ashish54" target="_blank" rel="noopener sponsored">
       <div class="fp-label">★ Featured Partner</div>
+      <div class="fp-badge">10% OFF<span>select watches</span></div>
       <div class="fp-body">
         <div class="fp-main">
           <h3 class="fp-name">RS Chrono</h3>
           <p class="fp-desc">Our verified grey-market partner — strong inventory across Rolex, Patek Philippe, AP and more, with competitive pricing.</p>
-          <p class="fp-code">Use code <strong>ASHISH1011334177</strong> for exclusive savings</p>
+          <p class="fp-code">Partner code: <strong>ASHISH1011334177</strong> — use at checkout for up to 10% off select watches</p>
         </div>
         <span class="fp-cta">Visit RS Chrono →</span>
       </div>
