@@ -113,25 +113,6 @@
 
   .dealers-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:2px; background:var(--surface2); }
 
-  /* Featured Partner card — visually distinct from neutral grid, clearly a paid placement */
-  .featured-partner { display:block; text-decoration:none; background:linear-gradient(135deg, rgba(201,168,76,0.10), rgba(201,168,76,0.03)); border:1.5px solid rgba(201,168,76,0.45); padding:0; margin:0 0 18px; position:relative; transition:border-color 0.3s, background 0.3s; }
-  .featured-partner:hover { border-color:var(--gold); background:linear-gradient(135deg, rgba(201,168,76,0.16), rgba(201,168,76,0.05)); }
-  .fp-label { position:absolute; top:-1px; left:20px; background:var(--gold); color:var(--black); font-size:8px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; padding:5px 12px; }
-  .fp-body { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:34px 28px 12px; flex-wrap:wrap; }
-  .fp-main { flex:1; min-width:240px; }
-  .fp-name { font-family:'Cinzel',serif; font-size:22px; color:var(--gold-light); margin:0 0 8px; letter-spacing:0.04em; }
-  .fp-desc { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text-body, #C8C4B8); line-height:1.5; margin:0 0 8px; }
-  .fp-code { font-size:11px; color:var(--text-dim); letter-spacing:0.08em; margin:0; }
-  .fp-code strong { color:var(--gold); }
-  .fp-cta { font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold-dim, #8B6914); padding:13px 24px; white-space:nowrap; flex-shrink:0; transition:all 0.3s; }
-  .featured-partner:hover .fp-cta { background:var(--gold); color:var(--black); }
-  .fp-disclosure { font-size:10px; line-height:1.5; color:var(--text-dim); letter-spacing:0.04em; margin:0; padding:0 28px 22px; }
-  .fp-badge { position:absolute; top:-1px; right:0; background:var(--gold); color:var(--black); padding:7px 14px 6px; text-align:center; line-height:1; }
-  .fp-badge { font-family:'Cinzel',serif; font-size:15px; font-weight:600; letter-spacing:0.02em; }
-  .fp-badge span { display:block; font-family:'Montserrat',sans-serif; font-size:7px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; margin-top:3px; opacity:0.85; }
-  .fp-code strong { color:var(--gold); letter-spacing:0.06em; }
-  @media (max-width:480px){ .fp-badge{ font-size:13px; padding:6px 11px 5px; } .fp-badge span{ font-size:6.5px; } }
-  @media (max-width:480px){ .fp-body{ padding:32px 18px 12px; } .fp-cta{ width:100%; text-align:center; box-sizing:border-box; } .fp-disclosure{ padding:0 18px 20px; } }
 
   /* band divider between pinned (nearby) results and online/multi in nearest-mode */
   .results-band-label { grid-column:1/-1; background:var(--deep); border-top:1px solid rgba(201,168,76,0.18); padding:20px 24px 14px; margin-top:2px; }
@@ -293,11 +274,7 @@
   <div class="stats-bar-item"><span class="stats-bar-num">All</span><span>Major Maisons</span></div>
   <div class="stats-bar-divider"></div>
   <div class="stats-bar-item"><span class="stats-bar-num">$60B+</span><span>Global Market</span></div>
-  <div class="stats-bar-divider"></div>
-  <div class="stats-bar-item" style="margin-left:auto;"><span style="font-size:8px;color:var(--gold-dim);letter-spacing:0.2em;text-transform:uppercase;">Some links are affiliate links</span></div>
 </div>
-
-<p style="max-width:760px;margin:14px auto 0;text-align:center;font-size:11px;line-height:1.6;color:var(--text-dim);">We may earn a small commission when you buy through some of the links here — <strong style="color:var(--gold-dim);">at no extra cost to you, and never at any cost to the dealer.</strong> Commissions never influence which dealers we list, how they rank, or what you pay. The directory is built on what's worth finding, not what pays us.</p>
 
 <div class="main-layout">
   <button id="filtersToggle" onclick="toggleFilters()" aria-expanded="false">⚙ Filters</button>
@@ -338,23 +315,6 @@
       </select>
     </div>
     <div class="filter-summary" id="filterSummary"></div>
-
-    <!-- FEATURED PARTNER — labelled, separate from the neutral grid below.
-         This is an affiliate partner placement, clearly marked as such. It is NOT part of
-         the verified/curated ranking, which stays neutral and unbought in the grid below. -->
-    <a id="featuredPartner" class="featured-partner" href="https://www.rschrono.com/ashish54" target="_blank" rel="noopener sponsored">
-      <div class="fp-label">★ Featured Partner</div>
-      <div class="fp-badge">10% OFF<span>select watches</span></div>
-      <div class="fp-body">
-        <div class="fp-main">
-          <h3 class="fp-name">RS Chrono</h3>
-          <p class="fp-desc">Our verified grey-market partner — strong inventory across Rolex, Patek Philippe, AP and more, with competitive pricing.</p>
-          <p class="fp-code">Partner code: <strong>ASHISH1011334177</strong> — use at checkout for up to 10% off select watches</p>
-        </div>
-        <span class="fp-cta">Visit RS Chrono →</span>
-      </div>
-      <p class="fp-disclosure">Affiliate partner. We may earn a commission if you buy through this link, at no extra cost to you. This is a paid partnership and is shown separately from our neutral, unbought verified-source rankings below.</p>
-    </a>
 
     <div class="dealers-grid" id="dealersGrid"></div>
 
@@ -405,7 +365,6 @@ var dealers = [
   {name:"Heritage Auctions",type:"auction",region:"usa",city:"Dallas / New York",brands:["Vintage","Rolex","Patek Philippe"],desc:"America's largest collectibles auction house with a strong and growing watch department.",rating:4.6,url:"https://www.ha.com/c/category.zx?saleNo=watches",affiliate:false},
   {name:"Doyle New York",type:"auction",region:"usa",city:"New York, USA",brands:["Vintage","Estate","Cartier","Independent"],desc:"New York's prestigious auction house with regular specialist watch and jewellery sales.",rating:4.6,url:"https://www.doyle.com",affiliate:false},
 
-  {name:"RS Chrono",type:"grey",region:"usa",city:"New York, USA",brands:["Rolex","Patek Philippe","Audemars Piguet","Richard Mille","Omega"],desc:"Trusted grey market specialist offering hard-to-find references at competitive prices. Full authentication guaranteed.",rating:4.7,url:"https://www.rschrono.com/ashish54",affiliate:true},
   {name:"Swiss Watch Expo",type:"grey",region:"usa",city:"Atlanta, USA",brands:["Rolex","Cartier","Omega","IWC"],desc:"Pre-owned luxury specialist with over 25 years of experience. Every watch authenticated and serviced.",rating:4.7,url:"https://www.swisswatchexpo.com/watches/",affiliate:false},
   {name:"Wrist Aficionado",type:"grey",region:"usa",city:"New York, USA",brands:["Audemars Piguet","Patek Philippe","Richard Mille","F.P. Journe"],desc:"New York's most exclusive grey market specialist. Ultra-high-end references for serious collectors.",rating:4.8,url:"https://www.wristaficionado.com",affiliate:false},
   {name:"Luxury Of Watches",type:"grey",region:"usa",city:"Los Angeles, USA",brands:["Rolex","Audemars Piguet","Patek Philippe","Hublot"],desc:"California's trusted grey market source. Competitive pricing with full authentication documentation.",rating:4.6,url:"https://www.luxuryofwatches.com",affiliate:false},
@@ -452,7 +411,7 @@ var dealers = [
 ];
 
 // --- GEO METADATA (added 13 Jun 2026): merge locType + verified city-centre coords by name ---
-var GEO = {"Chrono24": {"locType": "online","coords": null},"Watchfinder & Co.": {"locType": "pinned","coords": [51.5074,-0.1278]},"The 1916 Company": {"locType": "pinned","coords": [39.9526,-75.1652]},"Bob's Watches": {"locType": "pinned","coords": [33.6595,-117.9988]},"Xupes": {"locType": "pinned","coords": [51.8098,-0.2377]},"Farfetch Watches": {"locType": "online","coords": null},"Mr Porter Watches": {"locType": "online","coords": null},"WatchU Seek Market": {"locType": "online","coords": null},"Phillips Auction House": {"locType": "pinned","coords": [46.2044,6.1432]},"Sotheby's Watches": {"locType": "multi","coords": null},"Christie's Watches": {"locType": "multi","coords": null},"Antiquorum": {"locType": "pinned","coords": [46.2044,6.1432]},"Watches of Knightsbridge": {"locType": "pinned","coords": [51.5074,-0.1278]},"Bonhams Watches": {"locType": "multi","coords": null},"Heritage Auctions": {"locType": "multi","coords": null},"Doyle New York": {"locType": "pinned","coords": [40.7128,-74.006]},"RS Chrono": {"locType": "pinned","coords": [40.7128,-74.006]},"Swiss Watch Expo": {"locType": "pinned","coords": [33.749,-84.388]},"Wrist Aficionado": {"locType": "pinned","coords": [40.7128,-74.006]},"Luxury Of Watches": {"locType": "pinned","coords": [34.0522,-118.2437]},"Analog/Shift": {"locType": "pinned","coords": [40.7128,-74.006]},"Chronopassion": {"locType": "pinned","coords": [48.8566,2.3522]},"RABAT": {"locType": "pinned","coords": [41.3874,2.1686]},"WatchCraze": {"locType": "pinned","coords": [-33.8688,151.2093]},"Ginza Rasin": {"locType": "pinned","coords": [35.6762,139.6503]},"The Watch Meister": {"locType": "pinned","coords": [25.2048,55.2708]},"David Duggan Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Watch Centre": {"locType": "pinned","coords": [51.5074,-0.1278]},"Beyer Chronometrie": {"locType": "pinned","coords": [47.3769,8.5417]},"Bucherer": {"locType": "pinned","coords": [47.0502,8.3093]},"Wempe": {"locType": "pinned","coords": [53.5511,9.9937]},"Geneva Watch Company": {"locType": "pinned","coords": [46.2044,6.1432]},"Dubail Paris": {"locType": "pinned","coords": [48.8566,2.3522]},"Watches of Switzerland": {"locType": "multi","coords": null},"Harrods Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Selfridges Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Goldsmiths": {"locType": "multi","coords": null},"Mappin & Webb": {"locType": "multi","coords": null},"Pisa 1940": {"locType": "pinned","coords": [45.4642,9.19]},"European Watch Company": {"locType": "pinned","coords": [42.3601,-71.0589]},"Manfredi Jewels": {"locType": "pinned","coords": [41.0262,-73.6282]},"Cellini Jewelers": {"locType": "pinned","coords": [40.7128,-74.006]},"Westime": {"locType": "pinned","coords": [34.0522,-118.2437]},"Long's Jewelers": {"locType": "pinned","coords": [42.3601,-71.0589]},"The Hour Glass": {"locType": "multi","coords": null},"Cortina Watch": {"locType": "multi","coords": null},"Kapoor Watch Co.": {"locType": "pinned","coords": [28.6139,77.209]},"Ahmed Seddiqi & Sons": {"locType": "pinned","coords": [25.2048,55.2708]},"Rivoli Group": {"locType": "multi","coords": null},"TIVOL": {"locType": "pinned","coords": [39.0997,-94.5786]},"Meierotto Jewelers": {"locType": "pinned","coords": [39.0997,-94.5786]},"Grand Caliber": {"locType": "pinned","coords": [32.7767,-96.797]},"Patek Philippe Boutique Atlanta": {"locType": "pinned","coords": [33.749,-84.388]},"Al Manara International Jewellery": {"locType": "pinned","coords": [24.4539,54.3773]},"Alfardan Jewellery": {"locType": "pinned","coords": [25.2854,51.5310]},"Al Majed Jewellery": {"locType": "pinned","coords": [25.2854,51.5310]},"Oriental Watch Company": {"locType": "pinned","coords": [22.3193,114.1694]},"Time Avenue": {"locType": "pinned","coords": [19.0760,72.8777]},"First Jewelry Co.": {"locType": "pinned","coords": [24.7136,46.6753]}};
+var GEO = {"Chrono24": {"locType": "online","coords": null},"Watchfinder & Co.": {"locType": "pinned","coords": [51.5074,-0.1278]},"The 1916 Company": {"locType": "pinned","coords": [39.9526,-75.1652]},"Bob's Watches": {"locType": "pinned","coords": [33.6595,-117.9988]},"Xupes": {"locType": "pinned","coords": [51.8098,-0.2377]},"Farfetch Watches": {"locType": "online","coords": null},"Mr Porter Watches": {"locType": "online","coords": null},"WatchU Seek Market": {"locType": "online","coords": null},"Phillips Auction House": {"locType": "pinned","coords": [46.2044,6.1432]},"Sotheby's Watches": {"locType": "multi","coords": null},"Christie's Watches": {"locType": "multi","coords": null},"Antiquorum": {"locType": "pinned","coords": [46.2044,6.1432]},"Watches of Knightsbridge": {"locType": "pinned","coords": [51.5074,-0.1278]},"Bonhams Watches": {"locType": "multi","coords": null},"Heritage Auctions": {"locType": "multi","coords": null},"Doyle New York": {"locType": "pinned","coords": [40.7128,-74.006]},"Swiss Watch Expo": {"locType": "pinned","coords": [33.749,-84.388]},"Wrist Aficionado": {"locType": "pinned","coords": [40.7128,-74.006]},"Luxury Of Watches": {"locType": "pinned","coords": [34.0522,-118.2437]},"Analog/Shift": {"locType": "pinned","coords": [40.7128,-74.006]},"Chronopassion": {"locType": "pinned","coords": [48.8566,2.3522]},"RABAT": {"locType": "pinned","coords": [41.3874,2.1686]},"WatchCraze": {"locType": "pinned","coords": [-33.8688,151.2093]},"Ginza Rasin": {"locType": "pinned","coords": [35.6762,139.6503]},"The Watch Meister": {"locType": "pinned","coords": [25.2048,55.2708]},"David Duggan Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Watch Centre": {"locType": "pinned","coords": [51.5074,-0.1278]},"Beyer Chronometrie": {"locType": "pinned","coords": [47.3769,8.5417]},"Bucherer": {"locType": "pinned","coords": [47.0502,8.3093]},"Wempe": {"locType": "pinned","coords": [53.5511,9.9937]},"Geneva Watch Company": {"locType": "pinned","coords": [46.2044,6.1432]},"Dubail Paris": {"locType": "pinned","coords": [48.8566,2.3522]},"Watches of Switzerland": {"locType": "multi","coords": null},"Harrods Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Selfridges Watches": {"locType": "pinned","coords": [51.5074,-0.1278]},"Goldsmiths": {"locType": "multi","coords": null},"Mappin & Webb": {"locType": "multi","coords": null},"Pisa 1940": {"locType": "pinned","coords": [45.4642,9.19]},"European Watch Company": {"locType": "pinned","coords": [42.3601,-71.0589]},"Manfredi Jewels": {"locType": "pinned","coords": [41.0262,-73.6282]},"Cellini Jewelers": {"locType": "pinned","coords": [40.7128,-74.006]},"Westime": {"locType": "pinned","coords": [34.0522,-118.2437]},"Long's Jewelers": {"locType": "pinned","coords": [42.3601,-71.0589]},"The Hour Glass": {"locType": "multi","coords": null},"Cortina Watch": {"locType": "multi","coords": null},"Kapoor Watch Co.": {"locType": "pinned","coords": [28.6139,77.209]},"Ahmed Seddiqi & Sons": {"locType": "pinned","coords": [25.2048,55.2708]},"Rivoli Group": {"locType": "multi","coords": null},"TIVOL": {"locType": "pinned","coords": [39.0997,-94.5786]},"Meierotto Jewelers": {"locType": "pinned","coords": [39.0997,-94.5786]},"Grand Caliber": {"locType": "pinned","coords": [32.7767,-96.797]},"Patek Philippe Boutique Atlanta": {"locType": "pinned","coords": [33.749,-84.388]},"Al Manara International Jewellery": {"locType": "pinned","coords": [24.4539,54.3773]},"Alfardan Jewellery": {"locType": "pinned","coords": [25.2854,51.5310]},"Al Majed Jewellery": {"locType": "pinned","coords": [25.2854,51.5310]},"Oriental Watch Company": {"locType": "pinned","coords": [22.3193,114.1694]},"Time Avenue": {"locType": "pinned","coords": [19.0760,72.8777]},"First Jewelry Co.": {"locType": "pinned","coords": [24.7136,46.6753]}};
 dealers.forEach(function(d){
   var g = GEO[d.name];
   if (g) { d.locType = g.locType; d.coords = g.coords; }
@@ -747,13 +706,6 @@ function renderDealers(list) {
   document.getElementById('dealerCount').textContent = list.length;
   var searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
   updateFilterSummary(list, searchTerm);
-  // Update Featured Partner (RS Chrono) link to deep-search the user's term where present.
-  var fp = document.getElementById('featuredPartner');
-  if (fp) {
-    fp.href = (searchTerm && searchTerm.length > 1)
-      ? 'https://www.rschrono.com/ashish54?s=' + encodeURIComponent(searchTerm)
-      : 'https://www.rschrono.com/ashish54';
-  }
   if (list.length === 0) {
     grid.innerHTML = '<div class="no-results"><p>No sources match your filters.</p><span>Try adjusting your search or filters above</span></div>';
     return;
