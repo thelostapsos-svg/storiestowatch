@@ -40,6 +40,8 @@
   .brand-pills .bp-lead { width:100%; font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:6px; }
   .brand-pill { font-family:'Cormorant Garamond',serif; font-size:14px; letter-spacing:0.04em; color:var(--gold); border:1px solid rgba(201,168,76,0.25); padding:5px 13px; white-space:nowrap; transition:all 0.25s; }
   .brand-pill:hover { color:var(--gold-light); border-color:rgba(201,168,76,0.55); }
+  .brand-pill.bp-active { background:var(--gold); color:var(--black); border-color:var(--gold); font-weight:600; }
+  .brand-pill.bp-active:hover { color:var(--black); }
   .brand-pill.bp-more { color:var(--gold-dim); border-style:dashed; font-style:italic; }
   .brand-pill-hide-mobile { display:inline-block; }
   @media(max-width:599px){
@@ -247,24 +249,24 @@
   <p class="hero-subtitle">The world's most comprehensive luxury watch sourcing tool. Authorised dealers, grey market specialists and auction houses — all in one place.</p>
   <div class="brand-pills">
     <span class="bp-lead">Source &amp; read on</span>
-    <span class="brand-pill" onclick="heroBrandJump('Rolex');">Rolex</span>
-    <span class="brand-pill" onclick="heroBrandJump('Patek Philippe');">Patek Philippe</span>
-    <span class="brand-pill" onclick="heroBrandJump('Audemars Piguet');">Audemars Piguet</span>
-    <span class="brand-pill" onclick="heroBrandJump('Richard Mille');">Richard Mille</span>
-    <span class="brand-pill" onclick="heroBrandJump('Cartier');">Cartier</span>
-    <span class="brand-pill" onclick="heroBrandJump('Omega');">Omega</span>
-    <span class="brand-pill" onclick="heroBrandJump('Vacheron Constantin');">Vacheron Constantin</span>
-    <span class="brand-pill" onclick="heroBrandJump('A. Lange');">A. Lange &amp; Söhne</span>
-    <span class="brand-pill" onclick="heroBrandJump('Jaeger');">Jaeger-LeCoultre</span>
-    <span class="brand-pill" onclick="heroBrandJump('IWC');">IWC</span>
-    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Breguet');">Breguet</span>
-    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Hublot');">Hublot</span>
-    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Panerai');">Panerai</span>
-    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('TAG Heuer');">TAG Heuer</span>
-    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Tudor');">Tudor</span>
-    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Grand Seiko');">Grand Seiko</span>
-    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('F.P. Journe');">F.P. Journe</span>
-    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Ulysse Nardin');">Ulysse Nardin</span>
+    <span class="brand-pill" onclick="heroBrandJump('Rolex', this);">Rolex</span>
+    <span class="brand-pill" onclick="heroBrandJump('Patek Philippe', this);">Patek Philippe</span>
+    <span class="brand-pill" onclick="heroBrandJump('Audemars Piguet', this);">Audemars Piguet</span>
+    <span class="brand-pill" onclick="heroBrandJump('Richard Mille', this);">Richard Mille</span>
+    <span class="brand-pill" onclick="heroBrandJump('Cartier', this);">Cartier</span>
+    <span class="brand-pill" onclick="heroBrandJump('Omega', this);">Omega</span>
+    <span class="brand-pill" onclick="heroBrandJump('Vacheron Constantin', this);">Vacheron Constantin</span>
+    <span class="brand-pill" onclick="heroBrandJump('A. Lange', this);">A. Lange &amp; Söhne</span>
+    <span class="brand-pill" onclick="heroBrandJump('Jaeger', this);">Jaeger-LeCoultre</span>
+    <span class="brand-pill" onclick="heroBrandJump('IWC', this);">IWC</span>
+    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Breguet', this);">Breguet</span>
+    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Hublot', this);">Hublot</span>
+    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Panerai', this);">Panerai</span>
+    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('TAG Heuer', this);">TAG Heuer</span>
+    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Tudor', this);">Tudor</span>
+    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Grand Seiko', this);">Grand Seiko</span>
+    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('F.P. Journe', this);">F.P. Journe</span>
+    <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Ulysse Nardin', this);">Ulysse Nardin</span>
     <span class="brand-pill bp-more" onclick="document.getElementById('searchInput').focus();">&amp; many more</span>
   </div>
   <div class="search-wrap">
@@ -597,10 +599,13 @@ function hideSuggestions() {
   activeSuggestionIndex = -1;
 }
 
-// Brand-pill click: set the search to that brand and render results
-window.heroBrandJump = function(term) {
+// Brand-pill click: set the search to that brand, highlight the pill, render results
+window.heroBrandJump = function(term, el) {
   searchEl.value = term;
   hideSuggestions();
+  // highlight the clicked pill, clear any previously active one
+  document.querySelectorAll('.brand-pill.bp-active').forEach(function(p){ p.classList.remove('bp-active'); });
+  if (el) el.classList.add('bp-active');
   applyFilters();
   var grid = document.getElementById('dealersGrid');
   if (grid && typeof grid.scrollIntoView === 'function') { setTimeout(function(){ grid.scrollIntoView({behavior:'smooth', block:'start'}); }, 80); }
@@ -913,9 +918,22 @@ function applyFilters() {
   renderDealers(list);
 }
 
+// Keep the active brand-pill highlight honest: match it to the current search text.
+function syncBrandPillHighlight() {
+  var v = (searchEl.value || '').trim().toLowerCase();
+  document.querySelectorAll('.brand-pill').forEach(function(p){
+    if (p.classList.contains('bp-more')) return;
+    var label = (p.textContent || '').trim().toLowerCase();
+    // active only if the search exactly equals the pill label (avoids partial-match false positives)
+    if (v && v === label) { p.classList.add('bp-active'); }
+    else { p.classList.remove('bp-active'); }
+  });
+}
+
 searchEl.addEventListener('input', function(){
   showSuggestions(this.value);
   applyFilters();
+  syncBrandPillHighlight();
 });
 
 searchEl.addEventListener('keydown', function(e){
