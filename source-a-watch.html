@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Source a Watch — Stories To Watch</title>
+<meta name="description" content="Can't find the watch you're after? Tell us the reference, your budget, and whether to source it locally or globally — and we'll try to source it for you.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.storiestowatch.com/source-a-watch.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:#C9A84C; --gold-light:#E8C96A; --gold-dim:#8B6914;
+    --black:#050505; --deep:#0A0A08; --surface:#111110; --surface2:#1A1A18;
+    --text:#E8E4D9; --text-dim:#8A8578; --text-body:#C8C4B8; --white:#F5F1E8;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; }
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:#050505; border-bottom:1px solid rgba(201,168,76,0.1); }
+  .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; }
+  .nav-back { display:flex; align-items:center; gap:10px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
+  .nav-back:hover { color:var(--gold); }
+  .nav-back::before { content:'←'; font-size:14px; }
+
+  .wrap { max-width:680px; margin:0 auto; padding:140px 24px 80px; }
+  .hero-label { font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:18px; text-align:center; }
+  h1 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(30px,5vw,48px); line-height:1.15; color:var(--white); text-align:center; margin-bottom:16px; }
+  h1 em { font-style:italic; color:var(--gold-light); }
+  .intro { font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2vw,19px); line-height:1.7; color:var(--text-dim); text-align:center; max-width:540px; margin:0 auto 48px; }
+
+  .form-card { background:var(--surface); border:1px solid rgba(201,168,76,0.18); padding:40px 36px; }
+  .field { margin-bottom:26px; }
+  .field label { display:block; font-size:9px; letter-spacing:0.28em; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+  .field .req { color:var(--gold-dim); }
+  .field input, .field select, .field textarea {
+    width:100%; background:var(--deep); border:1px solid rgba(201,168,76,0.22); color:var(--white);
+    font-family:'Montserrat',sans-serif; font-size:14px; font-weight:300; letter-spacing:0.04em;
+    padding:14px 16px; outline:none; transition:border-color 0.25s;
+  }
+  .field input::placeholder, .field textarea::placeholder { color:var(--text-dim); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color:var(--gold); }
+  .field textarea { resize:vertical; min-height:90px; }
+  .field select { appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C9A84C' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; }
+  .field-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+
+  .commission-note { background:var(--deep); border-left:2px solid var(--gold); padding:18px 20px; margin:8px 0 28px; font-family:'Cormorant Garamond',serif; font-size:15px; line-height:1.6; color:var(--text-body); }
+  .commission-note b { color:var(--gold-light); font-weight:400; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.25em; text-transform:uppercase; display:block; margin-bottom:8px; }
+
+  .submit-btn { width:100%; background:var(--gold); border:none; color:var(--black); font-family:'Cinzel',serif; font-size:11px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; padding:18px; cursor:pointer; transition:background 0.25s; }
+  .submit-btn:hover { background:var(--gold-light); }
+  .submit-btn:disabled { opacity:0.5; cursor:default; }
+
+  .micro { font-size:10px; letter-spacing:0.1em; color:var(--text-dim); text-align:center; margin-top:18px; line-height:1.6; }
+
+  .success { display:none; text-align:center; padding:40px 20px; }
+  .success.show { display:block; }
+  .success .tick { font-family:'Cinzel',serif; font-size:40px; color:var(--gold); margin-bottom:20px; }
+  .success h2 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:30px; color:var(--white); margin-bottom:14px; }
+  .success p { font-family:'Cormorant Garamond',serif; font-size:18px; line-height:1.6; color:var(--text-dim); max-width:440px; margin:0 auto 28px; }
+  .success a { font-size:9px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold); padding:13px 28px; text-decoration:none; transition:all 0.3s; display:inline-block; }
+  .success a:hover { background:var(--gold); color:var(--black); }
+  .form-error { display:none; background:rgba(224,82,82,0.08); border:1px solid rgba(224,82,82,0.3); color:#E0A0A0; font-size:12px; letter-spacing:0.05em; padding:14px 16px; margin-top:18px; text-align:center; }
+  .form-error.show { display:block; }
+
+  footer { background:var(--surface); padding:32px 60px; border-top:1px solid rgba(201,168,76,0.1); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-brand { font-family:'Cinzel',serif; font-size:12px; color:var(--gold); letter-spacing:0.2em; text-decoration:none; }
+  footer p { font-size:10px; color:var(--text-dim); letter-spacing:0.12em; }
+
+  @media (max-width:768px) {
+    nav { padding:14px 20px; }
+    .wrap { padding:100px 16px 56px; }
+    .form-card { padding:28px 20px; }
+    .field-row { grid-template-columns:1fr; gap:0; }
+    footer { padding:24px 20px; flex-direction:column; align-items:flex-start; }
+  }
+</style>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7JCE0VBEF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X7JCE0VBEF');
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
+  <a href="watchfinder.html" class="nav-back">Back to Watch Finder</a>
+</nav>
+
+<div class="wrap">
+  <p class="hero-label">A Sourcing Service</p>
+  <h1>Can't find the watch you're <em>after</em>?</h1>
+  <p class="intro">Tell us the reference, your budget, and whether you'd like it sourced locally or from anywhere in the world. We'll try to source it for you — and come back to you personally.</p>
+
+  <div class="form-card" id="formCard">
+    <form id="sourcingForm">
+      <input type="hidden" name="access_key" value="e09e4e3b-7061-4bf5-94d6-1680549b5ea4">
+      <input type="hidden" name="subject" value="New Watch Sourcing Request — Stories To Watch">
+      <input type="hidden" name="from_name" value="STW Sourcing Form">
+      <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+
+      <div class="field">
+        <label>The Watch <span class="req">— brand / model / reference *</span></label>
+        <input type="text" name="Watch" required placeholder="e.g. Rolex Submariner 124060, or 'a white-dial Daytona'">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Budget Range *</label>
+          <select name="Budget" required>
+            <option value="" disabled selected>Select a range</option>
+            <option value="Under $10,000">Under $10,000</option>
+            <option value="$10,000 – $25,000">$10,000 – $25,000</option>
+            <option value="$25,000 – $50,000">$25,000 – $50,000</option>
+            <option value="$50,000 – $100,000">$50,000 – $100,000</option>
+            <option value="$100,000 – $250,000">$100,000 – $250,000</option>
+            <option value="$250,000+">$250,000+</option>
+            <option value="Flexible / advise me">Flexible / advise me</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Condition</label>
+          <select name="Condition">
+            <option value="Either" selected>New or pre-owned</option>
+            <option value="New only">New only</option>
+            <option value="Pre-owned only">Pre-owned only</option>
+            <option value="Vintage">Vintage</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Sourcing Preference *</label>
+        <select name="Sourcing" required>
+          <option value="" disabled selected>Local or global?</option>
+          <option value="Source locally where possible">Source locally where possible</option>
+          <option value="Open to buying globally">Open to buying globally</option>
+          <option value="No preference — whatever's best">No preference — whatever's best</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Your Location <span class="req">— city / country *</span></label>
+          <input type="text" name="Location" required placeholder="e.g. Mumbai, India">
+        </div>
+        <div class="field">
+          <label>Your Name *</label>
+          <input type="text" name="Name" required placeholder="Full name">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Best Contact <span class="req">— email or phone *</span></label>
+        <input type="text" name="Contact" required placeholder="Email or WhatsApp number">
+      </div>
+
+      <div class="field">
+        <label>Anything else we should know?</label>
+        <textarea name="Notes" placeholder="Specific dial, bracelet, year, papers, timeline — anything that helps us find the right piece."></textarea>
+      </div>
+
+      <div class="commission-note">
+        <b>Before you send</b>
+        Because sourcing a watch involves manual logistics, supervision and effort, a commission of <b style="display:inline; font-family:'Cormorant Garamond',serif; font-size:15px; letter-spacing:0; text-transform:none; color:var(--gold-light);">2–5%</b> may apply. It is always shared with you upfront, and you are only billed once you approve the sourcing — never before.
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Send Sourcing Request</button>
+      <div class="form-error" id="formError">Something went wrong sending your request. Please email us directly at hello@storiestowatch.com.</div>
+      <p class="micro">Your details are used only to source your watch and reach you about it. We never sell or hold inventory — any purchase is yours to approve.</p>
+    </form>
+  </div>
+
+  <div class="success" id="successMsg">
+    <div class="tick">✦</div>
+    <h2>Request received</h2>
+    <p>Thank you — your sourcing request is with us. We'll review it personally and come back to you at the contact you provided. We'll always confirm any commission and price with you before anything is agreed.</p>
+    <a href="watchfinder.html">Back to the Watch Finder</a>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-brand">STORIES TO WATCH</a>
+  <p>A Sourcing Service — we'll try to find it for you</p>
+  <p style="color:var(--gold-dim);">storiestowatch.com</p>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('sourcingForm');
+  var btn = document.getElementById('submitBtn');
+  var errEl = document.getElementById('formError');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errEl.classList.remove('show');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    var data = new FormData(form);
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{ 'Accept':'application/json' },
+      body:data
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(json){
+      if (json.success) {
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('successMsg').classList.add('show');
+        window.scrollTo({ top:0, behavior:'smooth' });
+      } else {
+        throw new Error('submit failed');
+      }
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Send Sourcing Request';
+      errEl.classList.add('show');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

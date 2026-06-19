@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stories To Watch — Master Plan · Updated 29 May 2026</title>
+<style>
+  :root {
+    --gold:#C9A84C; --gold-light:#E8C96A; --gold-dim:#8B6914;
+    --black:#050505; --deep:#0A0A08; --surface:#111110; --surface2:#1A1A18;
+    --text:#E8E4D9; --text-dim:#8A8578; --white:#F5F1E8;
+    --green:#4CAF50; --amber:#F5A623; --red:#E05252;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--black); color:var(--text); font-family:'Georgia',serif; padding:40px; min-height:100vh; }
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.3; }
+
+  .header { margin-bottom:48px; }
+  h1 { font-family:'Georgia',serif; font-size:32px; color:var(--gold); letter-spacing:0.06em; margin-bottom:6px; }
+  .subtitle { color:var(--text-dim); font-size:11px; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:4px; }
+  .updated { font-size:10px; color:var(--gold-dim); letter-spacing:0.2em; }
+
+  .day-strip { background:var(--surface); border:1px solid rgba(201,168,76,0.2); padding:20px 32px; margin-bottom:40px; display:flex; align-items:center; gap:40px; }
+  .day-num { font-family:'Georgia',serif; font-size:56px; color:var(--gold); line-height:1; }
+  .day-info { flex:1; }
+  .day-label { font-size:9px; letter-spacing:0.35em; color:var(--text-dim); text-transform:uppercase; }
+  .day-sub { font-size:12px; color:var(--text-dim); margin-top:4px; }
+  .day-status { font-size:11px; color:var(--gold); margin-top:6px; letter-spacing:0.1em; }
+
+  .million-bar { background:var(--surface); border:1px solid rgba(201,168,76,0.15); padding:24px 32px; margin-bottom:40px; }
+  .bar-label { font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; }
+  .bar-track { background:var(--deep); height:6px; border-radius:3px; overflow:hidden; margin-bottom:8px; }
+  .bar-fill { height:100%; background:linear-gradient(to right, var(--gold-dim), var(--gold)); border-radius:3px; }
+  .bar-meta { display:flex; justify-content:space-between; font-size:10px; color:var(--text-dim); }
+  .bar-meta span { color:var(--gold); }
+
+  .week-header { display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(201,168,76,0.2); margin:40px 0 20px; }
+  .week-title { font-size:11px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; }
+  .week-progress { font-size:10px; color:var(--text-dim); letter-spacing:0.15em; }
+  .week-progress.done { color:var(--green); }
+
+  .task { display:flex; align-items:flex-start; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.03); cursor:pointer; transition:background 0.2s; border-radius:2px; }
+  .task:hover { background:rgba(201,168,76,0.03); padding-left:8px; }
+  .task-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; margin-top:4px; border:1px solid; }
+  .task-dot.done { background:var(--green); border-color:var(--green); }
+  .task-dot.pending { background:transparent; border-color:var(--text-dim); }
+  .task-dot.inprogress { background:var(--amber); border-color:var(--amber); }
+  .task-dot.parked { background:var(--surface2); border-color:var(--text-dim); }
+  .task-body { flex:1; }
+  .task-title { font-size:14px; color:var(--white); margin-bottom:4px; line-height:1.4; }
+  .task-title.done-text { text-decoration:line-through; color:var(--text-dim); }
+  .task-sub { font-size:11px; color:var(--text-dim); line-height:1.5; }
+  .task-date { font-size:9px; letter-spacing:0.2em; color:var(--gold-dim); text-transform:uppercase; flex-shrink:0; margin-top:4px; }
+
+  .milestones { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--surface2); margin-bottom:40px; }
+  .milestone { background:var(--deep); padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
+  .milestone-name { font-size:13px; color:var(--text-dim); }
+  .milestone-status { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; }
+  .milestone-status.done { color:var(--green); }
+  .milestone-status.pending { color:var(--gold-dim); }
+
+  .streams { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--surface2); margin-bottom:40px; }
+  .stream { background:var(--deep); padding:20px; }
+  .stream-name { font-size:9px; letter-spacing:0.25em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
+  .stream-status { font-size:10px; color:var(--text-dim); margin-bottom:4px; }
+  .stream-target { font-size:15px; color:var(--white); }
+
+  .year-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:40px; }
+  .year-card { background:var(--surface); border:1px solid rgba(201,168,76,0.1); padding:24px; text-align:center; }
+  .year-label { font-size:9px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
+  .year-num { font-size:28px; color:var(--white); margin-bottom:8px; }
+  .year-sub { font-size:10px; color:var(--text-dim); line-height:1.5; }
+
+  .legend { display:flex; gap:24px; margin-bottom:24px; flex-wrap:wrap; }
+  .legend-item { display:flex; align-items:center; gap:8px; font-size:10px; color:var(--text-dim); letter-spacing:0.1em; }
+  .legend-dot { width:10px; height:10px; border-radius:50%; }
+
+  .friday-box { background:var(--surface); border:1px solid rgba(201,168,76,0.2); padding:28px 32px; margin-bottom:40px; position:relative; }
+  .friday-box::before { content:'FRIDAY REVIEW TEMPLATE'; position:absolute; top:-1px; left:32px; background:var(--surface); padding:0 12px; font-size:8px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; }
+  .friday-item { font-size:12px; color:var(--text-dim); padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03); display:flex; gap:16px; }
+  .friday-q { color:var(--gold); min-width:180px; flex-shrink:0; }
+
+  .section-title { font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin:40px 0 16px; padding-bottom:10px; border-bottom:1px solid rgba(201,168,76,0.1); }
+  .updated-note { font-size:10px; color:var(--text-dim); text-align:right; margin-top:40px; letter-spacing:0.15em; }
+
+  .rate-table { width:100%; border-collapse:collapse; margin-bottom:32px; }
+  .rate-table th { font-size:9px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; padding:12px 16px; text-align:left; border-bottom:1px solid rgba(201,168,76,0.2); }
+  .rate-table td { font-size:13px; color:var(--text-dim); padding:11px 16px; border-bottom:1px solid rgba(255,255,255,0.03); }
+  .rate-table td.price { color:var(--gold); font-family:Georgia,serif; }
+  .rate-table tr.founder td { color:var(--gold-light); border-left:2px solid var(--gold); }
+  .rate-table tr:nth-child(even) td { background:rgba(201,168,76,0.02); }
+  /* ── MOBILE — added Day 11, enforces the mobile thumb rule ── */
+  @media(max-width:599px){
+    body{padding:0 !important;}
+    /* multi-column inline grids must collapse */
+    div[style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:repeat(2,1fr) !important;}
+    div[style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:repeat(2,1fr) !important;}
+    div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr) !important;}
+    div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:repeat(2,1fr) !important;}
+    div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
+    /* absolutely-positioned nowrap labels must wrap and fit */
+    span[style*="white-space:nowrap"]{white-space:normal !important;text-align:center;width:90%;font-size:7px !important;}
+    /* generous inline padding shrinks on phone */
+    div[style*="padding:48px"]{padding:24px 16px !important;}
+    div[style*="padding:32px"]{padding:20px 14px !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>STORIES TO WATCH</h1>
+  <p class="subtitle">Master Plan · Road to £1,000,000</p>
+  <p class="updated">Updated: 19 June 2026 · Day 30 · Friday — impressions 5×'d, first clicks in, news-jack proven, RS Chrono fully purged</p>
+</div>
+
+<!-- DAY COUNTER -->
+<div class="day-strip">
+  <div>
+    <div class="day-num" id="dayCount">—</div>
+    <div class="day-label">Days Since Launch</div>
+  </div>
+  <div class="day-info">
+    <div class="day-sub">Launch date: 20 May 2026</div>
+    <div class="day-sub" style="margin-top:4px;">Today: <span id="todayDate">—</span></div>
+    <div class="day-status">Status: Impressions 143→690/wk · first organic clicks landed (Royal Oak @ pos 9) · Rockefeller news-jack = #2 page in days · 13 guides live · 54 dealers · sourcing service soft-launched · NO live affiliate (RS Chrono purged)</div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="million-bar">
+  <div class="bar-label">Road to £1,000,000 Annual Revenue</div>
+  <div class="bar-track"><div class="bar-fill" style="width:0.3%;"></div></div>
+  <div class="bar-meta">
+    <span>£0 today</span>
+    <span>Year 1 target: £35,000–£58,000</span>
+    <span>£1,000,000</span>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--green);"></div>Done</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--amber);border:1px solid var(--amber);"></div>In Progress</div>
+  <div class="legend-item"><div class="legend-dot" style="background:transparent;border:1px solid var(--text-dim);"></div>Pending</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--surface2);border:1px solid var(--text-dim);"></div>Parked</div>
+</div>
+
+<!-- STANDING RULES -->
+<div class="week-header">
+  <span class="week-title">Standing Rules — Always On</span>
+  <span class="week-progress">Non-negotiable</span>
+</div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title">📱 MOBILE THUMB RULE — every build ships mobile-friendly</div><div class="task-sub">Viewport meta tag · no horizontal overflow at ~390px · SVGs use viewBox (never fixed px width) · wide tables in scroll containers · grids collapse to 1–2 cols · tap targets & text legible. Test at phone width, not just desktop.</div></div><div class="task-date">Every build</div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title">🔍 Verify before writing — no speculation, no unsourced claims</div><div class="task-sub">No attribution without photographic evidence. Skeptical strategist, not cheerleader.</div></div><div class="task-date">Always</div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title">📈 Index same-day · Search Console every Monday</div><div class="task-sub">Every new page indexed the day it goes live. Monday rankings check is the proof loop.</div></div><div class="task-date">Always</div></div>
+
+<!-- DAY 30 REVIEW -->
+<div class="week-header">
+  <span class="week-title">⭐ Friday Review — Day 30 (19 June)</span>
+  <span class="week-progress inprogress">Full data pull — SC + Vercel + GA4</span>
+</div>
+
+<div class="friday-box">
+  <div class="friday-q">SEARCH CONSOLE — REAL DATA (7-day, to 19 Jun)</div>
+  <div class="friday-item"><strong>690 impressions · 2 clicks · avg position 16.3.</strong> Impressions ~5×'d vs Day 16 (143 over 28d). First organic clicks LANDED — "royal oak retail price 2026" @ pos 9. The 0-click era is over.</div>
+  <div class="friday-item"><strong>The AP / Royal Oak price cluster is the engine:</strong> dozens of reference-level queries (16202st, 15202st, 15510st, 15450st market/retail price 2026) ranking pos 6–12. This one content area dominates impressions. Dubai geo + Atlanta also surfacing.</div>
+  <div class="friday-item"><strong>Cross-source confirms quality:</strong> Vercel — Rockefeller news-jack = #2 page in days, Google top referrer. GA4 — 1m48s avg engagement, Watch Finder bounce 16.7% (Finder converts when reached).</div>
+  <div class="friday-item"><strong>PageSpeed:</strong> Mobile 89 / Desktop 89 (up from mobile 72 at Day 16 — WebP work paid off). One real lever left: convert remaining JPEG guide-thumbs to WebP to tip mobile into the 90s (LCP 4.0s mobile is the drag).</div>
+  <div class="friday-item"><strong>The whole game is still CTR:</strong> seen constantly at pos 6–12, clicks live at 1–5. Highest-leverage move = push AP/Royal Oak content + titles from page-1-doorstep onto page 1. Relevance/authority on proven pages, not new pages.</div>
+</div>
+
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">RS CHRONO fully purged + standing audit rule established</div><div class="task-sub">Removed from all 13 guides + index + watchfinder + royal-oak + decks (17 Jun) AND from this to-do + projections (today). STW now has NO live affiliate. New standing rule: every Friday re-verify anything load-bearing (affiliate/monetisation, discount/commission claims, partner ranked above neutral) against ACTUAL current reality.</div></div><div class="task-date">Done ✓</div></div>
+
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Rockefeller Rolex-clock news-jack built + indexed</div><div class="task-sub">Verified (watchicity + WCL, EB Kelly/Tishman Speyer on record), own + Unsplash-cleared WebP images, NewsArticle schema. Live 18 Jun, #2 page within days. Proved the news-SEO play. Homepage card (Latest News badge) + pill + ticker + in-article Finder link all wired.</div></div><div class="task-date">Done ✓</div></div>
+
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Watch Sourcing Service soft-launched</div><div class="task-sub">"Can't find your watch?" → homepage band + Watch Finder block. mailto request w/ presets (budget, local/global, ref). 2–5% commission disclosed ONLY in the form, never on public pages. Walled off from neutral Finder rank. £0 in projections until request volume proves a number.</div></div><div class="task-date">Done ✓</div></div>
+
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">In-article Finder placement fix (conversion leak)</div><div class="task-sub">Rockefeller pulled 15 visitors, ~1 reached Finder — link was bottom-only. Added early/mid inline Finder link. Make this a template habit on every article going forward.</div></div><div class="task-date">Done ✓</div></div>
+
+<div class="task"><div class="task-dot" style="background:transparent;border:1px solid var(--amber);"></div><div class="task-body"><div class="task-title">⚠ PRIORITY 1 — push AP / Royal Oak content to page 1</div><div class="task-sub">Highest-leverage move per the data. The reference-price cluster sits pos 6–12 with huge impressions and near-0 CTR. Sharpen titles/meta + add reference-level depth + internal links on royal-oak-price-guide. This out-leverages any new page right now.</div></div><div class="task-date">Next</div></div>
+
+<div class="task"><div class="task-dot" style="background:transparent;border:1px solid var(--amber);"></div><div class="task-body"><div class="task-title">⚠ DEALER DRIP — resume 54 → 75</div><div class="task-sub">Still the conversion engine every guide points to. Even-week task: +5 per fortnight. Rivoli/Seddiqi pending via Abhi (no chase).</div></div><div class="task-date">Even wks</div></div>
+
+<div class="task"><div class="task-dot" style="background:transparent;border:1px solid var(--text-dim);"></div><div class="task-body"><div class="task-title">Convert remaining JPEG guide-thumbs → WebP</div><div class="task-sub">Tips mobile PageSpeed 89→90s, helps mobile LCP (4.0s). Even-week visual-upgrade task. royal-oak-thumb, atlanta-skyline, etc. still JPEG.</div></div><div class="task-date">Even wk</div></div>
+
+<div class="task"><div class="task-dot" style="background:transparent;border:1px solid var(--text-dim);"></div><div class="task-body"><div class="task-title">MONDAY — Search Console check</div><div class="task-sub">Did AP/Royal Oak positions tick toward page 1? Did the first 2 clicks become more? Track Rockefeller — does it sustain past 72h or fade (news spikes fade; confirm).</div></div><div class="task-date">Mon</div></div>
+
+<!-- TONIGHT -->
+<div class="week-header">
+  <span class="week-title">Done — Day 11 (31 May)</span>
+  <span class="week-progress done">All shipped</span>
+</div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Index Mbappé article in Search Console</div><div class="task-sub">hublot-mbappe-big-bang-reloaded-2026.html · Done ✅</div></div><div class="task-date">Done</div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Submit sitemap to Search Console</div><div class="task-sub">21 URLs submitted · Done ✅</div></div><div class="task-date">Done</div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Build Dubai Submariner guide — 2 images + 4 SVGs, Grand Seiko standard</div><div class="task-sub">rolex-submariner-dubai.html · Mobile-verified · Vacheron dropped (saturated), Dubai chosen as highest-leverage geo-gap</div></div><div class="task-date">Done ✓</div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Add Dubai guide to homepage — guides grid + quick-strip</div><div class="task-sub">index.html updated · 9→10 guides · Mobile-verified, no overflow</div></div><div class="task-date">Done ✓</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">Push 4 files to GitHub + index Dubai page in Search Console</div><div class="task-sub">index.html · rolex-submariner-dubai.html · submariner-wrist.jpg · dubai-skyline-night.jpg — same root folder · Index same-day (Ashish doing)</div></div><div class="task-date">Today</div></div>
+
+<!-- THIS WEEKEND -->
+<div class="week-header">
+  <span class="week-title">The Operating Cadence — Locked Day 11</span>
+  <span class="week-progress">Alternating weeks</span>
+</div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">UCL post-match update — HELD (correct call)</div><div class="task-sub">Arsenal lost; players in kit, zero verifiable watch sightings. No padding. Update stays parked unless verified imagery surfaces.</div></div><div class="task-date">Closed</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">ODD weeks → one NEW buying guide (Plan A — never displaced)</div><div class="task-sub">The only workstream that adds new ranking surface. Built to Grand Seiko standard, indexed same-day. This is the growth engine.</div></div><div class="task-date">Weekly</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">EVEN weeks → one Tier-1 visual upgrade + add 5 dealers</div><div class="task-sub">Plan B consolidation: upgrade an existing guide to standard AND grow Watch Finder by 5 sources. Fortnightly drip → 75+.</div></div><div class="task-date">Weekly</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">EVERY Monday → Search Console check</div><div class="task-sub">Standing rule. Rankings, impressions, which guides are surfacing. Screenshot the proof.</div></div><div class="task-date">Mondays</div></div>
+
+<!-- JUNE — CONTENT -->
+<div class="week-header">
+  <span class="week-title">New Guide Pipeline (Plan A — odd weeks)</span>
+  <span class="week-progress">2 done · ranked by leverage</span>
+</div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Grand Seiko — the visual benchmark</div><div class="task-sub">Done 30 May. Undersupplied keyword, thin competition. The pattern to replicate.</div></div><div class="task-date">Done ✓</div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Rolex Submariner Dubai — geo-guide</div><div class="task-sub">Done 31 May. Proved the geo vein: only dealer pages rank, zero editorial competition. (Prices/tagline corrected same day.)</div></div><div class="task-date">Done ✓</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">VERIFY NEXT: "Is Rolex Certified Pre-Owned worth it?"</div><div class="task-sub">Buyer question, rising real intent (WoS pre-owned +22% YoY, Rolex CPO now their 2nd-biggest brand — WatchPro 27 May). Likely less saturated than comparisons. Verify demand-vs-competition first.</div></div><div class="task-date">Verify</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">VERIFY: Abu Dhabi geo-guide (likely next Dubai)</div><div class="task-sub">Same region & tax logic as Dubai, no editorial guide yet. Then Doha / Bangkok / Mumbai / Delhi. Always verify retail depth + competition before building.</div></div><div class="task-date">Verify</div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Saturated targets — STRUCK after research (Day 11)</div><div class="task-sub">Vacheron, Tudor, Singapore, Hong Kong, Geneva, Speedmaster-vs-Daytona: all have fresh authoritative 2026 guides, no authority edge. Dead on arrival. Don't build.</div></div><div class="task-date">Cut</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">Fix "Find This Watch" CTA on all older articles</div><div class="task-sub">Every article without a Watch Finder link is leaving money on the table</div></div><div class="task-date">June</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">Arsenal Premier League champions article</div><div class="task-sub">Only if Arsenal win · Verified watches from celebrations only · No speculation</div></div><div class="task-date">June</div></div>
+
+<!-- JUNE — COMMERCIAL -->
+<div class="week-header">
+  <span class="week-title">Dealer Network 50+ → 75+ (Plan B — even weeks)</span>
+  <span class="week-progress">+5 per fortnight</span>
+</div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">Add 5 dealers every even week (the fortnightly drip)</div><div class="task-sub">Doesn't add traffic — but it IS the conversion engine every guide points to ("search 50+ sources"). A thin directory undercuts working guides. ~5 fortnights → 75+.</div></div><div class="task-date">Even wks</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">Send cost proposal PDF to first 3 warm contacts</div><div class="task-sub">STW_Partnership_Proposal_2026.pdf · 5 pages · Site mockups included · Prices on request</div></div><div class="task-date">June</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">Mailchimp email capture bar on homepage</div><div class="task-sub">Every subscriber = direct line that doesn't depend on Instagram or Google</div></div><div class="task-date">June</div></div>
+
+<!-- JUNE — GUIDE VISUAL UPGRADES -->
+<div class="week-header">
+  <span class="week-title">Visual Upgrades — Whole Site (Plan B — even weeks)</span>
+  <span class="week-progress">Priority by traffic/intent, not age</span>
+</div>
+<div class="task done"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Grand Seiko — hero image, price bars, movement comparison, decision tree, UK dealer map</div><div class="task-sub">The standard every page will match · Done 30 May 2026</div></div><div class="task-date">Done ✓</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">TIER 1 — the other buying guides (do first)</div><div class="task-sub">Patek-vs-Rolex DONE 31 May (4 SVGs + 2 images, top Search Console page). Remaining: Nautilus · Royal Oak · Cartier · IWC · Omega · 2 investment pieces. One per even-week.</div></div><div class="task-date">In progress</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">📊 STAT BANK for investment content (sourced, ready to use)</div><div class="task-sub">EveryWatch via WatchPro: Daytona +15%, Nautilus +12.2%, Royal Oak +34.6%, GMT Pepsi +30%; Swiss exports CHF 25.5bn 2025. Attribute. Don't republish the "2026 boom?" opinion thesis.</div></div><div class="task-date">Ready</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">TIER 2 — Maisons concept + high-traffic celebrity pieces</div><div class="task-sub">Mbappé · Ronaldo · Messi · Cannes. Most raw social traffic; better visuals lift brand impression & dwell time. Medium priority.</div></div><div class="task-date">Then</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">TIER 3 — Auctions/Investing shells + generic article.html cards</div><div class="task-sub">Mostly placeholder/aggregated, not ranking assets. Polish last.</div></div><div class="task-date">Last</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">⚠ Audit older pages against the mobile thumb rule as you upgrade</div><div class="task-sub">Several predate the rule. Check: viewport tag · no overflow at ~390px · SVG viewBox · tables scroll · grids collapse.</div></div><div class="task-date">Ongoing</div></div>
+
+<!-- WORLD CUP 2026 CAMPAIGN -->
+<div class="week-header">
+  <span class="week-title">⚽ World Cup 2026 Campaign — Trigger: June 11</span>
+  <span class="week-progress">Verify → build → run</span>
+</div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">TWO CLOCKS — read this first</div><div class="task-sub">SEO host-city guides need indexing lead time → BUILD ASAP this week/fortnight, NOT near kickoff. Social carousels start ~June 7–10, riding pre-tournament buzz. Don't break the alternating cadence — aim June's new-guide slots at this.</div></div><div class="task-date">Key</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">IDEA 1 (SEO): Host-city watch guides</div><div class="task-sub">Extend the proven Dubai/London geo-template to WC host cities. VERIFY retail depth + competition per city first. Likely-uncontested: Dallas, Atlanta, Kansas City, Monterrey, Guadalajara, Toronto. Aim for best 3–4. Build early for lead time.</div></div><div class="task-date">ASAP</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">DEALER LOOP ("saw your store on STW")</div><div class="task-sub">Host-city guides feature real independent dealers → they share the guide as free endorsement = backlinks + referrals. Independent dealers, not big ADs. Ties directly to the 54→75 expansion.</div></div><div class="task-date">With guides</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">IDEA 2 (social): "Which watch matches your World Cup TEAM?"</div><div class="task-sub">Instagram carousel → Watch Finder funnel. Pair a NATION's footballing essence with a watch archetype + a real reason (Germany→precision/Lange, Brazil→expressive, Japan→refinement). Country essence NOT players — kills attribution risk. Style-match only, never ownership claims.</div></div><div class="task-date">~Jun 7–10</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">PREP TASK: build the ~dozen team-essences ONCE</div><div class="task-sub">A reference set built properly up front. Daily posts then become assembly, not invention — this is what keeps quality high across 39 days. Matches must feel earned, not random.</div></div><div class="task-date">Before Jun 7</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">DAILY ENGINE: match-day "watch matchup" polls</div><div class="task-sub">Pair the two teams playing → watch essences head-to-head ("which wrist wins?"). Fixtures = ready-made calendar. Sustainability: selective marquee matchups in group stage, daily through knockouts.</div></div><div class="task-date">Jun 11→</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">Alternate TEAM-essence (groups) → PLAYER-essence (knockouts)</div><div class="task-sub">Player rounds stay playing-STYLE matching, NEVER "X wears this" without photo proof. Same attribution rule as everything else.</div></div><div class="task-date">Tournament</div></div>
+<div class="task"><div class="task-dot pending"></div><div class="task-body"><div class="task-title">🏆 FINALE: "The Two Watches in the Final"</div><div class="task-sub">Down to the final two → go big: a site page + carousel as the campaign's narrative climax and peak Watch Finder conversion moment.</div></div><div class="task-date">~Jul 19</div></div>
+
+<!-- JUNE — DESIGN PARKED -->
+<div class="week-header">
+  <span class="week-title">Design — Parked for Day 10–11</span>
+  <span class="week-progress">Parked</span>
+</div>
+<div class="task"><div class="task-dot parked"></div><div class="task-body"><div class="task-title">Pocket watch hero — STW crest lid, opens on hover, real-time hands</div><div class="task-sub">Dedicated session · Do properly or not at all · Agreed concept</div></div><div class="task-date">Day 10–11</div></div>
+<div class="task"><div class="task-dot parked"></div><div class="task-body"><div class="task-title">Victorian boutique illustration</div><div class="task-sub">SVG landscape/portrait problem needs solving · Revisit with proper illustrator</div></div><div class="task-date">Future</div></div>
+
+<!-- COMPLETED DAY 9 -->
+<div class="week-header">
+  <span class="week-title">Completed — Day 9 (29 May)</span>
+  <span class="week-progress done">14/14 Done</span>
+</div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Homepage rebuilt — Watch Finder hero centre stage</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Mobile layout fixed — proper single column throughout</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Live local time display added in desktop hero gap — real-time, visitor's timezone</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Portrait backgrounds restored — woman (closed eyes, watch) left · man (skeleton watch, suit) right</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Tagline updated — "Find watches worth finding. Read stories told to the minute."</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Nav overlap fixed on mobile — logo and chips no longer collide</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">All unicode character bugs fixed throughout site</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">UCL Final article corrected — verified sources only · Mbappé correctly at Real Madrid</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Editorial accuracy rule locked permanently — search before writing · verify · label</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Media kit rebuilt — Watch Finder as primary USP · pricing line added</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Internal rate card established</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Cost proposal PDF created — 5 pages · site mockups · full pricing</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Mbappé article indexed in Search Console ✅</div></div></div>
+<div class="task"><div class="task-dot done"></div><div class="task-body"><div class="task-title done-text">Sitemap submitted to Search Console ✅</div></div></div>
+
+<!-- MILESTONES -->
+<p class="section-title">Platform Milestones</p>
+<div class="milestones">
+  <div class="milestone"><span class="milestone-name">storiestowatch.com</span><span class="milestone-status done">✓ Live</span></div>
+  <div class="milestone"><span class="milestone-name">Watch Finder (54 sources · geo + nearest)</span><span class="milestone-status done">✓ Live</span></div>
+  <div class="milestone"><span class="milestone-name">13 Buying / Geo Guides</span><span class="milestone-status done">✓ Live</span></div>
+  <div class="milestone"><span class="milestone-name">Celebrity + News Articles</span><span class="milestone-status done">✓ Live</span></div>
+  <div class="milestone"><span class="milestone-name">Rockefeller News-Jack (18 Jun)</span><span class="milestone-status done">✓ #2 page</span></div>
+  <div class="milestone"><span class="milestone-name">Watch Sourcing Service</span><span class="milestone-status done">✓ Soft-launched 19 Jun</span></div>
+  <div class="milestone"><span class="milestone-name">Media Kit + Cost Proposal PDF</span><span class="milestone-status done">✓ Ready to Send</span></div>
+  <div class="milestone"><span class="milestone-name">Instagram @wealthrisen</span><span class="milestone-status done">✓ ~460 · +60/wk</span></div>
+  <div class="milestone"><span class="milestone-name">Affiliate Programme</span><span class="milestone-status pending">✗ None — RS Chrono purged; none until guides rank</span></div>
+  <div class="milestone"><span class="milestone-name">First Click from Google</span><span class="milestone-status done">✓ Landed (Royal Oak @ pos 9)</span></div>
+  <div class="milestone"><span class="milestone-name">Newsletter / Email Capture</span><span class="milestone-status pending">⏳ Month 2</span></div>
+  <div class="milestone"><span class="milestone-name">First Paying Advertiser</span><span class="milestone-status pending">⏳ Month 2–3</span></div>
+  <div class="milestone"><span class="milestone-name">75 Dealers in Watch Finder</span><span class="milestone-status pending">⏳ drip 54→75</span></div>
+  <div class="milestone"><span class="milestone-name">Luca SBP / India Community</span><span class="milestone-status pending">⏳ Luca's move</span></div>
+</div>
+
+<!-- RATE CARD -->
+<p class="section-title">Internal Rate Card — Confidential</p>
+<table class="rate-table">
+  <thead><tr><th>Placement</th><th>Rate</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Watch Finder Featured Listing</td><td class="price">£800/month</td><td>Category exclusive · Highest intent</td></tr>
+    <tr><td>Watch Finder Brand Spotlight</td><td class="price">£1,500/month</td><td>One brand per category</td></tr>
+    <tr><td>Homepage Display</td><td class="price">£1,200/month</td><td>One slot · First seen by all visitors</td></tr>
+    <tr><td>Sponsored Editorial Article</td><td class="price">£950 one-time</td><td>Permanent · Google indexed</td></tr>
+    <tr><td>Instagram Partnership Post</td><td class="price">£400/post</td><td>@wealthrisen · Story included</td></tr>
+    <tr><td>Full Partnership Package</td><td class="price">£2,500/month</td><td>Finder + Homepage + 2 posts</td></tr>
+    <tr><td>Adjacent Luxury (Real Estate / Auto)</td><td class="price">£3,500/month</td><td>Custom · Discuss per brand</td></tr>
+    <tr class="founder"><td>⚡ Founder Partner Rate</td><td class="price">40% off</td><td>First 5 partners · 3-month commitment · Testimonial in exchange</td></tr>
+  </tbody>
+</table>
+
+<!-- REVENUE STREAMS -->
+<p class="section-title">Revenue Streams</p>
+<div class="streams">
+  <div class="stream"><div class="stream-name">Watch Finder Listings</div><div class="stream-status">Proposal PDF ready · Outreach starting</div><div class="stream-target">£800–£3,000/mo at scale</div></div>
+  <div class="stream"><div class="stream-name">Display / Sponsorship</div><div class="stream-status">Media kit live · Rate card set</div><div class="stream-target">£2,000–£8,000/mo at scale</div></div>
+  <div class="stream"><div class="stream-name">Watch Sourcing Service</div><div class="stream-status">Soft-launched 19 Jun · 2–5% commission, disclosed at request · £0 modelled until volume</div><div class="stream-target">TBD — needs request data</div></div>
+  <div class="stream"><div class="stream-name">Sponsored Editorial</div><div class="stream-status">£950 per article · Ready to sell</div><div class="stream-target">£1,000–£4,000/mo at scale</div></div>
+  <div class="stream"><div class="stream-name">Adjacent Luxury</div><div class="stream-status">Real estate · Auto · Aviation pitch ready</div><div class="stream-target">£3,500+/mo at scale</div></div>
+  <div class="stream"><div class="stream-name">Newsletter / Email</div><div class="stream-status">Not yet built · Month 2</div><div class="stream-target">£500–£2,000/mo at scale</div></div>
+</div>
+
+<!-- FRIDAY REVIEW -->
+<p class="section-title">Friday Review Template — Every Week</p>
+<div class="friday-box">
+  <div class="friday-item"><span class="friday-q">Organic (Search Console)</span><span>690 impr · 2 clicks · pos 16.3 (7d) — impressions 5×'d, first clicks landed</span></div>
+  <div class="friday-item"><span class="friday-q">Engagement (GA4)</span><span>1m 48s avg · Watch Finder bounce 16.7% — Finder converts when reached</span></div>
+  <div class="friday-item"><span class="friday-q">Top page (Vercel 7d)</span><span>Watch Finder, then Rockefeller news-jack at #2 within days</span></div>
+  <div class="friday-item"><span class="friday-q">Instagram @wealthrisen</span><span>~460 followers · +60/wk · boost-to-profile-to-follow · model as steady compounding</span></div>
+  <div class="friday-item"><span class="friday-q">Speed score</span><span>Mobile 89 · Desktop 89 (mobile up from 72) — WebP thumbs = next lift</span></div>
+  <div class="friday-item"><span class="friday-q">Articles / guides live</span><span>13 guides + celebrity/news · Rockefeller latest</span></div>
+  <div class="friday-item"><span class="friday-q">Revenue this week</span><span>£0 — engine building · sourcing service soft-launched, £0 modelled</span></div>
+  <div class="friday-item"><span class="friday-q">Biggest win</span><span>News-jack proved itself (#2 page in days) · first organic clicks · RS Chrono fully purged</span></div>
+  <div class="friday-item"><span class="friday-q">Next week priority</span><span>Push AP/Royal Oak content to page 1 · resume dealer drip 54→75 · Monday console check</span></div>
+</div>
+
+<!-- CONTENT STRATEGY -->
+<p class="section-title">Content Strategy — Permanent</p>
+<div style="background:var(--surface); border:1px solid rgba(201,168,76,0.25); padding:48px; margin-bottom:40px; position:relative;">
+  <span style="position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--surface); padding:0 20px; font-size:8px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; white-space:nowrap;">STORIESTOWATCH.COM · CONTENT STRATEGY · PERMANENT</span>
+  <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--white); margin-bottom:40px; line-height:1.6; text-align:center;">"The trending piece brings people in. The evergreen content keeps them there."</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--surface2); margin-bottom:40px;">
+    <div style="background:var(--deep); padding:32px;">
+      <p style="font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px;">Pillar 1 — Evergreen SEO</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.7; margin-bottom:16px;">Buying guides, price guides, investment analysis. These rank on Google for years and compound over time. Slow burn but permanent traffic.</p>
+      <p style="font-size:10px; color:var(--gold-dim); letter-spacing:0.15em;">Examples: Patek vs Rolex · Nautilus Guide · Royal Oak Prices · Submariner London · Grand Seiko · Vacheron</p>
+    </div>
+    <div style="background:var(--deep); padding:32px;">
+      <p style="font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px;">Pillar 2 — Reactive Trending</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--text-dim); line-height:1.7; margin-bottom:16px;">Trending topics with a watch angle. Spike fast, index quickly, drive social traffic immediately. Short window but high volume.</p>
+      <p style="font-size:10px; color:var(--gold-dim); letter-spacing:0.15em;">Examples: Mbappé Hublot · UCL Final · Cannes 2026 · The Rock Met Gala · Kevin Hart Roast</p>
+    </div>
+  </div>
+  <p style="font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:20px;">The Reactive Content Formula — Follow Every Time</p>
+  <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:2px; background:var(--surface2); margin-bottom:40px;">
+    <div style="background:var(--deep); padding:20px; text-align:center;"><p style="font-family:'Georgia',serif; font-size:24px; color:var(--gold); margin-bottom:8px;">1</p><p style="font-size:9px; color:var(--white); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Spot the Trend</p><p style="font-size:10px; color:var(--text-dim);">Sport, entertainment, film, music, culture</p></div>
+    <div style="background:var(--deep); padding:20px; text-align:center;"><p style="font-family:'Georgia',serif; font-size:24px; color:var(--gold); margin-bottom:8px;">2</p><p style="font-size:9px; color:var(--white); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Find the Watch</p><p style="font-size:10px; color:var(--text-dim);">There is always a watch angle. Always.</p></div>
+    <div style="background:var(--deep); padding:20px; text-align:center;"><p style="font-family:'Georgia',serif; font-size:24px; color:var(--gold); margin-bottom:8px;">3</p><p style="font-size:9px; color:var(--white); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Verify First</p><p style="font-size:10px; color:var(--text-dim);">Search · confirm · label Verified / Known / Speculation</p></div>
+    <div style="background:var(--deep); padding:20px; text-align:center;"><p style="font-family:'Georgia',serif; font-size:24px; color:var(--gold); margin-bottom:8px;">4</p><p style="font-size:9px; color:var(--white); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Index Same Day</p><p style="font-size:10px; color:var(--text-dim);">Google Search Console request immediately</p></div>
+    <div style="background:var(--deep); padding:20px; text-align:center;"><p style="font-family:'Georgia',serif; font-size:24px; color:var(--gold); margin-bottom:8px;">5</p><p style="font-size:9px; color:var(--white); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Post Instagram</p><p style="font-size:10px; color:var(--text-dim);">Same day while trend is hot. 7PM IST.</p></div>
+    <div style="background:var(--deep); padding:20px; text-align:center;"><p style="font-family:'Georgia',serif; font-size:24px; color:var(--gold); margin-bottom:8px;">6</p><p style="font-size:9px; color:var(--white); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Boost if Face</p><p style="font-size:10px; color:var(--text-dim);">Only boost with recognisable celebrity visible</p></div>
+  </div>
+  <p style="font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:20px;">Boost Rules — Non Negotiable</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px;">
+    <div style="border-left:2px solid var(--gold); padding:16px 20px;"><p style="font-size:11px; color:var(--white); margin-bottom:6px; letter-spacing:0.1em;">✓ Only boost posts with a recognisable celebrity visibly wearing a watch</p></div>
+    <div style="border-left:2px solid var(--gold); padding:16px 20px;"><p style="font-size:11px; color:var(--white); margin-bottom:6px; letter-spacing:0.1em;">✓ Set goal as Website Visits — not engagement</p></div>
+    <div style="border-left:2px solid var(--gold); padding:16px 20px;"><p style="font-size:11px; color:var(--white); margin-bottom:6px; letter-spacing:0.1em;">✓ Link directly to the article — not the homepage</p></div>
+    <div style="border-left:2px solid var(--gold); padding:16px 20px;"><p style="font-size:11px; color:var(--white); margin-bottom:6px; letter-spacing:0.1em;">✓ Locations: USA, UK, UAE, India only</p></div>
+    <div style="border-left:2px solid var(--gold); padding:16px 20px;"><p style="font-size:11px; color:var(--white); margin-bottom:6px; letter-spacing:0.1em;">✓ Always set an end date — never runs until paused</p></div>
+    <div style="border-left:2px solid var(--gold); padding:16px 20px;"><p style="font-size:11px; color:var(--white); margin-bottom:6px; letter-spacing:0.1em;">✓ Max 5 tags: Celebrity · Event · Brand · LuxuryWatches · StoriestoWatch</p></div>
+  </div>
+  <p style="font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:20px;">Events Radar — Always Be Watching</p>
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--surface2);">
+    <div style="background:var(--deep); padding:20px;"><p style="font-size:9px; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px;">Sport</p><p style="font-size:11px; color:var(--text-dim); line-height:1.6;">World Cup · Champions League · Premier League · F1 · Wimbledon · Olympics · NBA Finals · Super Bowl</p></div>
+    <div style="background:var(--deep); padding:20px;"><p style="font-size:9px; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px;">Film & TV</p><p style="font-size:11px; color:var(--text-dim); line-height:1.6;">Cannes · Oscars · BAFTAs · Met Gala · Golden Globes · Venice Film Festival · Netflix premieres</p></div>
+    <div style="background:var(--deep); padding:20px;"><p style="font-size:9px; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px;">Watch Industry</p><p style="font-size:11px; color:var(--text-dim); line-height:1.6;">Watches & Wonders · Phillips auctions · Sotheby's · Christie's · New reference launches · Limited editions</p></div>
+    <div style="background:var(--deep); padding:20px;"><p style="font-size:9px; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px;">Culture</p><p style="font-size:11px; color:var(--text-dim); line-height:1.6;">Music awards · Celebrity news · Record breakers · Major achievements · Viral moments</p></div>
+  </div>
+</div>
+
+<div class="updated-note">Last updated: 19 June 2026 · Day 30 · Full data pull (SC + Vercel + GA4 + social) · RS Chrono purged · sourcing service live · Next review: Friday 26 June 2026<br>storiestowatch.com · Find watches worth finding. Read stories told to the minute.</div>
+
+<script>
+  var launch = new Date('2026-05-20');
+  var today = new Date();
+  var days = Math.floor((today - launch) / (1000*60*60*24));
+  document.getElementById('dayCount').textContent = days;
+  document.getElementById('todayDate').textContent = today.toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
+</script>
+</body>
+</html>
