@@ -208,9 +208,15 @@
 
   /* ── BRANDS ── */
   .brands-section{background:var(--surface);padding:48px 0;overflow:hidden;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);}
-  .brands-lead{text-align:center;font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:22px;}
-  .brands-lead a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.3);transition:color 0.3s;}
-  .brands-lead a:hover{color:var(--gold-light);}
+  .brands-header{text-align:center;margin-bottom:30px;padding:0 20px;}
+  .brands-ornament{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:18px;}
+  .brands-ornament::before,.brands-ornament::after{content:'';height:1px;width:60px;}
+  .brands-ornament::before{background:linear-gradient(to right,transparent,var(--gold-dim));}
+  .brands-ornament::after{background:linear-gradient(to left,transparent,var(--gold-dim));}
+  .brands-ornament .mark{color:var(--gold);font-size:12px;line-height:1;letter-spacing:0.3em;}
+  .brands-label{font-family:'Cinzel',serif;font-size:13px;letter-spacing:0.32em;text-transform:uppercase;color:var(--white);margin-bottom:14px;font-weight:400;}
+  .brands-cta{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.35);padding-bottom:5px;transition:all 0.3s;}
+  .brands-cta:hover{color:var(--gold-light);border-color:var(--gold);}
   .brands-track{display:flex;animation:tickerAnim 22s linear infinite;white-space:nowrap;}
   a.brand-name{font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;padding:0 52px;flex-shrink:0;text-decoration:none;transition:color 0.3s;}
   a.brand-name:hover{color:var(--gold-light);}
@@ -403,7 +409,10 @@
     section{padding:48px 16px!important;}
 
     .brands-section{padding:36px 0;}
-    .brands-lead{font-size:7px;letter-spacing:0.25em;margin-bottom:16px;padding:0 16px;line-height:1.6;}
+    .brands-header{margin-bottom:22px;}
+    .brands-ornament::before,.brands-ornament::after{width:36px;}
+    .brands-label{font-size:11px;letter-spacing:0.22em;line-height:1.5;margin-bottom:12px;}
+    .brands-cta{font-size:8px;letter-spacing:0.3em;}
     a.brand-name{font-size:9px;letter-spacing:0.3em;padding:0 24px;}
 
     .quote-section{padding:72px 16px;}
@@ -621,7 +630,11 @@
 
 <!-- BRANDS (moved here — sits right after the hero/Watch Finder) -->
 <div class="brands-section" id="maisons">
-  <p class="brands-lead">Source &amp; read on the world's finest — <a href="watchfinder.html">open the Watch Finder &rarr;</a></p>
+  <div class="brands-header">
+    <div class="brands-ornament"><span class="mark">&#10022;</span></div>
+    <p class="brands-label">The World's Finest Maisons</p>
+    <a href="watchfinder.html" class="brands-cta">Open the Watch Finder &rarr;</a>
+  </div>
   <div class="brands-track">
     <a class="brand-name" href="watchfinder.html?search=Rolex">Rolex</a><a class="brand-name" href="watchfinder.html?search=Patek%20Philippe">Patek Philippe</a><a class="brand-name" href="watchfinder.html?search=Audemars%20Piguet">Audemars Piguet</a><a class="brand-name" href="watchfinder.html?search=A.%20Lange">A. Lange &amp; Söhne</a><a class="brand-name" href="watchfinder.html?search=Vacheron%20Constantin">Vacheron Constantin</a><a class="brand-name" href="watchfinder.html?search=Richard%20Mille">Richard Mille</a><a class="brand-name" href="watchfinder.html?search=F.P.%20Journe">F.P. Journe</a><a class="brand-name" href="watchfinder.html?search=Jaeger-LeCoultre">Jaeger-LeCoultre</a><a class="brand-name" href="watchfinder.html?search=IWC">IWC</a><a class="brand-name" href="watchfinder.html?search=Breguet">Breguet</a><a class="brand-name" href="watchfinder.html?search=Cartier">Cartier</a><a class="brand-name" href="watchfinder.html?search=Grand%20Seiko">Grand Seiko</a><a class="brand-name" href="watchfinder.html?search=Hublot">Hublot</a>
     <a class="brand-name" href="watchfinder.html?search=Rolex">Rolex</a><a class="brand-name" href="watchfinder.html?search=Patek%20Philippe">Patek Philippe</a><a class="brand-name" href="watchfinder.html?search=Audemars%20Piguet">Audemars Piguet</a><a class="brand-name" href="watchfinder.html?search=A.%20Lange">A. Lange &amp; Söhne</a><a class="brand-name" href="watchfinder.html?search=Vacheron%20Constantin">Vacheron Constantin</a><a class="brand-name" href="watchfinder.html?search=Richard%20Mille">Richard Mille</a><a class="brand-name" href="watchfinder.html?search=F.P.%20Journe">F.P. Journe</a><a class="brand-name" href="watchfinder.html?search=Jaeger-LeCoultre">Jaeger-LeCoultre</a><a class="brand-name" href="watchfinder.html?search=IWC">IWC</a><a class="brand-name" href="watchfinder.html?search=Breguet">Breguet</a><a class="brand-name" href="watchfinder.html?search=Cartier">Cartier</a><a class="brand-name" href="watchfinder.html?search=Grand%20Seiko">Grand Seiko</a><a class="brand-name" href="watchfinder.html?search=Hublot">Hublot</a>
