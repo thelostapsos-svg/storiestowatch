@@ -47,6 +47,8 @@
   .mobile-menu a:first-child{border-top:1px solid rgba(201,168,76,0.08);}
   .mobile-menu a:hover,.mobile-menu a.gold{color:var(--gold);}
   .mobile-menu a.gold-light{color:var(--gold-light);}
+  .mobile-menu-close{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--gold);font-family:'Montserrat',sans-serif;font-size:34px;font-weight:200;line-height:1;cursor:pointer;padding:8px 12px;transition:color 0.3s,transform 0.3s;}
+  .mobile-menu-close:hover{color:var(--gold-light);transform:rotate(90deg);}
   .nav-quick{display:none;align-items:center;gap:4px;overflow:hidden;flex:1;justify-content:flex-end;min-width:0;}
   .nav-quick a{font-size:7px;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:4px 8px;white-space:nowrap;transition:all 0.2s;flex-shrink:0;}
   .nav-quick a:hover{color:var(--gold);}
@@ -499,6 +501,7 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMenu()" aria-label="Close menu">&times;</button>
   <!-- WC MOBILE MENU LINK START -->
   <a href="index.html#worldcup" class="gold-light" onclick="closeMenu()">&#9917; World Cup</a>
   <!-- WC MOBILE MENU LINK END -->
