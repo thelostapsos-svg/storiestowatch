@@ -87,6 +87,9 @@
       padding: 40px 20px !important;
       gap: 40px !important;
     }
+    /* CRITICAL: grid/flex children default to min-width:auto, letting a wide table
+       force the whole column past the viewport. Lock them to 0 so content wraps. */
+    .article-container > * { min-width: 0 !important; }
 
     .article-sidebar { position: static !important; }
 
@@ -281,7 +284,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <div class="wf-cta-left">
         <p>Watch Finder</p>
         <p>Find Audemars Piguet Royal Oak references worldwide</p>
-        <p class="wf-cta-sub">56 verified sources worldwide</p>
+        <p class="wf-cta-sub">58 verified sources worldwide</p>
       </div>
       <a href="watchfinder.html?search=Audemars Piguet" class="wf-btn">⌕ Search Royal Oak →</a>
     </div>
