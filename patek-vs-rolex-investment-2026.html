@@ -69,6 +69,9 @@
   .section-body { font-family:'Cormorant Garamond',serif; font-size:17px; line-height:1.8; color:var(--text-dim); }
   .section-body strong { color:var(--text); font-weight:400; }
   .section-body p { margin-bottom:20px; }
+  /* In-body links — gold by default so no link ever renders default browser blue */
+  .section-body a, .verdict-text a, .intro a { color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-dim); transition:color 0.3s, border-color 0.3s; }
+  .section-body a:hover, .verdict-text a:hover, .intro a:hover { color:var(--gold-light); border-color:var(--gold); }
 
   /* PULL QUOTE */
   .pull-quote { border-left:2px solid var(--gold); padding:24px 32px; margin:48px 0; background:rgba(201,168,76,0.04); }
@@ -362,7 +365,6 @@
       <div class="viz-title">Return Multiple by Reference</div>
       <div class="viz-sub">Secondary price ÷ retail. Rolex in gold, Patek in sand, AP in bronze.</div>
       <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Horizontal bar chart of return multiples by reference">
-        <!-- scale: x 200 to 580 maps 0x to 5x => 76px per x -->
         <g stroke="#1A1A18" stroke-width="1">
           <line x1="200" y1="20" x2="200" y2="290"/>
           <line x1="276" y1="20" x2="276" y2="290"/>
@@ -383,7 +385,6 @@
           <text x="192" y="232">Aquanaut 5167</text>
           <text x="192" y="270">Nautilus 5711</text>
         </g>
-        <!-- bars: width = multiple * 76 -->
         <rect x="200" y="32" width="114" height="16" rx="2" fill="#C9A84C"/><text x="320" y="44" font-family="Montserrat,sans-serif" font-size="9" fill="#8A8578">1.5x</text>
         <rect x="200" y="70" width="167" height="16" rx="2" fill="#C9A84C"/><text x="373" y="82" font-family="Montserrat,sans-serif" font-size="9" fill="#8A8578">2.2x</text>
         <rect x="200" y="108" width="129" height="16" rx="2" fill="#C9A84C"/><text x="335" y="120" font-family="Montserrat,sans-serif" font-size="9" fill="#8A8578">1.7x</text>
@@ -404,7 +405,6 @@
       <div class="viz-title">Retail vs Secondary — The Dollar Journey</div>
       <div class="viz-sub">Retail price (bronze) vs current secondary low (gold), USD thousands.</div>
       <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grouped bars comparing retail and secondary prices in USD thousands">
-        <!-- scale 0-160k over x 150-580 => 2.69px per k -->
         <g stroke="#1A1A18" stroke-width="1">
           <line x1="150" y1="20" x2="150" y2="262"/>
           <line x1="150" y1="262" x2="580" y2="262"/>
@@ -418,16 +418,12 @@
           <text x="142" y="152">Nautilus 5811</text>
           <text x="142" y="206">Nautilus 5711</text>
         </g>
-        <!-- Submariner retail 10.8k=29px sec 14k=38px -->
         <rect x="150" y="32" width="29" height="14" rx="2" fill="#7a5e10"/>
         <rect x="150" y="48" width="38" height="14" rx="2" fill="#C9A84C"/>
-        <!-- Daytona retail 14.8k=40 sec 28k=75 -->
         <rect x="150" y="86" width="40" height="14" rx="2" fill="#7a5e10"/>
         <rect x="150" y="102" width="75" height="14" rx="2" fill="#C9A84C"/>
-        <!-- Nautilus 5811 retail 52k=140 sec 95k=256 -->
         <rect x="150" y="140" width="140" height="14" rx="2" fill="#7a5e10"/>
         <rect x="150" y="156" width="256" height="14" rx="2" fill="#D8C79B"/>
-        <!-- Nautilus 5711 retail 34.9k=94 sec 100k=269 -->
         <rect x="150" y="194" width="94" height="14" rx="2" fill="#7a5e10"/>
         <rect x="150" y="210" width="269" height="14" rx="2" fill="#D8C79B"/>
         <g font-family="Montserrat,sans-serif" font-size="8" fill="#8A8578">
@@ -499,11 +495,9 @@
       <line x1="60" y1="40" x2="60" y2="250" stroke="#1A1A18" stroke-width="1"/>
       <text x="320" y="278" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10" fill="#5a5650">Liquidity — how fast you can sell →</text>
       <text x="22" y="145" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10" fill="#5a5650" transform="rotate(-90 22 145)">Appreciation potential →</text>
-      <!-- Rolex: high liquidity, moderate appreciation -->
       <circle cx="500" cy="180" r="11" fill="#C9A84C"/>
       <text x="500" y="160" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#C9A84C">Rolex</text>
       <text x="500" y="205" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="9" fill="#8A8578">Sell anytime · 1.5–2.5x</text>
-      <!-- Patek: lower liquidity, high appreciation -->
       <circle cx="180" cy="90" r="11" fill="#D8C79B"/>
       <text x="180" y="70" text-anchor="middle" font-family="Cinzel,serif" font-size="13" fill="#D8C79B">Patek</text>
       <text x="180" y="115" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="9" fill="#8A8578">Hold 10yr+ · 2.5–4.7x</text>
@@ -525,7 +519,7 @@
 
   <!-- CTA -->
   <div class="cta-block">
-    <p>Ready to source either brand? Our <strong>Watch Finder</strong> covers 56 verified sources worldwide — authorised retailers, grey market specialists and auction houses for both Rolex and Patek Philippe.</p>
+    <p>Ready to source either brand? Our <strong>Watch Finder</strong> covers 58 verified sources worldwide — authorised retailers, grey market specialists and auction houses for both Rolex and Patek Philippe.</p>
     <a href="watchfinder.html" class="cta-btn">Open Watch Finder</a>
   </div>
 
