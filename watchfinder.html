@@ -267,7 +267,7 @@
 </div>
 
 <div class="stats-bar">
-  <div class="stats-bar-item"><span class="stats-bar-num" id="dealerCount">54</span><span>Verified Sources</span></div>
+  <div class="stats-bar-item"><span class="stats-bar-num" id="dealerCount">60</span><span>Verified Sources</span></div>
   <div class="stats-bar-divider"></div>
   <div class="stats-bar-item"><span class="stats-bar-num">Global</span><span>Reach</span></div>
   <div class="stats-bar-divider"></div>
@@ -307,7 +307,7 @@
 
   <div class="results-area">
     <div class="results-header">
-      <p class="results-count">Showing <span id="resultCount">54</span> sources worldwide</p>
+      <p class="results-count">Showing <span id="resultCount">60</span> sources worldwide</p>
       <select class="sort-select" id="sortSelect" onchange="sortDealers(this.value)">
         <option value="recommended">Recommended</option>
         <option value="region">By Region</option>
@@ -413,7 +413,9 @@ var dealers = [
   {name:"Al Majed Jewellery",type:"authorised",region:"me",city:"Doha, Qatar",brands:["Patek Philippe","Hublot","IWC","A. Lange & Söhne"],desc:"One of Qatar's leading luxury watch and jewellery houses (since 1943), carrying Patek Philippe, Hublot, IWC, A. Lange & Söhne, Grand Seiko, Zenith, F.P. Journe, Jacob & Co. and many more — with a dedicated Patek Philippe presence at Place Vendôme Mall.",brandMap:{"hublot":"https://almajedjewellery.me/shop/brand/watches/hublot/","iwc":"https://almajedjewellery.me/shop/brand/watches/iwc-schaffhausen/","a. lange":"https://almajedjewellery.me/shop/brand/watches/a-lange-sohne/","lange":"https://almajedjewellery.me/shop/brand/watches/a-lange-sohne/","f.p. journe":"https://almajedjewellery.me/shop/brand/watches/f-p-journe/","journe":"https://almajedjewellery.me/shop/brand/watches/f-p-journe/","jacob":"https://almajedjewellery.me/shop/brand/watches/jacob-co-watches/","bell":"https://almajedjewellery.me/shop/brand/watches/bell-ross/","parmigiani":"https://almajedjewellery.me/shop/brand/watches/parmigiani/","nomos":"https://almajedjewellery.me/shop/brand/watches/nomos-glashutte/","cyrus":"https://almajedjewellery.me/shop/brand/watches/cyrus/","versace":"https://almajedjewellery.me/shop/brand/watches/versace/","bomberg":"https://almajedjewellery.me/shop/brand/watches/bomberg/"},url:"https://almajedjewellery.me/watches/",affiliate:false},
   {name:"Oriental Watch Company",type:"authorised",region:"asia",city:"Hong Kong",brands:["Rolex","Tudor"],desc:"One of Hong Kong's oldest and most established Official Rolex Retailers, with multiple boutiques across Central and Kowloon and a Rolex Certified Pre-Owned programme.",brandMap:{"rolex":"https://www.orientalwatch.com/zh-hant/rolex/watches/","tudor":"https://onlinestore.orientalwatch.com/zh/brands/tudor/watch"},url:"https://www.orientalwatch.com",affiliate:false},
   {name:"Time Avenue",type:"authorised",region:"asia",city:"Mumbai, India",brands:["Omega","Hublot","Breitling","TAG Heuer"],desc:"Established Mumbai luxury watch retailer (since 1998) carrying Omega, Hublot, Breitling, TAG Heuer, Longines, Chopard, Franck Muller, Blancpain and Breguet, alongside independent horology.",brandMap:{"omega":"https://timeavenue.com/product-category/omega-watch/","hublot":"https://timeavenue.com/product-category/hublot/","breitling":"https://timeavenue.com/product-category/breitling/","tag heuer":"https://timeavenue.com/product-category/tag-heuer-watches/","longines":"https://timeavenue.com/product-category/longines/","chopard":"https://timeavenue.com/product-category/chopard/","franck muller":"https://timeavenue.com/product-category/franck-muller-watch/","blancpain":"https://timeavenue.com/product-category/blancpain-watches/","breguet":"https://timeavenue.com/product-category/breguet-watch/"},url:"https://timeavenue.com",affiliate:false},
-  {name:"First Jewelry Co.",type:"authorised",region:"me",city:"Riyadh, Saudi Arabia",brands:["Patek Philippe"],desc:"Operator of the official Patek Philippe flagship boutique at Olaya Towers, Riyadh — opened with Patek Philippe's chairman in 2022 and the maison's anchor presence in the Kingdom.",url:"https://www.patek.com/en/points-of-sale/middle-east/saudi-arabia/riyadh/first-jewelry",affiliate:false}
+  {name:"First Jewelry Co.",type:"authorised",region:"me",city:"Riyadh, Saudi Arabia",brands:["Patek Philippe"],desc:"Operator of the official Patek Philippe flagship boutique at Olaya Towers, Riyadh — opened with Patek Philippe's chairman in 2022 and the maison's anchor presence in the Kingdom.",url:"https://www.patek.com/en/points-of-sale/middle-east/saudi-arabia/riyadh/first-jewelry",affiliate:false},
+  {name:"Bucherer",type:"authorised",region:"europe",city:"Lucerne, Switzerland",brands:["Rolex","Tudor","IWC","Jaeger-LeCoultre"],desc:"One of the world's largest luxury watch and jewellery houses, founded in 1888 and an Official Rolex Retailer. Now part of the Rolex group, with the Tourneau network in the United States and a certified pre-owned programme.",brandMap:{"rolex":"https://www.bucherer.com/rolex"},search:"https://www.bucherer.com/search?q={q}",url:"https://www.bucherer.com",affiliate:false},
+  {name:"The Hour Glass",type:"authorised",region:"asia",city:"Singapore",brands:["Rolex","Tudor","Patek Philippe","Audemars Piguet"],desc:"One of Asia's leading specialist watch retailers since 1979 and an Official Rolex Retailer, with boutiques across Singapore, Hong Kong, Tokyo, Bangkok and Australia carrying the major maisons and independents.",brandMap:{"rolex":"https://www.thehourglass.com/rolex","tudor":"https://www.thehourglass.com/catalog/tudor"},search:"https://www.thehourglass.com/search?q={q}",url:"https://www.thehourglass.com",affiliate:false}
 ];
 
 // --- GEO METADATA (added 13 Jun 2026): merge locType + verified city-centre coords by name ---
@@ -925,6 +927,9 @@ var incomingSearch = urlParams.get('search');
 if (incomingSearch) {
   document.getElementById('searchInput').value = incomingSearch;
 }
+
+var _dc = document.getElementById('dealerCount');
+if (_dc) _dc.textContent = dealers.length;
 
 applyFilters();
 
