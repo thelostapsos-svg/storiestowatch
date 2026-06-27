@@ -39,7 +39,7 @@
 <link rel="icon" href="stw-emblem.svg" type="image/svg+xml">
 <link rel="icon" href="stw-emblem.png" type="image/png">
 <link rel="apple-touch-icon" href="stw-emblem.png">
-<link rel="preload" as="image" href="gods/hero-god.webp" fetchpriority="high">
+<link rel="preload" as="image" href="gods/hero-god.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -102,7 +102,8 @@ nav.open .burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .wmovement .l b{color:var(--gold-light);font-weight:400}
 @media(max-width:780px){.hero-dna{width:320px;height:320px;left:-72px;bottom:-60px;opacity:.06}}
 .hero-god .img{position:absolute;inset:-6%;background-size:cover;background-position:center 18%;
-  background-image:url('gods/hero-god.webp');filter:grayscale(.5) sepia(.2) contrast(1.06) brightness(.96);will-change:transform}
+  background-image:url('gods/hero-god.jpg'),radial-gradient(ellipse 60% 40% at 35% 18%,rgba(255,255,255,.5),transparent 60%),linear-gradient(125deg,#efe9dd,#d4ccba 45%,#f1ebdf 60%,#c7bfac 100%);
+  filter:grayscale(.5) sepia(.2) contrast(1.06) brightness(.96);will-change:transform}
 .hero-god .img.marble{background-image:
    radial-gradient(ellipse 60% 40% at 35% 18%,rgba(255,255,255,.55),transparent 60%),
    linear-gradient(125deg,#efe9dd,#d4ccba 45%,#f1ebdf 60%,#c7bfac 100%)}
@@ -181,7 +182,7 @@ h1 em{display:block;font-style:normal;color:var(--gold);font-weight:600}
 
 /* THE MYTH — origin-story scroll sequence (non-blocking, crawlable text) */
 .myth{position:relative;padding:104px 22px;overflow:hidden;border-bottom:1px solid rgba(201,168,76,.1)}
-.myth-bg{position:absolute;inset:0;background:url('gods/hero-god.webp') center 16%/cover;
+.myth-bg{position:absolute;inset:0;background:url('gods/hero-god.jpg') center 16%/cover;
   filter:grayscale(.75) sepia(.18) contrast(1.05) brightness(.45)}
 .myth::after{content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 85% 75% at 50% 45%,transparent 24%,rgba(10,10,9,.9) 100%),linear-gradient(rgba(10,10,9,.55),rgba(10,10,9,.7))}
