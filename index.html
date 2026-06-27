@@ -77,8 +77,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .navlinks a{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);transition:.3s}
 .navlinks a:hover{color:var(--gold)}.navlinks a.f{color:var(--gold-light)}
 .navcta{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:9px 15px;border-radius:2px;white-space:nowrap}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
-.burger span{width:22px;height:1.5px;background:var(--gold);display:block}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;z-index:1002}
+.burger span{width:22px;height:1.5px;background:var(--gold);display:block;transition:transform .3s ease,opacity .2s ease}
+nav.open .burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+nav.open .burger span:nth-child(2){opacity:0}
+nav.open .burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-quick{display:none}
 
 /* HERO — split: mythic text + the marble god */
 .hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;overflow:hidden}
@@ -205,6 +209,12 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 .maison-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:920px;margin:26px auto 0}
 .maison{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.16em;color:var(--text);border:1px solid rgba(201,168,76,.2);padding:12px 18px;text-transform:uppercase;transition:.25s}
 .maison:hover{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,.05)}
+/* Patronage — a single dealer/maison may claim a place of honour here */
+.maison-patron{max-width:660px;margin:42px auto 0;text-align:center}
+.maison-patron .mp-kick{font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px}
+.maison-patron .mp-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,2vw,20px);color:var(--dim);line-height:1.55;margin-bottom:18px}
+.maison-patron .mp-cta a{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light);margin:0 12px;border-bottom:1px solid rgba(201,168,76,.4);padding-bottom:3px;transition:.25s;display:inline-block}
+.maison-patron .mp-cta a:hover{color:var(--gold);border-color:var(--gold)}
 
 /* ===== MODERN LAYER — scroll-reveals + parallax + museum spotlight ===== */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -229,7 +239,14 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 @media(prefers-reduced-motion:reduce){.tip::after{transition:none}}
 
 @media(max-width:900px){
-  .navlinks,.navcta{display:none}.burger{display:flex}.brand{font-size:11px;letter-spacing:.18em}
+  .navcta{display:none}.burger{display:flex}.brand{font-size:11px;letter-spacing:.14em}
+  .nav-quick{display:flex;align-items:center;gap:16px;margin-left:auto;margin-right:16px}
+  .nav-quick a{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+  .nav-quick a.f{color:var(--gold-light)}
+  .navlinks{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:rgba(9,9,8,.98);backdrop-filter:blur(10px);border-top:1px solid rgba(201,168,76,.16);box-shadow:0 18px 40px rgba(0,0,0,.5);padding:6px 0;max-height:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-height .35s ease,opacity .3s ease}
+  nav.open .navlinks{max-height:84vh;opacity:1;pointer-events:auto}
+  .navlinks a{padding:15px 26px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text);border-bottom:1px solid rgba(201,168,76,.07)}
+  .navlinks a.f{color:var(--gold-light)}
   .hero{grid-template-columns:1fr;min-height:auto}
   .hero-god{min-height:46svh;order:-1}
   .hero-god .img,.hero-god .img.marble{background-position:center 22%}
@@ -240,6 +257,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   .relic{grid-template-columns:1fr}.relic-img{min-height:340px}.relic-txt{padding:40px 24px}
 }
 @media(max-width:480px){
+  .brand-word{display:none}.nav-emblem{height:30px}
   .grid{grid-template-columns:1fr}
   .clock .t{font-size:26px}
   .finder-bar input{font-size:16px}
@@ -250,16 +268,20 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 <body>
 
 <nav>
-  <a href="#top" class="brand"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch — the keepers of time"> STORIES <b>TO</b> WATCH</a>
+  <a href="#top" class="brand"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch — the keepers of time"> <span class="brand-word">STORIES <b>TO</b> WATCH</span></a>
   <div class="navlinks">
     <a href="#hours">The Hours</a>
-    <a href="#hours">Guides</a>
+    <a href="#guides">Guides</a>
     <a href="the-vault.html" class="f">The Vault ✦</a>
     <a href="watchfinder.html" class="f">Watch Finder</a>
     <a href="#about">About</a>
   </div>
   <a href="watchfinder.html" class="navcta">⌕ Find a Watch</a>
-  <button class="burger" aria-label="Menu" onclick="location.href='watchfinder.html'"><span></span><span></span><span></span></button>
+  <div class="nav-quick">
+    <a href="#guides">Guides</a>
+    <a href="the-vault.html" class="f">Vault ✦</a>
+  </div>
+  <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -366,7 +388,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   </div>
 
   <!-- THE LIBRARY — every guide, under its god -->
-  <div class="library">
+  <div class="library" id="guides">
     <div class="lib-col">
       <h4 class="tip" tabindex="0" data-tip="Chronos rules time — so here lives the question of value: what a watch is worth now, and later.">CHRONOS</h4><p class="cs">The reckoning of value.</p>
       <a href="patek-vs-rolex-investment-2026.html">Patek Philippe vs Rolex — which actually holds value<span class="a">Investment</span></a>
@@ -439,6 +461,11 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
     <a class="maison" href="watchfinder.html?search=A.%20Lange%20%26%20S%C3%B6hne">A. Lange &amp; Söhne</a>
     <a class="maison" href="watchfinder.html?search=Jaeger-LeCoultre">Jaeger-LeCoultre</a>
   </div>
+  <div class="maison-patron">
+    <span class="mp-kick">Advertise With Us</span>
+    <p class="mp-line">Are you a dealer or watch brand? Feature your name among these maisons — in front of every buyer who begins their search here. One placement, kept for a single house.</p>
+    <p class="mp-cta"><a href="mailto:hello@storiestowatch.com">Enquire about advertising →</a> <a href="mediakit.html">See the media kit</a></p>
+  </div>
 </section>
 
 <!-- ============ THE RELIC ============ -->
@@ -494,6 +521,20 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   var hg=document.getElementById('heroGodImg'),hi=new Image();
   hi.onload=function(){hg.style.backgroundImage="url('gods/hero-god.jpg')";hg.classList.remove('marble','veined');};
   hi.src='gods/hero-god.jpg';
+})();
+// ---- MOBILE: burger toggles the nav menu (was wrongly jumping to the Finder) ----
+(function(){
+  var nav=document.querySelector('nav'),burger=nav&&nav.querySelector('.burger');
+  if(!burger) return;
+  burger.addEventListener('click',function(e){
+    e.preventDefault();
+    var open=nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    burger.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  nav.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click',function(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu');});
+  });
 })();
 // ---- MOBILE: auto-reveal each god's explainer as its card crosses the screen's centre (touch has no hover) ----
 (function(){
