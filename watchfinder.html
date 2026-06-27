@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Watch Finder — Stories To Watch</title>
 <meta name="description" content="Find luxury watches from authorised dealers, grey market specialists and online platforms worldwide. The world's most comprehensive watch sourcing tool.">
+<link rel="icon" href="stw-emblem.svg" type="image/svg+xml">
+<link rel="icon" href="stw-emblem.png" type="image/png">
+<link rel="apple-touch-icon" href="stw-emblem.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -23,16 +26,24 @@
   @media (hover:none) { *, a, button, select, input { cursor:auto; } }
 
   nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:#050505; border-bottom:1px solid rgba(201,168,76,0.1); }
-  .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; }
+  .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; display:inline-flex; align-items:center; gap:10px; }
+  .nav-emblem { height:28px; width:auto; display:block; flex-shrink:0; }
+  @media(max-width:768px){ .nav-emblem { height:24px; } nav { padding:16px 22px; } }
   .nav-back { display:flex; align-items:center; gap:10px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
   .nav-back:hover { color:var(--gold); }
   .nav-back::before { content:'←'; font-size:14px; }
 
-  .hero { min-height:50vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:140px 60px 60px; position:relative; overflow:hidden; }
+  .hero { min-height:58vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:150px 60px 64px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(ellipse 66% 56% at 50% 42%, rgba(5,5,5,0.64), transparent 72%),
+      linear-gradient(to bottom, rgba(5,5,5,0.26), rgba(5,5,5,0.32) 52%, rgba(5,5,5,0.9)),
+      url('fresco-gigantomachy.jpg') center/cover no-repeat;
+    background-color:#050505; }
   .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%); }
   .hero-label { font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; gap:16px; }
   .hero-label::before, .hero-label::after { content:''; width:40px; height:1px; background:var(--gold); opacity:0.5; }
-  .hero-title { font-family:'Cinzel',serif; font-size:clamp(40px,6vw,80px); font-weight:900; line-height:0.95; color:var(--white); margin-bottom:8px; }
+  .hero-title { font-family:'Cinzel',serif; font-size:clamp(40px,6vw,80px); font-weight:900; line-height:0.95; color:var(--white); margin-bottom:8px; text-shadow:0 2px 26px rgba(0,0,0,0.72), 0 1px 5px rgba(0,0,0,0.6); }
+  .hero-label, .hero-subtitle { text-shadow:0 1px 14px rgba(0,0,0,0.7); }
   .hero-title span { color:var(--gold); display:block; }
   .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2.5vw,26px); color:var(--text-dim); margin:20px 0 28px; max-width:700px; line-height:1.5; }
   /* BRAND PILLS — quiet capability statement, names only (no logos) */
@@ -163,7 +174,8 @@
   .submit-btn:hover { background:var(--gold); color:var(--black); }
 
   footer { background:var(--surface); padding:32px 60px; border-top:1px solid rgba(201,168,76,0.1); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-  .footer-brand { font-family:'Cinzel',serif; font-size:12px; color:var(--gold); letter-spacing:0.2em; }
+  .footer-brand { font-family:'Cinzel',serif; font-size:12px; color:var(--gold); letter-spacing:0.2em; display:inline-flex; align-items:center; gap:9px; }
+  .footer-brand img { height:26px; width:auto; }
   footer p { font-size:10px; color:var(--text-dim); letter-spacing:0.12em; }
 
   @media (max-width:1100px) {
@@ -220,7 +232,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
+  <a href="index.html" class="nav-logo"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch — keepers of time"> STORIES TO WATCH</a>
   <a href="index.html" class="nav-back">Back to Editorial</a>
 </nav>
 
@@ -344,7 +356,7 @@
 </div>
 
 <footer>
-  <a href="index.html" class="footer-brand">STORIES TO WATCH</a>
+  <a href="index.html" class="footer-brand"><img src="stw-emblem.png" alt=""> STORIES TO WATCH</a>
   <p>Watch Finder — Global Luxury Watch Sourcing</p>
   <p style="color:var(--gold-dim);">storiestowatch.com</p>
 </footer>

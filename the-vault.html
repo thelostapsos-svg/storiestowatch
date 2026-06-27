@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vault — Stories To Watch</title>
+<meta name="description" content="The Vault — a cinematic descent through the myth of time and the watches that defy it. From Stories To Watch, keepers of time.">
+<link rel="canonical" href="https://www.storiestowatch.com/the-vault.html">
+<link rel="icon" href="stw-emblem.svg" type="image/svg+xml">
+<link rel="icon" href="stw-emblem.png" type="image/png">
+<link rel="apple-touch-icon" href="stw-emblem.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Vault — Stories To Watch">
+<meta property="og:description" content="A cinematic descent through the myth of time and the watches that defy it.">
+<meta property="og:image" content="https://www.storiestowatch.com/fresco-gigantomachy.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A84C;--gold-light:#E8C96A;--gold-deep:#8B6914;--ink:#050505;--deep:#0A0A08;--text:#E8E4D9;--dim:#8A8578;--white:#F5F1E8}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--ink);color:var(--text);font-family:'Montserrat',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;background:radial-gradient(ellipse 100% 80% at 50% 30%,transparent 52%,rgba(0,0,0,.6) 100%)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:15px 26px;background:linear-gradient(to bottom,rgba(5,5,5,.85),transparent);backdrop-filter:blur(5px)}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-weight:600;font-size:12px;letter-spacing:.3em;color:var(--white)}
+.brand img{height:28px}
+.navback{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);transition:.3s}
+.navback:hover{color:var(--gold)}
+
+/* OPENING */
+.open{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 22px 40px;overflow:hidden}
+.open-dna{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(640px,120vw);aspect-ratio:1;background:url('motif-movement.svg') center/contain no-repeat;opacity:.08;z-index:0}
+.open-eyebrow{position:relative;z-index:2;font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:26px}
+.open-line{position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,4vw,40px);line-height:1.32;color:var(--white);max-width:760px}
+.open-line em{color:var(--gold-light);font-style:italic}
+.watch-wrap{position:relative;z-index:2;width:min(280px,64vw);margin:40px auto 0}
+.watch-wrap svg{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 60px rgba(0,0,0,.7))}
+.scrollcue{position:relative;z-index:2;margin-top:34px;font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-deep);display:flex;flex-direction:column;align-items:center;gap:8px;animation:bob 2.4s ease-in-out infinite}
+.scrollcue i{width:1px;height:30px;background:linear-gradient(var(--gold),transparent)}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.7}50%{transform:translateY(7px);opacity:1}}
+
+/* CHAPTERS */
+.chapter{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+.ch-bg{position:absolute;inset:-8%;background-size:cover;background-position:center;z-index:0;
+  filter:grayscale(.55) sepia(.22) contrast(1.06) brightness(.6);will-change:transform}
+.chapter::after{content:'';position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.6) 45%,rgba(5,5,5,.35) 100%),
+  linear-gradient(0deg,rgba(5,5,5,.9),transparent 40%,rgba(5,5,5,.6))}
+.chapter.right::after{background:
+  linear-gradient(270deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.6) 45%,rgba(5,5,5,.35) 100%),
+  linear-gradient(0deg,rgba(5,5,5,.9),transparent 40%,rgba(5,5,5,.6))}
+.ch-inner{position:relative;z-index:2;max-width:620px;padding:40px 26px 40px 7vw}
+.chapter.right .ch-inner{margin-left:auto;text-align:right;padding:40px 7vw 40px 26px}
+.ch-num{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.3em;color:var(--gold);margin-bottom:8px}.ch-watch{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-light);margin:0 0 16px;display:flex;align-items:center;gap:10px}.ch-watch::before{content:'';width:22px;height:1px;background:var(--gold);opacity:.7}.chapter.right .ch-watch{justify-content:flex-end}.chapter.right .ch-watch::before{order:2}
+.ch-title{font-family:'Cinzel',serif;font-weight:500;font-size:clamp(28px,4.4vw,52px);line-height:1.05;color:var(--white);letter-spacing:.01em}
+.ch-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.2vw,24px);color:var(--dim);margin:18px 0 26px;line-height:1.5}
+.ch-link{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-light);border-bottom:1px solid rgba(201,168,76,.35);padding-bottom:5px;transition:.3s}
+.ch-link:hover{color:var(--gold);border-color:var(--gold)}
+
+/* reveal */
+.rev{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rev.in{opacity:1;transform:none}
+.rev.d1{transition-delay:.12s}.rev.d2{transition-delay:.24s}.rev.d3{transition-delay:.36s}
+
+/* FINALE */
+.finale{position:relative;min-height:96svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 22px;overflow:hidden;border-top:1px solid rgba(201,168,76,.14);
+  background:radial-gradient(ellipse 70% 80% at 50% 40%,rgba(201,168,76,.1),transparent 70%),var(--deep)}
+.finale .k{font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.finale h2{font-family:'Cinzel',serif;font-weight:500;font-size:clamp(26px,4.4vw,52px);color:var(--white);line-height:1.1;max-width:760px}
+.finale h2 em{font-style:normal;color:var(--gold)}
+.finale .cta{display:inline-flex;align-items:center;gap:10px;margin-top:34px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink);background:linear-gradient(135deg,var(--gold-light),var(--gold));padding:16px 34px;border-radius:2px;box-shadow:0 10px 30px rgba(201,168,76,.22);transition:transform .25s}
+.finale .cta:hover{transform:translateY(-2px)}
+
+footer{padding:42px 22px;text-align:center;color:var(--dim);font-size:11px;line-height:1.8}
+footer .fb{display:inline-flex;align-items:center;gap:9px;justify-content:center;margin-bottom:8px}
+footer .fb img{height:28px}footer .fb span{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:var(--gold)}
+
+@media(max-width:768px){
+  .chapter::after,.chapter.right::after{background:linear-gradient(0deg,rgba(5,5,5,.95) 6%,rgba(5,5,5,.45) 60%),linear-gradient(90deg,rgba(5,5,5,.6),rgba(5,5,5,.3))}
+  .ch-inner,.chapter.right .ch-inner{margin:0;text-align:left;padding:120px 22px 80px}
+  .chapter{align-items:flex-end}
+}
+@media(prefers-reduced-motion:reduce){.rev{opacity:1!important;transform:none!important}.ch-bg{filter:grayscale(.55) sepia(.22) contrast(1.06) brightness(.6)!important;transform:none!important}*{animation:none!important;scroll-behavior:auto}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
+</head>
+<body>
+<h1 class="sr-only">The Vault — Stories To Watch · Keepers of Time</h1>
+
+<nav>
+  <a href="index.html" class="brand"><img src="stw-emblem.png" alt="Stories To Watch — keepers of time"> STORIES TO WATCH</a>
+  <a href="index.html" class="navback">← Leave the Vault</a>
+</nav>
+
+<!-- OPENING -->
+<header class="open" id="top">
+  <div class="open-dna" aria-hidden="true"></div>
+  <p class="open-eyebrow rev in">The Vault · ΧΡΟΝΟΣ</p>
+  <p class="open-line rev in d1">A watch is the only thing a man wears that tells the world who he is — <em>before he says a word.</em></p>
+  <div class="watch-wrap rev in d2" id="watchWrap">
+    <svg viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A timepiece keeping the current hour">
+      <defs>
+        <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FBF3DC"/><stop offset="18%" stop-color="#C9B98A"/><stop offset="38%" stop-color="#8A7C52"/><stop offset="55%" stop-color="#EADCB0"/><stop offset="72%" stop-color="#7E7048"/><stop offset="100%" stop-color="#5A4E2C"/></linearGradient>
+        <radialGradient id="dial" cx="42%" cy="34%" r="74%"><stop offset="0%" stop-color="#1d1b14"/><stop offset="55%" stop-color="#100f0a"/><stop offset="100%" stop-color="#060504"/></radialGradient>
+        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F4E2A0"/><stop offset="50%" stop-color="#C9A84C"/><stop offset="100%" stop-color="#6E5410"/></linearGradient>
+      </defs>
+      <polygon points="301.9,126.3 403.7,228.1 403.7,371.9 301.9,473.7 158.1,473.7 56.3,371.9 56.3,228.1 158.1,126.3" fill="url(#steel)" stroke="#FFF6DA" stroke-width="1.2" stroke-opacity=".35" transform="translate(0,-70)"/>
+      <circle cx="230" cy="230" r="150" fill="#0b0a07"/>
+      <circle cx="230" cy="230" r="148" fill="url(#dial)"/>
+      <circle cx="230" cy="230" r="148" fill="none" stroke="#3a3018" stroke-width="1" opacity=".6"/>
+      <g id="vIdx"></g>
+      <text x="230" y="186" text-anchor="middle" font-family="Cinzel,serif" font-size="10" fill="#C9A84C" letter-spacing="2.4" opacity=".9">STORIES TO WATCH</text>
+      <text x="230" y="300" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="6" fill="#6E5410" letter-spacing="2.6">ΧΡΟΝΟΣ · EST. 2026</text>
+      <g id="vH"><rect x="226" y="138" width="8" height="98" rx="4" fill="url(#gold)"/></g>
+      <g id="vM"><rect x="227.5" y="108" width="5" height="128" rx="2.5" fill="url(#gold)"/></g>
+      <g id="vS"><line x1="230" y1="252" x2="230" y2="100" stroke="#E8C96A" stroke-width="1.8" stroke-linecap="round"/></g>
+      <circle cx="230" cy="230" r="9" fill="url(#gold)"/><circle cx="230" cy="230" r="4" fill="#0c0b07"/>
+    </svg>
+  </div>
+  <div class="scrollcue"><span>Descend</span><i></i></div>
+</header>
+
+<!-- CHAPTER 1 -->
+<section class="chapter" data-bg="gods/hephaestus.jpg">
+  <div class="ch-bg" aria-hidden="true"></div>
+  <div class="ch-inner">
+    <p class="ch-num rev">I · The Origin</p>
+    <p class="ch-watch rev">Audemars Piguet · Royal Oak</p>
+    <h2 class="ch-title rev d1">The watch the world laughed at — for a decade.</h2>
+    <p class="ch-line rev d2">A steel sports watch priced like gold. They called it madness. Then they called it the most important watch of the century.</p>
+    <a class="ch-link rev d3" href="royal-oak-price-guide.html">Read the full story →</a>
+  </div>
+</section>
+
+<!-- CHAPTER 2 -->
+<section class="chapter right" data-bg="gods/hermes.jpg">
+  <div class="ch-bg" aria-hidden="true"></div>
+  <div class="ch-inner">
+    <p class="ch-num rev">II · The Decode</p>
+    <p class="ch-watch rev">Patek Philippe vs Rolex</p>
+    <h2 class="ch-title rev d1">What a wrist says before the mouth opens.</h2>
+    <p class="ch-line rev d2">Two watches, two fortunes, two very different messages. The right one isn't the loudest — it's the one the right people understand.</p>
+    <a class="ch-link rev d3" href="patek-vs-rolex-investment-2026.html">Read the full story →</a>
+  </div>
+</section>
+
+<!-- CHAPTER 3 -->
+<section class="chapter" data-bg="watch_and_cigars_wealth_shot.webp">
+  <div class="ch-bg" aria-hidden="true"></div>
+  <div class="ch-inner">
+    <p class="ch-num rev">III · The Quiet Flex</p>
+    <p class="ch-watch rev">Patek Philippe · Nautilus</p>
+    <h2 class="ch-title rev d1">What the truly rich wear when they'd rather not be seen.</h2>
+    <p class="ch-line rev d2">No logo across the room. No price on the dial. Just the quiet certainty of those who already know.</p>
+    <a class="ch-link rev d3" href="nautilus-investment-guide.html">Read the full story →</a>
+  </div>
+</section>
+
+<!-- CHAPTER 4 -->
+<section class="chapter right" data-bg="fresco-gigantomachy.jpg">
+  <div class="ch-bg" aria-hidden="true"></div>
+  <div class="ch-inner">
+    <p class="ch-num rev">IV · The Moment</p>
+    <p class="ch-watch rev">Cannes 2026 · On the Carpet</p>
+    <h2 class="ch-title rev d1">The wrists that history remembers.</h2>
+    <p class="ch-line rev d2">Red carpets, final whistles, coronations. A watch doesn't just keep the hour — sometimes it marks the one we never forget.</p>
+    <a class="ch-link rev d3" href="cannes-2026-watches.html">Read the full story →</a>
+  </div>
+</section>
+
+<!-- CHAPTER 5 -->
+<section class="chapter" data-bg="gods/atlas.jpg">
+  <div class="ch-bg" aria-hidden="true"></div>
+  <div class="ch-inner">
+    <p class="ch-num rev">V · The Hunt</p>
+    <p class="ch-watch rev">Any Reference · Anywhere</p>
+    <h2 class="ch-title rev d1">The thrill was never owning it.</h2>
+    <p class="ch-line rev d2">It was the chase — the search across the world's quiet rooms for the one that was always meant to be yours.</p>
+    <a class="ch-link rev d3" href="source-a-watch.html">Begin the hunt →</a>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale" id="finale">
+  <p class="k rev">The buy-off</p>
+  <h2 class="rev d1">Every great watch is out there, <em>waiting.</em> Find yours.</h2>
+  <a class="cta rev d2" href="watchfinder.html">Enter the Watch Finder →</a>
+</section>
+
+<footer>
+  <a href="index.html" class="fb"><img src="stw-emblem.png" alt=""><span>STORIES TO WATCH</span></a>
+  <p>Time, kept by the gods. Found by you.</p>
+</footer>
+
+<script>
+(function(){
+  var SVGNS='http://www.w3.org/2000/svg';
+  // dial indices
+  var idx=document.getElementById('vIdx');
+  for(var h=0;h<12;h++){var a=h*30*Math.PI/180,r1=140,r2=(h%3===0)?128:133,w=(h%3===0)?3:1.4;var l=document.createElementNS(SVGNS,'line');l.setAttribute('x1',230+r1*Math.sin(a));l.setAttribute('y1',230-r1*Math.cos(a));l.setAttribute('x2',230+r2*Math.sin(a));l.setAttribute('y2',230-r2*Math.cos(a));l.setAttribute('stroke','#8B6914');l.setAttribute('stroke-width',w);l.setAttribute('opacity','.7');idx.appendChild(l);}
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // live clock
+  function rot(el,d){el.setAttribute('transform','rotate('+d+' 230 230)');}
+  function tick(){var n=new Date(),ms=n.getMilliseconds(),s=n.getSeconds(),mi=n.getMinutes(),hr=n.getHours()%12;var ss=reduce?s:s+ms/1000;rot(document.getElementById('vS'),ss*6);rot(document.getElementById('vM'),(mi+ss/60)*6);rot(document.getElementById('vH'),(hr+mi/60)*30);}
+  tick();
+  // lazy chapter backgrounds via data-bg
+  document.querySelectorAll('.chapter').forEach(function(c){var src=c.getAttribute('data-bg');var bg=c.querySelector('.ch-bg');var im=new Image();im.onload=function(){bg.style.backgroundImage="url('"+src+"')";};im.src=src;});
+  // reveals
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.18});
+  document.querySelectorAll('.rev:not(.in)').forEach(function(n){io.observe(n);});
+  if(reduce){setInterval(tick,1000);return;}
+  // motion loop: clock sweep + watch scroll-rotate + chapter parallax
+  var watch=document.getElementById('watchWrap');
+  (function loop(){
+    if(!document.hidden){
+      tick();
+      var sy=window.scrollY;
+      if(watch) watch.style.transform='rotate('+(sy*0.05)+'deg)';
+      document.querySelectorAll('.chapter').forEach(function(c){var bg=c.querySelector('.ch-bg');var r=c.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){bg.style.transform='translateY('+(r.top*-0.06).toFixed(1)+'px)';}});
+    }
+    requestAnimationFrame(loop);
+  })();
+})();
+</script>
+</body>
+</html>

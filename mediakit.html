@@ -24,7 +24,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 52px;display:fl
 .nav-back:hover{color:var(--gold);}
 
 /* HERO */
-.mk-hero{padding:140px 80px 100px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.mk-hero{padding:140px 80px 100px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;background:linear-gradient(90deg,rgba(5,5,5,.93),rgba(5,5,5,.7) 52%,rgba(5,5,5,.52)),linear-gradient(0deg,rgba(5,5,5,.96),transparent 58%),url('mediakit-god.jpg') center/cover no-repeat;}
+.mk-hero .mk-title,.mk-hero .mk-eyebrow,.mk-hero p{text-shadow:0 2px 18px rgba(0,0,0,.75),0 1px 4px rgba(0,0,0,.6);}
 .mk-eyebrow{font-size:8px;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
 .mk-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold-dim);flex-shrink:0;}
 .mk-title{font-family:'Cinzel',serif;font-size:clamp(52px,7vw,96px);font-weight:900;line-height:0.88;letter-spacing:0.06em;color:var(--white);margin-bottom:32px;}
@@ -37,8 +38,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 52px;display:fl
 
 /* STATS GRID */
 .mk-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--surface2);margin-top:0;}
-.mk-stat{background:var(--surface);padding:28px 24px;text-align:center;min-width:0;}
-.mk-stat-num{font-family:'Cinzel',serif;font-size:clamp(24px,3vw,36px);color:var(--gold);display:block;margin-bottom:6px;}
+.mk-stat{background:var(--surface);padding:26px 14px;text-align:center;min-width:0;}
+.mk-stat-num{font-family:'Cinzel',serif;font-size:clamp(17px,2vw,23px);letter-spacing:.01em;color:var(--gold);display:block;margin-bottom:6px;line-height:1.15;}
 .mk-stat-label{font-size:7px;letter-spacing:0.3em;color:var(--text-dim);text-transform:uppercase;}
 
 /* SECTION */
@@ -134,11 +135,27 @@ footer{background:var(--surface);padding:40px 80px;border-top:1px solid rgba(201
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7JCE0VBEF"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X7JCE0VBEF');</script>
+<link rel="icon" href="stw-emblem.svg" type="image/svg+xml">
+<link rel="icon" href="stw-emblem.png" type="image/png">
+<link rel="apple-touch-icon" href="stw-emblem.png">
+<style id="stw-guide">
+  .nav-logo{display:inline-flex;align-items:center;gap:10px;}
+  .nav-emblem{height:27px;width:auto;display:block;flex-shrink:0;}
+  .gcurtain{position:relative;text-align:center;padding:60px 22px;overflow:hidden;border-top:1px solid rgba(201,168,76,0.14);background:radial-gradient(ellipse 70% 130% at 50% 0%,rgba(201,168,76,0.07),transparent 70%),#0A0A08;}
+  .gcurtain .k{font-size:8px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
+  .gcurtain .l{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,3.2vw,28px);color:#E8E4D9;max-width:620px;margin:0 auto 22px;line-height:1.32;}
+  .gcurtain .l em{color:#E8C96A;font-style:italic;}
+  .gcurtain a.cta{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#050505;background:linear-gradient(135deg,#E8C96A,#C9A84C);padding:13px 26px;border-radius:2px;text-decoration:none;}
+  .footer-brand-mark{display:inline-flex;align-items:center;gap:9px;justify-content:center;margin:0 auto 10px;text-decoration:none;}
+  .footer-brand-mark img{height:28px;} .footer-brand-mark span{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#C9A84C;}
+  .footer-emblem-inline{height:23px;width:auto;vertical-align:middle;margin-right:7px;}
+  @media(max-width:768px){.nav-emblem{height:23px;}}
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
+  <a href="index.html" class="nav-logo"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch — keepers of time"> STORIES TO WATCH</a>
   <a href="index.html" class="nav-back">← Back to Site</a>
 </nav>
 
@@ -295,6 +312,7 @@ footer{background:var(--surface);padding:40px 80px;border-top:1px solid rgba(201
 </div>
 
 <footer>
+  <a href="index.html" class="footer-brand-mark"><img src="stw-emblem.png" alt=""><span>STORIES TO WATCH</span></a>
   <span class="footer-logo">STORIES TO WATCH</span>
   <span class="footer-copy">© 2026 Stories To Watch · Advertiser Media Kit</span>
 </footer>

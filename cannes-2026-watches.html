@@ -39,11 +39,11 @@
   .nav-back::before { content:'←'; font-size:14px; }
 
   /* HERO */
-  .hero { min-height:70vh; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; text-align:center; padding:140px 60px 80px; position:relative; background:linear-gradient(to bottom, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.7) 60%, var(--black) 100%), radial-gradient(ellipse 100% 80% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 60%); overflow:hidden; }
+  .hero { min-height:70vh; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; text-align:center; padding:140px 60px 80px; position:relative; background:linear-gradient(to bottom, rgba(5,5,5,0.42) 0%, rgba(5,5,5,0.72) 55%, var(--black) 100%), radial-gradient(ellipse 100% 80% at 50% 0%, rgba(201,168,76,0.10) 0%, transparent 60%), url('cannes-2026.jpg') center 30%/cover no-repeat; overflow:hidden; }
   .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); opacity:0.3; }
   .hero-eyebrow { font-size:9px; letter-spacing:0.6em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; gap:16px; }
   .hero-eyebrow::before, .hero-eyebrow::after { content:''; width:60px; height:1px; background:var(--gold); opacity:0.4; }
-  .hero-title { font-family:'Cinzel',serif; font-size:clamp(36px,6vw,80px); font-weight:900; line-height:1; color:var(--white); margin-bottom:12px; letter-spacing:0.02em; }
+  .hero-title { font-family:'Cinzel',serif; font-size:clamp(36px,6vw,80px); font-weight:900; line-height:1; color:var(--white); margin-bottom:12px; letter-spacing:0.02em; } .hero-title,.hero-subtitle,.hero-eyebrow{text-shadow:0 2px 16px rgba(0,0,0,.72);}
   .hero-title span { color:var(--gold); }
   .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2.5vw,26px); color:var(--text-dim); margin:20px 0 40px; max-width:680px; line-height:1.6; }
   .hero-meta { display:flex; align-items:center; gap:32px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase; flex-wrap:wrap; justify-content:center; }
@@ -137,15 +137,37 @@
 </style>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<link rel="icon" href="stw-emblem.svg" type="image/svg+xml">
+<link rel="icon" href="stw-emblem.png" type="image/png">
+<link rel="apple-touch-icon" href="stw-emblem.png">
+<style id="stw-guide">
+  .nav-logo{display:inline-flex;align-items:center;gap:10px;}
+  .nav-emblem{height:27px;width:auto;display:block;flex-shrink:0;}
+  .article-hero .article-engraving{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:430px;height:430px;z-index:0;pointer-events:none;background:url('motif-movement.svg') center/contain no-repeat;opacity:.06;}
+  .article-hero>*:not(.article-engraving){position:relative;z-index:1;}
+  .hero{position:relative}
+  .hero .article-engraving{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:430px;height:430px;z-index:0;pointer-events:none;background:url('motif-movement.svg') center/contain no-repeat;opacity:.06;}
+  .hero>*:not(.article-engraving){position:relative;z-index:1;}
+  .gcurtain{position:relative;text-align:center;padding:60px 22px;overflow:hidden;border-top:1px solid rgba(201,168,76,0.14);background:radial-gradient(ellipse 70% 130% at 50% 0%,rgba(201,168,76,0.07),transparent 70%),#0A0A08;}
+  .gcurtain .k{font-size:8px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
+  .gcurtain .l{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,3.2vw,28px);color:#E8E4D9;max-width:620px;margin:0 auto 22px;line-height:1.32;}
+  .gcurtain .l em{color:#E8C96A;font-style:italic;}
+  .gcurtain a.cta{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#050505;background:linear-gradient(135deg,#E8C96A,#C9A84C);padding:13px 26px;border-radius:2px;text-decoration:none;}
+  .footer-brand-mark{display:inline-flex;align-items:center;gap:9px;justify-content:center;margin:0 auto 10px;text-decoration:none;}
+  .footer-brand-mark img{height:28px;} .footer-brand-mark span{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#C9A84C;}
+  .footer-emblem-inline{height:23px;width:auto;vertical-align:middle;margin-right:7px;}
+  @media(max-width:768px){.nav-emblem{height:23px;}.article-hero .article-engraving{width:300px;height:300px;}}
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
+  <a href="index.html" class="nav-logo"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch — keepers of time"> STORIES TO WATCH</a>
   <a href="index.html" class="nav-back">Back to Editorial</a>
 </nav>
 
 <div class="hero">
+  <div class="article-engraving" aria-hidden="true"></div>
   <p class="hero-eyebrow">79th Cannes Film Festival 2026</p>
   <h1 class="hero-title">THE CROISETTE<br><span>Watch Report</span></h1>
   <p class="hero-subtitle">Eight extraordinary timepieces. One red carpet. Every watch verified, identified and contextualised.</p>
@@ -352,8 +374,14 @@
 
 </div>
 
+<section class="gcurtain">
+  <p class="k">Behind the curtain</p>
+  <p class="l">You've read the story. The hard part is finding the right one — from <em>someone worth trusting.</em></p>
+  <a class="cta" href="watchfinder.html">Enter the Watch Finder →</a>
+</section>
+
 <footer>
-  <a href="index.html" class="footer-brand">STORIES TO WATCH</a>
+  <a href="index.html" class="footer-brand"><img class="footer-emblem-inline" src="stw-emblem.png" alt=""> STORIES TO WATCH</a>
   <p>Cannes 2026 · Watch Report · Verified</p>
   <p style="color:var(--gold-dim);">storiestowatch.com</p>
 </footer>

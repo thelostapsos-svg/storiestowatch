@@ -181,14 +181,33 @@
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<link rel="icon" href="stw-emblem.svg" type="image/svg+xml">
+<link rel="icon" href="stw-emblem.png" type="image/png">
+<link rel="apple-touch-icon" href="stw-emblem.png">
+<style id="stw-guide">
+  .nav-logo{display:inline-flex;align-items:center;gap:10px;}
+  .nav-emblem{height:27px;width:auto;display:block;flex-shrink:0;}
+  .article-hero .article-engraving{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:430px;height:430px;z-index:0;pointer-events:none;background:url('motif-movement.svg') center/contain no-repeat;opacity:.06;}
+  .article-hero>*:not(.article-engraving){position:relative;z-index:1;}
+  .gcurtain{position:relative;text-align:center;padding:60px 22px;overflow:hidden;border-top:1px solid rgba(201,168,76,0.14);background:radial-gradient(ellipse 70% 130% at 50% 0%,rgba(201,168,76,0.07),transparent 70%),#0A0A08;}
+  .gcurtain .k{font-size:8px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
+  .gcurtain .l{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,3.2vw,28px);color:#E8E4D9;max-width:620px;margin:0 auto 22px;line-height:1.32;}
+  .gcurtain .l em{color:#E8C96A;font-style:italic;}
+  .gcurtain a.cta{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#050505;background:linear-gradient(135deg,#E8C96A,#C9A84C);padding:13px 26px;border-radius:2px;text-decoration:none;}
+  .footer-brand-mark{display:inline-flex;align-items:center;gap:9px;justify-content:center;margin:0 auto 10px;text-decoration:none;}
+  .footer-brand-mark img{height:28px;} .footer-brand-mark span{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.2em;color:#C9A84C;}
+  .footer-emblem-inline{height:23px;width:auto;vertical-align:middle;margin-right:7px;}
+  @media(max-width:768px){.nav-emblem{height:23px;}.article-hero .article-engraving{width:300px;height:300px;}}
+</style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">STORIES TO WATCH</a>
+  <a href="index.html" class="nav-logo"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch — keepers of time"> STORIES TO WATCH</a>
   <a href="index.html#latest" class="nav-back">← All Stories</a>
 </nav>
 
 <div class="article-hero">
+  <div class="article-engraving" aria-hidden="true"></div>
   <p class="hero-label">Investment Analysis · 2026</p>
   <h1 class="hero-title">Is the Patek Philippe Nautilus Still a Good Investment in 2026?</h1>
   <p class="hero-subtitle">An honest market analysis — price history, current valuations, which references hold value and what the data actually tells us about the Nautilus as a long-term store of wealth.</p>
@@ -347,7 +366,14 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </div>
 </div>
 
+<section class="gcurtain">
+  <p class="k">Behind the curtain</p>
+  <p class="l">You've read the story. The hard part is finding the right one — from <em>someone worth trusting.</em></p>
+  <a class="cta" href="watchfinder.html?search=Patek%20Philippe">Enter the Watch Finder →</a>
+</section>
+
 <footer>
+  <a href="index.html" class="footer-brand-mark"><img src="stw-emblem.png" alt=""><span>STORIES TO WATCH</span></a>
   <p>© 2026 Stories To Watch. All rights reserved.</p>
   <p style="color:var(--gold-dim);">Find watches worth finding. Read stories told to the minute.</p>
 </footer>
