@@ -224,6 +224,8 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   text-transform:none;letter-spacing:.005em;padding:10px 13px;border-radius:3px;text-align:center;
   opacity:0;pointer-events:none;transition:opacity .28s ease,transform .28s ease;z-index:60;box-shadow:0 12px 34px rgba(0,0,0,.55)}
 .tip:hover::after,.tip:focus::after,.god:hover .god-name.tip::after,.god:focus-within .god-name.tip::after{opacity:1;transform:translate(-50%,0)}
+/* mobile (no hover): the explainer fades in while the card is centred on screen, out as you scroll past */
+.god.tip-active .god-name.tip::after{opacity:1;transform:translate(-50%,0)}
 @media(prefers-reduced-motion:reduce){.tip::after{transition:none}}
 
 @media(max-width:900px){
@@ -492,6 +494,17 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   var hg=document.getElementById('heroGodImg'),hi=new Image();
   hi.onload=function(){hg.style.backgroundImage="url('gods/hero-god.jpg')";hg.classList.remove('marble','veined');};
   hi.src='gods/hero-god.jpg';
+})();
+// ---- MOBILE: auto-reveal each god's explainer as its card crosses the screen's centre (touch has no hover) ----
+(function(){
+  var mob = matchMedia('(hover: none)').matches || window.innerWidth <= 900;
+  if(!mob || !('IntersectionObserver' in window)) return;
+  var cards = document.querySelectorAll('.grid .god');
+  if(!cards.length) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ e.target.classList.toggle('tip-active', e.isIntersecting); });
+  }, {rootMargin:'-40% 0px -40% 0px', threshold:0});
+  cards.forEach(function(c){ io.observe(c); });
 })();
 // ---- MODERN LAYER: scroll-reveals + parallax + museum spotlight ----
 (function(){
