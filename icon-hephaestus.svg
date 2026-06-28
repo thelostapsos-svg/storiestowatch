@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="50" cy="50" r="47"/>
+  <circle cx="50" cy="50" r="37" stroke-width="1" opacity=".5"/>
+  <circle cx="50" cy="50" r="42.5" stroke-width="3" stroke-dasharray="1.4 6.3" opacity=".7"/>
+  <g stroke="#E8C96A">
+    <!-- hammer -->
+    <rect x="40" y="30" width="20" height="7" rx="1.2"/>
+    <path d="M50 37 V44"/>
+    <!-- anvil -->
+    <path d="M31 53 L39 50 H63 L59 55 H54 V60 H61 V65 H39 V60 H46 V55 H39 Z"/>
+  </g>
+</svg>

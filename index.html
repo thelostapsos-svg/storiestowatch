@@ -271,6 +271,25 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   .finder-bar input{font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* god card category label */
+.god-cat{font-family:'Cinzel',serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:7px}
+/* god card — prominent category header on top of each card */
+.god-cell{display:flex;flex-direction:column}
+.god-cell .god{flex:1}
+.god-emblem{width:42px;height:42px;display:block;margin:0 auto 11px;opacity:.92}
+.god-cat-top{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(14px,1.15vw,17px);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);text-align:center;margin:0 0 16px;padding-bottom:13px;position:relative}
+.god-cat-top::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:30px;height:1px;background:var(--gold);opacity:.6}
+/* nav: god-page links shown only inside the mobile burger */
+.nav-sub{display:none}
+/* THE PANTHEON — lesser-gods lore */
+.pantheon{max-width:1100px;margin:0 auto;padding:24px 26px 104px}
+.lore-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:50px}
+.lore{border-top:1px solid rgba(201,168,76,.16);padding-top:24px}
+.lore-name{font-family:'Cinzel',serif;font-size:18px;letter-spacing:.12em;color:var(--gold);margin-bottom:3px}
+.lore-gk{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;color:var(--gold-deep);margin-bottom:16px}
+.lore-line{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.7vw,19px);line-height:1.62;color:var(--dim)}
+@media(max-width:900px){.nav-sub{display:block}}
+@media(max-width:720px){.lore-grid{grid-template-columns:1fr;gap:0;margin-top:34px}.lore{padding:22px 0}}
 </style>
 </head>
 <body>
@@ -279,14 +298,18 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   <a href="#top" class="brand"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch — the keepers of time"> <span class="brand-word">STORIES <b>TO</b> WATCH</span></a>
   <div class="navlinks">
     <a href="#hours">The Hours</a>
-    <a href="#guides">Guides</a>
+    <a class="nav-sub" href="chronos.html">Investment Guides</a>
+    <a class="nav-sub" href="hephaestus.html">Buying Guides</a>
+    <a class="nav-sub" href="atlas.html">City Guides</a>
+    <a class="nav-sub" href="hermes.html">Dispatches</a>
+    <a class="nav-sub f" href="watchfinder.html">Watch Finder</a>
     <a href="the-vault.html" class="f">The Vault ✦</a>
-    <a href="watchfinder.html" class="f">Watch Finder</a>
+    <a href="mediakit.html" class="f">Media Kit</a>
     <a href="#about">About</a>
   </div>
   <a href="watchfinder.html" class="navcta">⌕ Find a Watch</a>
   <div class="nav-quick">
-    <a href="#guides">Guides</a>
+    <a href="#hours">Guides</a>
     <a href="the-vault.html" class="f">Vault ✦</a>
   </div>
   <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -345,10 +368,8 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   <div class="myth-bg" aria-hidden="true"></div>
   <div class="myth-inner">
     <p class="myth-kicker reveal">The Myth <span class="gk">· ΧΡΟΝΟΣ</span></p>
-    <p class="myth-beat reveal">Before the first clock, there was a god. The Greeks called him <b>Chronos</b> — Time itself — and said he coiled around the world like a serpent, turning it slow and certain. Nothing escaped his turning: not stone, not empire, not man.</p>
-    <p class="myth-beat reveal">They feared him as <b>the devourer</b> — the god who swallows all he fathers, who takes back everything he gives. Gold tarnishes. Names are forgotten. The hour, once spent, never returns.</p>
-    <p class="myth-beat reveal">Mortals could not stop him — so they learned to <b>carry a piece of him.</b> A small machine of springs and jewels that keeps the god's own rhythm. The watch: the only way a man has ever held time in his hand.</p>
-    <p class="myth-beat reveal">So the right watch was never about the hour. It is a <b>relic of defiance</b> — proof that, for one lifetime, you kept pace with a god.</p>
+    <p class="myth-beat reveal">Before the first clock, there was a god. The Greeks called him <b>Chronos</b> — Time itself — coiled around the world like a serpent, devouring all he fathered. Gold tarnishes, empires fall; the hour, once spent, never returns.</p>
+    <p class="myth-beat reveal">Mortals could not stop him — so they learned to <b>carry a piece of him.</b> The watch: the only way a man has ever held time in his hand — not a measure of the hour, but a <b>relic of defiance</b>, proof that for one lifetime, you kept pace with a god.</p>
     <p class="myth-close reveal">We know where every relic is kept.</p>
   </div>
 </section>
@@ -358,84 +379,72 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   <div class="sec-head">
     <p class="sec-kick">There's more behind the curtain</p>
     <h2 class="sec-title">The <b>Hours.</b></h2>
-    <p class="sec-note">Four gods, four ways in — <b style="color:var(--gold);font-weight:400">Chronos</b> for value, <b style="color:var(--gold);font-weight:400">Hephaestus</b> for the watch, <b style="color:var(--gold);font-weight:400">Atlas</b> for the city, <b style="color:var(--gold);font-weight:400">Hermes</b> for the moment.</p>
+    <p class="sec-note">Four gods, four ways in — <b style="color:var(--gold);font-weight:400">Hephaestus</b> for the watch, <b style="color:var(--gold);font-weight:400">Atlas</b> for the city, <b style="color:var(--gold);font-weight:400">Chronos</b> for value, <b style="color:var(--gold);font-weight:400">Hermes</b> for the moment.</p>
   </div>
   <div class="grid">
-    <a class="god" href="royal-oak-price-guide.html">
-      <div class="img marble veined" data-god="gods/chronos.jpg"></div>
-      <div class="god-body">
-        <p class="god-name tip" tabindex="0" data-tip="Chronos rules time — so here lives the question of value: what a watch is worth now, and later.">CHRONOS</p>
-        <p class="god-title">The god who devoured time — and the steel watch that defied it.</p>
-        <span class="god-link">Read the guide →</span>
-      </div>
-    </a>
-    <a class="god" href="omega-speedmaster-guide.html">
-      <div class="img marble veined" data-god="gods/hephaestus.jpg"></div>
-      <div class="god-body">
-        <p class="god-name tip" tabindex="0" data-tip="Hephaestus is the smith — so here live the watches themselves, and where to buy them.">HEPHAESTUS</p>
-        <p class="god-title">Forged, not bought — the movement as the smith-god's craft.</p>
-        <span class="god-link">Read the guide →</span>
-      </div>
-    </a>
-    <a class="god" href="watchfinder.html">
-      <div class="img marble veined" data-god="gods/atlas.jpg"></div>
-      <div class="god-body">
-        <p class="god-name tip" tabindex="0" data-tip="Atlas carried the world — so here lives place: where to find your watch, city by city.">ATLAS</p>
-        <p class="god-title">He carried the world. You only need to find one watch on it.</p>
-        <span class="god-link">Open the Finder →</span>
-      </div>
-    </a>
-    <a class="god" href="patek-vs-rolex-investment-2026.html">
-      <div class="img marble veined" data-god="gods/hermes.jpg"></div>
-      <div class="god-body">
-        <p class="god-name tip" tabindex="0" data-tip="Hermes is the messenger — so here lives the news: the watches on the world's wrists right now.">HERMES</p>
-        <p class="god-title">The messenger knows every door. Which house actually holds value?</p>
-        <span class="god-link">Read the story →</span>
-      </div>
-    </a>
+    <div class="god-cell">
+      <img class="god-emblem" src="icon-hephaestus.svg" alt="" loading="lazy">
+      <p class="god-cat-top">Buying Guides</p>
+      <a class="god" href="hephaestus.html">
+        <div class="img marble veined" data-god="gods/hephaestus.jpg"></div>
+        <div class="god-body">
+          <p class="god-name">HEPHAESTUS</p>
+          <p class="god-title">Forged, not bought — the movement as the smith-god's craft.</p>
+          <span class="god-link">Enter →</span>
+        </div>
+      </a>
+    </div>
+    <div class="god-cell">
+      <img class="god-emblem" src="icon-atlas.svg" alt="" loading="lazy">
+      <p class="god-cat-top">City Guides</p>
+      <a class="god" href="atlas.html">
+        <div class="img marble veined" data-god="gods/atlas.jpg"></div>
+        <div class="god-body">
+          <p class="god-name">ATLAS</p>
+          <p class="god-title">He carried the world. You only need to find one watch on it.</p>
+          <span class="god-link">Enter →</span>
+        </div>
+      </a>
+    </div>
+    <div class="god-cell">
+      <img class="god-emblem" src="icon-chronos.svg" alt="" loading="lazy">
+      <p class="god-cat-top">Investment Guides</p>
+      <a class="god" href="chronos.html">
+        <div class="img marble veined" data-god="gods/chronos.jpg"></div>
+        <div class="god-body">
+          <p class="god-name">CHRONOS</p>
+          <p class="god-title">The god who devoured time — and the steel watch that defied it.</p>
+          <span class="god-link">Enter →</span>
+        </div>
+      </a>
+    </div>
+    <div class="god-cell">
+      <img class="god-emblem" src="icon-hermes.svg" alt="" loading="lazy">
+      <p class="god-cat-top">Dispatches</p>
+      <a class="god" href="hermes.html">
+        <div class="img marble veined" data-god="gods/hermes.jpg"></div>
+        <div class="god-body">
+          <p class="god-name">HERMES</p>
+          <p class="god-title">The messenger knows every door. Which house actually holds value?</p>
+          <span class="god-link">Enter →</span>
+        </div>
+      </a>
+    </div>
   </div>
 
-  <!-- THE LIBRARY — every guide, under its god -->
-  <div class="library" id="guides">
-    <div class="lib-col">
-      <h4 class="tip" tabindex="0" data-tip="Chronos rules time — so here lives the question of value: what a watch is worth now, and later.">CHRONOS</h4><p class="cs">The reckoning of value.</p>
-      <a href="patek-vs-rolex-investment-2026.html">Patek Philippe vs Rolex — which actually holds value<span class="a">Investment</span></a>
-      <a href="nautilus-investment-guide.html">Is the Patek Nautilus still a good investment?<span class="a">Investment</span></a>
-      <a href="royal-oak-price-guide.html">Audemars Piguet Royal Oak — 2026 price guide<span class="a">Price Guide</span></a>
-      <a href="rolex-cpo-vs-grey-market-2026.html">Rolex CPO vs grey market, by model<span class="a">Analysis</span></a>
-      <a href="iwc-portugieser-guide.html">IWC Portugieser — price &amp; where to buy<span class="a">Price Guide</span></a>
-    </div>
-    <div class="lib-col">
-      <h4 class="tip" tabindex="0" data-tip="Hephaestus is the smith — so here live the watches themselves, and where to buy them.">HEPHAESTUS</h4><p class="cs">The great references, forged.</p>
-      <a href="nautilus-buying-guide.html">Patek Philippe Nautilus — where to buy<span class="a">Buying Guide</span></a>
-      <a href="royal-oak-usa-buying-guide.html">Audemars Piguet Royal Oak — USA<span class="a">Buying Guide</span></a>
-      <a href="omega-speedmaster-guide.html">Omega Speedmaster — where to buy<span class="a">Buying Guide</span></a>
-      <a href="cartier-buying-guide.html">Cartier Santos &amp; Tank<span class="a">Buying Guide</span></a>
-      <a href="grand-seiko-buying-guide.html">Grand Seiko — complete sourcing guide<span class="a">Buying Guide</span></a>
-    </div>
-    <div class="lib-col">
-      <h4 class="tip" tabindex="0" data-tip="Atlas carried the world — so here lives place: where to find your watch, city by city.">ATLAS</h4><p class="cs">Where in the world.</p>
-      <a href="rolex-submariner-london.html">Rolex Submariner — London<span class="a">City Guide</span></a>
-      <a href="rolex-submariner-dubai.html">Rolex Submariner — Dubai<span class="a">City Guide</span></a>
-      <a href="rolex-submariner-abu-dhabi.html">Rolex Submariner — Abu Dhabi<span class="a">City Guide</span></a>
-      <a href="luxury-watches-mumbai.html">Luxury watches — Mumbai<span class="a">City Guide</span></a>
-      <a href="luxury-watches-dallas.html">Luxury watches — Dallas<span class="a">City Guide</span></a>
-      <a href="luxury-watches-atlanta.html">Luxury watches — Atlanta<span class="a">City Guide</span></a>
-      <a href="luxury-watches-abu-dhabi.html">Luxury watches — Abu Dhabi<span class="a">City Guide</span></a>
-      <a href="luxury-watches-kansas-city.html">Luxury watches — Kansas City<span class="a">City Guide</span></a>
-    </div>
-    <div class="lib-col">
-      <h4 class="tip" tabindex="0" data-tip="Hermes is the messenger — so here lives the news: the watches on the world's wrists right now.">HERMES</h4><p class="cs">Dispatches from the world.</p>
-      <a href="cannes-2026-watches.html">Cannes 2026 — every watch on the carpet<span class="a">Dispatch</span></a>
-      <a href="ucl-final-2026-watches.html">UCL Final 2026 — the wrists in Budapest<span class="a">Dispatch</span></a>
-      <a href="the-rock-met-gala-watch-2026.html">The Rock's $3.3M Met Gala watch<span class="a">Dispatch</span></a>
-      <a href="kevin-hart-roast-watches-2026.html">Every watch at the Kevin Hart roast<span class="a">Dispatch</span></a>
-      <a href="messi-watch-collection-2026.html">Lionel Messi — the full collection<span class="a">Dispatch</span></a>
-      <a href="ronaldo-watch-collection-2026.html">Cristiano Ronaldo — every piece, every price<span class="a">Dispatch</span></a>
-      <a href="bruno-fernandes-watch-2026.html">Bruno Fernandes — the record-breaker's watch<span class="a">Dispatch</span></a>
-      <a href="hublot-mbappe-big-bang-reloaded-2026.html">Hublot × Mbappé — Big Bang Reloaded<span class="a">Dispatch</span></a>
-      <a href="rolex-rockefeller-center-clock.html">Rolex's permanent clock at Rockefeller Center<span class="a">Dispatch</span></a>
-    </div>
+</section>
+
+<!-- ============ THE PANTHEON (lore — the lesser keepers of time) ============ -->
+<section class="pantheon" aria-label="The pantheon">
+  <div class="sec-head reveal">
+    <p class="sec-kick">Beyond the Hours</p>
+    <h2 class="sec-title">The lesser <b>keepers.</b></h2>
+    <p class="sec-note">Chronos was never alone. The Greeks gave time many hands.</p>
+  </div>
+  <div class="lore-grid">
+    <div class="lore reveal"><p class="lore-name">Kairos</p><p class="lore-gk">ΚΑΙΡΟΣ</p><p class="lore-line">The fleeting, perfect moment — the time you seize, not the time you count. Chronos numbers the hours; Kairos chooses the one that matters.</p></div>
+    <div class="lore reveal"><p class="lore-name">Aion</p><p class="lore-gk">ΑΙΩΝ</p><p class="lore-line">Eternity — the wheel with no beginning and no end, the time of gods, not of mortals. Where Chronos devours, Aion simply turns.</p></div>
+    <div class="lore reveal"><p class="lore-name">The Horae</p><p class="lore-gk">ΩΡΑΙ</p><p class="lore-line">The Hours themselves, daughters of order — keepers of the seasons, openers of heaven's gates. Every dial made since is their inheritance.</p></div>
   </div>
 </section>
 
@@ -564,7 +573,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   var touch=matchMedia('(hover: none)').matches;
 
   // scroll-reveals (gods, library, maisons, relic emerge as you arrive)
-  var nodes=[].slice.call(document.querySelectorAll('.meander,.myth-kicker,.myth-beat,.myth-close,.hours .sec-head,.god,.lib-col,.maisons .sec-head,.maison,.relic-img,.relic-txt,.curtain'));
+  var nodes=[].slice.call(document.querySelectorAll('.meander,.myth-kicker,.myth-beat,.myth-close,.hours .sec-head,.god,.pantheon .sec-head,.lore,.maisons .sec-head,.maison,.relic-img,.relic-txt,.curtain'));
   nodes.forEach(function(n,i){ n.classList.add('reveal'); if(n.classList.contains('god')||n.classList.contains('maison')||n.classList.contains('lib-col')) n.classList.add('d'+((i%3)+1)); });
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   nodes.forEach(function(n){io.observe(n);});
