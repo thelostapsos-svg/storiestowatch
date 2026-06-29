@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_planning/
+
+Sitemap: https://www.storiestowatch.com/sitemap.xml

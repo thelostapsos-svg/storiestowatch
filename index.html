@@ -291,6 +291,23 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 @media(max-width:900px){.nav-sub{display:block}}
 @media(max-width:720px){.lore-grid{grid-template-columns:1fr;gap:0;margin-top:34px}.lore{padding:22px 0}}
 </style>
+<style id="stw-spotlight">
+/* ============ THE SPOTLIGHT (featured story — swap per standout article) ============ */
+.spotlight{max-width:1100px;margin:0 auto;padding:30px 26px 84px}
+.spot-card{display:grid;grid-template-columns:1fr 1fr;background:var(--ink2);border:1px solid rgba(201,168,76,.18);overflow:hidden;transition:border-color .4s ease,transform .4s ease}
+.spot-card:hover{border-color:rgba(201,168,76,.5);transform:translateY(-3px)}
+.spot-img{position:relative;overflow:hidden;min-height:360px;background:#0A0A08}
+.spot-img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s ease}
+.spot-card:hover .spot-img img{transform:scale(1.04)}
+.spot-flag{position:absolute;top:18px;left:18px;font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:6px 11px;border-radius:2px;z-index:2}
+.spot-body{padding:50px 46px;display:flex;flex-direction:column;justify-content:center}
+.spot-cat{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.spot-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:34px;line-height:1.12;color:var(--white);margin-bottom:18px}
+.spot-tease{font-size:14px;line-height:1.75;color:var(--dim);font-weight:300;margin-bottom:28px}
+.spot-link{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light)}
+.spot-card:hover .spot-link{color:var(--white)}
+@media(max-width:820px){.spot-card{grid-template-columns:1fr}.spot-img{min-height:300px}.spot-body{padding:38px 28px}.spot-title{font-size:28px}}
+</style>
 </head>
 <body>
 
@@ -349,7 +366,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
         <span class="chip" onclick="find('Cartier')">Cartier</span>
         <span class="chip" onclick="find('Omega')">Omega</span>
       </div>
-      <p class="trust"><b>63</b> verified dealers · worldwide · authorised, pre-owned &amp; auction · <b>free</b></p>
+      <p class="trust"><b>63</b> verified dealers · worldwide · authorised, pre-owned &amp; auction · <b>free to search</b></p>
     </div>
   </div>
 
@@ -432,6 +449,26 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
     </div>
   </div>
 
+</section>
+
+<!-- ============ THE SPOTLIGHT (featured story) ============ -->
+<section class="spotlight" id="spotlight" aria-label="Featured story">
+  <div class="sec-head reveal">
+    <p class="sec-kick">The Spotlight</p>
+    <h2 class="sec-title">Featured <b>this week.</b></h2>
+  </div>
+  <a class="spot-card reveal" href="zlatan-ibrahimovic-watch-collection.html">
+    <div class="spot-img">
+      <span class="spot-flag">New</span>
+      <img src="zlatan-ro-doublebalance.webp" alt="Audemars Piguet Royal Oak Double Balance in black ceramic from Zlatan Ibrahimović's collection" loading="lazy">
+    </div>
+    <div class="spot-body">
+      <p class="spot-cat">Celebrity Collection</p>
+      <h3 class="spot-title">Zlatan Ibrahimović's Watch Collection — Every Piece</h3>
+      <p class="spot-tease">One of professional football's deepest collections — Audemars Piguet, Patek Philippe and Rolex across more than two dozen verified pieces, from steel Royal Oaks to a rainbow Daytona.</p>
+      <span class="spot-link">Read the collection →</span>
+    </div>
+  </a>
 </section>
 
 <!-- ============ THE PANTHEON (lore — the lesser keepers of time) ============ -->
