@@ -610,7 +610,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   var touch=matchMedia('(hover: none)').matches;
 
   // scroll-reveals (gods, library, maisons, relic emerge as you arrive)
-  var nodes=[].slice.call(document.querySelectorAll('.meander,.myth-kicker,.myth-beat,.myth-close,.hours .sec-head,.god,.pantheon .sec-head,.lore,.maisons .sec-head,.maison,.relic-img,.relic-txt,.curtain'));
+  var nodes=[].slice.call(document.querySelectorAll('.meander,.myth-kicker,.myth-beat,.myth-close,.hours .sec-head,.god,.pantheon .sec-head,.lore,.maisons .sec-head,.maison,.relic-img,.relic-txt,.curtain,.spotlight .sec-head,.spot-card'));
   nodes.forEach(function(n,i){ n.classList.add('reveal'); if(n.classList.contains('god')||n.classList.contains('maison')||n.classList.contains('lib-col')) n.classList.add('d'+((i%3)+1)); });
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   nodes.forEach(function(n){io.observe(n);});
