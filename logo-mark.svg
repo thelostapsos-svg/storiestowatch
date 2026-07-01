@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 440" fill="none" role="img" aria-label="Stories To Watch">
+  <defs>
+    <!-- metallic gold: alternating highlight/shadow bands = light raking across polished metal -->
+    <linearGradient id="stwGold" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%"   stop-color="#F7ECC4"/>
+      <stop offset="18%"  stop-color="#D4BC7A"/>
+      <stop offset="34%"  stop-color="#F2E3B0"/>
+      <stop offset="50%"  stop-color="#C9A84C"/>
+      <stop offset="66%"  stop-color="#E6D294"/>
+      <stop offset="82%"  stop-color="#B08F45"/>
+      <stop offset="100%" stop-color="#E3CD8A"/>
+    </linearGradient>
+    <!-- brighter sheen for the inner diamond + S, so the core looks most polished -->
+    <linearGradient id="stwSheen" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%"   stop-color="#FBF3D6"/>
+      <stop offset="30%"  stop-color="#D8BE78"/>
+      <stop offset="52%"  stop-color="#F6E8BC"/>
+      <stop offset="74%"  stop-color="#BD9C50"/>
+      <stop offset="100%" stop-color="#EBD89A"/>
+    </linearGradient>
+  </defs>
+
+  <g stroke-linejoin="round" stroke-linecap="round" fill="none">
+    <!-- Outer elongated diamond -->
+    <path d="M100 18 L150 220 L100 422 L50 220 Z" stroke="url(#stwGold)" stroke-width="2.3"/>
+    <!-- Inner diamond (dial core) -->
+    <path d="M100 152 L137 220 L100 288 L63 220 Z" stroke="url(#stwSheen)" stroke-width="2.3"/>
+    <!-- S-flow threading the inner diamond -->
+    <path d="M75 192 C 92 178, 112 196, 100 214 C 88 232, 108 250, 125 236" stroke="url(#stwSheen)" stroke-width="2.1"/>
+  </g>
+
+  <!-- Dot accents — subtle highlight on each for a beaded-metal feel -->
+  <g fill="url(#stwGold)">
+    <circle cx="40"  cy="150" r="2.7"/>
+    <circle cx="160" cy="150" r="2.7"/>
+    <circle cx="26"  cy="200" r="2.7"/>
+    <circle cx="174" cy="200" r="2.7"/>
+    <circle cx="26"  cy="240" r="2.7"/>
+    <circle cx="174" cy="240" r="2.7"/>
+    <circle cx="40"  cy="290" r="2.7"/>
+    <circle cx="160" cy="290" r="2.7"/>
+  </g>
+</svg>

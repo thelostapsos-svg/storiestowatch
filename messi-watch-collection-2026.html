@@ -28,27 +28,27 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; }
+  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:400; overflow-x:hidden; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
 
   nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:#050505; border-bottom:1px solid rgba(201,168,76,0.1); }
   .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; }
-  .nav-back { display:flex; align-items:center; gap:10px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
+  .nav-back { display:flex; align-items:center; gap:10px; font-size:11px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
   .nav-back:hover { color:var(--gold); }
   .nav-back::before { content:'←'; font-size:14px; }
 
   .hero { min-height:75vh; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; text-align:center; padding:140px 60px 80px; position:relative; background:linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.85) 70%, var(--black) 100%), radial-gradient(ellipse 100% 80% at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 60%); overflow:hidden; }
   .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); opacity:0.3; }
-  .hero-eyebrow { font-size:9px; letter-spacing:0.6em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; gap:16px; }
+  .hero-eyebrow { font-size:11px; letter-spacing:0.6em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; gap:16px; }
   .hero-eyebrow::before, .hero-eyebrow::after { content:''; width:60px; height:1px; background:var(--gold); opacity:0.4; }
   .hero-title { font-family:'Cinzel',serif; font-size:clamp(36px,6vw,80px); font-weight:900; line-height:1; color:var(--white); margin-bottom:12px; }
   .hero-title span { color:var(--gold); display:block; }
   .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2.5vw,26px); color:var(--text-dim); margin:20px 0 40px; max-width:720px; line-height:1.6; }
-  .hero-meta { display:flex; align-items:center; gap:32px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase; flex-wrap:wrap; justify-content:center; }
+  .hero-meta { display:flex; align-items:center; gap:32px; font-size:11px; letter-spacing:0.3em; color:var(--text-dim); text-transform:uppercase; flex-wrap:wrap; justify-content:center; }
   .hero-meta span { color:var(--gold); }
 
   /* WORLD CUP STRIP */
-  .wc-strip { background:rgba(201,168,76,0.08); border-top:1px solid rgba(201,168,76,0.2); border-bottom:1px solid rgba(201,168,76,0.2); padding:16px 60px; text-align:center; font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; }
+  .wc-strip { background:rgba(201,168,76,0.08); border-top:1px solid rgba(201,168,76,0.2); border-bottom:1px solid rgba(201,168,76,0.2); padding:16px 60px; text-align:center; font-size:11px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; }
 
   .article-wrap { max-width:900px; margin:0 auto; padding:80px 40px; }
   .intro { font-family:'Cormorant Garamond',serif; font-size:clamp(18px,2vw,22px); line-height:1.8; color:var(--text-body); margin-bottom:64px; padding-bottom:64px; border-bottom:1px solid rgba(201,168,76,0.1); }
@@ -57,7 +57,7 @@
   .pull-quote { border-left:2px solid var(--gold); padding:24px 32px; margin:48px 0; background:rgba(201,168,76,0.04); }
   .pull-quote p { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.5vw,26px); font-style:italic; color:var(--white); line-height:1.5; }
 
-  .watch-count { font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:48px; display:flex; align-items:center; gap:16px; }
+  .watch-count { font-size:11px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:48px; display:flex; align-items:center; gap:16px; }
   .watch-count::after { content:''; flex:1; height:1px; background:rgba(201,168,76,0.15); }
 
   .watch-entry { display:grid; grid-template-columns:80px 1fr; gap:32px; margin-bottom:56px; padding-bottom:56px; border-bottom:1px solid rgba(255,255,255,0.04); }
@@ -67,9 +67,9 @@
   .watch-reference { font-size:10px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
   .watch-brand-pill { background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); padding:3px 10px; font-size:7px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; }
   .watch-value { font-family:'Cinzel',serif; font-size:20px; color:var(--gold); margin-bottom:16px; }
-  .watch-desc { font-family:'Cormorant Garamond',serif; font-size:17px; line-height:1.75; color:var(--text-dim); }
+  .watch-desc { font-family:'Cormorant Garamond',serif; font-weight:500; font-size:18px; line-height:1.7; color:var(--text-body); }
   .watch-desc strong { color:var(--text); font-weight:400; }
-  .watch-finder-cta { display:inline-flex; align-items:center; gap:10px; font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; border:1px solid rgba(201,168,76,0.3); padding:8px 18px; text-decoration:none; margin-top:16px; transition:all 0.3s; }
+  .watch-finder-cta { display:inline-flex; align-items:center; gap:10px; font-size:10px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; border:1px solid rgba(201,168,76,0.3); padding:8px 18px; text-decoration:none; margin-top:16px; transition:all 0.3s; }
   .watch-finder-cta:hover { background:rgba(201,168,76,0.08); border-color:var(--gold); }
   .watch-finder-cta::after { content:'→'; }
 
@@ -80,20 +80,20 @@
   .tally-num { font-family:'Cinzel',serif; font-size:24px; color:var(--gold); }
 
   .verdict { background:var(--surface); border:1px solid rgba(201,168,76,0.15); padding:48px; margin:64px 0; position:relative; }
-  .verdict::before { content:'WORLD CUP PREDICTION'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--surface); padding:0 20px; font-size:8px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; white-space:nowrap; }
+  .verdict::before { content:'WORLD CUP PREDICTION'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--surface); padding:0 20px; font-size:10px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; white-space:nowrap; }
   .verdict-title { font-family:'Cinzel',serif; font-size:20px; color:var(--white); margin-bottom:16px; }
-  .verdict-text { font-family:'Cormorant Garamond',serif; font-size:18px; line-height:1.7; color:var(--text-dim); }
+  .verdict-text { font-family:'Cormorant Garamond',serif; font-weight:500; font-size:18px; line-height:1.7; color:var(--text-body); }
   .verdict-text strong { color:var(--gold); font-weight:400; }
 
   .cta-block { background:var(--deep); border:1px solid rgba(201,168,76,0.2); padding:40px; text-align:center; margin:48px 0; }
   .cta-block p { font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:var(--text-dim); margin-bottom:24px; line-height:1.6; }
   .cta-block strong { color:var(--gold); font-style:normal; }
-  .cta-btn { display:inline-flex; align-items:center; gap:12px; font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold); padding:14px 32px; text-decoration:none; transition:all 0.3s; }
+  .cta-btn { display:inline-flex; align-items:center; gap:12px; font-size:11px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold); padding:14px 32px; text-decoration:none; transition:all 0.3s; }
   .cta-btn:hover { background:var(--gold); color:var(--black); }
   .cta-btn::after { content:'→'; }
 
   .related { border-top:1px solid rgba(201,168,76,0.1); padding-top:64px; margin-top:64px; }
-  .related-label { font-size:9px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:32px; }
+  .related-label { font-size:11px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:32px; }
   .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--surface2); }
   .related-card { background:var(--deep); padding:28px; text-decoration:none; transition:background 0.3s; }
   .related-card:hover { background:var(--surface); }
@@ -107,7 +107,7 @@
   @media (max-width:768px) {
     nav { padding:14px 20px; }
     .hero { padding:100px 20px 60px; min-height:60vh; }
-    .wc-strip { padding:14px 20px; font-size:8px; }
+    .wc-strip { padding:14px 20px; font-size:10px; }
     .article-wrap { padding:48px 20px; }
     .watch-entry { grid-template-columns:50px 1fr; gap:16px; }
     .watch-number { font-size:32px; }
@@ -133,7 +133,7 @@
   .hero .article-engraving{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:430px;height:430px;z-index:0;pointer-events:none;background:url('motif-movement.svg') center/contain no-repeat;opacity:.06;}
   .hero>*:not(.article-engraving){position:relative;z-index:1;}
   .gcurtain{position:relative;text-align:center;padding:60px 22px;overflow:hidden;border-top:1px solid rgba(201,168,76,0.14);background:radial-gradient(ellipse 70% 130% at 50% 0%,rgba(201,168,76,0.07),transparent 70%),#0A0A08;}
-  .gcurtain .k{font-size:8px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
+  .gcurtain .k{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
   .gcurtain .l{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,3.2vw,28px);color:#E8E4D9;max-width:620px;margin:0 auto 22px;line-height:1.32;}
   .gcurtain .l em{color:#E8C96A;font-style:italic;}
   .gcurtain a.cta{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#050505;background:linear-gradient(135deg,#E8C96A,#C9A84C);padding:13px 26px;border-radius:2px;text-decoration:none;}
@@ -297,7 +297,7 @@
   </div>
 
   <!-- TALLY -->
-  <p style="font-size:9px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;">Brand Count — The Messi Collection</p>
+  <p style="font-size:11px;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;">Brand Count — The Messi Collection</p>
   <div class="tally">
     <div class="tally-item"><span class="tally-brand">Patek Philippe</span><span class="tally-num">3</span></div>
     <div class="tally-item"><span class="tally-brand">Rolex</span><span class="tally-num">2</span></div>
