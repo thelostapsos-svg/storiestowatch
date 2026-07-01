@@ -21,17 +21,17 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; }
+  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:400; overflow-x:hidden; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
 
   nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,rgba(5,5,5,0.98),transparent); backdrop-filter:blur(10px); }
   .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; }
-  .nav-back { font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
+  .nav-back { font-size:11px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
   .nav-back:hover { color:var(--gold); }
 
   .article-hero { min-height:60vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:140px 80px 80px; position:relative; overflow:hidden; }
   .article-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%); }
-  .hero-label { font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; gap:16px; position:relative; z-index:1; }
+  .hero-label { font-size:11px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; gap:16px; position:relative; z-index:1; }
   .hero-label::before, .hero-label::after { content:''; width:40px; height:1px; background:var(--gold); opacity:0.5; }
   .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,72px); font-weight:300; line-height:1.1; color:var(--white); margin-bottom:24px; max-width:900px; position:relative; z-index:1; }
   .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2vw,24px); color:var(--text-dim); max-width:700px; line-height:1.5; position:relative; z-index:1; }
@@ -40,7 +40,7 @@
 
   .article-container { max-width:1200px; margin:0 auto; padding:80px 80px; display:grid; grid-template-columns:1fr 340px; gap:80px; align-items:start; }
 
-  .article-main p { font-family:'Cormorant Garamond',serif; font-size:21px; line-height:1.9; color:var(--text-body); margin-bottom:28px; }
+  .article-main p { font-family:'Cormorant Garamond',serif; font-weight:500; font-size:20px; line-height:1.72; color:var(--text-body); margin-bottom:26px; }
   .article-main > p:first-of-type::first-letter { font-family:'Cinzel',serif; font-size:80px; font-weight:900; color:var(--gold); float:left; line-height:0.75; margin-right:12px; margin-top:8px; }
   .article-main h2 { font-family:'Cinzel',serif; font-size:16px; font-weight:600; letter-spacing:0.1em; color:var(--white); margin:56px 0 20px; padding-top:56px; border-top:1px solid rgba(201,168,76,0.15); }
   .article-main h3 { font-family:'Cormorant Garamond',serif; font-size:26px; font-style:italic; color:var(--gold-light); margin:32px 0 14px; }
@@ -55,24 +55,24 @@
   .pull-quote p::first-letter { all:unset !important; }
 
   .wf-cta { background:var(--surface); border:1px solid rgba(201,168,76,0.25); padding:32px 36px; margin:48px 0; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-  .wf-cta-left p:first-child { font-size:8px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
+  .wf-cta-left p:first-child { font-size:10px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
   .wf-cta-left p:last-child { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--white); }
   .wf-cta-sub { font-size:10px; color:var(--text-dim); letter-spacing:0.1em; margin-top:4px; }
-  .wf-btn { font-size:8px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold-dim); padding:12px 24px; text-decoration:none; white-space:nowrap; transition:all 0.3s; flex-shrink:0; }
+  .wf-btn { font-size:10px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold-dim); padding:12px 24px; text-decoration:none; white-space:nowrap; transition:all 0.3s; flex-shrink:0; }
   .wf-btn:hover { background:var(--gold); color:var(--black); }
 
   .price-table { width:100%; border-collapse:collapse; margin:32px 0; }
-  .price-table th { font-size:8px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; padding:12px 16px; text-align:left; border-bottom:1px solid rgba(201,168,76,0.2); }
+  .price-table th { font-size:10px; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; padding:12px 16px; text-align:left; border-bottom:1px solid rgba(201,168,76,0.2); }
   .price-table td { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--text-body); padding:14px 16px; border-bottom:1px solid rgba(255,255,255,0.04); line-height:1.4; }
   .price-table tr:hover td { background:var(--surface); }
   .price-table td:last-child { color:var(--gold); font-weight:600; }
 
   .article-sidebar { position:sticky; top:90px; }
   .sidebar-block { background:var(--surface); border:1px solid rgba(201,168,76,0.1); padding:28px 24px; margin-bottom:24px; }
-  .sidebar-block-title { font-size:8px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(201,168,76,0.1); }
+  .sidebar-block-title { font-size:10px; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(201,168,76,0.1); }
   .sidebar-stat { margin-bottom:16px; }
   .sidebar-stat-num { font-family:'Cinzel',serif; font-size:28px; color:var(--gold); display:block; line-height:1; margin-bottom:4px; }
-  .sidebar-stat-label { font-size:9px; letter-spacing:0.15em; color:var(--text-dim); text-transform:uppercase; line-height:1.4; }
+  .sidebar-stat-label { font-size:11px; letter-spacing:0.15em; color:var(--text-dim); text-transform:uppercase; line-height:1.4; }
   .sidebar-link { display:block; font-size:10px; letter-spacing:0.15em; color:var(--text-dim); text-decoration:none; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04); transition:color 0.3s; text-transform:uppercase; }
   .sidebar-link:hover { color:var(--gold); }
   .sidebar-link:last-child { border-bottom:none; }
@@ -174,7 +174,7 @@
   .article-hero .article-engraving{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:430px;height:430px;z-index:0;pointer-events:none;background:url('motif-movement.svg') center/contain no-repeat;opacity:.06;}
   .article-hero>*:not(.article-engraving){position:relative;z-index:1;}
   .gcurtain{position:relative;text-align:center;padding:60px 22px;overflow:hidden;border-top:1px solid rgba(201,168,76,0.14);background:radial-gradient(ellipse 70% 130% at 50% 0%,rgba(201,168,76,0.07),transparent 70%),#0A0A08;}
-  .gcurtain .k{font-size:8px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
+  .gcurtain .k{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
   .gcurtain .l{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,3.2vw,28px);color:#E8E4D9;max-width:620px;margin:0 auto 22px;line-height:1.32;}
   .gcurtain .l em{color:#E8C96A;font-style:italic;}
   .gcurtain a.cta{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#050505;background:linear-gradient(135deg,#E8C96A,#C9A84C);padding:13px 26px;border-radius:2px;text-decoration:none;}
@@ -202,7 +202,7 @@
       <div style="position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(201,168,76,0.18);">
         <img src="omega-hero.webp" alt="An Omega Speedmaster Professional Moonwatch chronograph on a steel bracelet, resting on brown leather" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,0.62) 0%,rgba(5,5,5,0.08) 45%,transparent 70%);pointer-events:none;"></div>
-        <figcaption style="position:absolute;left:18px;bottom:14px;font-size:8px;letter-spacing:0.28em;color:var(--text-dim);text-transform:uppercase;z-index:1;">Omega Speedmaster Professional</figcaption>
+        <figcaption style="position:absolute;left:18px;bottom:14px;font-size:10px;letter-spacing:0.28em;color:var(--text-dim);text-transform:uppercase;z-index:1;">Omega Speedmaster Professional</figcaption>
       </div>
     </figure>
 </div>

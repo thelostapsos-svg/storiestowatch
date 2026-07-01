@@ -18,12 +18,12 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
-  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:300; overflow-x:hidden; }
+  body { background:var(--black); color:var(--text); font-family:'Montserrat',sans-serif; font-weight:400; overflow-x:hidden; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:0.35; }
 
   nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:20px 60px; display:flex; align-items:center; justify-content:space-between; background:#050505; border-bottom:1px solid rgba(201,168,76,0.1); }
   .nav-logo { font-family:'Cinzel',serif; font-size:12px; font-weight:600; letter-spacing:0.35em; color:var(--gold); text-decoration:none; }
-  .nav-back { display:flex; align-items:center; gap:10px; font-size:9px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
+  .nav-back { display:flex; align-items:center; gap:10px; font-size:11px; letter-spacing:0.3em; color:var(--text-dim); text-decoration:none; text-transform:uppercase; transition:color 0.3s; }
   .nav-back:hover { color:var(--gold); }
   .nav-back::before { content:'←'; font-size:14px; }
 
@@ -31,14 +31,14 @@
   .wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:470px;z-index:0;pointer-events:none;background:linear-gradient(0deg,#0A0A08,rgba(5,5,5,.5) 55%,rgba(5,5,5,.74)),url('sourcing-god.jpg') center 16%/cover no-repeat;-webkit-mask-image:linear-gradient(#000,#000 64%,transparent);mask-image:linear-gradient(#000,#000 64%,transparent);}
   .wrap>*{position:relative;z-index:1;}
   .wrap h1,.wrap .hero-label{text-shadow:0 2px 16px rgba(0,0,0,.72);}
-  .hero-label { font-size:9px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:18px; text-align:center; }
+  .hero-label { font-size:11px; letter-spacing:0.5em; color:var(--gold); text-transform:uppercase; margin-bottom:18px; text-align:center; }
   h1 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(30px,5vw,48px); line-height:1.15; color:var(--white); text-align:center; margin-bottom:16px; }
   h1 em { font-style:italic; color:var(--gold-light); }
   .intro { font-family:'Cormorant Garamond',serif; font-size:clamp(16px,2vw,19px); line-height:1.7; color:var(--text-dim); text-align:center; max-width:540px; margin:0 auto 48px; }
 
   .form-card { background:var(--surface); border:1px solid rgba(201,168,76,0.18); padding:40px 36px; }
   .field { margin-bottom:26px; }
-  .field label { display:block; font-size:9px; letter-spacing:0.28em; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+  .field label { display:block; font-size:11px; letter-spacing:0.28em; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
   .field .req { color:var(--gold-dim); }
   .field input, .field select, .field textarea {
     width:100%; background:var(--deep); border:1px solid rgba(201,168,76,0.22); color:var(--white);
@@ -52,7 +52,7 @@
   .field-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 
   .commission-note { background:var(--deep); border-left:2px solid var(--gold); padding:18px 20px; margin:8px 0 28px; font-family:'Cormorant Garamond',serif; font-size:15px; line-height:1.6; color:var(--text-body); }
-  .commission-note b { color:var(--gold-light); font-weight:400; font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.25em; text-transform:uppercase; display:block; margin-bottom:8px; }
+  .commission-note b { color:var(--gold-light); font-weight:400; font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:0.25em; text-transform:uppercase; display:block; margin-bottom:8px; }
 
   .submit-btn { width:100%; background:var(--gold); border:none; color:var(--black); font-family:'Cinzel',serif; font-size:11px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; padding:18px; cursor:pointer; transition:background 0.25s; }
   .submit-btn:hover { background:var(--gold-light); }
@@ -65,7 +65,7 @@
   .success .tick { font-family:'Cinzel',serif; font-size:40px; color:var(--gold); margin-bottom:20px; }
   .success h2 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:30px; color:var(--white); margin-bottom:14px; }
   .success p { font-family:'Cormorant Garamond',serif; font-size:18px; line-height:1.6; color:var(--text-dim); max-width:440px; margin:0 auto 28px; }
-  .success a { font-size:9px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold); padding:13px 28px; text-decoration:none; transition:all 0.3s; display:inline-block; }
+  .success a { font-size:11px; letter-spacing:0.35em; color:var(--gold); text-transform:uppercase; border:1px solid var(--gold); padding:13px 28px; text-decoration:none; transition:all 0.3s; display:inline-block; }
   .success a:hover { background:var(--gold); color:var(--black); }
   .form-error { display:none; background:rgba(224,82,82,0.08); border:1px solid rgba(224,82,82,0.3); color:#E0A0A0; font-size:12px; letter-spacing:0.05em; padding:14px 16px; margin-top:18px; text-align:center; }
   .form-error.show { display:block; }
@@ -98,7 +98,7 @@
   .nav-logo{display:inline-flex;align-items:center;gap:10px;}
   .nav-emblem{height:27px;width:auto;display:block;flex-shrink:0;}
   .gcurtain{position:relative;text-align:center;padding:60px 22px;overflow:hidden;border-top:1px solid rgba(201,168,76,0.14);background:radial-gradient(ellipse 70% 130% at 50% 0%,rgba(201,168,76,0.07),transparent 70%),#0A0A08;}
-  .gcurtain .k{font-size:8px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
+  .gcurtain .k{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;}
   .gcurtain .l{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,3.2vw,28px);color:#E8E4D9;max-width:620px;margin:0 auto 22px;line-height:1.32;}
   .gcurtain .l em{color:#E8C96A;font-style:italic;}
   .gcurtain a.cta{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#050505;background:linear-gradient(135deg,#E8C96A,#C9A84C);padding:13px 26px;border-radius:2px;text-decoration:none;}
