@@ -363,11 +363,10 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
     <a class="nav-sub" href="atlas.html">The Passport</a>
     <a class="nav-sub" href="chronos.html">The Value</a>
     <a class="nav-sub" href="hermes.html">The Dispatch</a>
-    <a class="nav-sub f" href="watchfinder.html">Watch Finder</a>
-    <a class="nav-sub f" href="fair-value.html">Fair Value</a>
+    <a class="f" href="watchfinder.html">Watch Finder</a>
     <a href="the-vault.html" class="f">The Vault ✦</a>
     <a href="mediakit.html" class="f">Media Kit</a>
-    <a href="#about">About</a>
+    <a class="f" href="fair-value.html">Fair Value</a>
   </div>
   <a href="watchfinder.html" class="navcta">⌕ Find a Watch</a>
   <div class="nav-quick">
@@ -395,7 +394,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
     <h1 class="ch-h1">Worn at altitude.<span class="g">Understood on the ground.</span></h1>
     <p class="ch-sub">Find watches worth finding.</p>
     <div class="ch-ctas">
-      <a class="ch-cta ch-gold" href="the-vault.html">Enter the Vault</a>
+      <a class="ch-cta ch-gold" href="watchfinder.html">Find a Watch →</a>
       <a class="ch-cta ch-ghost" href="fair-value.html">Check Fair Value →</a>
     </div>
   </div>
@@ -652,17 +651,19 @@ function goFind(e){e.preventDefault();var v=document.getElementById('q').value.t
   var stage=document.getElementById('top'),photo=document.getElementById('chPhoto'),sun=document.getElementById('chSun');
   if(!stage||!photo) return;
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var tx=0,ty=0,cx=0,cy=0,lastX=0,lastY=0,raf=null;
+  var tx=0,ty=0,cx=0,cy=0,lastX=0,lastY=0,t=0;
   function frame(){
-    cx+=(tx-cx)*0.08; cy+=(ty-cy)*0.08;
-    photo.style.transform='translate3d('+(-cx*14).toFixed(1)+'px,'+(-cy*10).toFixed(1)+'px,0)';
-    if(sun){var r=stage.getBoundingClientRect();var dxp=(lastX/r.width)-0.46,dyp=(lastY/r.height)-0.29;var close=Math.max(0,1-Math.sqrt(dxp*dxp+dyp*dyp)/0.5);sun.style.transform='translate3d('+(-cx*26).toFixed(1)+'px,'+(-cy*16).toFixed(1)+'px,0)';sun.style.opacity=(0.85+close*0.5);sun.style.filter='brightness('+(1+close*0.6).toFixed(2)+')';}
-    if(Math.abs(tx-cx)>0.0004||Math.abs(ty-cy)>0.0004) raf=requestAnimationFrame(frame); else raf=null;
+    t+=0.016;
+    cx+=(tx-cx)*0.06; cy+=(ty-cy)*0.06;
+    var ax=Math.sin(t*0.22)*9, ay=Math.cos(t*0.17)*6;             // continuous ambient drift (visible without cursor)
+    photo.style.transform='translate3d('+(ax-cx*18).toFixed(1)+'px,'+(ay-cy*13).toFixed(1)+'px,0)';
+    if(sun){var r=stage.getBoundingClientRect();var dxp=(lastX/r.width)-0.46,dyp=(lastY/r.height)-0.29;var close=Math.max(0,1-Math.sqrt(dxp*dxp+dyp*dyp)/0.5);sun.style.transform='translate3d('+(ax*1.7-cx*30).toFixed(1)+'px,'+(ay*1.7-cy*18).toFixed(1)+'px,0)';sun.style.opacity=(0.8+close*0.55).toFixed(2);sun.style.filter='brightness('+(1+close*0.6).toFixed(2)+')';}
+    if(!document.hidden){ requestAnimationFrame(frame); } else { setTimeout(function(){requestAnimationFrame(frame);},400); }
   }
-  function kick(){ if(!raf) raf=requestAnimationFrame(frame); }
-  stage.addEventListener('mousemove',function(e){var r=stage.getBoundingClientRect();lastX=e.clientX-r.left;lastY=e.clientY-r.top;tx=(lastX/r.width)-0.5;ty=(lastY/r.height)-0.5;kick();});
-  stage.addEventListener('mouseleave',function(){tx=0;ty=0;kick();});
-  window.addEventListener('deviceorientation',function(e){if(e.gamma==null)return;tx=Math.max(-.5,Math.min(.5,e.gamma/45));ty=Math.max(-.5,Math.min(.5,(e.beta-45)/45));kick();});
+  stage.addEventListener('mousemove',function(e){var r=stage.getBoundingClientRect();lastX=e.clientX-r.left;lastY=e.clientY-r.top;tx=(lastX/r.width)-0.5;ty=(lastY/r.height)-0.5;});
+  stage.addEventListener('mouseleave',function(){tx=0;ty=0;});
+  window.addEventListener('deviceorientation',function(e){if(e.gamma==null)return;tx=Math.max(-.5,Math.min(.5,e.gamma/45));ty=Math.max(-.5,Math.min(.5,(e.beta-45)/45));});
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
