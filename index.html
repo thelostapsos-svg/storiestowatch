@@ -269,7 +269,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   .clock .t{font-size:26px}
   .finder-bar input{font-size:16px}
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* global reduced-motion animation-off removed — the ambient hero drift & Ken Burns are intentionally always-on (subtle, slow, GPU-only) */
 /* god card category label */
 .god-cat{font-family:'Cinzel',serif;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:7px}
 /* god card — prominent category header on top of each card */
@@ -350,7 +350,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   .hours .grid>*:nth-child(2) .img{animation-delay:-7s}
   .hours .grid>*:nth-child(3) .img{animation-delay:-14s}
   .hours .grid>*:nth-child(4) .img{animation-delay:-20s}
-  @media(prefers-reduced-motion:reduce){.hours .god .img{animation:none!important;transform:scale(1.04)!important}}
+  /* Ken Burns now plays regardless of OS reduced-motion (owner preference) */
 </style>
 </head>
 <body>
@@ -598,8 +598,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 })();
 // ---- MODERN LAYER: scroll-reveals + parallax + museum spotlight ----
 (function(){
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce) return;                       // reduced-motion: everything stays static & visible
+  // scroll-reveals + relic parallax play regardless of OS reduced-motion (owner preference — subtle & GPU-only)
   var touch=matchMedia('(hover: none)').matches;
 
   // scroll-reveals (gods, library, maisons, relic emerge as you arrive)
@@ -624,13 +623,13 @@ function goFind(e){e.preventDefault();var v=document.getElementById('q').value.t
 (function(){
   var stage=document.getElementById('top'),photo=document.getElementById('chPhoto'),sun=document.getElementById('chSun');
   if(!stage||!photo) return;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var tx=0,ty=0,cx=0,cy=0,lastX=0,lastY=0,t=0;
   function frame(){
     t+=0.016;
     cx+=(tx-cx)*0.06; cy+=(ty-cy)*0.06;
-    var ax=Math.sin(t*0.22)*9, ay=Math.cos(t*0.17)*6;             // continuous ambient drift (visible without cursor)
-    photo.style.transform='translate3d('+(ax-cx*18).toFixed(1)+'px,'+(ay-cy*13).toFixed(1)+'px,0)';
+    var ax=Math.sin(t*0.22)*13, ay=Math.cos(t*0.17)*8;            // stronger continuous ambient drift (visible without cursor)
+    var sc=Math.max(-36,Math.min(36,(window.pageYOffset||0)*0.11)); // scroll parallax — the photo lags the scroll for depth
+    photo.style.transform='translate3d('+(ax-cx*20).toFixed(1)+'px,'+(ay-cy*13+sc).toFixed(1)+'px,0)';
     if(sun){var r=stage.getBoundingClientRect();var dxp=(lastX/r.width)-0.46,dyp=(lastY/r.height)-0.29;var close=Math.max(0,1-Math.sqrt(dxp*dxp+dyp*dyp)/0.5);sun.style.transform='translate3d('+(ax*1.7-cx*30).toFixed(1)+'px,'+(ay*1.7-cy*18).toFixed(1)+'px,0)';sun.style.opacity=(0.8+close*0.55).toFixed(2);sun.style.filter='brightness('+(1+close*0.6).toFixed(2)+')';}
     if(!document.hidden){ requestAnimationFrame(frame); } else { setTimeout(function(){requestAnimationFrame(frame);},400); }
   }
