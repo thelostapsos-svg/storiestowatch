@@ -178,6 +178,11 @@ h1 em{display:block;font-style:normal;color:var(--gold);font-weight:600}
 .curtain p.l{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,3vw,25px);color:var(--text);max-width:640px;margin:0 auto 22px;line-height:1.32}
 .curtain p.l em{color:var(--gold-light)}
 .curtain a.cta{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);background:linear-gradient(135deg,var(--gold-light),var(--gold));padding:14px 28px;border-radius:2px;box-shadow:0 8px 26px rgba(201,168,76,.2)}
+.curtain-sky{position:absolute;inset:0;z-index:0;overflow:hidden}
+.curtain-sky img{position:absolute;left:-10%;top:-8%;width:120%;height:116%;object-fit:cover;object-position:center 45%;opacity:.5;animation:curtainDrift 46s ease-in-out infinite alternate;will-change:transform}
+@keyframes curtainDrift{from{transform:translate3d(0,0,0) scale(1.02)}to{transform:translate3d(4%,0,0) scale(1.08)}}
+.curtain-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,8,.72),rgba(10,10,8,.56) 50%,rgba(10,10,8,.82)),radial-gradient(ellipse 72% 120% at 50% 42%,transparent,rgba(10,10,8,.5) 86%)}
+.curtain>p,.curtain>a{position:relative;z-index:2}
 
 /* THE MYTH — origin-story scroll sequence (non-blocking, crawlable text) */
 .myth{position:relative;padding:104px 22px;overflow:hidden;border-bottom:1px solid rgba(201,168,76,.1)}
@@ -559,7 +564,11 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 <!-- ============ THE RELIC ============ -->
 <section class="relic" id="relic">
   <div class="relic-img">
-    <img src="rolex_dark.jpg" alt="A luxury watch photographed in dramatic light — a modern relic of time" loading="lazy">
+    <picture>
+      <source type="image/avif" srcset="source-a-watch-900.avif 900w, source-a-watch-1400.avif 1400w" sizes="(min-width:900px) 50vw, 100vw">
+      <source type="image/webp" srcset="source-a-watch-900.webp 900w, source-a-watch-1400.webp 1400w" sizes="(min-width:900px) 50vw, 100vw">
+      <img src="source-a-watch-1400.jpg" alt="A collector drawn to a warmly lit luxury watch boutique window at night" loading="lazy" decoding="async" style="object-position:center 20%">
+    </picture>
   </div>
   <div class="relic-txt">
     <p class="k">Can't Find It?</p>
@@ -571,6 +580,14 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 
 <!-- ============ CURTAIN ============ -->
 <section class="curtain" id="about">
+  <div class="curtain-sky" aria-hidden="true">
+    <picture>
+      <source type="image/avif" srcset="curtain-sky-1280.avif 1280w, curtain-sky-1920.avif 1920w" sizes="100vw">
+      <source type="image/webp" srcset="curtain-sky-1280.webp 1280w, curtain-sky-1920.webp 1920w" sizes="100vw">
+      <img src="curtain-sky-1920.jpg" alt="" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <div class="curtain-scrim" aria-hidden="true"></div>
   <p class="k">The Last Word</p>
   <p class="l">You know the watches. You know the honest price. All that's left is the right one — from <em>someone worth trusting.</em></p>
   <a class="cta" href="watchfinder.html">Enter the Watch Finder →</a>
