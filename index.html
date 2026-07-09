@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stories To Watch">
 <meta property="og:title" content="Stories To Watch — Find Where to Buy the Watch You Want">
-<meta property="og:description" content="63 verified dealers worldwide, with editorial that helps you choose. Time, kept by the gods; found by you.">
+<meta property="og:description" content="63 verified dealers worldwide, with editorial that helps you choose. Time, kept by the greats; found by you.">
 <meta property="og:url" content="https://www.storiestowatch.com/">
 <meta property="og:image" content="https://www.storiestowatch.com/royal-oak-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,7 +39,6 @@
 <link rel="icon" href="stw-emblem.svg" type="image/svg+xml">
 <link rel="icon" href="stw-emblem.png" type="image/png">
 <link rel="apple-touch-icon" href="stw-emblem.png">
-<link rel="preload" as="image" href="gods/hero-god.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -102,7 +101,7 @@ nav.open .burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .wmovement .l b{color:var(--gold-light);font-weight:400}
 @media(max-width:780px){.hero-dna{width:320px;height:320px;left:-72px;bottom:-60px;opacity:.06}}
 .hero-god .img{position:absolute;inset:-6%;background-size:cover;background-position:center 18%;
-  background-image:url('gods/hero-god.jpg'),radial-gradient(ellipse 60% 40% at 35% 18%,rgba(255,255,255,.5),transparent 60%),linear-gradient(125deg,#efe9dd,#d4ccba 45%,#f1ebdf 60%,#c7bfac 100%);
+  background-image:url('movement-closeup.jpg'),radial-gradient(ellipse 60% 40% at 35% 18%,rgba(255,255,255,.5),transparent 60%),linear-gradient(125deg,#efe9dd,#d4ccba 45%,#f1ebdf 60%,#c7bfac 100%);
   filter:grayscale(.5) sepia(.2) contrast(1.06) brightness(.96);will-change:transform}
 .hero-god .img.marble{background-image:
    radial-gradient(ellipse 60% 40% at 35% 18%,rgba(255,255,255,.55),transparent 60%),
@@ -182,7 +181,7 @@ h1 em{display:block;font-style:normal;color:var(--gold);font-weight:600}
 
 /* THE MYTH — origin-story scroll sequence (non-blocking, crawlable text) */
 .myth{position:relative;padding:104px 22px;overflow:hidden;border-bottom:1px solid rgba(201,168,76,.1)}
-.myth-bg{position:absolute;inset:0;background:url('gods/hero-god.jpg') center 16%/cover;
+.myth-bg{position:absolute;inset:0;background:url('movement-closeup.jpg') center 16%/cover;
   filter:grayscale(.75) sepia(.18) contrast(1.05) brightness(.45)}
 .myth::after{content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 85% 75% at 50% 45%,transparent 24%,rgba(10,10,9,.9) 100%),linear-gradient(rgba(10,10,9,.55),rgba(10,10,9,.7))}
@@ -308,18 +307,64 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 .spot-card:hover .spot-link{color:var(--white)}
 @media(max-width:820px){.spot-card{grid-template-columns:1fr}.spot-img{min-height:300px}.spot-body{padding:38px 28px}.spot-title{font-size:28px}}
 </style>
+<link rel="preload" as="image" href="hero-daytona-dusk-1023.avif" type="image/avif" fetchpriority="high" media="(min-width:900px)">
+<link rel="preload" as="image" href="hero-daytona-dusk-640.avif" type="image/avif" fetchpriority="high" media="(max-width:899px)">
+<style>
+  .ch-hero{position:relative;height:100svh;min-height:580px;overflow:hidden;background:#080a0f;isolation:isolate}
+  .ch-photo-panel{position:absolute;inset:0;overflow:hidden;z-index:1}
+  .ch-photo{position:absolute;inset:-6%;width:112%;height:112%;will-change:transform}
+  .ch-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;display:block}
+  .ch-sun{position:absolute;inset:0;z-index:2;pointer-events:none;will-change:transform,opacity;mix-blend-mode:screen;transition:opacity .25s ease,filter .25s ease;background:radial-gradient(circle at 45% 29%, rgba(255,226,175,.55) 0%, rgba(255,190,120,.28) 7%, rgba(255,168,92,.12) 15%, transparent 26%)}
+  .ch-water{position:absolute;left:0;right:0;top:30%;height:20%;z-index:2;pointer-events:none;overflow:hidden}
+  .ch-shimmer{position:absolute;inset:0;mix-blend-mode:screen;opacity:.6;background:repeating-linear-gradient(92deg,transparent 0 26px,rgba(230,200,155,.06) 28px 30px,transparent 32px 66px);-webkit-mask:linear-gradient(180deg,rgba(0,0,0,.85),transparent);mask:linear-gradient(180deg,rgba(0,0,0,.85),transparent);animation:chDrift 9s linear infinite}
+  @keyframes chDrift{from{transform:translateX(-5%)}to{transform:translateX(5%)}}
+  .ch-vignette{position:absolute;inset:0;z-index:3;pointer-events:none;box-shadow:inset 0 0 200px 50px rgba(2,4,8,.7)}
+  .ch-wash{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(4,6,10,.55) 0%,rgba(4,6,10,.05) 34%,rgba(4,6,10,.4) 64%,rgba(4,6,10,.9) 100%)}
+  .ch-copy{position:absolute;z-index:6;left:clamp(22px,6vw,80px);right:clamp(22px,6vw,80px);bottom:clamp(40px,9vh,84px);max-width:620px}
+  .ch-eyebrow{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .ch-h1{font-family:'Cinzel',serif;font-weight:400;color:var(--white);line-height:1.08;font-size:clamp(30px,5.4vw,64px);text-shadow:0 2px 26px rgba(0,0,0,.55);margin:0}
+  .ch-h1 .g{display:block;color:var(--gold-light);font-weight:600}
+  .ch-sub{font-family:'Cormorant Garamond',serif;font-weight:500;font-style:italic;font-size:clamp(17px,2vw,22px);color:var(--text);margin:18px 0 28px;max-width:30ch;line-height:1.5;text-shadow:0 1px 14px rgba(0,0,0,.6)}
+  .ch-ctas{display:flex;gap:13px;flex-wrap:wrap}
+  .ch-cta{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;padding:15px 26px;border-radius:2px;text-decoration:none;transition:all .2s}
+  .ch-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#241d06;font-weight:700}
+  .ch-gold:hover{filter:brightness(1.08)}
+  .ch-ghost{border:1px solid rgba(233,201,106,.55);color:var(--gold-light)}
+  .ch-ghost:hover{background:rgba(233,201,106,.12)}
+  @media(min-width:900px){
+    .ch-photo-panel{left:auto;right:0;width:53%}
+    .ch-photo-panel::before{content:'';position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(90deg,#080a0f 0%,rgba(8,10,15,.5) 8%,transparent 22%)}
+    .ch-photo img{object-position:50% 45%}
+    .ch-copy{left:0;right:47%;bottom:auto;top:50%;transform:translateY(-50%);padding:0 clamp(40px,5vw,90px);max-width:none}
+    .ch-wash{display:none}
+    .ch-hero::before{content:'';position:absolute;inset:0;width:47%;z-index:2;background:radial-gradient(ellipse 90% 70% at 30% 45%,rgba(201,168,76,.06),transparent 70%)}
+  }
+  @media(prefers-reduced-motion:reduce){.ch-shimmer{animation:none}}
+  .finder-band{background:linear-gradient(180deg,#080a0f,#0a0a08);border-bottom:1px solid rgba(201,168,76,.12);padding:clamp(28px,5vw,46px) clamp(20px,5vw,60px);display:flex;justify-content:center}
+  .finder-band .finder{max-width:720px;width:100%}
+  /* subtle ambient Ken-Burns on The Hours cards — transform-only, GPU-composited, degrades */
+  .hours .god{overflow:hidden}
+  .hours .god .img{animation:kenburns 26s ease-in-out infinite alternate;transition:filter .5s ease;will-change:transform}
+  @keyframes kenburns{from{transform:scale(1.02) translateY(0)}to{transform:scale(1.09) translateY(-1.6%)}}
+  .hours .god:hover .img{filter:brightness(1.09)}
+  .hours .grid>*:nth-child(2) .img{animation-delay:-7s}
+  .hours .grid>*:nth-child(3) .img{animation-delay:-14s}
+  .hours .grid>*:nth-child(4) .img{animation-delay:-20s}
+  @media(prefers-reduced-motion:reduce){.hours .god .img{animation:none!important;transform:scale(1.04)!important}}
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="#top" class="brand"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch — the keepers of time"> <span class="brand-word">STORIES <b>TO</b> WATCH</span></a>
+  <a href="#top" class="brand"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch"> <span class="brand-word">STORIES <b>TO</b> WATCH</span></a>
   <div class="navlinks">
     <a href="#hours">The Hours</a>
-    <a class="nav-sub" href="chronos.html">Investment Guides</a>
-    <a class="nav-sub" href="hephaestus.html">Buying Guides</a>
-    <a class="nav-sub" href="atlas.html">City Guides</a>
-    <a class="nav-sub" href="hermes.html">Dispatches</a>
+    <a class="nav-sub" href="hephaestus.html">The Grail</a>
+    <a class="nav-sub" href="atlas.html">The Passport</a>
+    <a class="nav-sub" href="chronos.html">The Value</a>
+    <a class="nav-sub" href="hermes.html">The Dispatch</a>
     <a class="nav-sub f" href="watchfinder.html">Watch Finder</a>
+    <a class="nav-sub f" href="fair-value.html">Fair Value</a>
     <a href="the-vault.html" class="f">The Vault ✦</a>
     <a href="mediakit.html" class="f">Media Kit</a>
     <a href="#about">About</a>
@@ -332,51 +377,48 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-  <div class="hero-dna" aria-hidden="true"></div>
-  <div class="hero-text">
-    <p class="eyebrow"><span class="gk">ΧΡΟΝΟΣ</span> — Keepers of Time</p>
-    <h1>Time was a god<em>before it was a watch.</em></h1>
-    <p class="sub" id="sub">Mortals chase the hour. The gods simply kept it.</p>
-
-    <div class="clock" aria-label="The current local hour">
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="24" r="21" fill="none" stroke="#3a3018" stroke-width="2"/>
-        <circle id="ring" cx="24" cy="24" r="21" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"
-          stroke-dasharray="131.9" stroke-dashoffset="131.9" transform="rotate(-90 24 24)"/>
-        <circle cx="24" cy="24" r="2" fill="#C9A84C"/>
-      </svg>
-      <div>
-        <div class="t"><span id="hh">00</span>:<span id="mm">00</span><span class="s">:<span id="ss">00</span></span></div>
-        <div class="lbl" id="tlbl">The hour, as it is kept</div>
-      </div>
-    </div>
-
-    <div class="finder">
-      <p class="finder-label">⌕ The Watch Finder</p>
-      <form class="finder-bar" onsubmit="return goFind(event)">
-        <input id="q" type="text" autocomplete="off" placeholder="Name the watch you seek…" aria-label="Search the Watch Finder">
-        <button type="submit">Find →</button>
-      </form>
-      <div class="chips">
-        <span class="chip" onclick="find('Rolex')">Rolex</span>
-        <span class="chip" onclick="find('Patek Philippe')">Patek Philippe</span>
-        <span class="chip" onclick="find('Audemars Piguet')">Audemars Piguet</span>
-        <span class="chip" onclick="find('Cartier')">Cartier</span>
-        <span class="chip" onclick="find('Omega')">Omega</span>
-      </div>
-      <p class="trust"><b>63</b> verified dealers · worldwide · authorised, pre-owned &amp; auction · <b>free to search</b></p>
-    </div>
+<!-- ============ HERO (cinematic) ============ -->
+<header class="ch-hero" id="top">
+  <div class="ch-photo-panel">
+    <picture class="ch-photo" id="chPhoto">
+      <source type="image/avif" srcset="hero-daytona-dusk-640.avif 640w, hero-daytona-dusk-1023.avif 1023w" sizes="(min-width:900px) 53vw, 100vw">
+      <source type="image/webp" srcset="hero-daytona-dusk-640.webp 640w, hero-daytona-dusk-1023.webp 1023w" sizes="(min-width:900px) 53vw, 100vw">
+      <img src="hero-daytona-dusk-1023.jpg" alt="A steel Rolex Cosmograph Daytona on the wrist at dusk, the sun setting over a mountain lake" fetchpriority="high" decoding="async" width="1023" height="1537">
+    </picture>
+    <div class="ch-sun" id="chSun" aria-hidden="true"></div>
+    <div class="ch-water" aria-hidden="true"><div class="ch-shimmer"></div></div>
+    <div class="ch-vignette" aria-hidden="true"></div>
   </div>
+  <div class="ch-wash" aria-hidden="true"></div>
 
-  <div class="hero-god">
-    <div class="img" id="heroGodImg"></div>
-    <div class="spot" aria-hidden="true"></div>
-    <div class="hero-glow"></div>
-    <p class="cap">Marble · the keeper of time</p>
+  <div class="ch-copy">
+    <h1 class="ch-h1">Worn at altitude.<span class="g">Understood on the ground.</span></h1>
+    <p class="ch-sub">Find watches worth finding.</p>
+    <div class="ch-ctas">
+      <a class="ch-cta ch-gold" href="the-vault.html">Enter the Vault</a>
+      <a class="ch-cta ch-ghost" href="fair-value.html">Check Fair Value →</a>
+    </div>
   </div>
 </header>
+
+<!-- Watch Finder — relocated from the old hero, kept prominent -->
+<section class="finder-band" aria-label="Watch Finder">
+  <div class="finder">
+    <p class="finder-label">⌕ The Watch Finder</p>
+    <form class="finder-bar" onsubmit="return goFind(event)">
+      <input id="q" type="text" autocomplete="off" placeholder="Name the watch you seek…" aria-label="Search the Watch Finder">
+      <button type="submit">Find →</button>
+    </form>
+    <div class="chips">
+      <span class="chip" onclick="find('Rolex')">Rolex</span>
+      <span class="chip" onclick="find('Patek Philippe')">Patek Philippe</span>
+      <span class="chip" onclick="find('Audemars Piguet')">Audemars Piguet</span>
+      <span class="chip" onclick="find('Cartier')">Cartier</span>
+      <span class="chip" onclick="find('Omega')">Omega</span>
+    </div>
+    <p class="trust"><b>63</b> verified dealers · worldwide · authorised, pre-owned &amp; auction · <b>free to search</b></p>
+  </div>
+</section>
 
 <div class="meander" aria-hidden="true"></div>
 
@@ -384,10 +426,10 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 <section class="myth" id="myth">
   <div class="myth-bg" aria-hidden="true"></div>
   <div class="myth-inner">
-    <p class="myth-kicker reveal">The Myth <span class="gk">· ΧΡΟΝΟΣ</span></p>
-    <p class="myth-beat reveal">Before the first clock, there was a god. The Greeks called him <b>Chronos</b> — Time itself — coiled around the world like a serpent, devouring all he fathered. Gold tarnishes, empires fall; the hour, once spent, never returns.</p>
-    <p class="myth-beat reveal">Mortals could not stop him — so they learned to <b>carry a piece of him.</b> The watch: the only way a man has ever held time in his hand — not a measure of the hour, but a <b>relic of defiance</b>, proof that for one lifetime, you kept pace with a god.</p>
-    <p class="myth-close reveal">We know where every relic is kept.</p>
+    <p class="myth-kicker reveal">The Idea</p>
+    <p class="myth-beat reveal">A watch is the one thing you wear that keeps its own time — long after the phone dies, the suit dates and the car depreciates. A few hundred parts, conspiring to hold the only thing you can't buy more of.</p>
+    <p class="myth-beat reveal">So the right one is never really about the hour. It's the object that tells the world who you are before you say a word — and the rare purchase where <b>knowing what you're doing</b> changes everything.</p>
+    <p class="myth-close reveal">We know where every one worth owning is kept.</p>
   </div>
 </section>
 
@@ -396,53 +438,49 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   <div class="sec-head">
     <p class="sec-kick">There's more behind the curtain</p>
     <h2 class="sec-title">The <b>Hours.</b></h2>
-    <p class="sec-note">Four gods, four ways in — <b style="color:var(--gold);font-weight:400">Hephaestus</b> for the watch, <b style="color:var(--gold);font-weight:400">Atlas</b> for the city, <b style="color:var(--gold);font-weight:400">Chronos</b> for value, <b style="color:var(--gold);font-weight:400">Hermes</b> for the moment.</p>
+    <p class="sec-note">Four ways in — <b style="color:var(--gold);font-weight:400">The Grail</b> for the watch, <b style="color:var(--gold);font-weight:400">The Passport</b> for the city, <b style="color:var(--gold);font-weight:400">The Value</b> for what it's worth, <b style="color:var(--gold);font-weight:400">The Dispatch</b> for the moment.</p>
   </div>
   <div class="grid">
     <div class="god-cell">
-      <img class="god-emblem" src="icon-hephaestus.svg" alt="" loading="lazy">
       <p class="god-cat-top">Buying Guides</p>
       <a class="god" href="hephaestus.html">
-        <div class="img marble veined" data-god="gods/hephaestus.jpg"></div>
+        <div class="img" data-god="royal-oak-grail.webp"></div>
         <div class="god-body">
-          <p class="god-name">HEPHAESTUS</p>
-          <p class="god-title">Forged, not bought — the movement as the smith-god's craft.</p>
+          <p class="god-name">The Grail</p>
+          <p class="god-title">Which watch — and why it's worth it.</p>
           <span class="god-link">Enter →</span>
         </div>
       </a>
     </div>
     <div class="god-cell">
-      <img class="god-emblem" src="icon-atlas.svg" alt="" loading="lazy">
       <p class="god-cat-top">City Guides</p>
       <a class="god" href="atlas.html">
-        <div class="img marble veined" data-god="gods/atlas.jpg"></div>
+        <div class="img" data-god="submariner-bicycle.webp"></div>
         <div class="god-body">
-          <p class="god-name">ATLAS</p>
-          <p class="god-title">He carried the world. You only need to find one watch on it.</p>
+          <p class="god-name">The Passport</p>
+          <p class="god-title">Where the world's collectors actually buy.</p>
           <span class="god-link">Enter →</span>
         </div>
       </a>
     </div>
     <div class="god-cell">
-      <img class="god-emblem" src="icon-chronos.svg" alt="" loading="lazy">
-      <p class="god-cat-top">Investment Guides</p>
+      <p class="god-cat-top">Investment &amp; Fair Value</p>
       <a class="god" href="chronos.html">
-        <div class="img marble veined" data-god="gods/chronos.jpg"></div>
+        <div class="img" data-god="datejust-whisky.webp"></div>
         <div class="god-body">
-          <p class="god-name">CHRONOS</p>
-          <p class="god-title">The god who devoured time — and the steel watch that defied it.</p>
+          <p class="god-name">The Value</p>
+          <p class="god-title">What holds, what climbs — and a fair price to pay.</p>
           <span class="god-link">Enter →</span>
         </div>
       </a>
     </div>
     <div class="god-cell">
-      <img class="god-emblem" src="icon-hermes.svg" alt="" loading="lazy">
-      <p class="god-cat-top">Dispatches</p>
+      <p class="god-cat-top">News &amp; Stories</p>
       <a class="god" href="hermes.html">
-        <div class="img marble veined" data-god="gods/hermes.jpg"></div>
+        <div class="img" data-god="manifesto-suspenders-bw.webp"></div>
         <div class="god-body">
-          <p class="god-name">HERMES</p>
-          <p class="god-title">The messenger knows every door. Which house actually holds value?</p>
+          <p class="god-name">The Dispatch</p>
+          <p class="god-title">What's moving the market, told to the minute.</p>
           <span class="god-link">Enter →</span>
         </div>
       </a>
@@ -471,17 +509,17 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   </a>
 </section>
 
-<!-- ============ THE PANTHEON (lore — the lesser keepers of time) ============ -->
+<!-- ============ THREE KINDS OF TIME ============ -->
 <section class="pantheon" aria-label="The pantheon">
   <div class="sec-head reveal">
     <p class="sec-kick">Beyond the Hours</p>
-    <h2 class="sec-title">The lesser <b>keepers.</b></h2>
-    <p class="sec-note">Chronos was never alone. The Greeks gave time many hands.</p>
+    <h2 class="sec-title">Three kinds of <b>time.</b></h2>
+    <p class="sec-note">A great watch answers more than one of them.</p>
   </div>
   <div class="lore-grid">
-    <div class="lore reveal"><p class="lore-name">Kairos</p><p class="lore-gk">ΚΑΙΡΟΣ</p><p class="lore-line">The fleeting, perfect moment — the time you seize, not the time you count. Chronos numbers the hours; Kairos chooses the one that matters.</p></div>
-    <div class="lore reveal"><p class="lore-name">Aion</p><p class="lore-gk">ΑΙΩΝ</p><p class="lore-line">Eternity — the wheel with no beginning and no end, the time of gods, not of mortals. Where Chronos devours, Aion simply turns.</p></div>
-    <div class="lore reveal"><p class="lore-name">The Horae</p><p class="lore-gk">ΩΡΑΙ</p><p class="lore-line">The Hours themselves, daughters of order — keepers of the seasons, openers of heaven's gates. Every dial made since is their inheritance.</p></div>
+    <div class="lore reveal"><p class="lore-name">The Moment</p><p class="lore-line">The watch you reach for on the day that actually matters — the one you'll remember wearing, long after you've forgotten what it cost.</p></div>
+    <div class="lore reveal"><p class="lore-name">The Long Run</p><p class="lore-line">The reference that outlives the hype cycle. Trends date fast; the right steel sports watch just quietly holds its ground.</p></div>
+    <div class="lore reveal"><p class="lore-name">The Inheritance</p><p class="lore-line">The one object you'll actually hand on — not an heirloom because it's old, but because it was chosen well the first time.</p></div>
   </div>
 </section>
 
@@ -490,14 +528,14 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   <img src="movement-closeup.jpg" alt="The movement of a luxury watch in close detail" loading="lazy">
   <div class="inner">
     <p class="k">The Movement</p>
-    <p class="l">Behind every god, a machine — a few hundred parts conspiring to keep <b>the god's own hour.</b></p>
+    <p class="l">Behind every great watch, a machine — a few hundred parts conspiring to keep <b>near-perfect time, by hand, for a lifetime.</b></p>
   </div>
 </section>
 
 <!-- ============ THE MAISONS (brand → Finder → dealer pathway) ============ -->
 <section class="maisons" id="maisons">
   <div class="sec-head">
-    <p class="sec-kick">The Pantheon of Maisons</p>
+    <p class="sec-kick">The Maisons</p>
     <h2 class="sec-title">Begin with a <b>name.</b></h2>
     <p class="sec-note">Each opens the Watch Finder — and the doors of the dealers who carry it.</p>
   </div>
@@ -529,54 +567,36 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
     <img src="rolex_dark.jpg" alt="A luxury watch photographed in dramatic light — a modern relic of time" loading="lazy">
   </div>
   <div class="relic-txt">
-    <p class="k">The Relic</p>
-    <h3>A watch is the closest a mortal comes to <em>holding time.</em></h3>
-    <p>Every great reference is a small temple to the hour — and somewhere in the world, the right one is waiting. We don't sell it; we tell you exactly where it's kept — and if it never seems to surface, we'll hunt it down for you.</p>
+    <p class="k">Can't Find It?</p>
+    <h3>The right one is out there — <em>we'll tell you exactly where.</em></h3>
+    <p>Every great reference is somewhere in the world right now, waiting. We don't sell it — we're independent — but we'll point you to the dealer who has it. And if it never seems to surface, we'll hunt it down for you.</p>
     <a href="source-a-watch.html">Can't find it? We'll source it →</a>
   </div>
 </section>
 
 <!-- ============ CURTAIN ============ -->
 <section class="curtain" id="about">
-  <p class="k">The buy-off</p>
-  <p class="l">You've read the myth. The hour is yours to claim — from <em>someone worth trusting.</em></p>
+  <p class="k">The Last Word</p>
+  <p class="l">You know the watches. You know the honest price. All that's left is the right one — from <em>someone worth trusting.</em></p>
   <a class="cta" href="watchfinder.html">Enter the Watch Finder →</a>
 </section>
 
 <footer>
   <p class="fb">STORIES TO WATCH</p>
-  <p>Time, kept by the gods. Found by you.</p>
+  <p>Time, kept by the greats. Found by you.</p>
   <p style="color:var(--gold-deep);margin-top:6px">An independent discovery house — we don't sell watches, we map them and connect you to the dealers who do.</p>
 </footer>
 
 <script>
 // ---- live time ----
 (function(){
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hh=document.getElementById('hh'),mm=document.getElementById('mm'),ss=document.getElementById('ss'),ring=document.getElementById('ring');
-  var C=2*Math.PI*21;
-  function p2(n){return('0'+n).slice(-2);}
-  function clk(){var n=new Date();hh.textContent=p2(n.getHours());mm.textContent=p2(n.getMinutes());ss.textContent=p2(n.getSeconds());
-    var frac=(n.getSeconds()+(reduce?0:n.getMilliseconds()/1000))/60;ring.setAttribute('stroke-dashoffset',(C*(1-frac)).toFixed(1));}
-  clk();
-  if(reduce){setInterval(clk,1000);}else{(function loop(){if(!document.hidden)clk();requestAnimationFrame(loop);})();}
-
-  // rotating provocation line
-  if(!reduce){
-    var sub=document.getElementById('sub'),lines=["Mortals chase the hour. The gods simply kept it.","What your wrist says before you speak.","Every great watch is a small temple to time.","Some things you don't buy — you earn the eye for them."],i=0;
-    setInterval(function(){sub.style.opacity='0';setTimeout(function(){i=(i+1)%lines.length;sub.textContent=lines[i];sub.style.opacity=''},480)},5200);
-  }
-
-  // hero god — the LCP image: painted straight from CSS as WebP + preloaded in <head> (no JS wait)
-  // god cards: lazy-load as they approach (keeps ~190KB of below-fold imagery off the critical path)
-  (function(){
-    var gods=[].slice.call(document.querySelectorAll('.god .img[data-god]'));
-    function load(el){var src=el.getAttribute('data-god'),im=new Image();im.onload=function(){el.style.backgroundImage="url('"+src+"')";el.classList.remove('marble','veined');};im.src=src;el.removeAttribute('data-god');}
-    if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);io.unobserve(e.target);}});},{rootMargin:'500px 0px'});
-      gods.forEach(function(el){io.observe(el);});
-    } else { gods.forEach(load); }
-  })();
+  // god cards: lazy-load as they approach (keeps below-fold imagery off the critical path)
+  var gods=[].slice.call(document.querySelectorAll('.god .img[data-god]'));
+  function load(el){var src=el.getAttribute('data-god'),im=new Image();im.onload=function(){el.style.backgroundImage="url('"+src+"')";el.classList.remove('marble','veined');};im.src=src;el.removeAttribute('data-god');}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);io.unobserve(e.target);}});},{rootMargin:'500px 0px'});
+    gods.forEach(function(el){io.observe(el);});
+  } else { gods.forEach(load); }
 })();
 // ---- MOBILE: burger toggles the nav menu (was wrongly jumping to the Finder) ----
 (function(){
@@ -615,23 +635,9 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   nodes.forEach(function(n){io.observe(n);});
 
-  // hero god — cursor spotlight rakes the marble + subtle parallax; relic image parallax
-  var hero=document.querySelector('.hero-god'),img=hero&&hero.querySelector('.img'),spot=hero&&hero.querySelector('.spot'),relic=document.querySelector('.relic-img img');
-  if(!hero) return;
-  var inView=true; new IntersectionObserver(function(e){inView=e[0].isIntersecting;}).observe(hero);
-  var sx=60,sy=38,tsx=60,tsy=38,px=0,py=0,tpx=0,tpy=0;
-  if(!touch){
-    hero.addEventListener('mouseenter',function(){hero.classList.add('lit');});
-    hero.addEventListener('mouseleave',function(){hero.classList.remove('lit');tpx=0;tpy=0;});
-    hero.addEventListener('mousemove',function(ev){var r=hero.getBoundingClientRect();tsx=((ev.clientX-r.left)/r.width)*100;tsy=((ev.clientY-r.top)/r.height)*100;tpx=((ev.clientX-r.left)/r.width-0.5);tpy=((ev.clientY-r.top)/r.height-0.5);});
-  }
+  // relic image parallax (hero-god marble spotlight retired with the cinematic hero)
+  var relic=document.querySelector('.relic-img img');
   (function loop(){
-    if(inView && !document.hidden){
-      sx+=(tsx-sx)*.08;sy+=(tsy-sy)*.08;px+=(tpx-px)*.06;py+=(tpy-py)*.06;
-      if(spot){spot.style.setProperty('--sx',sx.toFixed(1)+'%');spot.style.setProperty('--sy',sy.toFixed(1)+'%');}
-      var top=hero.getBoundingClientRect().top;
-      if(img)img.style.transform='translate3d('+(px*14).toFixed(1)+'px,'+(top*-0.05+py*14).toFixed(1)+'px,0) scale(1.05)';
-    }
     if(relic){var r=relic.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)relic.style.transform='translateY('+((r.top-innerHeight/2)*-0.05).toFixed(1)+'px) scale(1.08)';}
     requestAnimationFrame(loop);
   })();
@@ -640,6 +646,24 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 // ---- finder routing ----
 function find(q){location.href='watchfinder.html?search='+encodeURIComponent(q);}
 function goFind(e){e.preventDefault();var v=document.getElementById('q').value.trim();location.href='watchfinder.html'+(v?('?search='+encodeURIComponent(v)):'');return false;}
+
+// ---- cinematic hero: parallax drift + cursor sun-bloom (transform/opacity only, rAF-throttled) ----
+(function(){
+  var stage=document.getElementById('top'),photo=document.getElementById('chPhoto'),sun=document.getElementById('chSun');
+  if(!stage||!photo) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var tx=0,ty=0,cx=0,cy=0,lastX=0,lastY=0,raf=null;
+  function frame(){
+    cx+=(tx-cx)*0.08; cy+=(ty-cy)*0.08;
+    photo.style.transform='translate3d('+(-cx*14).toFixed(1)+'px,'+(-cy*10).toFixed(1)+'px,0)';
+    if(sun){var r=stage.getBoundingClientRect();var dxp=(lastX/r.width)-0.46,dyp=(lastY/r.height)-0.29;var close=Math.max(0,1-Math.sqrt(dxp*dxp+dyp*dyp)/0.5);sun.style.transform='translate3d('+(-cx*26).toFixed(1)+'px,'+(-cy*16).toFixed(1)+'px,0)';sun.style.opacity=(0.85+close*0.5);sun.style.filter='brightness('+(1+close*0.6).toFixed(2)+')';}
+    if(Math.abs(tx-cx)>0.0004||Math.abs(ty-cy)>0.0004) raf=requestAnimationFrame(frame); else raf=null;
+  }
+  function kick(){ if(!raf) raf=requestAnimationFrame(frame); }
+  stage.addEventListener('mousemove',function(e){var r=stage.getBoundingClientRect();lastX=e.clientX-r.left;lastY=e.clientY-r.top;tx=(lastX/r.width)-0.5;ty=(lastY/r.height)-0.5;kick();});
+  stage.addEventListener('mouseleave',function(){tx=0;ty=0;kick();});
+  window.addEventListener('deviceorientation',function(e){if(e.gamma==null)return;tx=Math.max(-.5,Math.min(.5,e.gamma/45));ty=Math.max(-.5,Math.min(.5,(e.beta-45)/45));kick();});
+})();
 </script>
 </body>
 </html>
