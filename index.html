@@ -465,10 +465,10 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
       <source type="image/webp" srcset="office-hero-1024.webp 1024w, office-hero-1536.webp 1536w" sizes="100vw">
       <img src="office-hero-1536.jpg" alt="A suited man at the window of a night office over a lit city skyline; a green-bezel Rolex GMT-Master on the desk beside a whisky" fetchpriority="high" decoding="async" width="1536" height="1024">
     </picture>
-    <picture class="oh-empty" aria-hidden="true">
-      <source type="image/avif" srcset="office-empty-1024.avif 1024w, office-empty-1536.avif 1536w" sizes="100vw">
-      <source type="image/webp" srcset="office-empty-1024.webp 1024w, office-empty-1536.webp 1536w" sizes="100vw">
-      <img src="office-empty-1536.jpg" alt="" decoding="async" width="1536" height="1024" loading="lazy">
+    <picture class="oh-empty" aria-hidden="true" id="ohEmpty">
+      <source data-srcset="office-empty-1024.avif 1024w, office-empty-1536.avif 1536w" type="image/avif" sizes="100vw">
+      <source data-srcset="office-empty-1024.webp 1024w, office-empty-1536.webp 1536w" type="image/webp" sizes="100vw">
+      <img data-src="office-empty-1536.jpg" alt="" decoding="async" width="1536" height="1024">
     </picture>
     <div class="oh-layer oh-clouds"><i></i></div><div class="oh-layer oh-twinkle" id="ohTwinkle"></div><div class="oh-layer oh-air"><i></i></div><div class="oh-layer oh-water"><i></i></div>
     <div class="oh-layer oh-sky oh-sky-day"></div><div class="oh-layer oh-sky oh-sky-gold"></div><div class="oh-layer oh-sky oh-sky-night"></div>
@@ -723,7 +723,9 @@ function goFind(e){e.preventDefault();var v=document.getElementById('q').value.t
   if(!hero||!stage) return;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function phaseFor(h){ if(h>=5&&h<9)return 'golden'; if(h>=9&&h<16)return 'day'; if(h>=16&&h<19)return 'golden'; if(h>=19&&h<21)return 'dusk'; if(h>=21&&h<24)return 'night'; return 'late'; }
-  hero.setAttribute('data-phase', phaseFor((new Date()).getHours()));
+  var __ph=phaseFor((new Date()).getHours());
+  hero.setAttribute('data-phase', __ph);
+  if(__ph==='late'){ var __e=document.getElementById('ohEmpty'); if(__e){ [].forEach.call(__e.querySelectorAll('source[data-srcset]'),function(s){s.srcset=s.getAttribute('data-srcset');}); var __im=__e.querySelector('img[data-src]'); if(__im) __im.src=__im.getAttribute('data-src'); } }
   var AR=1536/1024;
   function cover(){ var hw=hero.clientWidth, hh=hero.clientHeight, w, h; if(hw/hh>AR){w=hw;h=hw/AR;}else{h=hh;w=hh*AR;} stage.style.width=w+'px'; stage.style.height=h+'px'; }
   cover(); window.addEventListener('resize',cover,{passive:true});
