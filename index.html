@@ -63,9 +63,10 @@ img{display:block;max-width:100%}
   background-image:linear-gradient(115deg,transparent 38%,rgba(120,110,90,.35) 39%,transparent 41%),
    linear-gradient(72deg,transparent 60%,rgba(120,110,90,.25) 61%,transparent 63%)}
 
-/* greek key (meander) divider */
-.meander{height:14px;width:100%;background-repeat:repeat-x;background-size:28px 14px;opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Cpath d='M1 13V3h9v7h-5v-3h2' fill='none' stroke='%23C9A84C' stroke-width='1'/%3E%3Cpath d='M15 1v10h9V4h-5v3h2' fill='none' stroke='%23C9A84C' stroke-width='1'/%3E%3C/svg%3E")}
+/* refined divider — fine gold hairline + a single diamond (replaces the greek-key meander) */
+.meander{height:13px;width:100%;position:relative;opacity:1;background:none}
+.meander::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(201,168,76,.4) 20%,rgba(201,168,76,.4) 80%,transparent)}
+.meander::after{content:'';position:absolute;top:50%;left:50%;width:5px;height:5px;transform:translate(-50%,-50%) rotate(45deg);background:#C9A84C;box-shadow:0 0 12px rgba(201,168,76,.55)}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;
@@ -484,7 +485,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   <div class="oh-textscrim" aria-hidden="true"></div>
   <div class="oh-copy">
     <h1 class="oh-h1">Every watch worth owning —<span class="g">and where to find it.</span></h1>
-    <p class="oh-sub">Independent. No stock to sell you — just the truth.</p>
+    <p class="oh-sub">Independent reviews, real market prices, and verified dealers — in one place.</p>
     <div class="oh-ctas">
       <a class="oh-cta gold" href="watchfinder.html">Find a Watch →</a>
       <a class="oh-cta ghost" href="fair-value.html">Check Fair Value →</a>
