@@ -153,6 +153,7 @@ h1 em{display:block;font-style:normal;color:var(--gold);font-weight:600}
 .god{position:relative;min-height:380px;border:1px solid rgba(201,168,76,.14);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .4s,border-color .4s}
 .god:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.45)}
 .god .img{position:absolute;inset:0;background-size:cover;background-position:center 18%;filter:grayscale(.6) sepia(.22) contrast(1.08) brightness(.92)}
+.god .img.disp{background-position:center 40%}  /* the Dispatch subject sits mid-frame */
 .god::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,5,.8) 0%,rgba(6,6,5,.42) 38%,rgba(6,6,5,.14) 66%,transparent 100%)}
 .god-title,.god-name,.god-link{text-shadow:0 1px 12px rgba(0,0,0,.85)}
 .god-body{position:relative;z-index:2;padding:22px}
@@ -544,7 +545,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
     <div class="god-cell">
       <p class="god-cat-top">News &amp; Stories</p>
       <a class="god" href="hermes.html">
-        <div class="img" data-god="dispatch-editorial-bw.webp"></div>
+        <div class="img disp" data-god="dispatch-editorial-bw.webp"></div>
         <div class="god-body">
           <p class="god-name">The Dispatch</p>
           <p class="god-title">What's moving the market, told to the minute.</p>
