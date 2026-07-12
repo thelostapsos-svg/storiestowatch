@@ -152,9 +152,11 @@ h1 em{display:block;font-style:normal;color:var(--gold);font-weight:600}
 .god{position:relative;min-height:380px;border:1px solid rgba(201,168,76,.14);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .4s,border-color .4s}
 .god:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.45)}
 .god .img{position:absolute;inset:0;background-size:cover;background-position:center 18%;filter:grayscale(.6) sepia(.22) contrast(1.08) brightness(.92)}
-.god::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,5,1) 0%,rgba(6,6,5,.98) 46%,rgba(6,6,5,.88) 62%,rgba(6,6,5,.5) 82%,rgba(6,6,5,.5) 100%)}
-.god-title,.god-name,.god-link{text-shadow:0 1px 16px rgba(0,0,0,.95),0 1px 4px rgba(0,0,0,.95)}
+.god::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,5,.8) 0%,rgba(6,6,5,.42) 38%,rgba(6,6,5,.14) 66%,transparent 100%)}
+.god-title,.god-name,.god-link{text-shadow:0 1px 12px rgba(0,0,0,.85)}
 .god-body{position:relative;z-index:2;padding:22px}
+/* frosted readability plate behind the card text — feathered top edge, gold hairline, matches the hero */
+.god-body::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(8,10,16,.76) 0%,rgba(8,10,16,.56) 60%,rgba(8,10,16,.2) 100%);-webkit-backdrop-filter:blur(6px) saturate(1.04);backdrop-filter:blur(6px) saturate(1.04);border-top:1.5px solid rgba(201,168,76,.42);-webkit-mask-image:linear-gradient(to top,#000 72%,transparent 100%);mask-image:linear-gradient(to top,#000 72%,transparent 100%)}
 .god-name{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.28em;color:var(--gold);margin-bottom:10px}
 .god-title{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--white);line-height:1.22;margin-bottom:12px}
 .god-link{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light)}
