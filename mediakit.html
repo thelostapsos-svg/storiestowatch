@@ -70,6 +70,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 52px;display:fl
 .pillar-highlight{margin-top:20px;padding-top:16px;border-top:1px solid rgba(201,168,76,0.1);font-size:10px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;}
 .pillar-best{position:absolute;top:20px;right:20px;font-size:7px;letter-spacing:0.25em;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:4px 10px;text-transform:uppercase;}
 
+/* HIGH-INTENT SURFACES — Fair Value + Source-a-Watch */
+.surfaces{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--surface2);}
+.surface-card{background:var(--surface);padding:48px 40px;position:relative;display:flex;flex-direction:column;}
+.surface-tag{font-size:7px;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+.surface-card h3{font-family:'Cinzel',serif;font-size:clamp(20px,2.3vw,28px);color:var(--white);line-height:1.15;margin-bottom:10px;letter-spacing:0.04em;}
+.surface-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.5vw,18px);color:var(--gold-light);margin-bottom:20px;}
+.surface-card p.surface-body{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.5vw,18px);line-height:1.75;color:var(--text-dim);margin-bottom:18px;}
+.surface-place{margin-top:auto;padding-top:18px;border-top:1px solid rgba(201,168,76,0.12);font-size:10px;letter-spacing:0.2em;color:var(--gold-dim);text-transform:uppercase;line-height:1.6;}
+.surface-badge{position:absolute;top:22px;right:22px;font-size:7px;letter-spacing:0.25em;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:4px 10px;text-transform:uppercase;}
+
 /* AUDIENCE */
 .audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--surface2);}
 .audience-card{background:var(--deep);padding:40px 36px;}
@@ -105,6 +115,7 @@ footer{background:var(--surface);padding:40px 80px;border-top:1px solid rgba(201
   .mk-section{padding:52px 20px;}
   .finder-feature{grid-template-columns:1fr;gap:32px;padding:32px 20px;}
   .pillars{grid-template-columns:1fr;}
+  .surfaces{grid-template-columns:1fr;}
   .audience-grid{grid-template-columns:1fr;}
   .formats{grid-template-columns:1fr;}
   .mk-stats{grid-template-columns:repeat(2,1fr);}
@@ -167,7 +178,7 @@ footer{background:var(--surface);padding:40px 80px;border-top:1px solid rgba(201
   <div>
     <p class="mk-eyebrow">Advertiser Media Kit · 2026</p>
     <h1 class="mk-title">STORIES TO<span>WATCH</span></h1>
-    <p class="mk-standfirst">The world's first luxury watch platform — combining the Watch Finder, premium editorial and a global dealer network in one destination. Reach collectors at the exact moment they are ready to buy.</p>
+    <p class="mk-standfirst">The world's first luxury watch platform — combining the Watch Finder, a live Fair Value check, a personal sourcing concierge, premium editorial and a global dealer network in one destination. Reach collectors at the exact moment they are ready to buy.</p>
     <a href="mailto:hello@storiestowatch.com" class="mk-cta">Request Partnership</a>
   </div>
   <div>
@@ -203,6 +214,33 @@ footer{background:var(--surface);padding:40px 80px;border-top:1px solid rgba(201
       <div class="finder-stat"><span class="finder-stat-num">Free</span><span class="finder-stat-label">To Collectors</span></div>
       <div class="finder-stat"><span class="finder-stat-num">Curated</span><span class="finder-stat-label">Directory</span></div>
       <div class="finder-stat"><span class="finder-stat-num">All Major</span><span class="finder-stat-label">Maisons</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<!-- HIGH-INTENT SURFACES: FAIR VALUE + SOURCE-A-WATCH -->
+<div class="mk-section">
+  <p class="mk-section-label">Two More High-Intent Surfaces</p>
+  <h2 class="mk-section-title">Be Present Where the Buyer Actually Decides</h2>
+
+  <div class="surfaces">
+    <div class="surface-card">
+      <span class="surface-badge">Point of Purchase</span>
+      <p class="surface-tag">The Fair Value Check</p>
+      <h3>Be the dealer they trust on price.</h3>
+      <p class="surface-sub">The moment a buyer asks, "is this a fair price?"</p>
+      <p class="surface-body">Before anyone commits to a watch, they want to know the number is right. Our Fair Value tool answers exactly that — retail versus real market, honestly. A buyer who has just confirmed a fair price is a buyer ready to act. With your brand present on that page, you become the obvious — and trusted — place to buy it.</p>
+      <p class="surface-place">Presented-by branding · Recommended dealer beside each reference · Category sponsorship</p>
+    </div>
+    <div class="surface-card">
+      <span class="surface-badge">Inbound Leads</span>
+      <p class="surface-tag">The Source-a-Watch Concierge</p>
+      <h3>Buyers come to you — with the exact reference.</h3>
+      <p class="surface-sub">A named request: the watch, the budget, the timeline.</p>
+      <p class="surface-body">When a collector can't find a piece, they tell us precisely what they want — reference, budget, and whether they'll buy locally or from anywhere in the world. These are the highest-intent leads in watch retail: a buyer actively asking to be sold to. As a preferred sourcing partner, those requests route to you — you don't chase the sale, it arrives.</p>
+      <p class="surface-place">Preferred sourcing partner · Branded concierge · Priority lead routing</p>
     </div>
   </div>
 </div>
