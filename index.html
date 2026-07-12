@@ -47,7 +47,7 @@
 :root{
   --gold:#C9A84C; --gold-light:#E8C96A; --gold-deep:#8B6914;
   --ink:#0A0A09; --ink2:#111110; --marble:#ECE6D8; --marble-d:#cfc7b4;
-  --text:#E8E4D9; --dim:#8A8578; --white:#F5F1E8;
+  --text:#E8E4D9; --dim:#B8B4A6; --white:#F5F1E8;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
@@ -372,7 +372,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   .oh-cta.gold:hover{filter:brightness(1.08)}
   .oh-cta.ghost{border:1px solid rgba(233,201,106,.55);color:#E8C96A}
   .oh-cta.ghost:hover{background:rgba(233,201,106,.12)}
-  .oh-tagline{position:absolute;left:0;bottom:0;z-index:9;padding:0 clamp(24px,6vw,90px) 26px;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#8A8578}
+  .oh-tagline{position:absolute;left:0;bottom:0;z-index:9;padding:0 clamp(24px,6vw,90px) 26px;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#B8B4A6}
   .oh-hero[data-phase="day"] .oh-sky-day{opacity:1}.oh-hero[data-phase="day"] .oh-bright{opacity:.55}.oh-hero[data-phase="day"] .oh-cool{opacity:.12}.oh-hero[data-phase="day"] .oh-whisky{opacity:.12}.oh-hero[data-phase="day"] .oh-clouds{opacity:.95}.oh-hero[data-phase="day"] .oh-water{opacity:.45}.oh-hero[data-phase="day"] .oh-twinkle{opacity:.05}
   .oh-hero[data-phase="golden"] .oh-sky-gold{opacity:1}.oh-hero[data-phase="golden"] .oh-warm{opacity:.58}.oh-hero[data-phase="golden"] .oh-bright{opacity:.05}.oh-hero[data-phase="golden"] .oh-lamp{opacity:.35}.oh-hero[data-phase="golden"] .oh-whisky{opacity:.55}.oh-hero[data-phase="golden"] .oh-clouds{opacity:.75}.oh-hero[data-phase="golden"] .oh-water{opacity:.78}.oh-hero[data-phase="golden"] .oh-twinkle{opacity:.5}
   .oh-hero[data-phase="dusk"] .oh-sky-gold{opacity:.55}.oh-hero[data-phase="dusk"] .oh-sky-night{opacity:.3}.oh-hero[data-phase="dusk"] .oh-warm{opacity:.24}.oh-hero[data-phase="dusk"] .oh-lamp{opacity:.78}.oh-hero[data-phase="dusk"] .oh-whisky{opacity:.74}.oh-hero[data-phase="dusk"] .oh-clouds{opacity:.6}.oh-hero[data-phase="dusk"] .oh-water{opacity:.84}.oh-hero[data-phase="dusk"] .oh-twinkle{opacity:.8}
@@ -443,7 +443,13 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 </style>
 </head>
 <body>
-
+<style>#stwSplash{position:fixed;inset:0;z-index:99999;background:#050505;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;opacity:1;transition:opacity .6s ease}@media(max-width:768px){#stwSplash{display:flex}}#stwSplash.stwHide{display:none!important}#stwSplash.stwDismiss{opacity:0}</style>
+<div id="stwSplash" aria-hidden="true">
+<img src="stw-emblem.png" alt="" style="height:50px;width:auto;margin-bottom:24px;opacity:.95;">
+<p style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:21px;line-height:1.5;color:#E8E4D9;max-width:300px;margin:0 0 22px;">For the true experience, view <span style="font-style:normal;color:#C9A84C;">Stories To Watch</span> on desktop.</p>
+<div style="width:110px;height:2px;background:rgba(201,168,76,.18);overflow:hidden;"><i id="stwSplashBar" style="display:block;height:100%;width:0;background:#C9A84C;transition:width 1.7s linear;"></i></div>
+</div>
+<script>(function(){var s=document.getElementById('stwSplash');if(!s)return;try{if(sessionStorage.getItem('stwSplashSeen')){s.className='stwHide';return;}}catch(e){}function run(){try{if(window.innerWidth>768){s.className='stwHide';return;}try{sessionStorage.setItem('stwSplashSeen','1');}catch(e){}document.documentElement.style.overflow='hidden';var bar=document.getElementById('stwSplashBar');if(bar)requestAnimationFrame(function(){bar.style.width='100%';});setTimeout(function(){s.classList.add('stwDismiss');document.documentElement.style.overflow='';setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s);},650);},2000);}catch(e){}}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}else{run();}})();</script>
 <nav>
   <a href="#top" class="brand"><img class="nav-emblem" src="stw-emblem.png" alt="Stories To Watch"> <span class="brand-word">STORIES <b>TO</b> WATCH</span></a>
   <div class="navlinks">
