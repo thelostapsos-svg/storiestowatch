@@ -678,8 +678,14 @@ function updateFilterSummary(list, searchTerm) {
 
 function dealerLink(d, searchTerm) {
   var t = (searchTerm || '').trim().toLowerCase();
-  // 1. brandMap: most streamlined — if the search matches a brand this dealer has a
-  //    dedicated page for, land the user straight on that brand page (verified URLs only).
+  // Only deep-link into a dealer's own product search when the query is a BRAND this dealer
+  // actually carries. A city/region query like "dallas" must never be fed into a dealer's
+  // watch search (it returns junk — LV jackets, stamps, etc.); those fall through to d.url.
+  var brandHit = t.length > 1 && d.brands && d.brands.some(function(b) {
+    var bl = b.toLowerCase();
+    return t === bl || t.indexOf(bl) > -1 || bl.indexOf(t) > -1;
+  });
+  // 1. brandMap: dedicated per-brand page (keys are brand slugs, so inherently brand-gated).
   if (d.brandMap && t.length > 1) {
     for (var key in d.brandMap) {
       if (d.brandMap.hasOwnProperty(key) && t.indexOf(key) > -1) {
@@ -687,15 +693,15 @@ function dealerLink(d, searchTerm) {
       }
     }
   }
-  // 2. search template: dealer has a universal search URL ({q} = the term).
-  if (d.search && t.length > 1) {
+  // 2. search template ({q} = the term) — brand queries only, never cities/regions.
+  if (d.search && brandHit) {
     try {
       return d.search.replace('{q}', encodeURIComponent(searchTerm.trim()));
     } catch (e) {
       return d.url;
     }
   }
-  // 3. fallback: the dealer's normal landing URL (never 404s).
+  // 3. fallback: the dealer's normal landing URL (never 404s, never junk).
   return d.url;
 }
 
