@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/the-vault.html", "destination": "/wrist-of-champions.html", "permanent": true },
+    { "source": "/the-vault", "destination": "/wrist-of-champions.html", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*).html",
