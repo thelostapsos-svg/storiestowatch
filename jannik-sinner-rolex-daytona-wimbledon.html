@@ -59,9 +59,9 @@
   .article-figure figcaption { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; line-height:1.5; color:var(--text-dim); margin-top:12px; }
 
   /* ── THE FLEX (marquee lure — Instagram embed + STW verdict) ── */
-  .flex { margin:26px 0; border:1px solid rgba(201,168,76,0.18); background:var(--surface); overflow:hidden; }
+  .flex { margin:26px auto; max-width:540px; border:1px solid rgba(201,168,76,0.18); background:var(--surface); overflow:hidden; }
   .flex-embed-mount:empty { display:none; }
-  .flex-embed-mount { padding:0; background:var(--deep); }
+  .flex-embed-mount { padding:0; background:var(--deep); max-width:540px; margin:0 auto; }
   .flex-embed-mount .instagram-media { margin:0 auto !important; }
   .flex-embed-fail { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--text-dim); padding:22px 24px; text-align:center; }
   .flex-embed-fail a { color:var(--gold); text-decoration:none; }

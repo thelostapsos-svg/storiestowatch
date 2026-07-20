@@ -54,9 +54,9 @@
   .article-figure figcaption { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; line-height:1.5; color:var(--text-dim); margin-top:12px; }
 
   /* ── THE FLEX (marquee lure — Instagram embed + STW verdict) ── */
-  .flex { margin:26px 0; border:1px solid rgba(201,168,76,0.18); background:var(--surface); overflow:hidden; }
+  .flex { margin:26px auto; max-width:540px; border:1px solid rgba(201,168,76,0.18); background:var(--surface); overflow:hidden; }
   .flex-embed-mount:empty { display:none; }
-  .flex-embed-mount { padding:0; background:var(--deep); }
+  .flex-embed-mount { padding:0; background:var(--deep); max-width:540px; margin:0 auto; }
   .flex-embed-mount .instagram-media { margin:0 auto !important; }
   .flex-embed-fail { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--text-dim); padding:22px 24px; text-align:center; }
   .flex-embed-fail a { color:var(--gold); text-decoration:none; }
@@ -449,9 +449,9 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
 <footer>
   <a href="index.html" class="footer-brand-mark"><img src="stw-emblem.png" alt=""><span>STORIES TO WATCH</span></a>
-  <p style="margin:10px 0 2px;"><a class="footer-about" href="about.html" style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#B8B4A6;text-decoration:none;">About</a></p>
   <p>© 2026 Stories To Watch. All rights reserved.</p>
   <p style="color:var(--gold-dim);">Find watches worth finding. Read stories told to the minute.</p>
+  <p style="margin:12px 0 0;"><a class="footer-about" href="about.html" style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#C9A84C;text-decoration:none;">About</a></p>
 </footer>
 
 <script>
