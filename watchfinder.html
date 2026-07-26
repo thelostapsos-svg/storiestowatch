@@ -62,8 +62,9 @@
   .hero-title span { color:var(--gold-light); display:block; }
   .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2.5vw,26px); color:var(--text); margin:20px 0 30px; max-width:560px; line-height:1.5; }
   /* BRAND PILLS — quiet capability statement, names only (no logos) */
-  .brand-pills { display:flex; flex-wrap:wrap; justify-content:flex-start; gap:7px; max-width:600px; margin:0 0 34px; position:relative; z-index:50; }
-  .brand-pills .bp-lead { width:100%; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:6px; }
+  .brand-pills { display:block; max-width:600px; margin:0 0 34px; position:relative; z-index:50; }
+  .brand-pill-track { display:flex; flex-wrap:wrap; gap:7px; }
+  .brand-pills .bp-lead { display:block; width:100%; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:6px; }
   .brand-pill { font-family:'Cormorant Garamond',serif; font-size:14px; letter-spacing:0.04em; color:var(--gold); border:1px solid rgba(201,168,76,0.25); padding:5px 13px; white-space:nowrap; transition:all 0.25s; cursor:pointer; -webkit-tap-highlight-color:transparent; }
   .brand-pill:hover { color:var(--gold-light); border-color:rgba(201,168,76,0.55); }
   .brand-pill.bp-active { background:var(--gold); color:var(--black); border-color:var(--gold); font-weight:600; }
@@ -71,9 +72,11 @@
   .brand-pill.bp-more { color:var(--gold-dim); border-style:dashed; font-style:italic; }
   .brand-pill-hide-mobile { display:inline-block; }
   @media(max-width:599px){
-    .brand-pills { gap:6px; margin:0 auto 28px; }
-    .brand-pill { font-size:13px; padding:5px 11px; }
-    .brand-pill-hide-mobile { display:none; }
+    .brand-pills { margin:0 0 26px; max-width:100%; }
+    .brand-pill-track { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; -ms-overflow-style:none; gap:6px; padding-bottom:6px; }
+    .brand-pill-track::-webkit-scrollbar { display:none; }
+    .brand-pill { font-size:13px; padding:5px 11px; flex-shrink:0; }
+    .brand-pill-hide-mobile { display:inline-block; }
   }
 
   .search-wrap { width:100%; max-width:800px; position:relative; z-index:50; margin-bottom:40px; }
@@ -211,9 +214,10 @@
     .hero-title { font-size:clamp(34px,11vw,52px); line-height:0.9; }
     .hero-subtitle { font-size:14px; margin:12px 0 22px; line-height:1.45; max-width:340px; }
     .search-wrap { margin-bottom:20px; }
-    .filters { gap:8px; margin-bottom:8px; }
-    .filter-btn { font-size:11px; padding:8px 12px; }
-    .nearest-btn { font-size:11px; padding:8px 12px; }
+    .filters { gap:8px; margin-bottom:8px; width:100%; max-width:100%; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; -ms-overflow-style:none; padding-bottom:6px; }
+    .filters::-webkit-scrollbar { display:none; }
+    .filter-btn { font-size:11px; padding:8px 14px; flex-shrink:0; white-space:nowrap; }
+    .nearest-btn { font-size:11px; padding:8px 14px; flex-shrink:0; white-space:nowrap; }
     .geo-note { font-size:10px; padding:0 16px; }
     .stats-bar { padding:16px 20px; gap:12px; }
     .stats-bar-divider { display:none; }
@@ -285,6 +289,7 @@
   <p class="hero-subtitle">Mortals chase the hour; here is where it's found. Authorised dealers, grey-market specialists and auction houses the world over — gathered in one place. Sources checked, never bought.</p>
   <div class="brand-pills">
     <span class="bp-lead">Source &amp; read on</span>
+    <div class="brand-pill-track">
     <span class="brand-pill" onclick="heroBrandJump('Rolex', this);">Rolex</span>
     <span class="brand-pill" onclick="heroBrandJump('Patek Philippe', this);">Patek Philippe</span>
     <span class="brand-pill" onclick="heroBrandJump('Audemars Piguet', this);">Audemars Piguet</span>
@@ -304,6 +309,7 @@
     <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('F.P. Journe', this);">F.P. Journe</span>
     <span class="brand-pill brand-pill-hide-mobile" onclick="heroBrandJump('Ulysse Nardin', this);">Ulysse Nardin</span>
     <span class="brand-pill bp-more" onclick="document.getElementById('searchInput').focus();">&amp; many more</span>
+    </div>
   </div>
   <div class="search-wrap">
     <input type="text" class="search-input" id="searchInput" placeholder="Search by brand, dealer or location..." autocomplete="off" />
