@@ -525,7 +525,7 @@ html{scroll-behavior:smooth}
   <div class="stwf-in">
     <p class="stwf-eyebrow">The Film &middot; A Drop of Luxury</p>
     <div class="stwf-stage">
-      <video id="stwfVid" preload="none" playsinline controls poster="drop-poster.jpg">
+      <video id="stwfVid" preload="none" playsinline poster="drop-poster.jpg">
         <source src="drop-film.mp4" type="video/mp4">
       </video>
       <button class="stwf-play" id="stwfPlay" aria-label="Play the film">
@@ -536,8 +536,8 @@ html{scroll-behavior:smooth}
 </section>
 <script>
 (function(){var b=document.getElementById('stwfPlay'),v=document.getElementById('stwfVid');
-if(b&&v){b.addEventListener('click',function(){b.classList.add('gone');v.play();});
-v.addEventListener('play',function(){b.classList.add('gone');});}})();
+if(b&&v){b.addEventListener('click',function(){b.classList.add('gone');v.controls=true;v.play();});
+v.addEventListener('play',function(){b.classList.add('gone');v.controls=true;});}})();
 </script>
 
 <!-- Watch Finder band removed — the tool lives on watchfinder.html (nav tab + hero CTA route there) -->
@@ -607,18 +607,18 @@ v.addEventListener('play',function(){b.classList.add('gone');});}})();
   <div class="sec-head reveal">
     <p class="sec-kick">The Spotlight</p>
     <h2 class="sec-title">Featured <b>this week.</b></h2>
-    <p class="sec-note">From <a href="wrist-of-champions.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim)">The Wrist of Champions</a> — reading winners through the watches they choose. <a href="wrist-of-champions.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim)">See the full series →</a></p>
+    <p class="sec-note">From <em style="color:var(--gold);font-style:italic">The Object of Desire</em> — the pieces whose legend outgrew the metal. <a href="first-watch-on-the-moon.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim)">Read this week&rsquo;s story →</a></p>
   </div>
-  <a class="spot-card reveal" href="spain-world-cup-2026-watches.html">
+  <a class="spot-card reveal" href="first-watch-on-the-moon.html">
     <div class="spot-img">
-      <span class="spot-flag">World Cup 2026</span>
-      <img src="hero-daytona-dusk-1023.webp" alt="A steel Rolex Cosmograph Daytona on a rubber Oysterflex strap at dusk — the kind of watch Spain's world champions wore" loading="lazy">
+      <span class="spot-flag">The Moonwatch</span>
+      <img src="first-watch-on-the-moon-1400.webp" alt="Buzz Aldrin on the Moon during Apollo 11, his Omega Speedmaster worn over the spacesuit — the first watch worn on the Moon" loading="lazy" width="1400" height="933">
     </div>
     <div class="spot-body">
-      <p class="spot-cat">The Wrist of Champions</p>
-      <h3 class="spot-title">The Watches Spain Wore to Win the World Cup 2026</h3>
-      <p class="spot-tease">Read through the wrist: a World Cup-winning manager in an understated IWC, a squad in steel Rolexes, and a couple of kids in diamonds — five champions, five characters, and the taste you can actually own.</p>
-      <span class="spot-link">Read the dispatch →</span>
+      <p class="spot-cat">The Object of Desire &middot; No. 002</p>
+      <h3 class="spot-title">The First Watch on the Moon Is Lost</h3>
+      <p class="spot-tease">It walked across the Moon strapped over a spacesuit &mdash; then vanished in the mail and was never found. Meanwhile, Buzz Aldrin&rsquo;s other watches just sold for a fortune at Sotheby&rsquo;s. The story is the whole point.</p>
+      <span class="spot-link">Read the story &rarr;</span>
     </div>
   </a>
 </section>
