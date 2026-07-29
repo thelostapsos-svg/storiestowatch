@@ -463,7 +463,10 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
     <a href="mediakit.html" class="f">Media Kit</a>
     <a class="f" href="fair-value.html">Fair Value</a>
   </div>
-  <a href="watchfinder.html" class="navcta">⌕ Find a Watch</a>
+  <span class="navcta-group" style="display:inline-flex;align-items:center;gap:10px">
+    <a href="#film" class="navcta">▸ The Film</a>
+    <a href="watchfinder.html" class="navcta">⌕ Find a Watch</a>
+  </span>
   <div class="nav-quick">
     <a href="#hours">Guides</a>
     <a href="wrist-of-champions.html" class="f">Champions ✦</a>
@@ -504,7 +507,8 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 
 <!-- ============ THE FILM — A Drop of Luxury (lazy: video loads only on click) ============ -->
 <style>
-.stwf{background:#08080a;padding:clamp(46px,7vw,92px) 20px;display:flex;justify-content:center}
+html{scroll-behavior:smooth}
+.stwf{background:#08080a;padding:clamp(46px,7vw,92px) 20px;display:flex;justify-content:center;scroll-margin-top:84px}
 .stwf-in{width:min(1080px,100%)}
 .stwf-eyebrow{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#C9A84C;text-align:center;margin:0 0 20px}
 .stwf-stage{position:relative;aspect-ratio:16/9;background:#000;border:1px solid rgba(201,168,76,.2);border-radius:4px;overflow:hidden}
@@ -517,7 +521,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
 .stwf-play.gone{opacity:0;pointer-events:none}
 @media(max-width:600px){.stwf-ring{width:64px;height:64px}.stwf-ring span{font-size:21px}}
 </style>
-<section class="stwf" aria-label="The film — A Drop of Luxury">
+<section class="stwf" id="film" aria-label="The film — A Drop of Luxury">
   <div class="stwf-in">
     <p class="stwf-eyebrow">The Film &middot; A Drop of Luxury</p>
     <div class="stwf-stage">
@@ -526,7 +530,6 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
       </video>
       <button class="stwf-play" id="stwfPlay" aria-label="Play the film">
         <span class="stwf-ring"><span>&#9654;</span></span>
-        <span class="stwf-cap">Find your time</span>
       </button>
     </div>
   </div>
