@@ -5,34 +5,31 @@
   ],
   "headers": [
     {
-      "source": "/(.*).html",
+      "source": "/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "geolocation=(self), camera=(), microphone=(), payment=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
       ]
     },
     {
-      "source": "/(.*).svg",
+      "source": "/(.*).html",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/(.*).(webp|jpg|jpeg|png|gif|ico|svg|woff2|ttf|mp4)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800" }
       ]
     },
     {
       "source": "/sitemap.xml",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
       ]
     }
   ]
