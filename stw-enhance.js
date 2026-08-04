@@ -4,7 +4,9 @@
    Self-configuring: reads the page's own concierge/watchfinder links.
    Safe on any layout — collapsibles only activate on known structures; the dock always loads. */
 (function(){
-  if(window.__stwEnhanced) return; window.__stwEnhanced = true;
+  // Idempotent: bail if this page was already enhanced (flag OR dock already in DOM).
+  if(window.__stwEnhanced || document.querySelector('.stw-dock')) return;
+  window.__stwEnhanced = true;
 
   var CSS = ""
   + ".stw-dock{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:10px;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .4s,transform .4s,visibility .4s;}"
@@ -58,7 +60,7 @@
     body.appendChild(inner);
     body.classList.add('stw-sec-body');
     if(!head.id) head.id = 'stw-sec-' + idx;
-    var label = head.textContent.trim();
+    var label = head.textContent.replace(/[▾↑]/g, '').trim();
     head.classList.add('stw-sec-head'); head.setAttribute('tabindex','0'); head.setAttribute('role','button');
     var chev = document.createElement('span'); chev.className = 'stw-chev'; chev.setAttribute('aria-hidden','true'); chev.innerHTML = '▾';
     head.appendChild(chev);
@@ -106,6 +108,24 @@
         var firstBlock = sections[0].head.closest('.article-section') || sections[0].head;
         insertParent = firstBlock.parentNode; insertRef = firstBlock;
       }
+    }
+  }
+  // Type C: explicit opt-in — a container marked [data-stw-collapse] whose direct .sec children each hold an <h2> + content.
+  if(!sections.length){
+    var optIn = document.querySelector('[data-stw-collapse]');
+    if(optIn){
+      var blocks = optIn.querySelectorAll(':scope > .sec');
+      Array.prototype.forEach.call(blocks, function(secEl){
+        var h = secEl.querySelector('h2');
+        if(!h) return;
+        var body = document.createElement('div');
+        var n = h.nextSibling;
+        while(n){ var nx = n.nextSibling; body.appendChild(n); n = nx; }
+        secEl.appendChild(body);
+        var sec = activate(h, body, sections.length);
+        if(sections.length === 1) sec.open(); else sec.close();
+      });
+      if(sections.length){ insertParent = optIn; insertRef = blocks[0]; }
     }
   }
 
