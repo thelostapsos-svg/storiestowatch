@@ -385,6 +385,7 @@
         <input type="hidden" name="subject" value="New Watch Sourcing Request — Stories To Watch">
         <input type="hidden" name="from_name" value="STW Concierge">
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="Source Page" id="stwSrc" value="direct">
 
         <div class="field">
           <label>The Watch <span class="req">— brand / model / reference *</span></label>
@@ -485,6 +486,9 @@
   var form = document.getElementById('sourcingForm');
   var btn = document.getElementById('submitBtn');
   var errEl = document.getElementById('formError');
+  // attribute the inquiry to the page it came from (no session-breaking UTMs)
+  var stwSrc = (new URLSearchParams(location.search)).get('from') || document.referrer || 'direct';
+  var srcEl = document.getElementById('stwSrc'); if (srcEl) { srcEl.value = stwSrc; }
   form.addEventListener('submit', function(e){
     e.preventDefault();
     errEl.classList.remove('show');
@@ -502,6 +506,7 @@
         document.getElementById('formCard').style.display = 'none';
         document.getElementById('successMsg').classList.add('show');
         window.scrollTo({ top:0, behavior:'smooth' });
+        if (window.gtag) { gtag('event', 'concierge_inquiry', { source_page: stwSrc }); }
       } else {
         throw new Error('submit failed');
       }
