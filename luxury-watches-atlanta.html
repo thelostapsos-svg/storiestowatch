@@ -319,6 +319,27 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </div>
 </div>
 
+<style>
+.nextmove{max-width:960px;margin:0 auto;padding:8px 24px 0;position:relative;z-index:2;}
+.nextmove-k{font-size:10px;letter-spacing:0.42em;text-transform:uppercase;color:#8B6914;text-align:center;margin-bottom:20px;}
+.nextmove-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.nm-card{display:block;background:#111110;border:1px solid rgba(201,168,76,0.16);padding:22px 20px;text-decoration:none;transition:border-color .25s,transform .25s;}
+.nm-card:hover{border-color:rgba(201,168,76,0.5);transform:translateY(-2px);}
+.nm-card.primary{border-color:rgba(201,168,76,0.45);background:linear-gradient(140deg,rgba(201,168,76,0.10),transparent);}
+.nm-eyebrow{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#8B6914;margin-bottom:8px;}
+.nm-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:#F5F1E8;line-height:1.2;margin-bottom:5px;}
+.nm-title .arw{color:#C9A84C;}
+.nm-sub{font-size:12px;line-height:1.5;color:#B8B4A6;}
+@media(max-width:640px){.nextmove-grid{grid-template-columns:1fr;}}
+</style>
+<section class="nextmove">
+  <p class="nextmove-k">Your next move</p>
+  <div class="nextmove-grid">
+    <a class="nm-card" href="fair-value.html"><div class="nm-eyebrow">Value it</div><div class="nm-title">What&rsquo;s it worth? <span class="arw">&rarr;</span></div><div class="nm-sub">The real secondary-market price for the exact reference.</div></a>
+    <a class="nm-card" href="watchfinder.html"><div class="nm-eyebrow">Find it</div><div class="nm-title">Where to buy <span class="arw">&rarr;</span></div><div class="nm-sub">75 verified dealers worldwide &mdash; see who has one.</div></a>
+    <a class="nm-card primary" href="source-a-watch.html?from=luxury-watches-atlanta"><div class="nm-eyebrow">Source it</div><div class="nm-title">Have us find it <span class="arw">&rarr;</span></div><div class="nm-sub">Tell us the piece; we source it at a fair number, you buy direct.</div></a>
+  </div>
+</section>
 <section class="gcurtain">
   <p class="k">Behind the curtain</p>
   <p class="l">You've read the story. The hard part is finding the right one — from <em>someone worth trusting.</em></p>
