@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search — Stories To Watch</title>
+<meta name="description" content="Search Stories To Watch — the stories and guides, verified dealers in the Watch Finder, and our concierge for anything you can't find.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.storiestowatch.com/search.html">
+<link rel="icon" href="stw-emblem.svg" type="image/svg+xml">
+<link rel="icon" href="stw-emblem.png" type="image/png">
+<link rel="apple-touch-icon" href="stw-emblem.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7JCE0VBEF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X7JCE0VBEF');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet"></noscript>
+<style>
+  :root{--gold:#C9A84C;--gold-light:#E8C96A;--gold-dim:#8B6914;--black:#050505;--deep:#0A0A08;--surface:#111110;--surface2:#1A1A18;--white:#F5F1E8;--text:#E8E4D9;--text-dim:#B8B4A6;--text-body:#C8C4B8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--text);font-family:'Montserrat',sans-serif;font-weight:400;overflow-x:hidden;min-height:100vh;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9990;opacity:0.35;}
+  nav{position:sticky;top:0;z-index:1000;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,5,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.1);}
+  .nav-logo{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:0.32em;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:10px;}
+  .nav-logo img{height:26px;width:auto;}
+  .nav-back{font-size:10px;letter-spacing:0.3em;color:var(--text-dim);text-decoration:none;text-transform:uppercase;}
+  .nav-back:hover{color:var(--gold);}
+
+  .shell{max-width:1000px;margin:0 auto;padding:56px 24px 90px;}
+  .eyebrow{font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:16px;}
+  h1.title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,5vw,48px);color:var(--white);text-align:center;line-height:1.1;margin-bottom:34px;}
+  h1.title em{font-style:italic;color:var(--gold-light);}
+
+  form.searchbar{position:relative;max-width:680px;margin:0 auto 10px;}
+  .searchbar input{width:100%;background:var(--surface);border:1px solid rgba(201,168,76,0.3);color:var(--white);font-family:'Montserrat',sans-serif;font-size:15px;font-weight:300;letter-spacing:0.06em;padding:19px 58px 19px 24px;outline:none;transition:border-color .3s;}
+  .searchbar input::placeholder{color:var(--text-dim);}
+  .searchbar input:focus{border-color:var(--gold);}
+  .searchbar button{position:absolute;right:0;top:0;height:100%;width:56px;border:none;background:none;color:var(--gold);font-size:18px;cursor:pointer;}
+  .hint{text-align:center;font-size:11px;letter-spacing:0.08em;color:var(--text-dim);margin-bottom:52px;}
+  .hint b{color:var(--gold-dim);font-weight:500;cursor:pointer;}
+  .hint b:hover{color:var(--gold);}
+
+  .bucket{margin-bottom:52px;}
+  .bucket-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(201,168,76,0.16);padding-bottom:12px;margin-bottom:24px;}
+  .bucket-n{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.24em;color:var(--gold);text-transform:uppercase;}
+  .bucket-t{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--white);font-style:italic;}
+  .bucket-count{margin-left:auto;font-size:11px;letter-spacing:0.2em;color:var(--text-dim);text-transform:uppercase;}
+
+  .art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+  .art-card{display:block;background:var(--surface);border:1px solid rgba(201,168,76,0.14);padding:20px 22px;text-decoration:none;transition:border-color .25s,transform .25s;}
+  .art-card:hover{border-color:rgba(201,168,76,0.5);transform:translateY(-2px);}
+  .art-type{font-size:8px;letter-spacing:0.34em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:3px 9px;display:inline-block;margin-bottom:12px;}
+  .art-title{font-family:'Cormorant Garamond',serif;font-size:20px;line-height:1.25;color:var(--white);margin-bottom:7px;}
+  .art-blurb{font-size:12.5px;line-height:1.55;color:var(--text-dim);}
+
+  .wf-panel{background:linear-gradient(140deg,rgba(201,168,76,0.09),transparent);border:1px solid rgba(201,168,76,0.28);padding:26px 28px;}
+  .wf-lead{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--text-body);line-height:1.5;margin-bottom:16px;}
+  .wf-lead b{color:var(--gold-light);font-weight:400;}
+  .wf-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .wf-chip{font-size:11px;letter-spacing:0.04em;color:var(--text-dim);background:var(--surface);border:1px solid rgba(201,168,76,0.16);padding:7px 12px;}
+  .wf-chip b{color:var(--text);font-weight:500;}
+
+  .btn-primary{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#0b0b0a;background:linear-gradient(135deg,var(--gold-light),var(--gold));padding:14px 26px;border-radius:2px;text-decoration:none;transition:transform .2s;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{display:inline-flex;align-items:center;gap:9px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-light);border:1px solid rgba(201,168,76,0.5);padding:13px 24px;border-radius:2px;text-decoration:none;transition:border-color .2s,color .2s;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--white);}
+
+  .concierge{background:radial-gradient(ellipse 70% 130% at 50% 0%,rgba(201,168,76,0.07),transparent 70%),var(--deep);border:1px solid rgba(201,168,76,0.22);padding:34px 30px;text-align:center;}
+  .concierge .c-k{font-size:10px;letter-spacing:0.44em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .concierge .c-l{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(19px,2.6vw,25px);color:var(--white);max-width:560px;margin:0 auto 22px;line-height:1.35;}
+  .concierge .c-l em{color:var(--gold-light);}
+
+  .empty{color:var(--text-dim);font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;padding:6px 0 4px;}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(201,168,76,0.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  footer a{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.2em;text-decoration:none;}
+  footer p{font-size:10px;color:var(--text-dim);letter-spacing:0.12em;}
+  @media(max-width:640px){nav{padding:14px 20px;}.shell{padding:40px 18px 70px;}.bucket-t{font-size:19px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="stw-emblem.png" alt="Stories To Watch"> STORIES TO WATCH</a>
+  <a href="index.html" class="nav-back">← Home</a>
+</nav>
+
+<div class="shell">
+  <p class="eyebrow">Search</p>
+  <h1 class="title">Find the <em>story, the source,</em> or have us get it</h1>
+  <form class="searchbar" method="get" action="search.html" role="search">
+    <input type="text" name="q" id="q" autocomplete="off" placeholder="A brand, a model, a story — try “Rolex”, “Nautilus”, “Daytona”…" aria-label="Search">
+    <button type="submit" aria-label="Search">⌕</button>
+  </form>
+  <p class="hint">Try <b data-q="Rolex">Rolex</b> · <b data-q="Royal Oak">Royal Oak</b> · <b data-q="Nautilus">Nautilus</b> · <b data-q="Daytona">Daytona</b> · <b data-q="Cartier">Cartier</b> · <b data-q="investment">investment</b></p>
+
+  <div id="results"></div>
+</div>
+
+<footer>
+  <a href="index.html">STORIES TO WATCH</a>
+  <p>Find the story. Find the source. Or let us find the watch.</p>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var resultsEl = document.getElementById('results');
+
+  // model / nickname -> dealer brand, so "daytona" or "royal oak" routes to a real count
+  var ALIAS = {
+    'daytona':'Rolex','submariner':'Rolex','gmt':'Rolex','gmt-master':'Rolex','datejust':'Rolex','day-date':'Rolex','explorer':'Rolex','sea-dweller':'Rolex','yacht-master':'Rolex','oyster':'Rolex','cosmograph':'Rolex','sky-dweller':'Rolex','milgauss':'Rolex',
+    'nautilus':'Patek Philippe','aquanaut':'Patek Philippe','calatrava':'Patek Philippe','patek':'Patek Philippe','5711':'Patek Philippe','5811':'Patek Philippe',
+    'royal oak':'Audemars Piguet','royal-oak':'Audemars Piguet','offshore':'Audemars Piguet','ap':'Audemars Piguet','jumbo':'Audemars Piguet','15202':'Audemars Piguet','15500':'Audemars Piguet','16202':'Audemars Piguet',
+    'speedmaster':'Omega','seamaster':'Omega','moonwatch':'Omega','constellation':'Omega','aqua terra':'Omega',
+    'crash':'Cartier','tank':'Cartier','santos':'Cartier','ballon bleu':'Cartier',
+    'portugieser':'IWC','portofino':'IWC','pilot':'IWC',
+    'grand seiko':'Grand Seiko','spring drive':'Grand Seiko',
+    'overseas':'Vacheron Constantin','vacheron':'Vacheron Constantin',
+    'richard mille':'Richard Mille','rm':'Richard Mille'
+  };
+
+  function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function matchArticles(q, articles){
+    var ql = q.toLowerCase();
+    var terms = ql.split(/\s+/).filter(Boolean);
+    var scored = [];
+    articles.forEach(function(a){
+      var brands = (a.brands||[]).join(' ').toLowerCase();
+      var tags = (a.tags||[]).join(' ').toLowerCase();
+      var hay = (a.title+' '+brands+' '+tags+' '+(a.blurb||'')).toLowerCase();
+      var score = 0;
+      terms.forEach(function(t){ if(hay.indexOf(t)>-1) score += 1; });
+      if(score===0) return;
+      if(brands.indexOf(ql)>-1) score += 3;
+      if(a.title.toLowerCase().indexOf(ql)>-1) score += 3;
+      if(tags.indexOf(ql)>-1) score += 1;
+      scored.push({a:a, s:score});
+    });
+    scored.sort(function(x,y){ return y.s - x.s; });
+    return scored.map(function(x){ return x.a; });
+  }
+
+  function brandFor(q, dealerBrands){
+    var ql = q.toLowerCase().trim();
+    for(var i=0;i<dealerBrands.length;i++){
+      var b = dealerBrands[i].toLowerCase();
+      if(b==='all brands'||b==='vintage'||b==='collector'||b==='historical'||b==='independent'||b==='estate') continue;
+      if(ql===b || ql.indexOf(b)>-1 || b.indexOf(ql)>-1) return dealerBrands[i];
+    }
+    for(var k in ALIAS){ if(ql.indexOf(k)>-1) return ALIAS[k]; }
+    return null;
+  }
+
+  var TYPE_LABEL = {guide:'Guide',comparison:'Comparison',news:'News',celebrity:'Icons',location:'City Guide',culture:'Story'};
+
+  function render(q, idx, dealerData){
+    var html = '';
+    // ---- BUCKET 1: EDITORIAL ----
+    var arts = idx ? matchArticles(q, idx.articles||[]) : [];
+    html += '<section class="bucket"><div class="bucket-head"><span class="bucket-n">01</span><span class="bucket-t">In the editorial</span>'
+          + (arts.length?'<span class="bucket-count">'+arts.length+' '+(arts.length===1?'story':'stories')+'</span>':'') + '</div>';
+    if(arts.length){
+      html += '<div class="art-grid">';
+      arts.slice(0,9).forEach(function(a){
+        html += '<a class="art-card" href="'+esc(a.url)+'">'
+             +  '<span class="art-type">'+(TYPE_LABEL[a.type]||'Story')+'</span>'
+             +  '<div class="art-title">'+esc(a.title)+'</div>'
+             +  '<div class="art-blurb">'+esc(a.blurb||'')+'</div></a>';
+      });
+      html += '</div>';
+    } else {
+      html += '<p class="empty">No stories on &ldquo;'+esc(q)+'&rdquo; yet — but you can still find it and have us source it below.</p>';
+    }
+    html += '</section>';
+
+    // ---- BUCKET 2: WATCH FINDER ----
+    var dealerBrands = dealerData ? Object.keys(dealerData.brandCounts) : [];
+    var brand = dealerData ? brandFor(q, dealerBrands) : null;
+    var count = brand ? dealerData.brandCounts[brand] : 0;
+    var wfHref = 'watchfinder.html?search=' + encodeURIComponent(brand || q);
+    html += '<section class="bucket"><div class="bucket-head"><span class="bucket-n">02</span><span class="bucket-t">In the Watch Finder</span>'
+          + (count?'<span class="bucket-count">'+count+' sources</span>':'') + '</div><div class="wf-panel">';
+    if(brand && count){
+      html += '<p class="wf-lead"><b>'+count+' verified '+esc(brand)+' sources</b> — authorised dealers, grey-market specialists and auction houses, all publicly listed.</p>';
+      var names = (dealerData.byBrand[brand]||[]).slice(0,5);
+      if(names.length){ html += '<div class="wf-chips">'; names.forEach(function(n){ html += '<span class="wf-chip"><b>'+esc(n.name)+'</b> · '+esc(n.city)+'</span>'; }); html += '</div>'; }
+      html += '<a class="btn-ghost" href="'+wfHref+'">See all '+count+' '+esc(brand)+' sources →</a>';
+    } else {
+      html += '<p class="wf-lead">Browse our <b>75 verified dealers</b> worldwide — filter by brand, region and type.</p>'
+           +  '<a class="btn-ghost" href="'+wfHref+'">Open the Watch Finder →</a>';
+    }
+    html += '</div></section>';
+
+    // ---- BUCKET 3: CONCIERGE (always) ----
+    html += '<section class="bucket"><div class="concierge"><p class="c-k">Can’t find it?</p>'
+          + '<p class="c-l">Tell us the exact '+ (brand?esc(brand)+' ':'') +'piece you’re after — the allocation, the discontinued dial, the grail — and our <em>concierge sources it</em> from our network. You buy direct.</p>'
+          + '<a class="btn-primary" href="source-a-watch.html?from=search-'+slug(q||'general')+'">Have us source it →</a></div></section>';
+
+    resultsEl.innerHTML = html;
+    if(window.gtag) gtag('event','site_search',{search_term:q, article_results:arts.length, wf_brand:brand||'', wf_count:count});
+  }
+
+  function renderEmpty(){
+    resultsEl.innerHTML = '<section class="bucket"><div class="concierge"><p class="c-k">Start here</p>'
+      + '<p class="c-l">Search a <em>brand, model or story</em> above. Every result gives you three ways in: read the story, find a verified dealer, or have our concierge source it.</p>'
+      + '<a class="btn-ghost" href="watchfinder.html">Or browse all 75 dealers →</a></div></section>';
+  }
+
+  var IDX=null, DEALER=null;
+  function boot(){
+    var params = new URLSearchParams(location.search);
+    var q = (params.get('q')||'').trim();
+    input.value = q;
+    if(!q){ renderEmpty(); return; }
+    document.title = '“'+q+'” — Search · Stories To Watch';
+    Promise.all([
+      IDX ? Promise.resolve(IDX) : fetch('content-index.json').then(function(r){return r.json();}).then(function(j){IDX=j;return j;}).catch(function(){return {articles:[]};}),
+      DEALER ? Promise.resolve(DEALER) : fetch('dealers.json').then(function(r){return r.json();}).then(function(j){
+          var byBrand={}, brandCounts={};
+          (j.dealers||[]).forEach(function(d){ (d.brands||[]).forEach(function(b){ (byBrand[b]=byBrand[b]||[]).push(d); brandCounts[b]=(brandCounts[b]||0)+1; }); });
+          DEALER={byBrand:byBrand, brandCounts:brandCounts}; return DEALER;
+        }).catch(function(){return {byBrand:{},brandCounts:{}};})
+    ]).then(function(res){ render(q, res[0], res[1]); });
+  }
+
+  // quick-suggestion chips
+  document.querySelectorAll('.hint b[data-q]').forEach(function(el){
+    el.addEventListener('click', function(){ input.value = el.getAttribute('data-q'); input.form.submit(); });
+  });
+
+  boot();
+})();
+</script>
+</body>
+</html>
