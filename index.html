@@ -607,7 +607,10 @@ html{scroll-behavior:smooth}
 <script>
 (function(){var b=document.getElementById('stwfPlay'),v=document.getElementById('stwfVid');
 if(b&&v){b.addEventListener('click',function(){b.classList.add('gone');v.controls=true;v.play();});
-v.addEventListener('play',function(){b.classList.add('gone');v.controls=true;});}})();
+v.addEventListener('play',function(){b.classList.add('gone');v.controls=true;});}
+/* "Brand Film" / "The Film" links → scroll to the film AND start it playing in one tap */
+document.querySelectorAll('a[href="#film"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(v){if(b)b.classList.add('gone');v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}var f=document.getElementById('film');if(f)f.scrollIntoView({behavior:'smooth',block:'start'});});});
+})();
 </script>
 
 <!-- Watch Finder band removed — the tool lives on watchfinder.html (nav tab + hero CTA route there) -->
