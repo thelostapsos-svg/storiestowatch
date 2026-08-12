@@ -609,7 +609,7 @@ html{scroll-behavior:smooth}
 if(b&&v){b.addEventListener('click',function(){b.classList.add('gone');v.controls=true;v.play();});
 v.addEventListener('play',function(){b.classList.add('gone');v.controls=true;});}
 /* "Brand Film" / "The Film" links → scroll to the film AND start it playing in one tap */
-document.querySelectorAll('a[href="#film"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(v){if(b)b.classList.add('gone');v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}var f=document.getElementById('film');if(f)f.scrollIntoView({behavior:'smooth',block:'start'});});});
+document.querySelectorAll('a[href="#film"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(v){if(b)b.classList.add('gone');v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}function go(){var f=document.getElementById('film');if(f)window.scrollTo(0,f.getBoundingClientRect().top+window.pageYOffset-64);}go();setTimeout(go,160);setTimeout(go,440);});});
 })();
 </script>
 
