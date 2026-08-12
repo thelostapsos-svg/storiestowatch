@@ -480,7 +480,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   .m-land{display:none;}
   .stwf{scroll-margin-top:74px;}
   @media(max-width:768px){
-    .oh-hero,.meander,.hours,.spotlight,.pantheon,.wmovement,.maisons,.relic,.curtain{display:none !important;}
+    .oh-hero,.stwf,.meander,.hours,.spotlight,.pantheon,.wmovement,.maisons,.relic,.curtain{display:none !important;}
     .m-land{display:block;padding:94px 16px 32px;}
     .stwf,.hours,.spotlight,.pantheon,.wmovement,.maisons,.relic,.curtain{display:none !important;}
     .ml-brand{text-align:center;margin-bottom:22px;}
@@ -609,7 +609,35 @@ html{scroll-behavior:smooth}
 if(b&&v){b.addEventListener('click',function(){b.classList.add('gone');v.controls=true;v.play();});
 v.addEventListener('play',function(){b.classList.add('gone');v.controls=true;});}
 /* "Brand Film" / "The Film" links → scroll to the film AND start it playing in one tap */
-document.querySelectorAll('a[href="#film"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(v){if(b)b.classList.add('gone');v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}function go(){var f=document.getElementById('film');if(f)window.scrollTo(0,f.getBoundingClientRect().top+window.pageYOffset-64);}go();setTimeout(go,160);setTimeout(go,440);});});
+document.querySelectorAll('a[href="#film"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var m=document.getElementById('filmModal');if(!m)return;m.classList.add('open');document.body.style.overflow='hidden';var mv=document.getElementById('filmModalVid');if(mv){try{mv.currentTime=0;}catch(err){}mv.controls=true;var pp=mv.play();if(pp&&pp.catch)pp.catch(function(){});}});});
+})();
+</script>
+
+<!-- Brand film lightbox modal -->
+<style>
+  .film-modal{display:none;position:fixed;inset:0;z-index:100000;background:rgba(4,4,4,0.97);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:18px;}
+  .film-modal.open{display:flex;}
+  .film-modal-stage{position:relative;width:100%;max-width:1120px;aspect-ratio:16/9;background:#000;box-shadow:0 24px 80px rgba(0,0,0,0.7);}
+  .film-modal-stage video{width:100%;height:100%;object-fit:contain;background:#000;display:block;}
+  .film-modal-close{position:fixed;top:14px;right:14px;z-index:2;width:46px;height:46px;border:1px solid rgba(201,168,76,0.5);background:rgba(5,5,5,0.65);color:#E8C96A;font-family:'Montserrat',sans-serif;font-size:26px;line-height:1;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s;}
+  .film-modal-close:hover{border-color:#C9A84C;color:#F5F1E8;}
+</style>
+<div id="filmModal" class="film-modal" role="dialog" aria-modal="true" aria-label="Stories To Watch — the brand film">
+  <button class="film-modal-close" id="filmModalClose" aria-label="Close the film">&times;</button>
+  <div class="film-modal-stage">
+    <video id="filmModalVid" playsinline controls preload="none" poster="drop-poster.jpg">
+      <source src="drop-film.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+<script>
+(function(){
+  var m=document.getElementById('filmModal'), mv=document.getElementById('filmModalVid'), mc=document.getElementById('filmModalClose');
+  if(!m) return;
+  function closeFilm(){ m.classList.remove('open'); document.body.style.overflow=''; if(mv){try{mv.pause();}catch(e){}} }
+  if(mc) mc.addEventListener('click', closeFilm);
+  m.addEventListener('click', function(e){ if(e.target===m) closeFilm(); });
+  document.addEventListener('keydown', function(e){ if((e.key==='Escape'||e.key==='Esc') && m.classList.contains('open')) closeFilm(); });
 })();
 </script>
 
