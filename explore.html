@@ -48,25 +48,30 @@
   .mini-search button{position:absolute;right:0;top:0;height:100%;width:46px;border:none;background:none;color:var(--gold);font-size:16px;cursor:pointer;}
 
   .filter-label{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold-dim);margin:0 0 12px 2px;}
-  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px;}
-  .chip{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.06em;color:var(--text-dim);background:var(--surface);border:1px solid rgba(201,168,76,0.16);padding:9px 15px;cursor:pointer;transition:all .2s;user-select:none;}
-  .chip:hover{border-color:rgba(201,168,76,0.5);color:var(--white);}
-  .chip.active{background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#0b0b0a;border-color:var(--gold);font-weight:600;}
-  .chip .c-n{opacity:0.6;margin-left:5px;font-size:10px;}
-  .chip.active .c-n{opacity:0.75;}
+  /* SPOTLIGHT — featured story, same pattern as the homepage */
+  .spotlight{margin:0 0 50px;}
+  .spot-card{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);border:1px solid rgba(201,168,76,0.18);overflow:hidden;text-decoration:none;transition:border-color .3s,transform .3s;}
+  .spot-card:hover{border-color:rgba(201,168,76,0.5);transform:translateY(-2px);}
+  .spot-img{position:relative;min-height:280px;background:var(--deep);}
+  .spot-img img{width:100%;height:100%;object-fit:cover;}
+  .spot-flag{position:absolute;top:16px;left:16px;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:#0b0b0a;background:var(--gold);padding:5px 10px;}
+  .spot-body{padding:38px 36px;display:flex;flex-direction:column;justify-content:center;}
+  .spot-cat{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .spot-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:27px;line-height:1.15;color:var(--white);margin-bottom:14px;}
+  .spot-tease{font-size:13.5px;line-height:1.65;color:var(--text-body);margin-bottom:20px;}
+  .spot-link{font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);}
+  @media(max-width:720px){.spot-card{grid-template-columns:1fr;}.spot-img{min-height:220px;}.spot-body{padding:28px 22px;}.spot-title{font-size:23px;}}
 
-  .count-line{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin:8px 0 20px;border-top:1px solid rgba(201,168,76,0.12);padding-top:18px;}
-  .count-line b{color:var(--gold);}
-
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
-  .card{display:flex;flex-direction:column;background:var(--surface);border:1px solid rgba(201,168,76,0.14);padding:22px 24px;text-decoration:none;transition:border-color .25s,transform .25s;}
-  .card:hover{border-color:rgba(201,168,76,0.5);transform:translateY(-2px);}
-  .card-top{display:flex;align-items:center;gap:8px;margin-bottom:13px;}
-  .card-type{font-size:8px;letter-spacing:0.32em;text-transform:uppercase;color:#0b0b0a;background:var(--gold);padding:3px 9px;}
-  .card-brand{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dim);}
-  .card-title{font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.24;color:var(--white);margin-bottom:8px;}
-  .card-blurb{font-size:12.5px;line-height:1.55;color:var(--text-dim);flex:1;}
-  .empty{color:var(--text-dim);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;padding:20px 0;}
+  /* SECTIONS — the 5-pillar index, names and links only */
+  .sections{margin:0 0 20px;}
+  .sec-item{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 4px;text-decoration:none;border-top:1px solid rgba(201,168,76,0.14);transition:padding-left .25s,background .25s;}
+  .sections .sec-item:last-child{border-bottom:1px solid rgba(201,168,76,0.14);}
+  .sec-item:hover{padding-left:14px;background:rgba(201,168,76,0.03);}
+  .sec-t{font-family:'Cinzel',serif;font-size:clamp(17px,2.4vw,21px);letter-spacing:0.04em;color:var(--white);transition:color .25s;}
+  .sec-item:hover .sec-t{color:var(--gold-light);}
+  .sec-d{font-size:12.5px;color:var(--text-dim);margin-top:6px;max-width:480px;line-height:1.5;}
+  .sec-arrow{font-size:18px;color:var(--gold-dim);flex-shrink:0;transition:color .25s,transform .25s;}
+  .sec-item:hover .sec-arrow{color:var(--gold);transform:translateX(4px);}
 
   .cta-strip{margin-top:56px;background:radial-gradient(ellipse 70% 130% at 50% 0%,rgba(201,168,76,0.07),transparent 70%),var(--deep);border:1px solid rgba(201,168,76,0.2);padding:32px 28px;text-align:center;}
   .cta-strip p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(18px,2.4vw,23px);color:var(--white);max-width:560px;margin:0 auto 20px;line-height:1.35;}
@@ -99,13 +104,45 @@
     <button type="submit" aria-label="Search">⌕</button>
   </form>
 
-  <p class="filter-label">By type</p>
-  <div class="chips" id="typeChips"></div>
-  <p class="filter-label">By brand</p>
-  <div class="chips" id="brandChips"></div>
+  <section class="spotlight" aria-label="Featured story">
+    <p class="filter-label">Featured this week</p>
+    <a class="spot-card" href="first-watch-on-the-moon.html">
+      <div class="spot-img">
+        <span class="spot-flag">The Moonwatch</span>
+        <img src="first-watch-on-the-moon-1400.webp" alt="Buzz Aldrin on the Moon during Apollo 11, his Omega Speedmaster worn over the spacesuit — the first watch worn on the Moon" loading="lazy" width="1400" height="933">
+      </div>
+      <div class="spot-body">
+        <p class="spot-cat">The Object of Desire &middot; No. 002</p>
+        <h3 class="spot-title">The First Watch on the Moon Is Lost</h3>
+        <p class="spot-tease">It walked across the Moon strapped over a spacesuit — then vanished in the mail and was never found. Meanwhile, Buzz Aldrin's other watches just sold for a fortune at Sotheby's. The story is the whole point.</p>
+        <span class="spot-link">Read the story &rarr;</span>
+      </div>
+    </a>
+  </section>
 
-  <p class="count-line" id="countLine"></p>
-  <div class="grid" id="grid"></div>
+  <p class="filter-label">Every section</p>
+  <div class="sections">
+    <a class="sec-item" href="hephaestus.html">
+      <div><span class="sec-t">Buying Guides</span><p class="sec-d">Where to buy the great references — and exactly how, from the Nautilus to Grand Seiko.</p></div>
+      <span class="sec-arrow">&rarr;</span>
+    </a>
+    <a class="sec-item" href="atlas.html">
+      <div><span class="sec-t">City Guides</span><p class="sec-d">City-by-city guides to where the watch you want is actually sold — London, Dubai, Mumbai and more.</p></div>
+      <span class="sec-arrow">&rarr;</span>
+    </a>
+    <a class="sec-item" href="chronos.html">
+      <div><span class="sec-t">Investment Guides</span><p class="sec-d">What a luxury watch is truly worth, now and later — Patek vs Rolex, the Nautilus, Rolex CPO and more.</p></div>
+      <span class="sec-arrow">&rarr;</span>
+    </a>
+    <a class="sec-item" href="hermes.html">
+      <div><span class="sec-t">News &amp; Stories</span><p class="sec-d">Dispatches on the watches the world is wearing right now — Cannes, the Met Gala, and more.</p></div>
+      <span class="sec-arrow">&rarr;</span>
+    </a>
+    <a class="sec-item" href="wrist-of-champions.html">
+      <div><span class="sec-t">Champions</span><p class="sec-d">The watches champions wear, in sport and beyond — and what each choice reveals.</p></div>
+      <span class="sec-arrow">&rarr;</span>
+    </a>
+  </div>
 
   <div class="cta-strip">
     <p>Can't find the piece itself? Tell us — our <em>concierge sources it</em> from 75 verified dealers. You buy direct.</p>
@@ -118,92 +155,5 @@
   <p>Find the story. Find the source. Or let us find the watch.</p>
 </footer>
 
-<script>
-(function(){
-  var typeChipsEl = document.getElementById('typeChips');
-  var brandChipsEl = document.getElementById('brandChips');
-  var gridEl = document.getElementById('grid');
-  var countEl = document.getElementById('countLine');
-
-  var TYPE_ORDER = ['guide','comparison','news','celebrity','location','culture'];
-  var TYPE_LABEL = {guide:'Guides',comparison:'Comparisons',news:'News',celebrity:'Icons',location:'City Guides',culture:'Stories'};
-  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-  var state = {type:'all', brand:'all'};
-  var ARTICLES = [];
-
-  function matches(a){
-    if(state.type!=='all' && a.type!==state.type) return false;
-    if(state.brand!=='all' && (a.brands||[]).indexOf(state.brand)===-1) return false;
-    return true;
-  }
-
-  function syncUrl(){
-    var p = new URLSearchParams();
-    if(state.type!=='all') p.set('type', state.type);
-    if(state.brand!=='all') p.set('brand', state.brand);
-    var qs = p.toString();
-    history.replaceState(null,'', qs ? ('explore.html?'+qs) : 'explore.html');
-  }
-
-  function renderGrid(){
-    var list = ARTICLES.filter(matches);
-    var bits = [];
-    if(state.type!=='all') bits.push(TYPE_LABEL[state.type]);
-    if(state.brand!=='all') bits.push(state.brand);
-    countEl.innerHTML = '<b>'+list.length+'</b> '+(list.length===1?'story':'stories')+(bits.length?' · '+esc(bits.join(' · ')):' · everything');
-    if(!list.length){ gridEl.innerHTML = '<p class="empty">Nothing here yet for that combination — try another filter, or search above.</p>'; return; }
-    gridEl.innerHTML = list.map(function(a){
-      var brand = (a.brands&&a.brands.length)?a.brands[0]:'';
-      return '<a class="card" href="'+esc(a.url)+'">'
-        + '<div class="card-top"><span class="card-type">'+(TYPE_LABEL[a.type]||'Story')+'</span>'
-        + (brand?'<span class="card-brand">'+esc(brand)+'</span>':'')+'</div>'
-        + '<div class="card-title">'+esc(a.title)+'</div>'
-        + '<div class="card-blurb">'+esc(a.blurb||'')+'</div></a>';
-    }).join('');
-  }
-
-  function buildChips(){
-    // type chips (fixed order, only those present)
-    var typeCounts = {};
-    ARTICLES.forEach(function(a){ typeCounts[a.type]=(typeCounts[a.type]||0)+1; });
-    var typeHtml = ['<span class="chip'+(state.type==='all'?' active':'')+'" data-dim="type" data-val="all">All<span class="c-n">'+ARTICLES.length+'</span></span>'];
-    TYPE_ORDER.forEach(function(t){ if(typeCounts[t]) typeHtml.push('<span class="chip'+(state.type===t?' active':'')+'" data-dim="type" data-val="'+t+'">'+TYPE_LABEL[t]+'<span class="c-n">'+typeCounts[t]+'</span></span>'); });
-    typeChipsEl.innerHTML = typeHtml.join('');
-
-    // brand chips (by frequency desc)
-    var brandCounts = {};
-    ARTICLES.forEach(function(a){ (a.brands||[]).forEach(function(b){ brandCounts[b]=(brandCounts[b]||0)+1; }); });
-    var brands = Object.keys(brandCounts).sort(function(x,y){ return brandCounts[y]-brandCounts[x] || x.localeCompare(y); });
-    var brandHtml = ['<span class="chip'+(state.brand==='all'?' active':'')+'" data-dim="brand" data-val="all">All brands<span class="c-n">'+ARTICLES.length+'</span></span>'];
-    brands.forEach(function(b){ brandHtml.push('<span class="chip'+(state.brand===b?' active':'')+'" data-dim="brand" data-val="'+esc(b)+'">'+esc(b)+'<span class="c-n">'+brandCounts[b]+'</span></span>'); });
-    brandChipsEl.innerHTML = brandHtml.join('');
-
-    [typeChipsEl, brandChipsEl].forEach(function(container){
-      container.querySelectorAll('.chip').forEach(function(chip){
-        chip.addEventListener('click', function(){
-          var dim = chip.getAttribute('data-dim'), val = chip.getAttribute('data-val');
-          state[dim] = val;
-          container.querySelectorAll('.chip').forEach(function(c){ c.classList.toggle('active', c.getAttribute('data-val')===val); });
-          syncUrl(); renderGrid();
-          if(window.gtag) gtag('event','explore_filter',{filter_type:dim, filter_value:val});
-        });
-      });
-    });
-  }
-
-  // deep-link from ?type= / ?brand=
-  var params = new URLSearchParams(location.search);
-  if(params.get('type')) state.type = params.get('type');
-  if(params.get('brand')) state.brand = params.get('brand');
-
-  fetch('content-index.json').then(function(r){return r.json();}).then(function(j){
-    ARTICLES = (j.articles||[]);
-    buildChips(); renderGrid();
-  }).catch(function(){
-    gridEl.innerHTML = '<p class="empty">Couldn’t load the library right now. Try the <a href="watchfinder.html" style="color:var(--gold)">Watch Finder</a> or <a href="index.html" style="color:var(--gold)">the homepage</a>.</p>';
-  });
-})();
-</script>
 </body>
 </html>
