@@ -1,0 +1,31 @@
+# --- Stories To Watch: keep the deploy repo clean (static site only) ---
+
+# Raw stock image library (source files). The content engine crops/optimizes
+# these into semantically-named .webp that ARE committed; the raw sources are not.
+_stock/
+
+# Planning, drafts, previews, non-web working files
+_planning/
+_drafts/
+_sitemap-preview.html
+Deal Decks PC/
+
+# Raw stock sources dropped in the repo root before optimization
+pexels-*.jpg
+pexels-*.jpeg
+pexels-*.png
+*-unsplash.jpg
+*-unsplash.jpeg
+*-unsplash.png
+
+# Video & social assets (not part of the static site)
+*.mp4
+*.mov
+*for instagram*
+*insta cover*
+
+# Tooling / session / OS noise
+.claude/
+scratchpad/
+Thumbs.db
+.DS_Store
