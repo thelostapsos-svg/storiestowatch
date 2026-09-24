@@ -61,6 +61,12 @@
   .hero-label, .hero-subtitle { text-shadow:0 2px 18px rgba(0,0,0,0.9), 0 1px 5px rgba(0,0,0,0.78); }
   .hero-title span { color:var(--gold-light); display:block; }
   .hero-subtitle { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2.5vw,26px); color:var(--text); margin:20px 0 30px; max-width:560px; line-height:1.5; }
+  .wf-presented { display:inline-flex; align-items:center; gap:14px; margin:0 0 28px; padding:10px 16px; border:1px solid rgba(201,168,76,0.22); background:rgba(5,5,5,0.42); text-decoration:none; transition:border-color 0.3s; max-width:100%; }
+  .wf-presented:hover { border-color:rgba(201,168,76,0.55); }
+  .wf-pr-k { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold); white-space:nowrap; }
+  .wf-pr-slot { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:var(--text-dim); border-left:1px solid rgba(201,168,76,0.25); padding-left:14px; }
+  .wf-presented:hover .wf-pr-slot { color:var(--text); }
+  @media(max-width:600px){ .wf-presented { gap:10px; padding:9px 12px; margin-bottom:22px; } .wf-pr-slot { font-size:13px; padding-left:11px; } }
   /* BRAND PILLS — quiet capability statement, names only (no logos) */
   .brand-pills { display:block; max-width:600px; margin:0 0 34px; position:relative; z-index:50; }
   .brand-pill-track { display:flex; flex-wrap:wrap; gap:7px; }
@@ -287,6 +293,10 @@
   <p class="hero-label">Where Every Watch Is Kept</p>
   <h1 class="hero-title">FIND YOUR<span>WATCH</span></h1>
   <p class="hero-subtitle">Mortals chase the hour; here is where it's found. Authorised dealers, grey-market specialists and auction houses the world over — gathered in one place. Sources checked, never bought.</p>
+  <a class="wf-presented" href="mediakit.html" aria-label="Become the presenting partner of the Watch Finder">
+    <span class="wf-pr-k">Presented by</span>
+    <span class="wf-pr-slot">Open to a single presenting partner &mdash; enquire &rarr;</span>
+  </a>
   <div class="brand-pills">
     <span class="bp-lead">Source &amp; read on</span>
     <div class="brand-pill-track">
