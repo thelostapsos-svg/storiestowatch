@@ -1,16 +1,16 @@
 /* Stories To Watch — Partner slot (house ad -> media kit).
-   Standalone, idempotent, no side effects. Injects a rotating luxury-category
-   "Partner with us" band just before the footer. Text sits on the dark side of
-   each frame, never over the hero. Skips the media-kit page itself. */
+   Standalone, idempotent, no side effects. Places a rotating luxury-category
+   "Partner with us" band in a PROMINENT spot: on the homepage right after the
+   featured story (desktop) and after the mobile spotlight card (mobile); on
+   articles just before the closing CTA/related sections (not buried at the foot).
+   Text sits on the dark side of each frame, never over the hero. Skips media kit. */
 (function(){
-  if(window.__stwPartner || document.querySelector('.stw-partner')) return;
+  if(window.__stwPartner) return;
   if(/mediakit/i.test(location.pathname)) return;
-  var foot = document.querySelector('footer');
-  if(!foot || !foot.parentNode) return;
   window.__stwPartner = true;
 
   var CSS = ""
-   + ".stw-partner{position:relative;display:block;max-width:1040px;margin:20px auto 8px;overflow:hidden;border:1px solid rgba(201,168,76,0.18);text-decoration:none;background:#0A0A08;}"
+   + ".stw-partner{position:relative;display:block;max-width:1040px;margin:34px auto;overflow:hidden;border:1px solid rgba(201,168,76,0.18);text-decoration:none;background:#0A0A08;}"
    + ".stw-partner img{display:block;}"
    + ".stw-partner-scrim{position:absolute;inset:0;pointer-events:none;}"
    + ".stw-partner .pl-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:#C9A84C;margin-bottom:13px;display:block;}"
@@ -18,8 +18,8 @@
    + ".stw-partner .pl-cta{font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#E8C96A;display:block;}"
    + ".stw-partner:hover .pl-cta{color:#F5F1E8;}"
    + ".stw-partner .pl-tag{position:absolute;top:13px;right:13px;font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(201,168,76,0.55);border:1px solid rgba(201,168,76,0.22);padding:4px 8px;background:rgba(5,5,5,0.35);}"
-   + "@media(min-width:641px){.stw-partner{aspect-ratio:16/9;}.stw-partner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}.stw-partner-scrim{background:linear-gradient(90deg,rgba(5,5,5,0.95),rgba(5,5,5,0.8) 25%,rgba(5,5,5,0.34) 46%,rgba(5,5,5,0) 62%);}.stw-partner-txt{position:absolute;left:0;top:0;bottom:0;width:54%;display:flex;flex-direction:column;justify-content:center;padding:0 5%;}}"
-   + "@media(max-width:640px){.stw-partner img{width:100%;height:auto;}.stw-partner-scrim{display:none;}.stw-partner-txt{display:block;background:#0d0d0c;padding:20px 20px 22px;}}";
+   + "@media(min-width:769px){.stw-partner{aspect-ratio:16/9;}.stw-partner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}.stw-partner-scrim{background:linear-gradient(90deg,rgba(5,5,5,0.95),rgba(5,5,5,0.8) 25%,rgba(5,5,5,0.34) 46%,rgba(5,5,5,0) 62%);}.stw-partner-txt{position:absolute;left:0;top:0;bottom:0;width:54%;display:flex;flex-direction:column;justify-content:center;padding:0 5%;}.stw-hp-mob{display:none;}}"
+   + "@media(max-width:768px){.stw-partner{margin:22px auto;}.stw-partner img{width:100%;height:auto;}.stw-partner-scrim{display:none;}.stw-partner-txt{display:block;background:#0d0d0c;padding:20px 20px 22px;}.stw-hp-desk{display:none;}}";
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
   var PIMGS = [
@@ -30,15 +30,35 @@
     {s:'partner-jewellery.webp',a:'Fine diamond jewellery catching the light against black velvet'},
     {s:'partner-spirits.webp',a:'A crystal glass of aged whisky on a dark bar in a private club'}
   ];
-  var pk = PIMGS[Math.floor(Math.random()*PIMGS.length)];
-  var pb = document.createElement('a');
-  pb.className = 'stw-partner'; pb.href = 'mediakit.html';
-  pb.setAttribute('aria-label','Advertise on Stories To Watch — view the media kit');
-  pb.innerHTML = '<img src="'+pk.s+'" alt="'+pk.a+'" loading="lazy" width="1600" height="900">'
-    + '<span class="stw-partner-scrim"></span>'
-    + '<span class="stw-partner-txt"><span class="pl-eyebrow">Partner with Stories To Watch</span>'
-    + '<span class="pl-head">Your brand, in front of collectors at the moment they buy.</span>'
-    + '<span class="pl-cta">View the media kit →</span></span>'
-    + '<span class="pl-tag">Partner Space</span>';
-  foot.parentNode.insertBefore(pb, foot);
+  function band(extraClass){
+    var pk = PIMGS[Math.floor(Math.random()*PIMGS.length)];
+    var pb = document.createElement('a');
+    pb.className = 'stw-partner' + (extraClass ? ' ' + extraClass : '');
+    pb.href = 'mediakit.html';
+    pb.setAttribute('aria-label','Advertise on Stories To Watch — view the media kit');
+    pb.innerHTML = '<img src="'+pk.s+'" alt="'+pk.a+'" loading="lazy" width="1600" height="900">'
+      + '<span class="stw-partner-scrim"></span>'
+      + '<span class="stw-partner-txt"><span class="pl-eyebrow">Partner with Stories To Watch</span>'
+      + '<span class="pl-head">Your brand, in front of collectors at the moment they buy.</span>'
+      + '<span class="pl-cta">View the media kit →</span></span>'
+      + '<span class="pl-tag">Partner Space</span>';
+    return pb;
+  }
+  function after(node, el){ if(node && node.parentNode){ node.parentNode.insertBefore(el, node.nextSibling); return true; } return false; }
+  function before(node, el){ if(node && node.parentNode){ node.parentNode.insertBefore(el, node); return true; } return false; }
+
+  // --- Homepage: prominent, right after the featured story (desktop) + after the mobile spotlight card ---
+  var spotlight = document.querySelector('#spotlight');           // desktop featured-story section
+  var mlFeature = document.querySelector('.ml-feature');          // mobile two-pillar spotlight card
+  if(spotlight || mlFeature){
+    if(spotlight) after(spotlight, band('stw-hp-desk'));
+    if(mlFeature){ var mc = document.querySelector('.ml-concierge'); mc ? before(mc, band('stw-hp-mob')) : after(mlFeature, band('stw-hp-mob')); }
+    return;
+  }
+
+  // --- Articles / other: just above the closing CTA / related sections (visible, not buried) ---
+  var endAnchor = document.querySelector('.nextmove, .gcurtain, .related-section, .curtain');
+  if(endAnchor){ before(endAnchor, band()); return; }
+  var foot = document.querySelector('footer');
+  if(foot){ before(foot, band()); }
 })();
