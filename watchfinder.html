@@ -322,7 +322,7 @@
     </div>
   </div>
   <div class="search-wrap">
-    <input type="text" class="search-input" id="searchInput" placeholder="Search by brand, dealer or location..." autocomplete="off" />
+    <input type="text" class="search-input" id="searchInput" placeholder="Search by brand, model, dealer or location — try &quot;Speedmaster&quot;..." autocomplete="off" />
     <span class="search-icon">⌕</span>
     <div class="suggestions" id="suggestions"></div>
   </div>
@@ -1053,6 +1053,31 @@ function computeDistances() {
   });
 }
 
+// Model / nickname -> brand, so a MODEL search ("speedmaster", "daytona") surfaces that
+// brand's dealers even though dealers list brands, not models. Token-matched to stay safe.
+var WF_ALIAS = {
+  'daytona':'rolex','submariner':'rolex','gmt':'rolex','gmt-master':'rolex','gmt master':'rolex','datejust':'rolex','day-date':'rolex','day date':'rolex','president':'rolex','explorer':'rolex','sea-dweller':'rolex','sea dweller':'rolex','deepsea':'rolex','yacht-master':'rolex','yachtmaster':'rolex','oyster':'rolex','oyster perpetual':'rolex','cosmograph':'rolex','sky-dweller':'rolex','milgauss':'rolex','air-king':'rolex',
+  'nautilus':'patek philippe','aquanaut':'patek philippe','calatrava':'patek philippe','patek':'patek philippe','5711':'patek philippe','5712':'patek philippe','5811':'patek philippe','5990':'patek philippe',
+  'royal oak':'audemars piguet','royal-oak':'audemars piguet','offshore':'audemars piguet','royal oak offshore':'audemars piguet','jumbo':'audemars piguet','15202':'audemars piguet','15500':'audemars piguet','15510':'audemars piguet','16202':'audemars piguet','26240':'audemars piguet',
+  'speedmaster':'omega','moonwatch':'omega','seamaster':'omega','planet ocean':'omega','aqua terra':'omega','constellation':'omega','de ville':'omega','ploprof':'omega',
+  'santos':'cartier','tank':'cartier','crash':'cartier','panthere':'cartier','ballon bleu':'cartier','cheich':'cartier','pasha':'cartier',
+  'reverso':'jaeger-lecoultre','jlc':'jaeger-lecoultre','master control':'jaeger-lecoultre','polaris':'jaeger-lecoultre',
+  'overseas':'vacheron constantin','patrimony':'vacheron constantin','vacheron':'vacheron constantin',
+  'portugieser':'iwc','portuguese':'iwc','big pilot':'iwc','ingenieur':'iwc','portofino':'iwc',
+  'carrera':'tag heuer','monaco':'tag heuer','autavia':'tag heuer',
+  'luminor':'panerai','radiomir':'panerai','submersible':'panerai',
+  'big bang':'hublot','classic fusion':'hublot',
+  'snowflake':'grand seiko','spring drive':'grand seiko'
+};
+function aliasBrandFor(search) {
+  var s = (search || '').toLowerCase().trim();
+  if (s.length < 2) return null;
+  if (WF_ALIAS[s]) return WF_ALIAS[s];                       // exact (handles multi-word keys)
+  var tokens = s.split(/[^a-z0-9]+/).filter(Boolean);        // token match (avoids 'rm' in 'germany')
+  for (var i = 0; i < tokens.length; i++) { if (WF_ALIAS[tokens[i]]) return WF_ALIAS[tokens[i]]; }
+  for (var k in WF_ALIAS) { if (k.indexOf(' ') > -1 && s.indexOf(k) > -1) return WF_ALIAS[k]; }
+  return null;
+}
 function applyFilters() {
   var list = dealers.slice();
   var search = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -1076,11 +1101,13 @@ function applyFilters() {
   }
   syncBrandFilterVisibility(search);
   if (search) {
+    var aliasBrand = aliasBrandFor(search);
     list = list.filter(function(d) {
       return d.name.toLowerCase().indexOf(search) > -1
           || d.city.toLowerCase().indexOf(search) > -1
           || d.brands.some(function(b){ return b.toLowerCase().indexOf(search) > -1; })
-          || d.desc.toLowerCase().indexOf(search) > -1;
+          || d.desc.toLowerCase().indexOf(search) > -1
+          || (aliasBrand && d.brands.some(function(b){ return b.toLowerCase().indexOf(aliasBrand) > -1; }));
     });
   }
   // nearest-mode: sort pinned dealers by ascending distance (stacks ON TOP of all active filters)
