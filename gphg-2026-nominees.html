@@ -23,6 +23,9 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7JCE0VBEF"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X7JCE0VBEF');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://www.instagram.com">
+<link rel="dns-prefetch" href="https://www.instagram.com">
+<link rel="dns-prefetch" href="https://scontent.cdninstagram.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600&family=Cinzel:wght@400;600;900&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet"></noscript>
 <style>
@@ -58,6 +61,12 @@
   .wrap{max-width:900px;margin:0 auto;padding:70px 34px;}
   .intro{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2vw,22px);line-height:1.8;color:var(--text-body);margin-bottom:56px;padding-bottom:52px;border-bottom:1px solid rgba(201,168,76,0.12);}
   .intro strong{color:var(--gold-light);font-weight:400;}
+  .ig-embed{margin:8px 0 10px;display:flex;justify-content:center;}
+  .ig-embed .instagram-media{max-width:540px;width:100%;min-height:150px;border:1px solid rgba(201,168,76,0.18);background:var(--surface);padding:30px 26px;text-align:center;}
+  .ig-embed .instagram-media a{color:var(--text-body);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;line-height:1.55;text-decoration:none;border-bottom:1px solid var(--gold-dim);}
+  .ig-embed .instagram-media a::before{content:'\2318  Instagram';display:block;font-family:'Montserrat',sans-serif;font-style:normal;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;border:0;}
+  .ig-cap{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--text-dim);text-align:center;margin:0 0 44px;line-height:1.5;}
+  .ig-cap a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim);}
 
   .sec{margin-bottom:56px;}
   .sec-label{font-size:11px;letter-spacing:0.5em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:16px;}
@@ -137,6 +146,24 @@
 
 <div class="wrap" data-stw-collapse>
   <p class="intro">On <strong>15 September 2026</strong>, the <strong>Grand Prix d&rsquo;Horlogerie de Gen&egrave;ve</strong> &mdash; watchmaking&rsquo;s equivalent of the Academy Awards &mdash; unveiled its nominees: <strong>84 timepieces across 14 categories</strong>, chosen from <strong>320 watches entered by 194 brands</strong> (<a href="https://www.hautetime.com/gphg-2026-reveals-84-nominated-timepieces-ahead-of-global-watchmaking-tour/" target="_blank" rel="noopener" style="color:var(--gold-light);border-bottom:1px solid var(--gold-dim);text-decoration:none;">Hautetime</a>). The winners are revealed in Geneva on <strong>7 November</strong>. If you want a single snapshot of where the art of the mechanical watch actually stands in 2026 &mdash; from a $2,000 debut to a seven-figure grail &mdash; this is it. These are exactly the watches our concierge exists to help you value and find.</p>
+
+  <div class="ig-embed">
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DcvNkZhtDer/?utm_source=ig_embed" data-instgrm-version="14">
+      <a href="https://www.instagram.com/reel/DcvNkZhtDer/" target="_blank" rel="noopener">The GPHG 2026 official nominations, announced &mdash; on the Grand Prix d&rsquo;Horlogerie de Gen&egrave;ve&rsquo;s official Instagram &rarr;</a>
+    </blockquote>
+    <script>
+    (function(){
+      var el = document.querySelector('.ig-embed');
+      function load(){ var s = document.createElement('script'); s.async = true; s.src = 'https://www.instagram.com/embed.js'; document.body.appendChild(s); }
+      if (!el || !('IntersectionObserver' in window)) { load(); return; }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { load(); io.disconnect(); } });
+      }, { rootMargin: '400px' });
+      io.observe(el);
+    })();
+    </script>
+  </div>
+  <p class="ig-cap">The official 2026 nominations, announced by the <a href="https://www.instagram.com/gphg_official/" target="_blank" rel="noopener">GPHG</a> &mdash; 84 watches, 14 categories, winners on 7 November.</p>
 
   <div class="sec">
     <div class="sec-label">What it is</div>
