@@ -1,7 +1,17 @@
 {
   "generated": "2026-09-29",
-  "count": 49,
+  "count": 50,
   "articles": [
+    {
+      "url": "gphg-2026-nominees.html",
+      "title": "GPHG 2026: The 84 Nominees for Watchmaking's Top Prize",
+      "type": "news",
+      "brands": ["GPHG"],
+      "tags": ["gphg 2026", "gphg 2026 nominees", "grand prix horlogerie geneve", "aiguille d'or", "watch awards 2026", "gphg winners", "haute horlogerie"],
+      "blurb": "The GPHG 2026 nominees are in — 84 watches across 14 categories chasing the Aiguille d'Or, watchmaking's Oscars. The standouts (including the world's thinnest mechanical watch), how to read it, and the 7 November winners.",
+      "image": "gphg-2026-hero.webp",
+      "date": "2026-09-29"
+    },
     {
       "url": "titan-vetra-in-house-movement.html",
       "title": "Titan Vetra: India's First In-House Mechanical Movement",
