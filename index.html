@@ -480,7 +480,7 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
   .m-land{display:none;}
   .stwf{scroll-margin-top:74px;}
   @media(max-width:768px){
-    .oh-hero,.stwf,.meander,.hours,.spotlight,.pantheon,.wmovement,.maisons,.relic,.curtain{display:none !important;}
+    .oh-hero,.stwf,.meander,.hours,.spotlight,.latest,.pantheon,.wmovement,.maisons,.relic,.curtain{display:none !important;}
     .m-land{display:block;padding:94px 16px 32px;}
     .stwf,.hours,.spotlight,.pantheon,.wmovement,.maisons,.relic,.curtain{display:none !important;}
     .ml-brand{text-align:center;margin-bottom:22px;}
@@ -549,7 +549,9 @@ footer .fb{font-family:'Cinzel',serif;font-size:15px;color:var(--gold);letter-sp
       <span class="ml-go">Read the story &rarr;</span>
     </span>
   </a>
-  <a class="ml-concierge" href="source-a-watch.html?from=mobile-landing">Can't find it? We'll source it &rarr;</a>
+  <p class="ml-feat-eyebrow" style="margin-top:28px;">The Latest</p>
+  <div class="latest-list-mob" id="latestListMob"></div>
+  <a class="ml-concierge" href="source-a-watch.html?from=mobile-landing" style="margin-top:24px;">Can't find it? We'll source it &rarr;</a>
 </section>
 
 <!-- ============ HERO (living office — time-of-day, watch frozen) ============ -->
@@ -745,6 +747,32 @@ document.querySelectorAll('a[href="#film"]').forEach(function(a){a.addEventListe
   </a>
 </section>
 
+<!-- ============ LATEST STORIES (auto-populated from content-index.json) ============ -->
+<style>
+.latest{max-width:1140px;margin:0 auto;padding:10px 26px 84px;}
+.latest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px;}
+.latest-card{display:block;background:#111110;border:1px solid rgba(201,168,76,.16);overflow:hidden;text-decoration:none;transition:border-color .35s ease,transform .35s ease;}
+.latest-card:hover{border-color:rgba(201,168,76,.5);transform:translateY(-3px);}
+.latest-thumb{display:block;width:100%;aspect-ratio:16/10;background:#0a0a08 center/cover no-repeat;}
+.latest-body{display:block;padding:15px 16px 20px;}
+.latest-cat{display:block;font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#C9A84C;margin-bottom:8px;}
+.latest-title{display:block;font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.25;color:#F5F1E8;}
+@media(max-width:900px){.latest-grid{grid-template-columns:repeat(2,1fr);}}
+.latest-list-mob{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+.latest-row{display:flex;gap:14px;align-items:center;background:#0A0A08;border:1px solid rgba(201,168,76,.18);padding:10px;text-decoration:none;}
+.latest-row-thumb{display:block;width:78px;height:56px;flex-shrink:0;background:#0a0a08 center/cover no-repeat;border:1px solid rgba(201,168,76,.12);}
+.latest-row-cat{display:block;font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:#C9A84C;margin-bottom:4px;}
+.latest-row-title{display:block;font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.25;color:#F5F1E8;}
+</style>
+<section class="latest" aria-label="Latest stories">
+  <div class="sec-head reveal">
+    <p class="sec-kick">Fresh Dispatches</p>
+    <h2 class="sec-title">The <b>latest.</b></h2>
+    <p class="sec-note">Our newest stories &mdash; or <a href="hermes.html" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim)">browse the full archive →</a></p>
+  </div>
+  <div class="latest-grid" id="latestGridDesk"></div>
+</section>
+
 <!-- ============ THREE KINDS OF TIME ============ -->
 <section class="pantheon" aria-label="The pantheon">
   <div class="sec-head reveal">
@@ -923,6 +951,25 @@ function goFind(e){e.preventDefault();var v=document.getElementById('q').value.t
   function start(){if(!raf)raf=requestAnimationFrame(frame);} function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
   document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start();});
   start();
+})();
+</script>
+<script>
+/* Latest Stories — auto-populate desktop grid + mobile list from content-index.json */
+(function(){
+  var CAT={news:'Dispatch',culture:'Culture',comparison:'Comparison',celebrity:'On the Wrist',guide:'Guide',location:'City Guide'};
+  var STORY=['news','culture','comparison','celebrity'];
+  function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  fetch('content-index.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(data){
+    var arts=(data.articles||[]).filter(function(a){return STORY.indexOf(a.type)>-1;}).slice(0,4);
+    if(!arts.length)return;
+    var desk=document.getElementById('latestGridDesk'), mob=document.getElementById('latestListMob'), dh='', mh='';
+    arts.forEach(function(a){
+      var cat=CAT[a.type]||'Story', img=esc(a.image||'stw-emblem.png'), url=esc(a.url), t=esc(a.title);
+      dh+='<a class="latest-card" href="'+url+'"><span class="latest-thumb" style="background-image:url(\''+img+'\')"></span><span class="latest-body"><span class="latest-cat">'+cat+'</span><span class="latest-title">'+t+'</span></span></a>';
+      mh+='<a class="latest-row" href="'+url+'"><span class="latest-row-thumb" style="background-image:url(\''+img+'\')"></span><span><span class="latest-row-cat">'+cat+'</span><span class="latest-row-title">'+t+'</span></span></a>';
+    });
+    if(desk)desk.innerHTML=dh; if(mob)mob.innerHTML=mh;
+  }).catch(function(){});
 })();
 </script>
 <script src="stw-partner.js" defer></script>
