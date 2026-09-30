@@ -43,12 +43,19 @@
     var slug = (location.pathname.split('/').pop() || '').replace(/\.html?$/i,'') || 'page';
     srcHref = 'source-a-watch.html?from=' + slug;
   }
+  var availHref = grab('a[href*="availability-check.html?from="]');
   var wfHref = grab('a[href*="watchfinder.html?search="]') || 'watchfinder.html';
+
+  // dock primary = the $45 Availability Check when the page offers it (buying-intent pages);
+  // otherwise the full concierge (editorial / other pages)
+  var primaryHref  = availHref || srcHref;
+  var primaryLabel = availHref ? '✦ Check it · $45' : '✦ Source this watch';
+  var primaryAria  = availHref ? 'Get a $45 Availability Check for this watch' : 'Have our concierge source this watch';
 
   // ---- dock (always) ----
   var dock = document.createElement('div'); dock.className = 'stw-dock';
   var b1 = document.createElement('a'); b1.className = 'stw-dock-btn secondary'; b1.href = wfHref; b1.setAttribute('aria-label','Browse verified dealers in the Watch Finder'); b1.innerHTML = '⌕ Watch Finder';
-  var b2 = document.createElement('a'); b2.className = 'stw-dock-btn primary'; b2.href = srcHref; b2.setAttribute('aria-label','Have our concierge source this watch'); b2.innerHTML = '✦ Source this watch';
+  var b2 = document.createElement('a'); b2.className = 'stw-dock-btn primary'; b2.href = primaryHref; b2.setAttribute('aria-label',primaryAria); b2.innerHTML = primaryLabel;
   dock.appendChild(b1); dock.appendChild(b2);
   document.body.appendChild(dock);
 
