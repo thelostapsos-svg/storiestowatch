@@ -28,7 +28,7 @@
   + ".stw-dispatch .sd-msg.sd-ok{color:#E8C96A;}"
   + ".stw-dispatch .sd-msg.sd-err{color:#e0a0a0;}"
   + ".stw-dispatch .sd-fine{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.06em;color:#6f6a5e;margin:16px 0 0;}"
-  + "@media(max-width:480px){.stw-dispatch{padding:46px 18px;}.stw-dispatch .sd-form{flex-direction:column;}.stw-dispatch .sd-btn{width:100%;}}";
+  + "@media(max-width:480px){.stw-dispatch{padding:46px 18px;}.stw-dispatch .sd-form{flex-direction:column;}.stw-dispatch .sd-input{flex:0 0 auto;width:100%;}.stw-dispatch .sd-btn{width:100%;}}";
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
   var sec = document.createElement('section');
