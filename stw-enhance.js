@@ -49,8 +49,8 @@
   // dock primary = the $45 Availability Check when the page offers it (buying-intent pages);
   // otherwise the full concierge (editorial / other pages)
   var primaryHref  = availHref || srcHref;
-  var primaryLabel = availHref ? '✦ Check it · $45' : '✦ Source this watch';
-  var primaryAria  = availHref ? 'Get a $45 Availability Check for this watch' : 'Have our concierge source this watch';
+  var primaryLabel = availHref ? '✦ Check availability' : '✦ Source this watch';
+  var primaryAria  = availHref ? 'Check whether this watch is realistically available ($45 read)' : 'Have our concierge source this watch';
 
   // ---- dock (always) ----
   var dock = document.createElement('div'); dock.className = 'stw-dock';
