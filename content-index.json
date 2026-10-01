@@ -1,7 +1,17 @@
 {
-  "generated": "2026-09-29",
-  "count": 50,
+  "generated": "2026-10-01",
+  "count": 51,
   "articles": [
+    {
+      "url": "gphg-2026-mumbai.html",
+      "title": "GPHG 2026 in Mumbai: Watchmaking's Oscars Comes to India",
+      "type": "news",
+      "brands": ["GPHG", "Ethos"],
+      "tags": ["gphg 2026 mumbai", "gphg india", "gphg exhibition mumbai", "ethos gphg", "grand prix horlogerie geneve india", "watchmaking oscars india", "india watch market"],
+      "blurb": "Watchmaking's 'Oscars' brought its 2026 nominees to Mumbai (28 Sep–1 Oct, hosted by Ethos at The St. Regis). What India getting the GPHG exhibition signals — and the standout nominees, before the winners are crowned in Geneva on 7 November.",
+      "image": "gphg-mumbai-hero.webp",
+      "date": "2026-10-01"
+    },
     {
       "url": "gphg-2026-nominees.html",
       "title": "GPHG 2026: The 84 Nominees for Watchmaking's Top Prize",
