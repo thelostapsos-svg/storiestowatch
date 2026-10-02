@@ -106,7 +106,7 @@
 
   <section class="spotlight" aria-label="Featured story">
     <p class="filter-label">Featured this week</p>
-    <a class="spot-card" href="first-watch-on-the-moon.html">
+    <a class="spot-card" id="exSpotlight" href="first-watch-on-the-moon.html">
       <div class="spot-img">
         <span class="spot-flag">The Moonwatch</span>
         <img src="first-watch-on-the-moon-1400.webp" alt="Buzz Aldrin on the Moon during Apollo 11, his Omega Speedmaster worn over the spacesuit — the first watch worn on the Moon" loading="lazy" width="1400" height="933">
@@ -155,6 +155,30 @@
   <p>Find the story. Find the source. Or let us find the watch.</p>
 </footer>
 
+<script>
+/* Featured this week — auto-pull the newest story from content-index.json so it never goes stale.
+   Falls back to the hardcoded card if the fetch fails or JS is off. */
+(function(){
+  var CAT={news:'Dispatch',culture:'Culture',comparison:'Comparison',celebrity:'On the Wrist'};
+  var STORY=['news','culture','comparison','celebrity'];
+  var card=document.getElementById('exSpotlight');
+  if(!card)return;
+  fetch('content-index.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(data){
+    var arts=(data.articles||[]).filter(function(a){return STORY.indexOf(a.type)>-1 && a.url && a.title;});
+    if(!arts.length)return;
+    var a=arts[0];
+    card.setAttribute('href',a.url);
+    var flag=card.querySelector('.spot-flag'),cat=card.querySelector('.spot-cat'),
+        title=card.querySelector('.spot-title'),tease=card.querySelector('.spot-tease'),
+        img=card.querySelector('.spot-img img');
+    if(flag)flag.textContent=CAT[a.type]||'Featured';
+    if(cat)cat.textContent=(a.brands&&a.brands.length)?a.brands.join(' · '):(CAT[a.type]||'Featured story');
+    if(title)title.textContent=a.title;
+    if(tease)tease.textContent=a.blurb||'';
+    if(img){ if(a.image){img.setAttribute('src',a.image);img.removeAttribute('width');img.removeAttribute('height');} img.setAttribute('alt',a.title); }
+  }).catch(function(){});
+})();
+</script>
 <script src="stw-partner.js" defer></script>
 <script src="stw-dispatch.js" defer></script>
 </body>
