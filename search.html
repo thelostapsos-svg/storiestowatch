@@ -118,7 +118,8 @@
     'portugieser':'IWC','portofino':'IWC','pilot':'IWC',
     'grand seiko':'Grand Seiko','spring drive':'Grand Seiko',
     'overseas':'Vacheron Constantin','vacheron':'Vacheron Constantin',
-    'richard mille':'Richard Mille','rm':'Richard Mille'
+    'richard mille':'Richard Mille','rm':'Richard Mille',
+    'voutilainen':'Independent','28sport':'Independent'
   };
 
   function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
@@ -151,7 +152,8 @@
       if(b==='all brands'||b==='vintage'||b==='collector'||b==='historical'||b==='independent'||b==='estate') continue;
       if(ql===b || ql.indexOf(b)>-1 || b.indexOf(ql)>-1) return dealerBrands[i];
     }
-    for(var k in ALIAS){ if(ql.indexOf(k)>-1) return ALIAS[k]; }
+    var padded=' '+ql.replace(/[^a-z0-9]+/g,' ')+' ';
+    for(var k in ALIAS){ if(padded.indexOf(' '+k.replace(/[^a-z0-9]+/g,' ')+' ')>-1) return ALIAS[k]; } // token-safe: 'rm' must not match 'germany'
     return null;
   }
 
